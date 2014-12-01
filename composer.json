@@ -3,8 +3,7 @@
 	"autoload" : {
 		"classmap" : ["Config/", "Modules/", "Services/", "Factory/"]
 	},
-  "repositories": [ {"type": "vcs", "url": "E:\\svn\\git\\private\\xptrdev\\WPPluginFramework"} ],
   "require" : {
-  	"xptrdev/WPPluginFramework" : "dev-master"
+  	"xptrdev/WPPluginFramework" : "0.5"
   }
 }
