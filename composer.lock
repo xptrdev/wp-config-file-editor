@@ -4,15 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4038fff0fad42869a2dc8e9a1815723",
+    "hash": "64009236fb73cb39c6a080e675bfb26d",
     "packages": [
         {
             "name": "xptrdev/WPPluginFramework",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "E:\\svn\\git\\private\\xptrdev\\WPPluginFramework",
-                "reference": "4c52fa8f04e98c25666c2214eff467f63745270a"
+                "url": "https://github.com/xptrdev/WPPluginFramework.git",
+                "reference": "17d0f8d92967a696a219eb83033d970fa52d43db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xptrdev/WPPluginFramework/zipball/17d0f8d92967a696a219eb83033d970fa52d43db",
+                "reference": "17d0f8d92967a696a219eb83033d970fa52d43db",
+                "shasum": ""
             },
             "type": "library",
             "autoload": {
@@ -30,8 +36,12 @@
                 }
             ],
             "description": "Wordpress Plugin Framework",
-            "homepage": "http://www.xptrdev.com/frameworks/wordpress/plugins",
-            "time": "2014-11-22 12:00:49"
+            "homepage": "https://github.com/xptrdev/WPPluginFramework",
+            "support": {
+                "source": "https://github.com/xptrdev/WPPluginFramework/tree/master",
+                "issues": "https://github.com/xptrdev/WPPluginFramework/issues"
+            },
+            "time": "2014-12-01 20:27:28"
         }
     ],
     "packages-dev": [],
