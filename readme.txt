@@ -2,7 +2,7 @@
 Contributors: xpointer
 Donate link: http://wp-wcfe.xptrdev.com
 Tags: wp-config.php, database, secure keys, secure, constants, language, debugging
-Requires at least: 3.0.1
+Requires at least: 4.0
 Tested up to: 4.1
 Stable tag: 0.5
 License: GPLv2 or later
