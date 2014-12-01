@@ -1,0 +1,31 @@
+[
+    {
+        "name": "xptrdev/WPPluginFramework",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "E:\\svn\\git\\private\\xptrdev\\WPPluginFramework",
+            "reference": "4c52fa8f04e98c25666c2214eff467f63745270a"
+        },
+        "time": "2014-11-22 12:00:49",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "Include/"
+            ]
+        },
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Ahmed Said",
+                "email": "asaid@xptrdev.com"
+            }
+        ],
+        "description": "Wordpress Plugin Framework",
+        "homepage": "http://www.xptrdev.com/frameworks/wordpress/plugins"
+    }
+]
