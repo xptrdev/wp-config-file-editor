@@ -1,0 +1,3 @@
+[submodule "vendor/xptrdev/WPPluginFramework"]
+	path = vendor/xptrdev/WPPluginFramework
+	url = https://github.com/xptrdev/WPPluginFramework.git
