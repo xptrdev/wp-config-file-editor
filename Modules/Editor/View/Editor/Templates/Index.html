@@ -40,6 +40,7 @@ foreach ($groups as $groupName) {
 	div#wcfe-body {margin-top: 19px;}
 	.wcfe-vars-group {margin-left: 5px;}
 	.field-tip {margin:0 0 0 202px; color: #aaa;}
+	div#help-box {margin: 8px;float: right;background-color: wheat;padding: 5px 22px;max-width: 410px;}
 	input[type="text"] {width: 350px;}
 	fieldset strong {background-color: white; font-weight: bold; padding: 0 5px;}
 	.checkbox-row p.field-tip {display: inline;margin-left: 0;}
@@ -67,6 +68,19 @@ foreach ($groups as $groupName) {
 ?>
 <style type="text/css"><?php echo $styles; ?></style>
 <script type="text/javascript"><?php echo $scripts; ?></script>
+<div id="help-box">
+	<p style="float: right;">Have a problem? Submit a support question on <a target="_blank" href="https://wordpress.org/plugins/wp-config-file-editor/">WCFE Plugin Support page</a></p>
+	<p style="font-style: italic;font-size: 15px;">
+		Please note that config fields form is not yet being validated! Any value might be submitted to the server. Invalid values might cause your Wordpress site to get down. If this Plugin is being liked by Wordpress community I will then add many new features. Please let me know if you like this Plugin by submitting a review
+		on <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor">WCFE Plugin Reviews page</a>
+	</p>
+	<p>
+		Checkout other Plugins created by the same Author
+		<ul>
+			<li>View Advanced Web Site statistics (AWStats) via Wordpress Dashboard: <a target="_blank" href="https://wordpress.org/plugins/awstats-report-viewer/">ARV Plugin</a></li>
+		</ul>
+	</p>
+</div>
 <div id="wcfe-body">
 <?php if ($model->hasErrors()) : ?>
 	<ul id="errors-bar">
