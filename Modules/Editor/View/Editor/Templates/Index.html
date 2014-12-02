@@ -91,7 +91,14 @@ foreach ($groups as $groupName) {
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 	<form method="post" action="<?php echo $router->routeAction() ?>">
-<?php echo $formDoc->saveXML(); ?>
+<?php
+	# Get Form Markup
+	$formMarkups = $formDoc->saveXML();
+	# Remove XML tag from the result
+	$formMarkups = substr($formMarkups, (strpos($formMarkups,'?>') + 2));
+	# Output Form markups
+	echo $formMarkups;
+?>
 		<div id="wcfe-toolbox">
 			<input type="submit" name="task" value="Save" />
 			<input type="submit" name="task" value="Preview" />
