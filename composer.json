@@ -1,5 +1,5 @@
 {
-	"name" : "xptrdev/wpconfig-file-editor",
+	"name" : "xptrdev/wp-config-file-editor",
 	"autoload" : {
 		"classmap" : ["Config/", "Modules/", "Services/", "Factory/"]
 	},
