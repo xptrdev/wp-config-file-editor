@@ -12,7 +12,17 @@ use WPPFW\Forms;
 /**
 * 
 */
-class ConfigFileForm extends Forms\Form {
+class ConfigFileForm extends Forms\SecureForm {
+	
+	/**
+	* 
+	*/
+	const TASK_PREVIEW = 'Preview';
+	
+	/**
+	* 
+	*/
+	const TASK_SAVE = 'Save';
 	
 	/**
 	* put your comment there...
@@ -20,7 +30,7 @@ class ConfigFileForm extends Forms\Form {
 	*/
 	public function __construct() {
 		# Define form parameters
-		parent::__construct('configFileFields');
+		parent::__construct('configFileFields', 'stoken');
 		# Add fields
 		$this->addChain(new Fields\DbName('DbName'))
 		->addChain(new Fields\DbUser('DbUser'))
@@ -38,7 +48,8 @@ class ConfigFileForm extends Forms\Form {
 		->addChain(new Fields\LoggedInSalt('LoggedInSalt'))
 		->addChain(new Fields\NonceSalt('NonceSalt'))
 		->addChain(new Fields\WPDebug('WPDebug'))
-		->addChain(new Fields\WPLang('WPLang'));
+		->addChain(new Fields\WPLang('WPLang'))
+		->addChain(new Fields\WPLang('Task'));
 	}
 
 }

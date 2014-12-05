@@ -25,6 +25,31 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	private $fieldsMap = array(
+		'DbName',
+		'DbUser',
+		'DbPassword',
+		'DbHost',
+		'DbCharSet',
+		'DbCollate',
+		'DbTablePrefix',
+		'AuthKey',
+		'SecureAuthKey',
+		'LoggedInKey',
+		'NonceKey',
+		'AuthSalt',
+		'SecureAuthSalt',
+		'LoggedInSalt',
+		'NonceSalt',
+		'WPDebug',
+		'WPLang',
+	);
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	private $form;
 	
 	/**
@@ -107,9 +132,9 @@ class EditorModel extends PluginModel {
 	public function & loadFromConfigFile() {
 		# Read fields value from Wordpress config file
 		$form =& $this->getForm();
-		foreach ($form->getFields() as $field) {
+		foreach ($this->fieldsMap as $fieldName) {
 			# Force field to read data from config file
-			$field->read();
+			$form->get($fieldName)->read();
 		}
 		# Chain
 		return $this;
@@ -173,8 +198,10 @@ class EditorModel extends PluginModel {
 		# Set back for changes flag to true
 		$this->isBackForChange = true;
 		# Save form fields to be used later by 
-		# other actions
-		$this->savedVars = array($form->getName() => $form->getValue());
+		# Don't save all fields, just related to config file
+		$vars = array_intersect_key($form->getValue(), array_flip($this->fieldsMap));
+		# Save them
+		$this->savedVars = array($form->getName() => $vars);
 		# Chain
 		return $this;
 	}

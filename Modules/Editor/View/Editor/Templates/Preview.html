@@ -10,9 +10,10 @@ namespace WCFE\Modules\Editor\View\Editor\Templates;
 defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 	
 # Getting model
-$model =& $this->result();
+$result =& $this->result();
 $router =& $this->router();
-
+$model =& $result['model'];
+$form =& $result['form'];
 ?>
 <style type="text/css">
 	ul#errors-bar {color: red;background-color: white;height: 68px;overflow: auto;padding: 10px 0px 0 30px;width: 96%;}
@@ -32,9 +33,10 @@ $router =& $this->router();
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 	<form method="post" action="<?php echo $router->routeAction() ?>">
-		<textarea id="config-file-content" name="config-file-content"><?php echo $model->getConfigFileContent() ?></textarea>
+		<textarea id="config-file-content" name="rawConfigFile[configFileContent]"><?php echo $model->getConfigFileContent() ?></textarea>
 		<input type="submit" value="Update" />
 		<input type="hidden" name="wcfeaction" value="Preview" />
+		<input type="hidden" name="rawConfigFile[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />
 	</form>
 	<form>
 <?php foreach ($router->getRouteParams() as $name => $value) : ?>

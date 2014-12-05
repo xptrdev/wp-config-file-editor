@@ -8,6 +8,9 @@ namespace WCFE\Modules\Editor\Controller\Editor;
 # Imoprts
 use WPPFW\MVC\Controller\Controller;
 
+# Config Form
+use WCFE\Modules\Editor\Model\Forms;
+
 /**
 * 
 */
@@ -22,6 +25,7 @@ class EditorController extends Controller {
 		$model =& $this->getModel();
 		$input =& $this->input();
 		$router =& $this->router();
+		$form =& $model->getForm();
 		# If not posted it then one ofthf following:
 		# 1. Returned from View Action with invalidated form data
 		# 2. Just opening the page
@@ -40,28 +44,37 @@ class EditorController extends Controller {
 		}
 		else {
 			# Fill form with submitted values
-			$form =& $model->getForm();
 			$post =& $input->post();
 			$form->setValue($post->getArray());
-			# Validate
-			if ($model->validate($form)) {
-				# generate config file from the given values
-				$model->generateConfigFile();
-				# Either Preview or Save config file.
-				$task = $post->get('task');
-				if ($task == 'Preview') {
-					# Save submitted vars to be used if 
-					# get back from preview to the form again.
-					$model->saveSubmittedVars();
-					# Go to preview action
-					$this->redirect($router->routeAction('Preview'));
-				}
-				else if ($task == 'Save') {
-					# Save config file
-					$model->saveConfigFile();
+			# Authorize
+			if ($form->isAuthorized()) {
+				# Validate
+				if ($model->validate($form)) {
+					# generate config file from the given values
+					$model->generateConfigFile();
+					# Either Preview or Save config file.
+					$task = $form->get('Task')->getValue();
+					if ($task == Forms\ConfigFileForm::TASK_PREVIEW) {
+						# Save submitted vars to be used if 
+						# get back from preview to the form again.
+						$model->saveSubmittedVars();
+						# Go to preview action
+						$this->redirect($router->routeAction('Preview'));
+					}
+					else if ($task == Forms\ConfigFileForm::TASK_SAVE) {
+						# Save config file
+						$model->saveConfigFile();
+					}
 				}
 			}
+			else {
+				# Not authorized
+				$model->addError('Not authorized to take such action!! Please refrehs the page if you think this is wrong.');
+			}
 		}
+		# Form security token
+		$form->getSecurityToken()->setValue($this->createSecurityToken());
+		# Return model to view
 		return $model;
 	}
 
@@ -74,22 +87,33 @@ class EditorController extends Controller {
 		$model =& $this->getModel();
 		$input =& $this->input();
 		$router =& $this->router();
+		$form = new Forms\RawConfigFileForm();
 		# Save submitted config file is posted
 		if ($input->isPost()) {
-			# Get raw inputs
-			$configFileContent = filter_input(INPUT_POST, 'config-file-content', FILTER_UNSAFE_RAW);
-			# Clear state
-			$saved = $model->clearState()
-			# Save config file
-			->setConfigFileContent($configFileContent)
-			->saveConfigFile();
-			# Go back to index only if saved
-			if ($saved) {
-				$this->redirect($router->routeAction());	
+			# Fill form with value
+			$formValues = array('rawConfigFile' => filter_input(INPUT_POST, 'rawConfigFile', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY));
+			$form->setValue($formValues);
+			# Is authorized
+			if ($form->isAuthorized()) {
+				# Clear state
+				$saved = $model->clearState()
+				# Save config file
+				->setConfigFileContent($form->get('configFileContent')->getValue())
+				->saveConfigFile();
+				# Go back to index only if saved
+				if ($saved) {
+					$this->redirect($router->routeAction());	
+				}
+			}
+			else {
+				# Not authorized
+				$model->addError('Not authorized to take such action!! Please refrehs the page if you think this is wrong.');
 			}
 		}
+		# Form security token
+		$form->getSecurityToken()->setValue($this->createSecurityToken());
 		# Push model to view
-		return $model;
+		return array('model' => $model, 'form' => $form);
 	}
 
 } # End class

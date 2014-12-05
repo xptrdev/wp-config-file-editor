@@ -40,7 +40,7 @@ foreach ($groups as $groupName) {
 	div#wcfe-body {margin-top: 19px;}
 	.wcfe-vars-group {margin-left: 5px;}
 	.field-tip {margin:0 0 0 202px; color: #aaa;}
-	div#help-box {margin: 8px;float: right;background-color: wheat;padding: 5px 22px;max-width: 410px;}
+	div#help-box {margin: 8px;background-color: wheat;padding: 5px 22px;max-width: 410px;position: absolute;right: 0;}
 	input[type="text"] {width: 350px;}
 	fieldset strong {background-color: white; font-weight: bold; padding: 0 5px;}
 	.checkbox-row p.field-tip {display: inline;margin-left: 0;}
@@ -100,8 +100,9 @@ foreach ($groups as $groupName) {
 	echo $formMarkups;
 ?>
 		<div id="wcfe-toolbox">
-			<input type="submit" name="task" value="Save" />
-			<input type="submit" name="task" value="Preview" />
+			<input type="submit" name="configFileFields[Task]" value="Save" />
+			<input type="submit" name="configFileFields[Task]" value="Preview" />
 		</div>
+		<input type="hidden" name="configFileFields[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />
 	</form>
 </div>
