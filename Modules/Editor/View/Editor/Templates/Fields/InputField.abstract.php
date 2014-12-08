@@ -25,9 +25,24 @@ abstract class InputField extends FieldBase {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $type = 'text';
+	
+	/**
+	* put your comment there...
+	* 
 	*/
 	public function getMaxLength() {
 		return $this->maxLength;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getType() {
+		return $this->type;
 	}
 
 	/**
@@ -41,7 +56,7 @@ abstract class InputField extends FieldBase {
 		$textInput = $document->createElement('input');
 		$field =& $this->getField();
 		# Set parameters
-		$textInput->setAttribute('type', 'text');
+		$textInput->setAttribute('type', $this->getType());
 		$textInput->setAttribute('value', $field->getValue());
 		# Set other attributes
 		if ($maxLength = $this->getMaxLength()) {
