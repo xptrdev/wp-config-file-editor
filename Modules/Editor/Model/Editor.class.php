@@ -206,4 +206,72 @@ class EditorModel extends PluginModel {
 		return $this;
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function validate() {
+		# Initialize
+		$form =& $this->getForm();
+		$valid = false;
+		# Validate the form
+		# If its a valid form try to open databse connection using 
+		# form database parameters
+		if ($form->validate()) {
+			# Get database connection parameters.
+			$user = $form->get('DbUser')->getValue();
+			$password = $form->get('DbPassword')->getValue();
+			$name = $form->get('DbName')->getValue();
+			$host = $form->get('DbHost')->getValue();
+			# Test database parameters
+			# using mysql extension or mysqli is mysql not available
+			if (function_exists('mysqli_init')) { # Use Mysqli
+				# Connection successed
+				if ($clink = @mysqli_connect($host, $user, $password)) {
+					# Db Selection successed
+					if (@mysqli_select_db($clink, $name)) {
+						# Return valid
+						$valid = true;
+					}
+					else {
+						# Could not select database
+						$this->addError('Database doesn\' exists!');
+					}
+					# Close connection
+					mysqli_close($clink);
+				}
+				else {
+					# Could not connect
+					$this->addError('Couldn\'t connect to database server!');
+				}
+			}
+			else if (function_exists('mysql_connect')) {
+				# Connection successed
+				if ($clink = @mysql_connect($host, $user, $password)) {
+					# Db Selection successed
+					if (@mysql_select_db($name, $clink)) {
+						# Return valid
+						$valid = true;
+					}
+					else {
+						# Could not select database
+						$this->addError('Database doesn\' exists!');
+					}
+					# Close connection
+					mysql_close($clink);
+				}
+				else {
+					# Could not connect
+					$this->addError('Couldn\'t connect to database server!');
+				}
+			}
+			else {
+				# Doesn't supported
+				$this->addError('Could not use mysql or mysqli extension for testing database connection! DB provider doesn\' supported!!');
+			}
+		}
+		# Return status
+		return $valid;
+	}
+
 }

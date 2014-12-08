@@ -32,24 +32,27 @@ class ConfigFileForm extends Forms\SecureForm {
 		# Define form parameters
 		parent::__construct('configFileFields', 'stoken');
 		# Add fields
-		$this->addChain(new Fields\DbName('DbName'))
-		->addChain(new Fields\DbUser('DbUser'))
-		->addChain(new Fields\DbPassword('DbPassword'))
-		->addChain(new Fields\DbHost('DbHost'))
-		->addChain(new Fields\DbCharSet('DbCharSet'))
-		->addChain(new Fields\DbCollate('DbCollate'))
-		->addChain(new Fields\DbTablePrefix('DbTablePrefix'))
-		->addChain(new Fields\AuthKey('AuthKey'))
-		->addChain(new Fields\SecureAuthKey('SecureAuthKey'))
-		->addChain(new Fields\LoggedInKey('LoggedInKey'))
-		->addChain(new Fields\NonceKey('NonceKey'))
-		->addChain(new Fields\AuthSalt('AuthSalt'))
-		->addChain(new Fields\SecureAuthSalt('SecureAuthSalt'))
-		->addChain(new Fields\LoggedInSalt('LoggedInSalt'))
-		->addChain(new Fields\NonceSalt('NonceSalt'))
-		->addChain(new Fields\WPDebug('WPDebug'))
-		->addChain(new Fields\WPLang('WPLang'))
-		->addChain(new Fields\WPLang('Task'));
+		$this->addChain(new Fields\DbName())
+		->addChain(new Fields\DbUser())
+		->addChain(new Fields\DbPassword())
+		->addChain(new Fields\DbHost())
+		->addChain(new Fields\DbCharSet())
+		->addChain(new Fields\DbCollate())
+		->addChain(new Fields\DbTablePrefix())
+		
+		->addChain(new Fields\AuthKey())
+		->addChain(new Fields\SecureAuthKey())
+		->addChain(new Fields\LoggedInKey())
+		->addChain(new Fields\NonceKey())
+		->addChain(new Fields\AuthSalt())
+		->addChain(new Fields\SecureAuthSalt())
+		->addChain(new Fields\LoggedInSalt())
+		->addChain(new Fields\NonceSalt())
+		
+		->addChain(new Fields\WPDebug())
+		->addChain(new Fields\WPLang())
+		
+		->addChain(new Fields\Others\Task());
 	}
 
 }

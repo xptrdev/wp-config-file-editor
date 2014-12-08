@@ -7,13 +7,22 @@
 namespace WCFE\Modules\Editor\Model\Forms\Fields;
 
 # Field base
-use WPPFW\Forms\Fields\FormStringField;
+use WPPFW\Forms;
 
 /**
 * 
 */
-class WPDebug extends FormStringField implements IWPConfigFileField {
+class WPDebug extends Forms\Fields\FormStringField implements IWPConfigFileField {
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function __construct() {
+		# Set field name and rules
+		parent::__construct('WPDebug');
+	}
+
 	/**
 	* put your comment there...
 	* 

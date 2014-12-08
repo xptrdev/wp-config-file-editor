@@ -43,13 +43,13 @@ class EditorController extends Controller {
 			}
 		}
 		else {
-			# Fill form with submitted values
-			$post =& $input->post();
-			$form->setValue($post->getArray());
+			# Fill form with submitted values (Raw Values without any ' " escapes!)
+			$formValues = array($form->getName() => filter_input(INPUT_POST, $form->getName(), FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY));
+			$form->setValue($formValues);
 			# Authorize
 			if ($form->isAuthorized()) {
 				# Validate
-				if ($model->validate($form)) {
+				if ($model->validate()) {
 					# generate config file from the given values
 					$model->generateConfigFile();
 					# Either Preview or Save config file.

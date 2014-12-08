@@ -18,6 +18,13 @@ abstract class SecureKeyField extends InputField {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $maxLength = 64;
+	
+	/**
+	* put your comment there...
+	* 
 	* @param \DOMDocument $document
 	* @param {\DOMDocument|\DOMElement} $parent
 	* @return {\DOMDocument|\DOMElement|InputField}
@@ -33,7 +40,7 @@ abstract class SecureKeyField extends InputField {
 		$skGenButton->nodeValue = '&nbsp;';
 		# Add input field class
 		$this->getInput()->setAttribute('class', 'secure-key-field');
-		$row->insertBefore($skGenButton, $this->getTip());
+		$row->insertBefore($skGenButton, $this->getError());
 		# Chain
 		return $this;
 	}

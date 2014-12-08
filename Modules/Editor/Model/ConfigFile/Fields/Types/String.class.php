@@ -17,6 +17,9 @@ class StringType implements Itype {
 	* @param mixed $value
 	*/
 	public function prepareValue($value) {
+		# Escape any ' found in the value
+		$value = addcslashes($value, '\'');
+		# Wrap as string and returns
 		return "'{$value}'";
 	}
 

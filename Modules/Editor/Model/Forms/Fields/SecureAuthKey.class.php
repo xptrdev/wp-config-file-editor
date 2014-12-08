@@ -7,13 +7,22 @@
 namespace WCFE\Modules\Editor\Model\Forms\Fields;
 
 # Field base
-use WPPFW\Forms\Fields\FormStringField;
+use WPPFW\Forms;
 
 /**
 * 
 */
-class SecureAuthKey extends FormStringField implements IWPConfigFileField {
+class SecureAuthKey extends Forms\Fields\FormStringField implements IWPConfigFileField {
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function __construct() {
+		# Set field name and rules
+		parent::__construct('SecureAuthKey', array(new Forms\Rules\RequiredField()));
+	}
+
 	/**
 	* put your comment there...
 	* 
