@@ -24,6 +24,8 @@ first is to check the generated wp-config file before updating, second is to pro
 * Modify wp-config.php code manually
 * Generate Secure keys by single click
 * Update Database parameters
+* Validating the entered Database parameters by making a connection to the database, don't save if unable to connect
+* Filtering the input data to avoid breaking wp-config.php file PHP syntax.
 
 The following wp-config.php file fields is being supported:
 
