@@ -13,23 +13,6 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 $model =& $this->result();
 $form =& $model->getForm();
 $router =& $this->router();
-
-# Creating Form DOM
-$formDoc = new \DOMDocument();
-$formDoc->loadXML('<div></div>');
-
-# Define groups to render
-$groups = array('Database', 'SecureKeys', 'Localization', 'Debugging');
-$groupsEmbeddedResources = '';
-
-# Rednder groups
-foreach ($groups as $groupName) {
-	# Creating Group object
-	$groupClass = __NAMESPACE__ . "\\Groups\\{$groupName}";
-	$group = new $groupClass(__NAMESPACE__ . "\\Fields", $form);
-	# Render gnroup
-	$group->render($formDoc, $formDoc->documentElement);
-}
 ?>
 <style type="text/css">
 	ul#errors-bar {color: red;background-color: white;height: 68px;overflow: auto;padding: 10px 0px 0 30px;width: 96%;}
@@ -98,12 +81,9 @@ foreach ($groups as $groupName) {
 <?php endif; ?>
 	<form method="post" action="<?php echo $router->routeAction() ?>">
 <?php
-	# Get Form Markup
-	$formMarkups = $formDoc->saveXML();
-	# Remove XML tag from the result
-	$formMarkups = substr($formMarkups, (strpos($formMarkups,'?>') + 2));
-	# Output Form markups
-	echo $formMarkups;
+		# Output options tab
+		$optionsTab = new	Tabs\Tabs($form);
+		echo $optionsTab;
 ?>
 		<div id="wcfe-toolbox">
 			<input type="submit" name="configFileFields[Task]" value="Save" />

@@ -23,7 +23,7 @@ class EditorHTMLView extends TemplateView {
 	protected function initialize() {
 		# Enqueue scripts
 		$script = new DashboardScriptsQueue();
-		$script->enqueueNamedResource(DashboardScriptsQueue::JQUERY);
+		$script->enqueueNamedResource(DashboardScriptsQueue::JQUERY_UI_TABS);
 	}
 
 }
