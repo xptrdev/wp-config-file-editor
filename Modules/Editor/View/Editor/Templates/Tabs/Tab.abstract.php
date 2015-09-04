@@ -4,24 +4,16 @@
 */
 
 # Define namespace
-namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs;
+namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
 # Improrts
 use WPPFW\Obj\ClassName;
 use WPPFW\Forms\Form;
-use WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs;
 
 /**
 * 
 */
 abstract class Tab {
-	
-	/**
-	* put your comment there...
-	* 
-	* @var Form
-	*/
-	protected $form;
 	
 	/**
 	* put your comment there...
@@ -50,29 +42,53 @@ abstract class Tab {
 	* @var mixed
 	*/
 	protected $title;
-	
+
 	/**
 	* put your comment there...
 	* 
 	* @param Tabs $tabs
-	* @param {Form|Tabs} $form
-	* @return {Tab|Form|Tabs}
+	* @return {Tab|Tabs}
 	*/
-	public function __construct(Tabs & $tabs, Form & $form) {
+	public function __construct(Tabs & $tabs) {
 		# Initiaize
-		$this->form =& $form;
 		$this->tabs =& $tabs;
 		# Tab Id
 		$thisClass = new ClassName(get_class($this));
 		$this->id = $thisClass->getName();
 	}
-	
+
+	/**
+	* put your comment there...
+	* 
+	* @param \DOMDocument $doc
+	* @param {\DOMDocument|\DOMElement} $element
+	* @param mixed $fieldsList
+	*/
+	protected function renderFields( \DOMDocument & $doc, \DOMElement & $element, $fieldsList ) 
+	{
+		# Create form fields.
+		foreach ($fields as $namespace => $fields)
+		{
+			foreach ( $fields as $fieldName ) 
+			{
+				# Get field
+				$field = $form->get( $fieldName );
+				
+				# Create field render for current fiels.
+				$rendererClass = "{$namespace}\\{$fieldName}\\Field";
+				$renderer = new $rendererClass( $form, $field );
+				
+				$renderer->render( $document, $groupList );
+			}
+		}
+	}
+
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function & getForm() {
-		return $this->form;
+		return $this->tabs->getForm();
 	}
 	
 	/**
@@ -121,17 +137,16 @@ abstract class Tab {
 		# Create Tab Panel
 		$tab = $tabsDoc->createElement('div');
 		$tab->setAttribute('id', $this->getId());
-		# Render tab groups
-		foreach ($this->getGroupsList() as $groupName) {
-			# Creating Group object
-			$groupClass = "{$groupsNamespace}\\{$groupName}";
-			$group = new $groupClass($fieldsNamespace, $this->getForm());
-			# Render gnroup
-			$group->render($tabsDoc, $tab);
-		}
+
+		# Render tab content
+		$this->renderContent( $tabsDoc, $tab );
+		
 		# Add tab components
 		$navigator->appendChild($tabNav);
 		$tabs->appendChild($tab);
 	}
 
+	
+	protected abstract function renderContent( \DOMDocument & $tabsDoc, \DOMElement & $tab );
+	
 }

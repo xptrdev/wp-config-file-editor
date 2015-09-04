@@ -1,0 +1,72 @@
+#wpwrap {
+	background-color: #535353;
+}
+
+
+ul#errors-bar {
+	color: red;
+	background-color: white;
+	height: 68px;
+	overflow: auto;
+	padding: 10px 0px 0 30px;
+	width: 96%;
+}
+ul#errors-bar li {
+	list-style-type: square;
+}
+	
+div#wcfe-body {
+	margin-top: 19px;
+}
+.wcfe-vars-group {
+	margin-left: 5px;
+}
+.field-tip {
+	margin:0 0 0 202px;
+	color: #aaa;
+}
+div#help-box {
+	margin: 8px;
+	background-color: wheat;
+	padding: 5px 22px;
+	max-width: 410px;
+	position: absolute;
+	right: 0;
+}
+.field-error {
+	margin-left: 35px; 
+	color: red;
+}
+input[type="text"] {
+	width: 350px;
+}
+fieldset strong {
+	background-color: white; 
+	font-weight: bold; 
+	padding: 0 5px;
+}
+
+.checkbox-row p.field-tip {
+	display: inline;
+	margin-left: 0;
+}
+#wcfe-toolbox {
+	margin-top: 40px;
+}
+
+.field-row label {
+	width : 200px;
+	display: inline-block
+}
+
+a.secure-key-generator-key {
+	display: inline-block;
+	width: 24px;
+	position: absolute;
+	height: 24px;
+	background-color: red;
+	font-size: 0;
+	margin: 3px 0 0 5px;
+	background-image: url('../Images/cadenas.png');
+}
+input[type="text"].secure-key-field {width: 540px;}

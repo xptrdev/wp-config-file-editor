@@ -13,63 +13,8 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 $model =& $this->result();
 $form =& $model->getForm();
 $router =& $this->router();
+
 ?>
-<style type="text/css">
-	ul#errors-bar {color: red;background-color: white;height: 68px;overflow: auto;padding: 10px 0px 0 30px;width: 96%;}
-	ul#errors-bar li {list-style-type: square;}
-</style>
-<script type="text/javascript">var editorServiceKeyGenUrl = '<?php echo $this->router()->findRouter('Editor', 'editorService')->routeAction('createSecureKey'); ?>';</script>
-<style type="text/css">
-	div#wcfe-body {margin-top: 19px;}
-	.wcfe-vars-group {margin-left: 5px;}
-	.field-tip {margin:0 0 0 202px; color: #aaa;}
-	div#help-box {margin: 8px;background-color: wheat;padding: 5px 22px;max-width: 410px;position: absolute;right: 0;}
-	.field-error {margin-left: 35px; color: red;}
-	input[type="text"] {width: 350px;}
-	fieldset strong {background-color: white; font-weight: bold; padding: 0 5px;}
-	.checkbox-row p.field-tip {display: inline;margin-left: 0;}
-	#wcfe-toolbox {margin-top: 40px;}
-</style>
-<?php
-	# Embedded related resources (css, js)
-	$resourcesPath = __DIR__ . DIRECTORY_SEPARATOR . 'Fields';
-	# Aggregate Stylesheets
-	$stylesList = array('InputField', 'SecureKeys');
-	$styles = '';
-	foreach ($stylesList as $styleName) {
-		# Allow style sheet frags to have php
-		ob_start();
-		require ($resourcesPath . DIRECTORY_SEPARATOR . "{$styleName}.css");
-		# Merge content
-		$styles .= ob_get_clean();
-	}
-	# Aggregate all Javascripts
-	$scriptsList = array('SecureKeys');
-	$scripts = '';
-	foreach ($scriptsList as $scriptName) {
-		$scripts .= file_get_contents($resourcesPath . DIRECTORY_SEPARATOR . "{$scriptName}.js");
-	}
-?>
-<style type="text/css"><?php echo $styles; ?></style>
-<script type="text/javascript"><?php echo $scripts; ?></script>
-<div id="help-box">
-	<p style="float: right;">Have a problem? Submit a support question on <a target="_blank" href="https://wordpress.org/plugins/wp-config-file-editor/">WCFE Plugin Support page</a></p>
-	<ul style="font-style: italic;font-size: 15px;list-style-type: circle;padding-left: 28px;">
-		<li>Using this form is safe than Going to Preview and then 'Save' the config file directly.</li>
-		<li style="font-weight: bold;font-size: 14px;">The most risky field is the Table Prefix as this field is not currently being validated. However its alo a good way for switching between multiple Wordpress installations and also for forcing Wordpress to create new databse installation. So please make sure you change it right.</li>
-		<li>Database parameters will be tested by making a connection to the database server, so its safe to write them and save to check the result.</li>
-		<li style="font-weight: bold;font-size: 14px">You will lose any custom (Writen from FTP, etc...) code in the wp-config.php file after saving the form</li>
-		<li style="font-weight: bold;font-size: 14px">Changing Secure keys might cause force Log out, you will need to refresh the page and log in again</li>
-		<li>Please appreciate the Plugin by submitting a reviews on <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor">WCFE Plugin Reviews page</a></li>
-	</ul>
-	<br>
-	<p>
-		Checkout other Plugins created by the same Author
-		<ul>
-			<li>View Advanced Web Site statistics (AWStats) via Wordpress Dashboard: <a target="_blank" href="https://wordpress.org/plugins/awstats-report-viewer/">ARV Plugin</a></li>
-		</ul>
-	</p>
-</div>
 <div id="wcfe-body">
 <?php if ($model->hasErrors()) : ?>
 	<ul id="errors-bar">
@@ -92,3 +37,4 @@ $router =& $this->router();
 		<input type="hidden" name="configFileFields[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />
 	</form>
 </div>
+<script type="text/javascript">var editorServiceKeyGenUrl = '<?php echo $this->router()->findRouter('Editor', 'editorService')->routeAction('createSecureKey'); ?>';</script>

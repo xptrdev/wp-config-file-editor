@@ -47,7 +47,13 @@ class Tabs {
 	* 
 	* @var mixed
 	*/
-	protected $tabsList = array('Basic');
+	protected $tabsList = array
+	( 
+		'WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs' => array
+		(
+		 	'Database'
+		)
+	);
 	
 	/**
 	* put your comment there...
@@ -80,18 +86,22 @@ class Tabs {
 	*/
 	public function __toString() {
 		# Render tabs
-		foreach ($this->getTabsList() as $tabName) {
-			# Get tab class
-			$tabClass = __NAMESPACE__ . "\\Tabs\\{$tabName}OptionsTab";
-			# Instantiate tab object
-			$tab = new $tabClass($this, $this->getForm());
-			# Render Tab
-			$tab->render($this->getTab(), $this->getNavigatorElement(), $this->getTabsElement());
+		foreach ($this->getTabsList() as $namespace => $tabs) 
+		{
+			foreach ( $tabs as $tabName )
+			{
+				# Get tab class
+				$tabClass = "{$namespace}\\{$tabName}OptionsTab";
+				# Instantiate tab object
+				$tab = new $tabClass( $this );
+				# Render Tab
+				$tab->render( $this->getTab(), $this->getNavigatorElement(), $this->getTabsElement() );
+			}
 		}
 		# Get tab HTML string
 		$tabsHTML = $this->tab->saveXML();
 		# Remove XML tag from the result
-		$tabsHTML = substr($tabsHTML, (strpos($tabsHTML,'?>') + 2));
+		$tabsHTML = substr( $tabsHTML, ( strpos($tabsHTML, '?>' ) + 2 ) );
 		# Return
 		return $tabsHTML;
 	}

@@ -194,7 +194,8 @@ abstract class FieldBase {
 		$this->tip->nodeValue = $this->getTipText();
 		
 		# Field row
-		$this->row = $document->createElement('li');
+		$this->row = $document->createElement('div');
+		$this->row->setAttribute( 'class', 'field-row' );
 
 		# Give the row unique id
 		$this->row->setAttribute('id', "{$inputId}-row");
