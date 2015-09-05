@@ -42,6 +42,7 @@ class EditorModel extends PluginModel {
 		'LoggedInSalt',
 		'NonceSalt',
 		'WPDebug',
+		'ScriptDebug',
 		'WPLang',
 	);
 	
@@ -120,9 +121,13 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	protected function initialize() {
+	protected function initialize()
+	{
 		# Creating config form
 		$this->form = new Forms\ConfigFileForm();
+		
+		# Filter fields map
+		
 	}
 
 	/**
@@ -149,6 +154,32 @@ class EditorModel extends PluginModel {
 		$this->getForm()->setValue($this->savedVars);
 		# Chain
 		return $this;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $fieldList
+	*/
+	public static function makeClassesList($list)
+	{
+		
+		$classesList = array();
+		
+		foreach ( $list as $ns => $nsClasses )
+		{
+			foreach ( $nsClasses as $name )
+			{
+				
+				# Append name to namespace to get full class name
+				$class = "{$ns}\\{$name}";
+				
+				$classesList[ $class ] = $name;
+				
+			}
+		}
+		
+		return $classesList;
 	}
 
 	/**

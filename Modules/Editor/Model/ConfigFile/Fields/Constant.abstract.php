@@ -30,10 +30,12 @@ abstract class Constant extends Field {
 	* put your comment there...
 	* 
 	*/
-	public function __toString() {
+	protected function getDefString()
+	{
 		# Prepare Value
 		$value = $this->type->prepareValue($this->field->getValue());
 		# Final statment
 		return "define('{$this->getName()}', {$value});";
 	}
+
 }

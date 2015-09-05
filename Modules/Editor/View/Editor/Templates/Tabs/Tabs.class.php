@@ -8,6 +8,7 @@ namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
 # Imports
 use WPPFW\Forms\Form;
+use WCFE\Modules\Editor\Model\EditorModel;
 
 /**
 * 
@@ -88,18 +89,19 @@ class Tabs {
 	* 
 	*/
 	public function __toString() {
+		
+		# Get tabs list
+		$tabsList = EditorModel::makeClassesList( $this->getTabsList() );
+		
 		# Render tabs
-		foreach ($this->getTabsList() as $namespace => $tabs) 
+		foreach ( $tabsList as $tabClass => $tabName ) 
 		{
-			foreach ( $tabs as $tabName )
-			{
-				# Get tab class
-				$tabClass = "{$namespace}\\{$tabName}OptionsTab";
-				# Instantiate tab object
-				$tab = new $tabClass( $this );
-				# Render Tab
-				$tab->render( $this->getTab(), $this->getNavigatorElement(), $this->getTabsElement() );
-			}
+			# Get tab class
+			$tabClass = "{$tabClass}OptionsTab";
+			# Instantiate tab object
+			$tab = new $tabClass( $this );
+			# Render Tab
+			$tab->render( $this->getTab(), $this->getNavigatorElement(), $this->getTabsElement() );
 		}
 		# Get tab HTML string
 		$tabsHTML = $this->tab->saveXML();

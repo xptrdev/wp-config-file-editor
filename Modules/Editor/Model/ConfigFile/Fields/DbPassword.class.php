@@ -11,6 +11,16 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 */
 class DbPassword extends Constant {
 
+  /**
+  * put your comment there...
+  * 
+  * @var mixed
+  */
+	protected $comments = array
+	(
+		'MySQL database username'
+	);
+
 	/**
 	* put your comment there...
 	* 	

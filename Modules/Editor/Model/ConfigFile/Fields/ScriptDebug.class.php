@@ -9,8 +9,8 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class DbHost extends Constant {
-  
+class ScriptDebug extends Constant {
+
   /**
   * put your comment there...
   * 
@@ -18,7 +18,9 @@ class DbHost extends Constant {
   */
 	protected $comments = array
 	(
-		'MySQL hostname'
+		'For developers: WordPress Script Debugging
+		
+		 Force Wordpress to use unminified JavaScript files'
 	);
 
 	/**
@@ -26,14 +28,14 @@ class DbHost extends Constant {
 	* 	
 	* @var mixed
 	*/
-	protected $name = 'DB_HOST';
+	protected $name = 'SCRIPT_DEBUG';
 
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function getType() {
-		return new Types\StringType();
+		return new Types\BooleanType();
 	}
 
 }

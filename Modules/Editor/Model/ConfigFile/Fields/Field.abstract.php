@@ -20,6 +20,13 @@ abstract class Field {
 	* 
 	* @var mixed
 	*/
+	protected $comments = array();
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $field;
 	
 	/**
@@ -57,8 +64,30 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
-	public abstract function __toString();
+	public function __toString()
+	{
+		
+		# Initialize
+		$string = "\n";
+		
+		# List comments
+		foreach ( $this->comments as $comment )
+		{
+			$string .= "\n/**\n*  " . preg_replace( "/\n\s+/", "\n*  ", $comment ) . "\n*/\n";
+		}
+		
+		# Get model definition string
+		$string .= $this->getDefString();
+		
+		return $string;
+	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected abstract function getDefString();
+	
 	/**
 	* put your comment there...
 	* 

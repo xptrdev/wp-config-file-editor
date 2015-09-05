@@ -13,6 +13,16 @@ class DbName extends Constant {
 
 	/**
 	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $comments = array
+	(
+		'The name of the database for WordPress'
+	);
+	
+	/**
+	* put your comment there...
 	* 	
 	* @var mixed
 	*/

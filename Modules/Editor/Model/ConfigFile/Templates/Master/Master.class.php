@@ -8,9 +8,7 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Templates\Master;
 
 # Forms Framework
 use WPPFW\Forms\Form;
-
-# Sections
-use WCFE\Modules\Editor\Model\ConfigFile\Sections;
+use WCFE\Modules\Editor\Model\EditorModel;
 
 /**
 * 
@@ -22,14 +20,7 @@ class Master {
 	* 
 	* @var mixed
 	*/
-	protected $databaseSection;
-
-	/**
-	* put your comment there...
-	* 
-	* @var Sections\ExtraSection
-	*/
-	protected $extraSection;
+	protected $fields;
 	
 	/**
 	* put your comment there...
@@ -41,23 +32,52 @@ class Master {
 	/**
 	* put your comment there...
 	* 
-	* @var mixed
-	*/
-	protected $secureKeysSection;
-	
-	/**
-	* put your comment there...
-	* 
 	* @param Form $form
 	* @return {Master|Form}
 	*/
 	public function __construct(Form & $form) {
 		# initialize
 		$this->form =& $form;
-		# Load sections.
-		$this->secureKeysSection = new Sections\SecureKeys($form);
-		$this->databaseSection = new Sections\Database($form);
-		$this->extraSection = new Sections\Extra($form);
+		
+		# Define fields
+		$fields = array
+		(
+			'WCFE\Modules\Editor\Model\ConfigFile\Fields' => array
+			(
+				'DbName',
+				'DbUser',
+				'DbPassword',
+				'DbHost',
+				'DbCharSet',
+				'DbCollate',
+				
+				'DbTablePrefix',
+				
+				'AuthKey',
+				'SecureAuthKey',
+				'LoggedInKey',
+				'NonceKey',
+				'AuthSalt',
+				'SecureAuthSalt',
+				'LoggedInSalt',
+				'NonceSalt',
+				
+				'WPDebug',
+				'ScriptDebug',
+				
+				'WPLang',
+			)
+		);
+		
+		# Make fields list
+		$fields = EditorModel::makeClassesList( $fields );
+		
+		# Create all fieldsw
+		foreach ( $fields as $fieldClass => $fieldName )
+		{
+			$this->fields[ $fieldName ] = new $fieldClass( $form, $form->get( $fieldName ) );
+		}
+		
 	}
 	
 	/**
@@ -76,32 +96,17 @@ class Master {
 	* put your comment there...
 	* 
 	*/
-	public function & getDatabaseSection() {
-		return $this->databaseSection;
+	public function getFields()
+	{
+		return $this->fields;
 	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function & getExtraSection() {
-		return $this->extraSection;
-	}
-
+	
 	/**
 	* put your comment there...
 	* 
 	*/
 	public function & getForm() {
 		return $this->form;
-	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function & getSecureKeysSection() {
-		return $this->secureKeysSection;
 	}
 
 }

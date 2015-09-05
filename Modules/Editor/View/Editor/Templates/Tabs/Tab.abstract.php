@@ -9,6 +9,7 @@ namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 # Improrts
 use WPPFW\Obj\ClassName;
 use WPPFW\Forms\Form;
+use WCFE\Modules\Editor\Model\EditorModel;
 
 /**
 * 
@@ -117,25 +118,32 @@ abstract class Tab {
 		# Initialize
 		$form =& $this->getForm();
 		
+		# Make fields list
+		$fields = EditorModel::makeClassesList( $fields );
+		
 		# Create form fields.
-		foreach ( $fields as $namespace => $nsFields )
+		foreach ( $fields as $fieldClass => $name )
 		{
-			foreach ( $nsFields as $fieldName ) 
-			{
-				# Get field
-				$field = $form->get( $fieldName );
-				
-				# Create field render for current fiels.
-				$rendererClass = "{$namespace}\\{$fieldName}\\Field";
-				$renderer = new $rendererClass( $form, $field );
-				
-				$renderer->render( $doc, $pElement );
-			}
+			# Get field
+			$field = $form->get( $name );
+			
+			# Create field render for current fiels.
+			$rendererClass = "{$fieldClass}\\Field";
+			$renderer = new $rendererClass( $form, $field );
+			
+			$renderer->render( $doc, $pElement );
 		}
 		
 		return $this;
 	}
 	
+	/**
+	* put your comment there...
+	* 
+	* @param \DOMDocument $tabsDoc
+	* @param {\DOMDocument|\DOMElement} $tab
+	* @return {\DOMDocument|\DOMElement}
+	*/
 	protected abstract function renderContent( \DOMDocument & $tabsDoc, \DOMElement & $tab );
 	
 }

@@ -9,8 +9,18 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class DbCharSet extends Constant {
+class DbCharSet extends Constant {  
 
+  /**
+  * put your comment there...
+  * 
+  * @var mixed
+  */
+	protected $comments = array
+	(
+		'Database Charset to use in creating database tables.'
+	);
+	
 	/**
 	* put your comment there...
 	* 	
