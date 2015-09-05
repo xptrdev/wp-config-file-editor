@@ -30,36 +30,5 @@ abstract class FieldsTab extends Tab {
 		return $this->renderFields( $tabsDom, $tab, $this->fields );
 	}
 	
-	/**
-	* put your comment there...
-	* 
-	* @param \DOMDocument $doc
-	* @param {\DOMDocument|\DOMElement} $element
-	* @param mixed $fieldsList
-	*/
-	protected function renderFields( \DOMDocument & $doc, \DOMElement & $pElement, $fields ) 
-	{
-		# Initialize
-		$form =& $this->getForm();
-		
-		# Create form fields.
-		foreach ( $fields as $namespace => $nsFields )
-		{
-			foreach ( $nsFields as $fieldName ) 
-			{
-				# Get field
-				$field = $form->get( $fieldName );
-				
-				# Create field render for current fiels.
-				$rendererClass = "{$namespace}\\{$fieldName}\\Field";
-				$renderer = new $rendererClass( $form, $field );
-				
-				$renderer->render( $doc, $pElement );
-			}
-		}
-		
-		return $this;
-	}
-	
 }
 	

@@ -1,7 +1,10 @@
 #wpwrap {
-	background-color: #535353;
+	background-color: #0367A9;
 }
 
+#adminmenuback, #adminmenuwrap, .wp-submenu, #adminmenu {
+	background-color: #0367A9 !important;
+}
 
 ul#errors-bar {
 	color: red;
@@ -22,7 +25,7 @@ div#wcfe-body {
 	margin-left: 5px;
 }
 .field-tip {
-	margin:0 0 0 202px;
+	margin:0 0 0 246px;
 	color: #aaa;
 }
 div#help-box {
@@ -55,7 +58,7 @@ fieldset strong {
 }
 
 .field-row label {
-	width : 200px;
+	width : 244px;
 	display: inline-block
 }
 
@@ -69,4 +72,21 @@ a.secure-key-generator-key {
 	margin: 3px 0 0 5px;
 	background-image: url('../Images/cadenas.png');
 }
-input[type="text"].secure-key-field {width: 540px;}
+#wcfe-body input[type="text"].secure-key-field {width: 540px;}
+
+#wcfe-body input {
+	background-color: transparent;
+	color: white;
+}
+
+#wcfe-options-tab {
+	width: 98%;
+}
+
+.field-row {
+	margin-bottom: 15px;
+}
+
+.checkbox-row input[type="checkbox"] {
+	margin-left: 200px;
+}

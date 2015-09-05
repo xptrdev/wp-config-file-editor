@@ -51,7 +51,10 @@ class Tabs {
 	( 
 		'WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs' => array
 		(
-		 	'Database'
+		 	'Database',
+		 	'Debugging',
+		 	'Localization',
+		 	'SecureKeys',
 		)
 	);
 	

@@ -12,7 +12,7 @@ use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
 /**
 * 
 */
-class DatabaseOptionsTab extends FieldsTab {
+class LocalizationOptionsTab extends FieldsTab {
 	
 	/**
 	* put your comment there...
@@ -23,13 +23,7 @@ class DatabaseOptionsTab extends FieldsTab {
 	(
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
-			'DbHost', 
-			'DbUser', 
-			'DbPassword', 
-			'DbName', 
-			'DbCharSet', 
-			'DbCollate',
-			'DbTablePrefix'
+			'WPLang'
 		)
 	);
 
@@ -38,6 +32,6 @@ class DatabaseOptionsTab extends FieldsTab {
 	* 
 	* @var mixed
 	*/
-	protected $title = 'Database';
+	protected $title = 'Localization';
 	
 }
