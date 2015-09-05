@@ -12,7 +12,7 @@ use WPPFW\Forms;
 /**
 * 
 */
-class WPDebug extends Forms\Fields\FormStringField implements IWPConfigFileField {
+class WPDebug extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
 	
 	/**
 	* put your comment there...

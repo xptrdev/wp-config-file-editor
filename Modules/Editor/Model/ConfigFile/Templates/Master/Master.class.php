@@ -28,45 +28,22 @@ class Master {
 	* @var mixed
 	*/
 	protected $form;
-	
+
 	/**
 	* put your comment there...
 	* 
 	* @param Form $form
-	* @return {Master|Form}
+	* @param mixed $fields
+	* @return Master
 	*/
-	public function __construct(Form & $form) {
+	public function __construct( Form & $form, $fields ) {
 		# initialize
 		$this->form =& $form;
 		
 		# Define fields
 		$fields = array
 		(
-			'WCFE\Modules\Editor\Model\ConfigFile\Fields' => array
-			(
-				'DbName',
-				'DbUser',
-				'DbPassword',
-				'DbHost',
-				'DbCharSet',
-				'DbCollate',
-				
-				'DbTablePrefix',
-				
-				'AuthKey',
-				'SecureAuthKey',
-				'LoggedInKey',
-				'NonceKey',
-				'AuthSalt',
-				'SecureAuthSalt',
-				'LoggedInSalt',
-				'NonceSalt',
-				
-				'WPDebug',
-				'ScriptDebug',
-				
-				'WPLang',
-			)
+			'WCFE\Modules\Editor\Model\ConfigFile\Fields' => $fields
 		);
 		
 		# Make fields list

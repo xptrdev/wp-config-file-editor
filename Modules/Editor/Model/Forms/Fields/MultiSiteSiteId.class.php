@@ -12,7 +12,7 @@ use WPPFW\Forms;
 /**
 * 
 */
-class ScriptDebug extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
+class MultiSiteSiteId extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
 	
 	/**
 	* put your comment there...
@@ -20,7 +20,7 @@ class ScriptDebug extends Forms\Fields\FormIntegerField implements IWPConfigFile
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct( 'ScriptDebug' );
+		parent::__construct( 'MultiSiteSiteId' );
 	}
 
 	/**
@@ -28,7 +28,7 @@ class ScriptDebug extends Forms\Fields\FormIntegerField implements IWPConfigFile
 	* 
 	*/
 	public function read() {
-		$this->setValue( SCRIPT_DEBUG );
+		$this->setValue( defined( 'SITE_ID_CURRENT_SITE' ) ? SITE_ID_CURRENT_SITE : null );
 	}
 
 }

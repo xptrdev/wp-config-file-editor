@@ -32,7 +32,9 @@ class EditorModel extends PluginModel {
 		'DbHost',
 		'DbCharSet',
 		'DbCollate',
+		
 		'DbTablePrefix',
+		
 		'AuthKey',
 		'SecureAuthKey',
 		'LoggedInKey',
@@ -41,9 +43,19 @@ class EditorModel extends PluginModel {
 		'SecureAuthSalt',
 		'LoggedInSalt',
 		'NonceSalt',
+		
 		'WPDebug',
 		'ScriptDebug',
+		
 		'WPLang',
+		
+		'MultiSiteAllow',
+		'MultiSite',
+		'MultiSiteSubDomainInstall',
+		'MultiSiteDomainCurrentSite',
+		'MultiSitePathCurrentSite', 
+		'MultiSiteSiteId',
+		'MultiSiteBlogId',
 	);
 	
 	/**
@@ -86,9 +98,9 @@ class EditorModel extends PluginModel {
 	*/
 	public function generateConfigFile() {
 		# Generate config file 
-		$configFile = new ConfigFile\Templates\Master\Master($this->getForm());
+		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $this->fieldsMap );
 		# Set config file content.
-		$this->setConfigFileContent((string) $configFile);
+		$this->setConfigFileContent( (string) $configFile );
 		# Chain
 		return $this;
 	}
@@ -124,7 +136,7 @@ class EditorModel extends PluginModel {
 	protected function initialize()
 	{
 		# Creating config form
-		$this->form = new Forms\ConfigFileForm();
+		$this->form = new Forms\ConfigFileForm( $this->fieldsMap );
 		
 		# Filter fields map
 		
@@ -137,9 +149,9 @@ class EditorModel extends PluginModel {
 	public function & loadFromConfigFile() {
 		# Read fields value from Wordpress config file
 		$form =& $this->getForm();
-		foreach ($this->fieldsMap as $fieldName) {
+		foreach ( $this->fieldsMap as $fieldName ) {
 			# Force field to read data from config file
-			$form->get($fieldName)->read();
+			$form->get( $fieldName )->read();
 		}
 		# Chain
 		return $this;
@@ -230,7 +242,7 @@ class EditorModel extends PluginModel {
 		$this->isBackForChange = true;
 		# Save form fields to be used later by 
 		# Don't save all fields, just related to config file
-		$vars = array_intersect_key($form->getValue(), array_flip($this->fieldsMap));
+		$vars = array_intersect_key( $form->getValue(), array_flip( $this->fieldsMap ) );
 		# Save them
 		$this->savedVars = array($form->getName() => $vars);
 		# Chain

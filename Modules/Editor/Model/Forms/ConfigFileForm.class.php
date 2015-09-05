@@ -24,12 +24,14 @@ class ConfigFileForm extends Forms\SecureForm {
 	* 
 	*/
 	const TASK_SAVE = 'Save';
-	
+
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $fields
+	* @return ConfigFileForm
 	*/
-	public function __construct() {
+	public function __construct( $fields ) {
 		
 		# Define form parameters
 		parent::__construct('configFileFields', 'stoken');
@@ -37,27 +39,7 @@ class ConfigFileForm extends Forms\SecureForm {
 		# Get fields list
 		$fields = array
 		(
-			'WCFE\Modules\Editor\Model\Forms\Fields' => array
-			(
-				'DbName',
-				'DbUser',
-				'DbPassword',
-				'DbHost',
-				'DbCharSet',
-				'DbCollate',
-				'DbTablePrefix',
-				'AuthKey',
-				'SecureAuthKey',
-				'LoggedInKey',
-				'NonceKey',
-				'AuthSalt',
-				'SecureAuthSalt',
-				'LoggedInSalt',
-				'NonceSalt',
-				'WPDebug',
-				'ScriptDebug',
-				'WPLang',
-			),
+			'WCFE\Modules\Editor\Model\Forms\Fields' => $fields,
 			'WCFE\Modules\Editor\Model\Forms\Fields\Others' => array
 			(
 				'Task', /* Special field for Controller, not part of config file vars */

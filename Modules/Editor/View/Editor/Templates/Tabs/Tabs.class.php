@@ -56,6 +56,7 @@ class Tabs {
 		 	'Debugging',
 		 	'Localization',
 		 	'SecureKeys',
+		 	'MultiSite',
 		)
 	);
 	
