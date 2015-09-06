@@ -5,39 +5,76 @@
 /**
 * 
 */
-(function($) {
+(function( $ ) 
+{
 
 	
 	/**
 	* 
 	*/
-	var WCFESecureKeyGenerator = new function() {
+	var WCFEEditorForm = new function() 
+	{
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var confirmSave = function() 
+		{
+			
+			tb_show( 'UPDATING WORDPRESS CONFIG FILE ALERT!!!', '#TB_inline?width=300px&height=400px&inlineId=wcfe-confirm-save-message' );
+		};
 		
 		/**
 		* 
 		*/
-		this.generateFieldKey = function(event) {
+		var generateFieldKey = function(event) 
+		{
 			// Send key generation server request
-			$.get(editorServiceKeyGenUrl).done($.proxy(
-				function(secureKey) {
+			$.get( editorServiceKeyGenUrl ).done( 
+			
+				function( secureKey )
+				{		
 					// Set Input field
-					$(event.target).prev().val(secureKey);
-				}, this)
+					$( event.target ).prev().val( secureKey );
+				}
+				
 			);
+			
 			// Inactive
 			return false;
 		};
 
 		/**
+		* put your comment there...
 		* 
 		*/
-		this.initialize = function() {
-			$('.secure-key-generator-key').click($.proxy(this.generateFieldKey, this));
+		var updateConfigFile = function()
+		{
+			// Submit form
+			$( '#wcfe-config-editor-form' ).submit();
+			
+		};
+
+		/**
+		* 
+		*/
+		var initialize = function() 
+		{
+			// Secure keys generator
+			$('.secure-key-generator-key').click( generateFieldKey );
+			
+			// Confirm SAVE
+			$( '#wcfe-editor-form-save' ).click( confirmSave );
+			
+			// Update Config File
+			$( '#wcfe-update-config-file' ).click( updateConfigFile );
 		};
 	
-		// Generate key when generation link is clicked
-		$($.proxy(this.initialize, this));
+		// Initialize form script when document lodaed
+		$( initialize );
+		
 	};
 	
 	
-})(jQuery);
+})( jQuery );

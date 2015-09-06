@@ -89,3 +89,62 @@ a.secure-key-generator-key {
 .field-row, .checkbox-row {
 	margin-bottom: 15px;
 }
+
+#wcfe-confirm-save-message {
+	display: none;
+	position: absolute;
+}
+
+div#wcfe-confirm-save-message-dialog {
+    color: yellow;
+    padding: 10px 10px;
+}
+
+#TB_window {
+	background-color: transparent;
+  -webkit-box-shadow: 0 3px 6px rgba(255, 224, 0, 0.3);
+  box-shadow: 0 3px 6px rgba(255, 224, 0, 0.3);	
+}
+
+#TB_ajaxWindowTitle {
+    background-color: yellow;
+    color: red;
+    font-size: 26px;
+}
+
+div#wcfe-confirm-save-message-dialog p {
+  font-size: 15px;
+  font-family: monospace;
+  line-height: 15px;
+  padding: 0;
+  margin: 0 0 14px 0;
+}
+
+div#wcfe-confirm-save-message-dialog ul {
+    list-style-type: disc;
+    padding: 11px 49px;
+}
+
+#TB_overlay {
+	background-color: black !important;
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+
+#wcfe-restore-note {
+	background-color: rebeccapurple;
+  padding: 10px 10px;
+  margin-bottom: 19px;
+}
+
+p.wcfe-restore-link {
+    background-color: #030C12;
+    padding: 11px 15px !important;
+}
+
+#wcfe-update-config-file {
+	background-color: transparent;
+  color: #EF160A;
+  border: 1px solid yellow;
+  padding: 1px 27px 4px;
+}
