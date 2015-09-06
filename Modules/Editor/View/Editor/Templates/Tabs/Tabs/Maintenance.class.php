@@ -12,7 +12,7 @@ use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
 /**
 * 
 */
-class LocalizationOptionsTab extends FieldsTab {
+class MaintenanceOptionsTab extends FieldsTab {
 	
 	/**
 	* put your comment there...
@@ -23,8 +23,9 @@ class LocalizationOptionsTab extends FieldsTab {
 	(
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
-			'WPLang',
-			'WPLangDir'
+			'WPCache', 
+			'MemoryLimit', 
+			'MaxMemoryLimit', 
 		)
 	);
 
@@ -33,6 +34,6 @@ class LocalizationOptionsTab extends FieldsTab {
 	* 
 	* @var mixed
 	*/
-	protected $title = 'Localization';
+	protected $title = 'Maintenance';
 	
 }

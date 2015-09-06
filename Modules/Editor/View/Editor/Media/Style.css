@@ -2,8 +2,8 @@
 	background-color: #0367A9;
 }
 
-#adminmenuback, #adminmenuwrap, .wp-submenu, #adminmenu {
-	background-color: #0367A9 !important;
+#adminmenuback, #adminmenuwrap, .wp-submenu, #adminmenu, #wpadminbar {
+	background-color: #0F466A !important;
 }
 
 ul#errors-bar {
@@ -38,8 +38,9 @@ div#help-box {
 	right: 0;
 }
 .field-error {
-	margin-left: 35px; 
-	color: red;
+    margin-left: 35px;
+    color: yellow;
+    font-weight: bold;
 }
 input[type="text"] {
 	width: 350px;
@@ -82,6 +83,7 @@ a.secure-key-generator-key {
 
 #wcfe-options-tab {
 	width: 98%;
+	min-width: 700px;
 }
 
 .field-row, .checkbox-row {

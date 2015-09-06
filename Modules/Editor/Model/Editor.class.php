@@ -48,6 +48,7 @@ class EditorModel extends PluginModel {
 		'ScriptDebug',
 		
 		'WPLang',
+		'WPLangDir',
 		
 		'MultiSiteAllow',
 		'MultiSite',
@@ -56,6 +57,11 @@ class EditorModel extends PluginModel {
 		'MultiSitePathCurrentSite', 
 		'MultiSiteSiteId',
 		'MultiSiteBlogId',
+		
+		'WPCache',
+		'MemoryLimit',
+		'MaxMemoryLimit',
+		
 	);
 	
 	/**
