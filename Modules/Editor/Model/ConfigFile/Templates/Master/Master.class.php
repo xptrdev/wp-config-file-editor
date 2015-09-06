@@ -52,9 +52,16 @@ class Master {
 		# Create all fieldsw
 		foreach ( $fields as $fieldClass => $fieldName )
 		{
-			$this->fields[ $fieldName ] = new $fieldClass( $form, $form->get( $fieldName ) );
+			$this->fields[ $fieldName ] = new $fieldClass( $this, $form, $form->get( $fieldName ) );
 		}
 		
+		
+		# Allow fields to interact and to Controler each others 
+		# by making second iteration after constructions!!
+		foreach ( $this->fields as $field )
+		{
+			$field->allReady();
+		}		
 	}
 	
 	/**
@@ -67,6 +74,16 @@ class Master {
 		require 'wp-config.php';
 		# Return final file
 		return ob_get_clean();
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $name
+	*/
+	public function & getField( $name ) 
+	{
+		return $this->fields[ $name ];
 	}
 
 	/**

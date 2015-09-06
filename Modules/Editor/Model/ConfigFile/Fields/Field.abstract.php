@@ -6,6 +6,8 @@
 # Define namespace
 namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 
+use WCFE\Modules\Editor\Model\ConfigFile\Templates\Master\Master;
+
 # Form Framework
 use WPPFW\Forms\Form;
 use WPPFW\Forms\Fields\IField;
@@ -41,17 +43,48 @@ abstract class Field {
 	* 
 	* @var mixed
 	*/
+	private $model;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = false;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutputDeps = array();
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutputForce = false;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $type;
 
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $model
 	* @param Form $form
 	* @param {Form|IField} $field
 	* @return {Field|Form|IField}
 	*/
-	public function __construct(Form & $form, IField & $field) {
+	public function __construct(Master & $model, Form & $form, IField & $field )
+	{
 		# Initialize
+		$this->model =& $model;
 		$this->form =& $form;
 		$this->field =& $field;
 		# Get type
@@ -66,6 +99,20 @@ abstract class Field {
 	*/
 	public function __toString()
 	{
+		
+		# Got out if to suppress output
+		if ( $this->suppressOutputForce || ( $this->suppressOutput && ! $this->field->getValue() ) )
+		{
+			
+			# Force all deps fields to not output as well
+			foreach ( $this->suppressOutputDeps as $fieldName )
+			{
+				$this->getModel()->getField( $fieldName )->setSuppressOutputForce( true );
+			}
+			
+			# Return no contents
+			return '';
+		}
 		
 		# Initialize
 		$string = "\n";
@@ -86,8 +133,26 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
+	public function & allReady()
+	{
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	protected abstract function getDefString();
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & getModel() 
+	{
+		return $this->model;	
+	}
+
 	/**
 	* put your comment there...
 	* 
@@ -98,6 +163,20 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
-	protected function initialize() {;}
+	protected function initialize() {}
+	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $value
+	*/
+	public function & setSuppressOutputForce( $value) 
+	{
+		
+		$this->suppressOutputForce = $value;
+		
+		return $this;
+	}
+	
 
 }
