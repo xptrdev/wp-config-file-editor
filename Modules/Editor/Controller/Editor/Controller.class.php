@@ -28,10 +28,6 @@ class EditorController extends Controller {
 		$router =& $this->router();
 		$form =& $model->getForm();
 		
-		$model->createBackup( $restoreUrl );
-		
-		return;
-		
 		# If not posted it then one ofthf following:
 		# 1. Returned from View Action with invalidated form data
 		# 2. Just opening the page
@@ -98,7 +94,7 @@ class EditorController extends Controller {
 					{
 						
 						# Create Backup
-						if ( $model->createBackup() )
+						if ( $model->createBackup( $restoreUrl ) )
 						{
 							# Save config file
 							$model->saveConfigFile();

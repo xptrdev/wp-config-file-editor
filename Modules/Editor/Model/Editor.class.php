@@ -120,7 +120,7 @@ class EditorModel extends PluginModel {
 			# Generate unique dir name, thiss is more secure to never accessed from outside
 			$contentDirName = 'wcfe-' . md5( uniqid() );
 			
-			$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $contentDir;
+			$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $contentDirName;
 			
 			if ( ! is_writable( WP_CONTENT_DIR ) || ! mkdir( $contentDir, 0755 ) )
 			{
@@ -130,11 +130,11 @@ class EditorModel extends PluginModel {
 			}
 			
 			# Create HTAccess file
-			if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'htaccess.Template', 
+			if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'Editor' . DIRECTORY_SEPARATOR . 'htaccess.Template', 
 									$contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
 			{
 				
-				$this->addError( 'Could\' create htaccess file to protect wcfe content dir from being access by public' );
+				$this->addError( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' );
 				
 				return false;
 			}
@@ -176,6 +176,17 @@ class EditorModel extends PluginModel {
 			return false;
 		}		
 		
+		# Returns Restore Url
+		$restoreUrlParams = array
+		(
+			'absPath' =>  ABSPATH,
+			'contentDir' => $contentDir,
+			'secureKey' => $secureKey,
+			'dataFileScure' => md5( file_get_contents( $dataFilePath ) )
+		);
+		$restoreUrl = WP_PLUGIN_URL . '/wp-config-file-editor/Public/Restore.php?' . http_build_query( $restoreUrlParams );
+		
+		# Successed!
 		return true;
 	}
 
