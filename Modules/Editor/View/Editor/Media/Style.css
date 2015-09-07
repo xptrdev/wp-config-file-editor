@@ -167,3 +167,9 @@ p.wcfe-restore-parameters {
   color: red;
   font-size: 14px;
 }
+
+ul.wcfe-thickbox-errors-list {
+    color: red;
+    background-color: #131111;
+    display: none;
+}

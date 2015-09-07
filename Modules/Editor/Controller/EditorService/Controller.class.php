@@ -63,8 +63,8 @@ class EditorServiceController extends ServiceController {
 			# Return errors
 			$result[ 'errors' ] = $model->getErrors();
 			
-			# Clear errors so that never requests won't  repeat it
-			$model->clearErrors()->writeState();
+			# avoid displayed error when redirected by making normal requetss
+			$model->clearErrors();
 			
 		}	
 		
@@ -98,12 +98,14 @@ class EditorServiceController extends ServiceController {
 		# Check access
 		if ( ! $this->_checkPermission() ) 
 		{
+			
 			return;
 		}
 		
 		# Initialize
-		$model =& $this->getModel();
+		$model =& $this->getModel( 'Editor' );
 		$form =& $model->getForm();
+		$result = array();
 		
 		# Fill form with submitted values (Raw Values without any ' " escapes!)
 		$formValues = array
@@ -113,11 +115,25 @@ class EditorServiceController extends ServiceController {
 		
 		$form->setValue( $formValues );
 		
-		if ( ! $model->validate() )
+		if ( $model->validate() )
 		{
 			
+			# Generate config file from submitted fields
+			$model->generateConfigFile();
+			
+			# If failr return errors back
+			if ( ! $model->saveConfigFile() )
+			{
+				
+				$result[ 'errors' ] = $model->getErrors();
+				
+				# avoid displayed error when redirected by making normal requetss
+				$model->clearErrors();
+			}
+			
 		}
-	
+		
+	  return $result;
 	}
 	
 	/**

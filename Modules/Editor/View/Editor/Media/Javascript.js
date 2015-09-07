@@ -62,7 +62,7 @@
 						{
 							
 							// Update config file from form values
-							editorSrvs.update( 'updateConfigFile', formData ).done(
+							editorSrvs.updateConfigFile( 'updateConfigFile', formData ).done(
 							
 								
 								function() 
@@ -73,6 +73,7 @@
 							);
 							
 						}
+						
 					);
 			
 				}

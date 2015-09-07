@@ -27,7 +27,7 @@
 		this.preUpdate = function()
 		{
 			
-			return this.makeCall( this.getActionRoute( 'preUpdate' ) ).done(
+			this.makeCall( this.getActionRoute( 'preUpdate' ) ).done(
 			     	 
      		/**
      		* 
@@ -53,8 +53,11 @@
 					
 					[ 0 ].select();
 					
+					// Hide errors list as it might be filled from previous save operation!
+					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );
+					
 					// Show update dialog
-					tb_show( 'UPDATING WORDPRESS CONFIG FILE WARNING!!!', '#TB_inline?width=300px&height=400px&inlineId=wcfe-confirm-save-message' );
+					tb_show( 'UPDATING WORDPRESS CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
 					
      		}
      	
@@ -116,7 +119,8 @@
 		this.updateConfigFile = function(actionName, data)
 		{
 			
-			var updateCallback = $.Deffered();
+			// Deferred object to callbacl caller
+			var updateCallback = $.Deferred();
 			
 			this.makeCall( this.getActionRoute( actionName ), data ).done(
 			
@@ -126,7 +130,18 @@
 					// COuldnt save / display errors
 					if ( response.errors )
 					{
-						alert( 'errors' );
+						
+						var errorsListElement = $( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).empty();
+						
+						for ( var errIndex = 0; errIndex < response.errors.length; errIndex ++ )
+						{
+							errorsListElement.append( '<li>' + response.errors[ errIndex ]  + '</li>' );
+						}
+						
+						errorsListElement.css( 'display', 'block' );
+						
+						// Scroll to top for errors list
+						$( '#TB_ajaxContent' ).scrollTop( 0 );
 						
 						return false;
 					}

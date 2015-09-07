@@ -308,25 +308,29 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-  public function & saveConfigFile() {
+  public function saveConfigFile() 
+  {
+  	
 		# Config File path
 		$configFilePath = ABSPATH . 'wp-config.php';
-		$successed = false;
-		# Check permissions
-		if (!is_readable($configFilePath) || !is_writable($configFilePath)) {
-			$this->addError("Config file is not writable: {$configFilePath}");
+		
+		# Check config file permissions
+		if ( ! is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
+		{
+			$this->addError( "Config file is not writable: {$configFilePath}" );
+			
+			return false;
 		}
-		else {
-			# Save config file
-			if (!file_put_contents($configFilePath, $this->getConfigFileContent())) {
-				$this->addError("Could not write config file: {$configFilePath}");
-			}
-			else {
-				# Return successed
-				$successed = true;
-			}
+		
+		# Save config file
+		if ( ! file_put_contents( $configFilePath, $this->getConfigFileContent() ) )
+		{
+			$this->addError( "Could not write config file: {$configFilePath}" );
+			
+			return false;
 		}
-		return $successed;
+		
+		return true;
   }
 
 	/**
