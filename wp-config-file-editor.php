@@ -46,9 +46,9 @@ class Plugin extends PluginBase {
 		# Plugin base
 		parent::__construct(__FILE__, new Config\Plugin());
 		# Only admin side is used in this Plugin
-		if (is_admin()) {
+		if ( is_admin() ) {
 			# Editor Service Module
-			$editorModule = new EditorModule($this);
+			$editorModule = new EditorModule( $this );
 			$editorModule->start();
 		}		
 	}

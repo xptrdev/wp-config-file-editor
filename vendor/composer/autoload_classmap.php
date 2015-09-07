@@ -10,6 +10,7 @@ return array(
     'WCFE\\Factory' => $baseDir . '/Factory/Factory.class.php',
     'WCFE\\Factory\\WordpressOptions' => $baseDir . '/Factory/WordpressOptions.class.php',
     'WCFE\\Libraries\\CSS\\jQuery\\DarkHive\\jQueryDarkHive' => $baseDir . '/Libraries/CSS/jQuery/DarkHive/JQueryTab.class.php',
+    'WCFE\\Libraries\\JavaScript\\ErrorsDialog' => $baseDir . '/Libraries/JavaScript/ErrorsDialog.class.php',
     'WCFE\\Modules\\Editor\\Controller\\EditorService\\EditorServiceController' => $baseDir . '/Modules/Editor/Controller/EditorService/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\Editor\\EditorController' => $baseDir . '/Modules/Editor/Controller/Editor/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\JSONControllerResponder' => $baseDir . '/Modules/Editor/Controller/JSON.class.php',

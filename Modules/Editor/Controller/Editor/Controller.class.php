@@ -15,12 +15,12 @@ use WCFE\Modules\Editor\Model\Forms;
 * 
 */
 class EditorController extends Controller {
-	
+	 
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function indexAction() 
+	public function indexAction() 
 	{
 		# Initialize
 		$model =& $this->getModel();
@@ -73,15 +73,16 @@ class EditorController extends Controller {
 				if ( $model->validate() ) 
 				{
 					
-					# generate config file from the given values
-					$model->generateConfigFile();
-					
-					# Either Preview or Save config file.
+					# Version 1.0 moved save action to editor service controlle
+					# Now this will always only preview action!
 					$task = $form->get( 'Task' )->getValue();
 					
 					if ( $task == Forms\ConfigFileForm::TASK_PREVIEW )
 					{
 						
+						# generate config file from the given values
+						$model->generateConfigFile();
+					
 						# Save submitted vars to be used if 
 						# get back from preview to the form again.
 						$model->saveSubmittedVars();
@@ -90,18 +91,10 @@ class EditorController extends Controller {
 						$this->redirect( $router->routeAction( 'Preview' ) );
 						
 					}
-					else if ( $task == Forms\ConfigFileForm::TASK_SAVE )
-					{
-						
-						# Create Backup
-						if ( $model->createBackup( $restoreUrl ) )
-						{
-							# Save config file
-							$model->saveConfigFile();
-							
-						}
-						
-					}
+					else if ( $task == Forms\ConfigFileForm::TASK_VALIDATE )
+					 {
+						 # Nothing here, its already validated by $model->validate above!!
+					 }
 					
 				}
 				
@@ -124,7 +117,7 @@ class EditorController extends Controller {
 	* put your comment there...
 	* 
 	*/
-	protected function previewAction()
+	public function previewAction()
 	{
 		# Get model
 		$model =& $this->getModel();
@@ -174,5 +167,5 @@ class EditorController extends Controller {
 		return array('model' => $model, 'form' => $form);
 		
 	}
-
+  
 } # End class

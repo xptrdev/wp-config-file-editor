@@ -68,8 +68,9 @@ class EditorModule extends ServiceModule {
 	* put your comment there...
 	* 
 	*/
-	public function editorService() {
-		return $this->getServiceObject(self::EDITOR_AJAX_SERVICE_KEY, self::EDITOR_AJAX_SERVICE_OBJECT_KEY);
+	public function editorService() 
+	{
+		return $this->getServiceObject( self::EDITOR_AJAX_SERVICE_KEY, self::EDITOR_AJAX_SERVICE_OBJECT_KEY );
 	}
 
 }

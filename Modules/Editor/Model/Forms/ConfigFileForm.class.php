@@ -23,7 +23,7 @@ class ConfigFileForm extends Forms\SecureForm {
 	/**
 	* 
 	*/
-	const TASK_SAVE = 'Save';
+	const TASK_VALIDATE = 'Validate';
 
 	/**
 	* put your comment there...

@@ -137,9 +137,17 @@ div#wcfe-confirm-save-message-dialog ul {
   margin-bottom: 19px;
 }
 
-p.wcfe-restore-link {
+p.wcfe-restore-parameters {
     background-color: #030C12;
     padding: 11px 15px !important;
+}
+.wcfe-restore-link 
+{
+	background-color: transparent !important;
+	color: yellow;
+	width: 100%;
+	height: 133px;
+	border: none;
 }
 
 #wcfe-update-config-file {
@@ -147,4 +155,15 @@ p.wcfe-restore-link {
   color: #EF160A;
   border: 1px solid yellow;
   padding: 1px 27px 4px;
+}
+
+#wcfe-errors-dialog 
+{
+	display: none;
+}
+
+#wcfe-errors-dialog-errors-list
+{
+  color: red;
+  font-size: 14px;
 }

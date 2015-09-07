@@ -182,7 +182,7 @@ class EditorModel extends PluginModel {
 			'absPath' =>  ABSPATH,
 			'contentDir' => $contentDir,
 			'secureKey' => $secureKey,
-			'dataFileScure' => md5( file_get_contents( $dataFilePath ) )
+			'dataFileSecure' => md5( file_get_contents( $dataFilePath ) )
 		);
 		$restoreUrl = WP_PLUGIN_URL . '/wp-config-file-editor/Public/Restore.php?' . http_build_query( $restoreUrlParams );
 		
@@ -358,7 +358,10 @@ class EditorModel extends PluginModel {
 		# Validate the form
 		# If its a valid form try to open databse connection using 
 		# form database parameters
-		if ($form->validate()) {
+		
+		if ( $form->validate() ) 
+		{
+			
 			# Get database connection parameters.
 			$user = $form->get('DbUser')->getValue();
 			$password = $form->get('DbPassword')->getValue();

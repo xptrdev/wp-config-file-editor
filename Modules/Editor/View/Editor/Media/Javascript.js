@@ -18,20 +18,75 @@
 		/**
 		* put your comment there...
 		* 
+		* @type WCFEEditorServices
+		*/
+		var editorSrvs = new WCFEEditorServices();
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var formEle;
+		
+		/**
+		* put your comment there...
+		* 
 		*/
 		var confirmSave = function() 
 		{
 			
-			tb_show( 'UPDATING WORDPRESS CONFIG FILE ALERT!!!', '#TB_inline?width=300px&height=400px&inlineId=wcfe-confirm-save-message' );
+			// This is important before serializing form data
+			setTask( 'Validate' );
+			
+			var formData = formEle.serializeObject();
+			
+			// Validate form parameters through AJAX
+			editorSrvs.makeCall( editorSrvs.getActionRoute( 'validateForm' ), formData ).done(
+			
+				function( isValid ) {
+					
+					// If not valid post with valid task so user
+					// can see error messages for each field!
+					if ( ! isValid )
+					{
+						submitConfigFileEditorForm( 'Validate' );
+						
+						return false;
+					}
+					
+					// Pre update server signal
+					editorSrvs.preUpdate().done(
+					
+						// This will be called when Warning Dialog Update button is pressed
+						function()
+						{
+							
+							// Update config file from form values
+							editorSrvs.update( 'updateConfigFile', formData ).done(
+							
+								
+								function() 
+								{
+									 alert( 'Updated!!!' );
+								}
+								
+							);
+							
+						}
+					);
+			
+				}
+			);
+			
 		};
-		
+
 		/**
 		* 
 		*/
 		var generateFieldKey = function(event) 
 		{
 			// Send key generation server request
-			$.get( editorServiceKeyGenUrl ).done( 
+			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ) ).done( 
 			
 				function( secureKey )
 				{		
@@ -44,7 +99,7 @@
 			// Inactive
 			return false;
 		};
-
+	
 		/**
 		* put your comment there...
 		* 
@@ -61,13 +116,23 @@
 		* 
 		* @param task
 		*/
+		var setTask = function( task )
+		{
+			$( 'input[name="configFileFields[Task]"]' ).val( task );
+		};
+	
+		/**
+		* put your comment there...
+		* 
+		* @param task
+		*/
 		var submitConfigFileEditorForm = function(task)
 		{
 			
-			$( 'input[name="configFileFields[Task]"]' ).val( task );
+			setTask( task );
 			
 			// Submit form
-			$( '#wcfe-config-editor-form' ).submit();
+			formEle.submit();
 			
 		};
 		
@@ -86,14 +151,14 @@
 		*/
 		var initialize = function() 
 		{
+			
+			formEle = $( '#wcfe-config-editor-form' );
+			
 			// Secure keys generator
-			$('.secure-key-generator-key').click( generateFieldKey );
+			$('.secure-key-generator-key').click( $.proxy( generateFieldKey, this ) );
 			
 			// Confirm SAVE
-			$( '#wcfe-editor-form-save' ).click( confirmSave );
-			
-			// Update Config File
-			$( '#wcfe-update-config-file' ).click( updateConfigFile );
+			$( '#wcfe-editor-form-save' ).click( $.proxy( confirmSave, this ) );
 			
 			// Preview changes
 			$( '#wcfe-editor-form-preview' ).click( previewConfigFile );

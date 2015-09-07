@@ -13,6 +13,24 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 $model =& $this->result();
 $form =& $model->getForm();
 $router =& $this->router();
+$serviceRouter = $router->findRouter( 'Editor', 'editorService' );
+
+# Actions Routes used by variaous aajax requests
+$actionsRoutes = array();
+
+$actionsToGetRoute = array
+(
+	'createSecureKey',
+	'preUpdate',
+	'validateForm',
+	'postUpdate',
+	'updateConfigFile',
+);
+
+foreach ( $actionsToGetRoute as $actionName )
+{
+	$actionsRoutes[ $actionName ] = (string) $serviceRouter->routeAction( $actionName );
+}
 
 ?>
 <div id="wcfe-body">
@@ -38,6 +56,10 @@ $router =& $this->router();
 		<input type="hidden" name="configFileFields[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />
 	</form>
 </div>
-<script type="text/javascript">var editorServiceKeyGenUrl = '<?php echo $this->router()->findRouter('Editor', 'editorService')->routeAction('createSecureKey'); ?>';</script>
+<script type="text/javascript">var actionsRoute = <?php echo json_encode( $actionsRoutes ) ?>;</script>
+
+<?php // Errors list dialog to be used by various Ajax actions ?>
+<div id="wcfe-errors-dialog"><div><ul id="wcfe-errors-dialog-errors-list"></ul></div></div>
+
 <?php // Confirm save message template to be used by thickbox as inline popup ?>
 <?php require 'ConfirmSave.html'; ?>
