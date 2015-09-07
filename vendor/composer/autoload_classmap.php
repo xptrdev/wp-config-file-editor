@@ -51,6 +51,7 @@ return array(
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\WPLangDir' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/WPLangDir.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Templates\\Master\\Master' => $baseDir . '/Modules/Editor/Model/ConfigFile/Templates/Master/Master.class.php',
     'WCFE\\Modules\\Editor\\Model\\EditorModel' => $baseDir . '/Modules/Editor/Model/Editor.class.php',
+    'WCFE\\Modules\\Editor\\Model\\EmergencyRestore' => $baseDir . '/Modules/Editor/Model/EmergencyRestore.class.php',
     'WCFE\\Modules\\Editor\\Model\\Forms\\ConfigFileForm' => $baseDir . '/Modules/Editor/Model/Forms/ConfigFileForm.class.php',
     'WCFE\\Modules\\Editor\\Model\\Forms\\Fields\\AuthKey' => $baseDir . '/Modules/Editor/Model/Forms/Fields/AuthKey.class.php',
     'WCFE\\Modules\\Editor\\Model\\Forms\\Fields\\AuthSalt' => $baseDir . '/Modules/Editor/Model/Forms/Fields/AuthSalt.class.php',

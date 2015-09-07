@@ -102,6 +102,55 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function createBackup()
+	{
+		
+		# Check ABSPATH permission
+		if ( ! is_writable( ABSPATH ) )
+		{
+			$this->addError( 'Wordpress Root folder is not writable!!! WCFE Plugin need Root directory to be writable for creating wp-config backup' );
+			
+			return false;
+		}
+
+		# Initialize vars
+		$dataFileName = EmergencyRestore::BACKUP_DATA_FILE_NAME;
+		$dataFilePath = ABSPATH . DIRECTORY_SEPARATOR . $dataFileName;
+		$configFileContent = base64_encode( file_get_contents( ABSPATH . DIRECTORY_SEPARATOR . 'wp-config.php' ) );
+		$secureKey = md5( uniqid( ) );
+		$backupFileName = 'wcfe-config-backup-' . md5( uniqid( ) ) . '.php';
+		$backupFilePath = ABSPATH . DIRECTORY_SEPARATOR . $backupFileName;
+		$backupFileHash = md5( $configFileContent );
+		
+		# Create backup data file
+		ob_start();
+		require 'Editor' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
+		
+		if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
+		{
+			$this->addError( "Could not create backup Data file: {$dataFilePath}" );
+			
+			return false;
+		}
+				
+		# Create backup file
+		ob_start();
+		require 'Editor' . DIRECTORY_SEPARATOR . 'BackupFile.Template.php';
+		
+		if ( ! file_put_contents( $backupFilePath, ob_get_clean() ) )
+		{
+			$this->addError( "Could not create backup file: {$backupFilePath}" );
+			
+			return false;
+		}		
+		
+		return true;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function generateConfigFile() {
 		# Generate config file 
 		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $this->fieldsMap );
@@ -250,7 +299,7 @@ class EditorModel extends PluginModel {
 		# Don't save all fields, just related to config file
 		$vars = array_intersect_key( $form->getValue(), array_flip( $this->fieldsMap ) );
 		# Save them
-		$this->savedVars = array($form->getName() => $vars);
+		$this->savedVars = array( $form->getName() => $vars );
 		# Chain
 		return $this;
 	}

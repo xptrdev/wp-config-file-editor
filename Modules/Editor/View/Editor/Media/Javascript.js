@@ -49,10 +49,35 @@
 		* put your comment there...
 		* 
 		*/
-		var updateConfigFile = function()
+		var previewConfigFile = function() 
 		{
+		
+			submitConfigFileEditorForm( 'Preview' );
+			
+		};
+		
+		/**
+		* put your comment there...
+		* 
+		* @param task
+		*/
+		var submitConfigFileEditorForm = function(task)
+		{
+			
+			$( 'input[name="configFileFields[Task]"]' ).val( task );
+			
 			// Submit form
 			$( '#wcfe-config-editor-form' ).submit();
+			
+		};
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var updateConfigFile = function()
+		{
+			submitConfigFileEditorForm( 'Save' );
 			
 		};
 
@@ -69,6 +94,10 @@
 			
 			// Update Config File
 			$( '#wcfe-update-config-file' ).click( updateConfigFile );
+			
+			// Preview changes
+			$( '#wcfe-editor-form-preview' ).click( previewConfigFile );
+			
 		};
 	
 		// Initialize form script when document lodaed
