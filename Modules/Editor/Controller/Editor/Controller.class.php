@@ -28,7 +28,7 @@ class EditorController extends Controller {
 		$router =& $this->router();
 		$form =& $model->getForm();
 		
-		$model->createBackup();
+		$model->createBackup( $restoreUrl );
 		
 		return;
 		

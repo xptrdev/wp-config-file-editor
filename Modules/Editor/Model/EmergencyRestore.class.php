@@ -14,7 +14,12 @@ class EmergencyRestore
 	/**
 	* 
 	*/
-	const BACKUP_DATA_FILE_NAME = 'wcfe-backup-data.php';
+	const BACKUP_DATA_FILE_NAME = 'backup-data.php';
+	
+	/**
+	* 
+	*/
+	const BACKUP_FILE_NAME = 'wp-config-backup.php';
 	
 	/**
 	* put your comment there...
@@ -22,6 +27,13 @@ class EmergencyRestore
 	* @var mixed
 	*/
 	private $absPath;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $contentDir;
 	
 	/**
 	* put your comment there...
@@ -57,14 +69,16 @@ class EmergencyRestore
 	* @param mixed $secureKey
 	* @param mixed $dataFileSecure
 	* @param mixed $absPath
+	* @param mixed $contentDir
 	* @return EmergencyRestore
 	*/
-	public function __construct( $secureKey, $dataFileSecure, $absPath ) 
+	public function __construct( $secureKey, $dataFileSecure, $absPath, $contentDir ) 
 	{
 		# Initialize
 		$this->secureKey =& $secureKey;
 		$this->dataFileSecure =& $dataFileSecure;
 		$this->absPath =& $absPath;
+		$this->contentDir =& $contentDir;
 	}
 	
 	/**
@@ -83,25 +97,37 @@ class EmergencyRestore
 		# wordpress core files
 		$filesToCheck = array
 		(
-			'', /* Check directory existance */
-			self::BACKUP_DATA_FILE_NAME,
-			'wp-config.php',
-			'wp-settings.php',
+		
+			$this->absPath => array
+			(
+				'wp-config.php',
+				'wp-settings.php',
+			),
+			
+			$this->contentDir => array
+			(
+				self::BACKUP_DATA_FILE_NAME,
+				self::BACKUP_FILE_NAME
+			)
+			
 		);
 		
-		foreach ( $filesToCheck as $fileName )
+		foreach ( $filesToCheck as $baseDir => $files )
 		{
 			
-			if ( ! file_exists( $this->absPath . DIRECTORY_SEPARATOR . $fileName ) ) 
+			foreach ( $files as $file )
 			{
-				throw new \Exception( 'Invalid file/path specified' );
+				if ( ! file_exists( $file ) ) 
+				{
+					throw new \Exception( 'Invalid file/path specified' );
+				}				
 			}
 			
 		}
 		
 		# Check Data file secure, generatng hash from data file content
 		# must be equal to the passed one
-		$dataFilePath = $this->absPath . DIRECTORY_SEPARATOR . self::BACKUP_DATA_FILE_NAME;
+		$dataFilePath = $this->contentDir . DIRECTORY_SEPARATOR . self::BACKUP_DATA_FILE_NAME;
 		
 		if ( md5( file_get_contents( $dataFilePath ) ) != $this->dataFileSecure )
 		{
@@ -119,14 +145,15 @@ class EmergencyRestore
 		
 		# Validate passed parameters
 		if ( 	( $this->dataFileSecure[ 'secureKey' ] 	!= $this->secureKey ) || 
-			 		( $this->dataFileSecure[ 'absPath' ] 		!= $this->absPath ) ) 
+			 		( $this->dataFileSecure[ 'absPath' ] 		!= $this->absPath )  	||
+			 		( $this->dataFileSecure[ 'contentDir' ] != $this->contentDir ) )
 		{
 			
 			throw neww \Exception( 'Access Denied!! Invalid parameters specified!!!!!!!!' );
 		}
 		
 		# Validate backup file secure
-		$backupFilePath = $this->absPath . DIRECTORY_SEPARATOR . $this->dataFileSecure[ 'backupFileName' ];
+		$backupFilePath = $this->contentDir . DIRECTORY_SEPARATOR . self::BACKUP_FILE_NAME;
 		
 		if ( 	! file_exists( $backupFilePath ) || 
 					md5( file_get_contents( $backupFilePath ) != $this->dataFileSecure[ 'backupFileHash' ] ) )
@@ -142,10 +169,10 @@ class EmergencyRestore
 		
 		
 		# Restore backup
-		$backupFileData = require $backupFilePath;
+		$backupFile = require $backupFilePath;
 		$configFilePath = $this->absPath . DIRECTORY_SEPARATOR . 'wp-config.php';
 		
-		if ( ! file_put_contents( $configFilePath, base64_decode( $backupFileData[ 'content' ] ) ) ) 
+		if ( ! file_put_contents( $configFilePath, base64_decode( $backupFile[ 'content' ] ) ) ) 
 		{
 			throw new \Exception( 'Could not write to config file!!!' );
 		}

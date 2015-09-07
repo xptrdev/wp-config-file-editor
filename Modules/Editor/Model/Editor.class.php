@@ -25,6 +25,13 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	protected $contentDirName;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	private $fieldsMap = array(
 		'DbName',
 		'DbUser',
@@ -101,25 +108,50 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $restoreUrl
 	*/
-	public function createBackup()
+	public function createBackup( & $restoreUrl )
 	{
 		
-		# Check ABSPATH permission
-		if ( ! is_writable( ABSPATH ) )
+		# Create content dir if not already created
+		if ( ! $this->contentDirName )
 		{
-			$this->addError( 'Wordpress Root folder is not writable!!! WCFE Plugin need Root directory to be writable for creating wp-config backup' );
 			
-			return false;
+			# Generate unique dir name, thiss is more secure to never accessed from outside
+			$contentDirName = 'wcfe-' . md5( uniqid() );
+			
+			$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $contentDir;
+			
+			if ( ! is_writable( WP_CONTENT_DIR ) || ! mkdir( $contentDir, 0755 ) )
+			{
+				$this->addError( "Couldn\'t create Content dir:: {$contentDir}. Content directory is not writable!!" );
+				
+				return false;
+			}
+			
+			# Create HTAccess file
+			if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'htaccess.Template', 
+									$contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
+			{
+				
+				$this->addError( 'Could\' create htaccess file to protect wcfe content dir from being access by public' );
+				
+				return false;
+			}
+			
+			# Store content dir name
+			$this->contentDirName = $contentDirName;
+			
 		}
-
-		# Initialize vars
+	
+	
+		# Initialize backup vars
+		$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName;
 		$dataFileName = EmergencyRestore::BACKUP_DATA_FILE_NAME;
-		$dataFilePath = ABSPATH . DIRECTORY_SEPARATOR . $dataFileName;
+		$dataFilePath = $contentDir . DIRECTORY_SEPARATOR . $dataFileName;
 		$configFileContent = base64_encode( file_get_contents( ABSPATH . DIRECTORY_SEPARATOR . 'wp-config.php' ) );
 		$secureKey = md5( uniqid( ) );
-		$backupFileName = 'wcfe-config-backup-' . md5( uniqid( ) ) . '.php';
-		$backupFilePath = ABSPATH . DIRECTORY_SEPARATOR . $backupFileName;
+		$backupFilePath = $contentDir . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_FILE_NAME;
 		$backupFileHash = md5( $configFileContent );
 		
 		# Create backup data file

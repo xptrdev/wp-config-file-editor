@@ -1,5 +1,7 @@
 <?php
 
+namespace WCFE\Modules\Editor\Model\Editor;
+
 # No direct access
 defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace WCFE\Modules\Editor\Model\Editor;
+
 # No direct access
 defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 
@@ -14,9 +16,11 @@ $secureSrcClassName  = 'WCFE\Modules\Editor\Model\EmergencyRestore';
 $data = array();
 
 $data[ 'secureKey' ] 	= '<?php echo $secureKey ?>';
-$data[ 'absPath' ] 	= '<?php echo ABSPATH ?>';
-$data[ 'backupFileName' ]	= '<?php echo $backupFileName ?>';
 $data[ 'backupFileHash' ] 	= '<?php echo $backupFileHash ?>';
+
+$data[ 'absPath' ] 	= '<?php echo ABSPATH ?>';
+$data[ 'contentDir' ] 	= '<?php echo $contentDir ?>';
+
 $data[ 'timeCreated' ] 	= <?php echo time() ?>;
 
 
