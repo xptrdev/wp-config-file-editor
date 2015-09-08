@@ -31,14 +31,21 @@ div#wcfe-body {
 .wcfe-vars-group {
 	margin-left: 5px;
 }
+.field-tip, .checkbox-row p.field-tip
+{
+	color: #FFE308;
+	font-size: 16px;	
+	display: none;
+}
+
 .field-tip {
 	margin:0 0 0 246px;
-	color: #aaa;
 }
+
 .field-error {
-    margin-left: 35px;
-    color: yellow;
-    font-weight: bold;
+  margin-left: 35px;
+  color: yellow;
+  font-weight: bold;
 }
 input[type="text"] {
 	width: 350px;
@@ -47,11 +54,6 @@ fieldset strong {
 	background-color: white; 
 	font-weight: bold; 
 	padding: 0 5px;
-}
-
-.checkbox-row p.field-tip {
-	display: inline;
-	margin-left: 0;
 }
 
 .field-row label, .checkbox-row label {
@@ -182,12 +184,32 @@ ul.wcfe-thickbox-errors-list {
 
 .warning-image
 {
-float: right;
-    width: 128px;
-    height: 123px;
-    margin-top: 12px;
+	float: right;
+  width: 128px;
+  height: 123px;
+  margin-top: 12px;
 }
 
+.help-box
+{
+	display: none;
+}
+
+.help-box-link
+{
+    float: right;
+    text-decoration: none;
+}
+
+.help-list 
+{
+	color: yellow;
+	font-size: 15px;
+}
+td.help-label-text {
+    width: 27%;
+    color: white;
+}
 /* PREVIEW */
 #config-file-content 
 {

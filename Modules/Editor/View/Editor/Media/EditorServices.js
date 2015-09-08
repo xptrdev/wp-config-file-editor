@@ -47,17 +47,13 @@
 					// Fill update dialog with restore backup parameters
 					$( '.wcfe-restore-parameters .wcfe-restore-link' )
 					
-					.text( response.restoreUrl )
-					
-					.focus()
-					
-					[ 0 ].select();
+					.text( response.restoreUrl );
 					
 					// Hide errors list as it might be filled from previous save operation!
 					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );				
 					
 					// Show update dialog
-					tb_show( 'UPDATING WORDPRESS CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
+					tb_show( 'UPDATING CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
 					
      		}
      	

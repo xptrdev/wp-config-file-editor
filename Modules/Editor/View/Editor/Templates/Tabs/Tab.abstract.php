@@ -70,11 +70,33 @@ abstract class Tab {
 	/**
 	* put your comment there...
 	* 
+	* @param \DOMDocument $tabsDoc
+	* @param {\DOMDocument|\DOMElement} $helpBox
+	* @return {\DOMDocument|\DOMElement}
+	*/
+	protected function getSimpleHelpBox( \DOMDocument & $tabsDoc, \DOMElement & $helpBox )
+	{
+		ob_start();
+		
+		require 'Templates' . DIRECTORY_SEPARATOR . 'Simple-Help-Box.html';
+		
+		$helpMarkup = ob_get_clean();
+		
+		# Laod to DOM so we can add to tab
+		$helplistEle = $tabsDoc->createDocumentFragment();
+		$helplistEle->appendXML( $helpMarkup );
+		
+		$helpBox->appendChild( $helplistEle );
+	}
+
+	/**
+	* put your comment there...
+	* 
 	*/
 	protected function getTitle() {
 		return $this->title;
 	}
-	
+
 	/**
 	* put your comment there...
 	* 
@@ -98,12 +120,42 @@ abstract class Tab {
 		$tab = $tabsDoc->createElement('div');
 		$tab->setAttribute('id', $this->getId());
 
-		# Render tab content
+		# Help link
+		$helpLink = $tabsDoc->createElement( 'a' );
+		$tab->appendChild( $helpLink );
+		
+		$helpLink->setAttribute( 'class', 'help-box-link' );
+		$helpLink->setAttribute( 'href', "#{$this->getId()}" );
+		
+		////////// Render tab content /////////
+		
 		$this->renderContent( $tabsDoc, $tab );
 		
-		# Add tab components
-		$navigator->appendChild($tabNav);
-		$tabs->appendChild($tab);
+		//////////////////////////////////////
+		
+		# Help Box
+		
+		$helpBoxId = "{$this->id}-Help-Box";
+		
+		$helpLink->nodeValue = 'Help';
+		
+		# Help Window
+		$helpBox = $tabsDoc->createElement( 'div' );
+		
+		$helpBox->setAttribute( 'id', $helpBoxId );
+		$helpBox->setAttribute( 'class', 'help-box' );
+		
+		$this->renderHelpBox( $tabsDoc, $helpBox );
+		
+		# Add Nav
+		$navigator->appendChild( $tabNav );
+		
+		# Add Panel
+		$tabs->appendChild( $tab );
+		
+		# add Help box
+		$tab->appendChild( $helpBox );
+		
 	}
 
 	/**
@@ -145,5 +197,17 @@ abstract class Tab {
 	* @return {\DOMDocument|\DOMElement}
 	*/
 	protected abstract function renderContent( \DOMDocument & $tabsDoc, \DOMElement & $tab );
+	
+	/**
+	* put your comment there...
+	* 
+	* @param \DOMDocument $tabsDoc
+	* @param {\DOMDocument|\DOMElement} $tab
+	* @return {\DOMDocument|\DOMElement|{\DOMDocument}
+	*/
+	protected function renderHelpBox( \DOMDocument & $tabsDoc, \DOMElement & $helpbox )
+	{
+		$this->getSimpleHelpBox( $tabsDoc, $helpbox );
+	}
 	
 }
