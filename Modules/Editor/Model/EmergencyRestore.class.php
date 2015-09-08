@@ -54,7 +54,7 @@ class EmergencyRestore
 	* 
 	* @var mixed
 	*/
-	private $expiresInterval = 86400;
+	private $expiresInterval = 3600;
 	
 	/**
 	* put your comment there...

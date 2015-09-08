@@ -113,8 +113,9 @@ class EditorModel extends PluginModel {
 	public function createBackup( & $restoreUrl )
 	{
 		
-		# Create content dir if not already created
-		if ( ! $this->contentDirName )
+		# Create content dir if not already created or it was previously created
+		# by deleted for some reason!!
+		if ( ! $this->contentDirName || ! file_exists( WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName ) )
 		{
 			
 			# Generate unique dir name, thiss is more secure to never accessed from outside
@@ -143,7 +144,7 @@ class EditorModel extends PluginModel {
 			$this->contentDirName = $contentDirName;
 			
 		}
-	
+		
 	
 		# Initialize backup vars
 		$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName;
@@ -236,8 +237,6 @@ class EditorModel extends PluginModel {
 		# Creating config form
 		$this->form = new Forms\ConfigFileForm( $this->fieldsMap );
 		
-		# Filter fields map
-		
 	}
 
 	/**
@@ -315,7 +314,7 @@ class EditorModel extends PluginModel {
 		$configFilePath = ABSPATH . 'wp-config.php';
 		
 		# Check config file permissions
-		if ( ! is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
+		if ( is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
 		{
 			$this->addError( "Config file is not writable: {$configFilePath}" );
 			

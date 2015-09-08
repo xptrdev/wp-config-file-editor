@@ -20,7 +20,7 @@ $form =& $result['form'];
 	ul#errors-bar li {list-style-type: square;}
 </style>
 <style type="text/css">
-	#config-file-content {width: 97%; height:800px; margin-top: 10px;}
+	#config-file-content {width: 99%; height:800px; margin-top: 10px; font-size: 18px;}
 	input[type="submit"] {float: left;}
 </style>
 <div id="wcfe-preview-screen">
@@ -33,7 +33,7 @@ $form =& $result['form'];
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 	<form method="post" action="<?php echo $router->routeAction() ?>">
-		<textarea id="config-file-content" name="rawConfigFile[configFileContent]"><?php echo $model->getConfigFileContent() ?></textarea>
+		<div id="config-file-content"><?php echo htmlentities( $model->getConfigFileContent() ) ?></div>
 		<input type="submit" value="Update" />
 		<input type="hidden" name="wcfeaction" value="Preview" />
 		<input type="hidden" name="rawConfigFile[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />

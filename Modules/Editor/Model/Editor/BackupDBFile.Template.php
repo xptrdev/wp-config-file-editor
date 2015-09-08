@@ -22,6 +22,7 @@ $data[ 'absPath' ] 	= '<?php echo ABSPATH ?>';
 $data[ 'contentDir' ] 	= '<?php echo $contentDir ?>';
 
 $data[ 'timeCreated' ] 	= <?php echo time() ?>;
-
+<?php // The private key never exposed outside. Its just only for generating unique hash for data file. IMPORANT KEY IN FACT!! ?>
+$data[ 'privateKey' ] = '<?php echo wp_generate_password( 256, true, true ) ?>';
 
 return $data;

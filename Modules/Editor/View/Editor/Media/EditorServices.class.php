@@ -9,18 +9,18 @@
 namespace WCFE\Modules\Editor\View\Editor\Media;
 
 # Script resource
-use WPPFW\Services\Queue\StyleResource;
+use WPPFW\Services\Queue\ScriptResource;
 
 /**
 * 
 */
-class Style extends StyleResource {
-
+class EditorServices extends ScriptResource {
+	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'Style.css';
+	protected $fileName = 'EditorServices.js';
 	
 }

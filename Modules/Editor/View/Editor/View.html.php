@@ -17,34 +17,73 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 */
 class EditorHTMLView extends TemplateView {
 	
+	private $resFactory;
+	private $scriptsQueue;
+	private $stylesQueue;
+	
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function initialize() {
 		
+		# Resource factory
+		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
+		
 		# Scripts and Styles queues
-		$scripts = new DashboardScriptsQueue();
-		$styles = new DashboardStylesQueue();
+		$this->scriptsQueue = new DashboardScriptsQueue();
+		$this->stylesQueue = new DashboardStylesQueue();
 		
 		# Scripts
-		$scripts->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
-		$scripts->enqueueNamedResource( 'jquery-serialize-object' );
-		$scripts->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
-		$scripts->add( new \WCFE\Libraries\JavaScript\ErrorsDialog( 'wcfe-errors-dialog', WP_PLUGIN_URL . '/wp-config-file-editor/Libraries/JavaScript/ErrorsDialog.js' ) );
+		$this->scriptsQueue->enqueueNamedResource( 'jquery-serialize-object' );
 		
-		$scripts->add( new Media\JavaScript( 'wcfe-editor-services', WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/EditorServices.js' ) );
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
 		
-		$scripts->add( new Media\JavaScript( 'wcfe-main-editor', WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/JavaScript.js' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ErrorsDialog' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\EditorServices' ) );
 		
 		# Styles
-		$styles->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
+		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
 		
-		$styles->add( new \WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive( 'jquery-ui-theme-darkhive', WP_PLUGIN_URL . '/wp-config-file-editor/Libraries/CSS/jQuery/DarkHive/jquery-ui.min.css' ) );
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive' ) );
 		
-		$styles->add( new Media\Style( 'wcfe-fields-editor', WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Style.css' ) );
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\Style' )  );
 		
+		
+		# Link action specifc resources
+		$this->{"enqueue{$this->mvcTarget()->getAction()}Resources"}( );
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	private function enqueueIndexResources()
+	{
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	private function enqueuePreviewResources()
+	{
+		
+		# ACE Editor
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEditor' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEExtSearchBox' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEExtLanguageTools' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEThemeChaos' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEModePHP' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\RawView' ) );
+		
+	}
+	
 }

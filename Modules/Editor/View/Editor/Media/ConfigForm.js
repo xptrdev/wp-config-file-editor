@@ -53,28 +53,8 @@
 						
 						return false;
 					}
-					
-					// Pre update server signal
-					editorSrvs.preUpdate().done(
-					
-						// This will be called when Warning Dialog Update button is pressed
-						function()
-						{
-							
-							// Update config file from form values
-							editorSrvs.updateConfigFile( 'updateConfigFile', formData ).done(
-							
-								
-								function() 
-								{
-									 alert( 'Updated!!!' );
-								}
-								
-							);
-							
-						}
-						
-					);
+				
+					editorSrvs.updateConfigFile( 'updateConfigFile' );
 			
 				}
 			);

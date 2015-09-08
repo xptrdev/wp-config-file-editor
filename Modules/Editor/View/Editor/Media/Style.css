@@ -1,9 +1,9 @@
 #wpwrap {
-	background-color: #0367A9;
+	background-color: #161616;
 }
 
 #adminmenuback, #adminmenuwrap, .wp-submenu, #adminmenu, #wpadminbar {
-	background-color: #0F466A !important;
+	background-color: #161616 !important;
 }
 
 ul#errors-bar {

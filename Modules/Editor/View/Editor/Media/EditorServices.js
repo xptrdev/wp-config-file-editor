@@ -54,7 +54,7 @@
 					[ 0 ].select();
 					
 					// Hide errors list as it might be filled from previous save operation!
-					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );
+					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );				
 					
 					// Show update dialog
 					tb_show( 'UPDATING WORDPRESS CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
@@ -100,7 +100,7 @@
 			// Request parameters
 			var requestParams = $.extend( {securityToken : securityToken}, ( ( params !== undefined ) ? params : {} ) );
 			
-			return $.post( url , requestParams )
+			return $.post( url , requestParams, null, 'json' );
 			
 		};
 		
@@ -110,6 +110,14 @@
 		*/
 		var onUpdateConfigFile = function()
 		{
+
+			// Allow to close only by clicking on close button
+			// reduce the chance to wrongly close the dialog
+			// and to lose restore link!!
+			$( '#TB_overlay').unbind() 
+			$( document ).unbind( 'keydown.thickbox' );
+			
+			// Update
 			preUpdateCallback.resolve();
 		};
 		
@@ -122,37 +130,46 @@
 			// Deferred object to callbacl caller
 			var updateCallback = $.Deferred();
 			
-			this.makeCall( this.getActionRoute( actionName ), data ).done(
+			// Pre update server signal
+			this.preUpdate().done( $.proxy( 
 			
-				function(response)
+				// This will be called when Warning Dialog Update button is pressed
+				function()
 				{
 					
-					// COuldnt save / display errors
-					if ( response.errors )
-					{
-						
-						var errorsListElement = $( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).empty();
-						
-						for ( var errIndex = 0; errIndex < response.errors.length; errIndex ++ )
+					this.makeCall( this.getActionRoute( actionName ), data ).done(
+					
+						function(response)
 						{
-							errorsListElement.append( '<li>' + response.errors[ errIndex ]  + '</li>' );
+							
+							// COuldnt save / display errors
+							if ( response.errors )
+							{
+								
+								var errorsListElement = $( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).empty();
+								
+								for ( var errIndex = 0; errIndex < response.errors.length; errIndex ++ )
+								{
+									errorsListElement.append( '<li>' + response.errors[ errIndex ]  + '</li>' );
+								}
+								
+								errorsListElement.css( 'display', 'block' );
+								
+								// Scroll to top for errors list
+								$( '#TB_ajaxContent' ).scrollTop( 0 );
+								
+								return false;
+							}														
+							
+							// We're done, notify!!
+							updateCallback.resolve();
+							
+							 
 						}
-						
-						errorsListElement.css( 'display', 'block' );
-						
-						// Scroll to top for errors list
-						$( '#TB_ajaxContent' ).scrollTop( 0 );
-						
-						return false;
-					}
-					
-					// Close update dialog
-					tb_remove();
-					
-					// We're done, notify!!
-					updateCallback.resolve();
-					
-				}
+					);
+			
+				}, this )
+				
 			);
 			
 			return updateCallback;
