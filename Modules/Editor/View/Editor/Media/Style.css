@@ -6,6 +6,11 @@
 	background-color: #000000 !important;
 }
 
+#adminmenu .current a
+{
+	background-color: #0B3E6F !important;
+}
+
 ul#errors-bar {
     color: yellow;
     font-size: 17px;
@@ -122,13 +127,12 @@ div#wcfe-confirm-save-message-dialog ul {
 }
 
 #wcfe-restore-note {
-	background-color: rebeccapurple;
   padding: 10px 10px;
   margin-bottom: 19px;
 }
 
 p.wcfe-restore-parameters {
-    background-color: #030C12;
+    background-color: #292C2E;
     padding: 11px 15px !important;
 }
 .wcfe-restore-link 
@@ -176,6 +180,13 @@ ul.wcfe-thickbox-errors-list {
     margin-top: 19px;
 }
 
+.warning-image
+{
+float: right;
+    width: 128px;
+    height: 123px;
+    margin-top: 12px;
+}
 
 /* PREVIEW */
 #config-file-content 
