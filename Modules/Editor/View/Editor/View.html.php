@@ -65,6 +65,8 @@ class EditorHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
 		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryCookies' ) );
+		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ErrorsDialog' ) );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\EditorServices' ) );

@@ -16,6 +16,7 @@ return array(
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEThemeChaos' => $baseDir . '/Libraries/JavaScript/AceEditor/theme-chaso.class.php',
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEditor' => $baseDir . '/Libraries/JavaScript/AceEditor/ace.class.php',
     'WCFE\\Libraries\\JavaScript\\ErrorsDialog' => $baseDir . '/Libraries/JavaScript/ErrorsDialog.class.php',
+    'WCFE\\Libraries\\JavaScript\\jQueryCookies' => $baseDir . '/Libraries/JavaScript/jQueryCookies.class.php',
     'WCFE\\Libraries\\ResStorage' => $baseDir . '/Libraries/ResourcesStorage.class.php',
     'WCFE\\Modules\\Editor\\Controller\\EditorService\\EditorServiceController' => $baseDir . '/Modules/Editor/Controller/EditorService/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\Editor\\EditorController' => $baseDir . '/Modules/Editor/Controller/Editor/Controller.class.php',

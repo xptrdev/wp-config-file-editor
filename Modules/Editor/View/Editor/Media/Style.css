@@ -43,8 +43,8 @@ div#wcfe-body {
 }
 
 .field-error {
-  margin-left: 35px;
-  color: yellow;
+  margin-left: 28px;
+  color: red;
   font-weight: bold;
 }
 input[type="text"] {
@@ -209,6 +209,11 @@ ul.wcfe-thickbox-errors-list {
 td.help-label-text {
     width: 27%;
     color: white;
+}
+
+#wcfe-options-tab
+{
+	display: none;
 }
 /* PREVIEW */
 #config-file-content 
