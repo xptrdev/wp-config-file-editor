@@ -119,52 +119,16 @@ class EditorController extends Controller {
 	*/
 	public function previewAction()
 	{
+		
 		# Get model
 		$model =& $this->getModel();
-		$input =& $this->input();
-		$router =& $this->router();
 		$form = new Forms\RawConfigFileForm();
 		
-		# Save submitted config file is posted
-		if ( $input->isPost() )
-		{
-			
-			# Fill form with value
-			$formValues = array( 'rawConfigFile' => filter_input( INPUT_POST, 'rawConfigFile', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY ) );
-			
-			$form->setValue( $formValues );
-			
-			# Is authorized
-			if ( $form->isAuthorized() )
-			{
-				# Clear state
-				$saved = $model->clearState()
-				
-				# Load submitted raw config file 
-				->setConfigFileContent( $form->get( 'configFileContent' )->getValue() )
-				
-				# Save
-				->saveConfigFile();
-				
-				# Go back to index only if saved
-				if ( $saved )
-				{
-					$this->redirect( $router->routeAction() );	
-				}
-				
-			}
-			else
-			{
-				# Not authorized
-				$model->addError( 'Not authorized!!' );
-			}
-			
-		}
 		# Form security token
 		$form->getSecurityToken()->setValue( $this->createSecurityToken() );
 		
 		# Push model to view
-		return array('model' => $model, 'form' => $form);
+		return array( 'model' => $model, 'form' => $form );
 		
 	}
   

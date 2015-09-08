@@ -6,7 +6,7 @@
 	/**
 	* 
 	*/
-	WCFEEditorServices = function()
+	WCFEEditorServices = function( formName )
 	{
 
 		/**
@@ -84,7 +84,7 @@
 		var initialize = function()
 		{
 			
-			securityToken = $( 'input[name="configFileFields[stoken]"]' ).val();
+			securityToken = $( 'input[name="' + formName + '[stoken]"]' ).val();
 			
 			// Update config file button clicked
 			$( '#wcfe-update-config-file' ).click( $.proxy( onUpdateConfigFile ,this ) );

@@ -3,7 +3,7 @@
 }
 
 #adminmenuback, #adminmenuwrap, .wp-submenu, #adminmenu, #wpadminbar {
-	background-color: #161616 !important;
+	background-color: #000000 !important;
 }
 
 ul#errors-bar {
@@ -21,6 +21,7 @@ ul#errors-bar li {
 	
 div#wcfe-body {
 	margin-top: 19px;
+	color: white;
 }
 .wcfe-vars-group {
 	margin-left: 5px;
@@ -28,14 +29,6 @@ div#wcfe-body {
 .field-tip {
 	margin:0 0 0 246px;
 	color: #aaa;
-}
-div#help-box {
-	margin: 8px;
-	background-color: wheat;
-	padding: 5px 22px;
-	max-width: 410px;
-	position: absolute;
-	right: 0;
 }
 .field-error {
     margin-left: 35px;
@@ -54,9 +47,6 @@ fieldset strong {
 .checkbox-row p.field-tip {
 	display: inline;
 	margin-left: 0;
-}
-#wcfe-toolbox {
-	margin-top: 40px;
 }
 
 .field-row label, .checkbox-row label {
@@ -172,4 +162,26 @@ ul.wcfe-thickbox-errors-list {
     color: red;
     background-color: #131111;
     display: none;
+}
+
+.wcfe-task-button {
+    font-size: 15px;
+    font-family: Arial,sans-serif;
+    padding: 3px 28px;
+    border-color: #173D61;
+    background-color: #0B3E6F !important;
+    float: left;
+    margin-right: 5px;
+    color: white;
+    margin-top: 19px;
+}
+
+
+/* PREVIEW */
+#config-file-content 
+{
+	width: 99%; 
+	height:800px; 
+	margin-top: 10px; 
+	font-size: 18px;
 }

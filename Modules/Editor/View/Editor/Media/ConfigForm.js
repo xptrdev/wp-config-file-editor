@@ -20,7 +20,7 @@
 		* 
 		* @type WCFEEditorServices
 		*/
-		var editorSrvs = new WCFEEditorServices();
+		var editorSrvs = new WCFEEditorServices( 'configFileFields' );
 		
 		/**
 		* put your comment there...
@@ -114,16 +114,6 @@
 			
 			// Submit form
 			formEle.submit();
-			
-		};
-		
-		/**
-		* put your comment there...
-		* 
-		*/
-		var updateConfigFile = function()
-		{
-			submitConfigFileEditorForm( 'Save' );
 			
 		};
 

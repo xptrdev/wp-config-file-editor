@@ -314,7 +314,7 @@ class EditorModel extends PluginModel {
 		$configFilePath = ABSPATH . 'wp-config.php';
 		
 		# Check config file permissions
-		if ( is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
+		if ( ! is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
 		{
 			$this->addError( "Config file is not writable: {$configFilePath}" );
 			

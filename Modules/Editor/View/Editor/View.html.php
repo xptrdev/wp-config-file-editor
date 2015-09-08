@@ -16,9 +16,33 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 * 
 */
 class EditorHTMLView extends TemplateView {
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $actionsRoute = array();
 	
+	/**
+	* put your comment there...
+	* 
+	* @var \WCFE\Libraries\ResStorage
+	*/
 	private $resFactory;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var DashboardScriptsQueue
+	*/
 	private $scriptsQueue;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var DashboardStylesQueue
+	*/
 	private $stylesQueue;
 	
 	/**
@@ -27,7 +51,7 @@ class EditorHTMLView extends TemplateView {
 	*/
 	protected function initialize() {
 		
-		# Resource factory
+		# ENQUEUE SCRIPT and STYLES
 		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
 		
 		# Scripts and Styles queues
@@ -63,7 +87,19 @@ class EditorHTMLView extends TemplateView {
 	*/
 	private function enqueueIndexResources()
 	{
+		
+		# Enqueue specifiec STYLE AND JS
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
+		
+		# Actions route
+		$this->setActionsRoute( array
+		(
+			'createSecureKey',
+			'preUpdate',
+			'validateForm',
+			'postUpdate',
+			'updateConfigFile',
+		) );
 	}
 
 	/**
@@ -73,7 +109,8 @@ class EditorHTMLView extends TemplateView {
 	private function enqueuePreviewResources()
 	{
 		
-		# ACE Editor
+		# Enqueue specifiec STYLE AND JS
+		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEditor' ) );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEExtSearchBox' ) );
@@ -84,6 +121,31 @@ class EditorHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\RawView' ) );
 		
+		# Actions route
+		$this->setActionsRoute( array
+		(
+			'preUpdate',
+			'postUpdate',
+			'updateRawConfigFile',
+		) );
+		
 	}
 	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $actionsList
+	*/
+	private function & setActionsRoute( $actionsList )
+	{
+		
+		$serviceRouter =& $this->router()->findRouter( 'Editor', 'editorService' );
+		
+		foreach ( $actionsList as $actionName )
+		{
+			$this->actionsRoute[ $actionName ] = (string) $serviceRouter->routeAction( $actionName );
+		}
+		
+		return $this;
+	}
 }

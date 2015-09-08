@@ -20,7 +20,7 @@
 		* 
 		* @type WCFEEditorServices
 		*/
-		var editorSrvs = new WCFEEditorServices();
+		var editorSrvs = new WCFEEditorServices( 'rawConfigFile' );
 		
 		/**
 		* put your comment there...
@@ -40,53 +40,30 @@
 		*/
 		var confirmSave = function() 
 		{
+
+			var configFileContent = rawEditor.getSession().getValue();
 			
-			// This is important before serializing form data
-			setTask( 'Validate' );
+			// Validate config form
 			
-			var formData = formEle.serializeObject();
-			
-			// Validate form parameters through AJAX
-			editorSrvs.makeCall( editorSrvs.getActionRoute( 'validateForm' ), formData ).done(
-			
-				function( isValid ) {
-					
-					// If not valid post with valid task so user
-					// can see error messages for each field!
-					if ( ! isValid )
-					{
-						submitConfigFileEditorForm( 'Validate' );
-						
-						return false;
-					}
+			if ( ! configFileContent )
+			{
+				alert( 'Config File cannot be empty!!!' );
 				
-					editorSrvs.updateConfigFile( 'updateConfigFile' );
+				return false;
+			}
 			
-				}
-			);
+			if ( configFileContent.indexOf( '<?php' ) != 0 )
+			{
+				alert( 'Config file should always start with <?php TAG!!!!' );
+
+				return false;
+		 	}
 			
-		};
-	
-		/**
-		* put your comment there...
-		* 
-		* @param task
-		*/
-		var submitConfigFileEditorForm = function(task)
-		{
+			// Update
 			
-			// Submit form
-			formEle.submit();
+			var formData = { 'rawConfigFile[configFileContent]' : configFileContent };
 			
-		};
-		
-		/**
-		* put your comment there...
-		* 
-		*/
-		var updateConfigFile = function()
-		{
-			submitConfigFileEditorForm( 'Save' );
+			editorSrvs.updateConfigFile( 'updateRawConfigFile', formData );
 			
 		};
 
@@ -99,7 +76,7 @@
 			//formEle = $( '#wcfe-config-editor-form' );
 			
 			// Confirm SAVE
-			//$( '#wcfe-editor-form-save' ).click( $.proxy( confirmSave, this ) );
+			$( '#wcfe-raw-editor-save' ).click( $.proxy( confirmSave, this ) );
 
 			// Ace Editor
 			rawEditor =  ace.edit( 'config-file-content' );
@@ -107,13 +84,15 @@
 			rawEditor.setTheme( 'ace/theme/chaos' );
 			
 			// Syntax Highlights mode
-			var php = ace.require( "ace/mode/php" ).Mode;
+			var php = ace.require( 'ace/mode/php' ).Mode;
 		  rawEditor.getSession().setMode( new php() );
 		  
 		  // auto complete
-			rawEditor.setOptions({
-			    enableBasicAutocompletion: true
-			});
+			rawEditor.setOptions( 
+			{
+			  enableBasicAutocompletion: true,
+			  showPrintMargin : false
+			} );
 
 		};
 	

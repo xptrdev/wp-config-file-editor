@@ -7,6 +7,7 @@ namespace WCFE\Modules\Editor\Controller\EditorService;
 
 # Imoprts
 use WPPFW\MVC\Controller\ServiceController;
+use WCFE\Modules\Editor\Model\Forms;
 
 /**
 * 
@@ -142,6 +143,42 @@ class EditorServiceController extends ServiceController {
 	*/
 	public function updateRawConfigFileAction() 
 	{
+		
+		# Check access
+		if ( ! $this->_checkPermission() ) 
+		{
+			
+			return;
+		}
+		
+		# Get model
+		$model =& $this->getModel( 'Editor' );
+		$form = new Forms\RawConfigFileForm();
+		$result = array();
+	
+		# Fill form with value
+		$formValues = array
+		( 
+			'rawConfigFile' => filter_input( INPUT_POST, 'rawConfigFile', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY ) 
+		);
+		
+		$form->setValue( $formValues );
+		
+		# Load submitted raw config file 
+		$model->setConfigFileContent( $form->get( 'configFileContent' )->getValue() );
+		
+		# Save
+		if ( ! $model->saveConfigFile() )
+		{
+			
+			$result[ 'errors' ] = $model->getErrors();
+			
+			# avoid displayed error when redirected by making normal requetss
+			$model->clearErrors();
+			
+		}
+	
+		return $result;
 		
 	}
 

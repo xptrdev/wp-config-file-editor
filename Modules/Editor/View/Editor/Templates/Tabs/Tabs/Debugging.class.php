@@ -33,6 +33,6 @@ class DebuggingOptionsTab extends FieldsTab {
 	* 
 	* @var mixed
 	*/
-	protected $title = 'Development';
+	protected $title = 'Developer';
 	
 }
