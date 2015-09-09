@@ -69,13 +69,12 @@ fieldset strong {
 
 a.secure-key-generator-key {
 	display: inline-block;
-	width: 24px;
+	width: 22px;
 	position: absolute;
-	height: 24px;
-	background-color: red;
+	height: 22px;
 	font-size: 0;
 	margin: 3px 0 0 5px;
-	background-image: url('../Images/cadenas.png');
+	background-image: url('Images/kgpg_key1.png');
 }
 #wcfe-body input[type="text"].secure-key-field {width: 540px;}
 
