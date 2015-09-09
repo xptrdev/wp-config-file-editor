@@ -16,7 +16,8 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 		<img class="ajax-loader-image" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/ajax-loader.gif'; ?>" width="32px" height="31px">
 		<div id="wcfe-restore-note">
 			<div class="warning-image">
-				<img width="95px" height="95px" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dialog-warning.png' ?>" alt="Warning" />
+				<img class="success-status-image" width="95px" height="95px" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/agt_action_success_256.png'; ?>" alt="Successed" />
+				<img class="warning-status-image" width="95px" height="95px" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dialog-warning.png' ?>" alt="Warning" />
 			</div>
 			<div id="wcfe-restore-section">
 				<p>Please keep this window opened until testing the site in another window as restore link cannot be obtained later.

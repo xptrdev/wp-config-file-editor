@@ -25,7 +25,7 @@
 		* put your comment there...
 		* 
 		*/
-		var updateButton, updateDoneButton;
+		var updateButton, updateDoneButton, wanringImage, successedImage;
 		
 		/**
 		* 
@@ -84,9 +84,11 @@
 					// Hide errors list as it might be filled from previous save operation!
 					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );				
 					
-					// Reset buttons state
+					// Reset state
 					updateButton.prop( 'disabled', '' );
 					updateDoneButton.prop( 'disabled', 'disabled' );
+					warningImage.show();
+					successedImage.hide();
 					
 					// Show update dialog
 					tb_show( 'UPDATING CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
@@ -122,6 +124,8 @@
 			updateButton = $( '#wcfe-update-config-file' ).click( $.proxy( onUpdateConfigFile, this ) );
 			updateDoneButton = $( '#wcfe-update-done' ).click( $.proxy( onUpdateDone, this ) );
 			
+			warningImage = $( '.warning-status-image' );
+			successedImage = $( '.success-status-image' );
 		};
 		
 		/**
@@ -215,8 +219,11 @@
 							// We're done, notify!!
 							updateCallback.resolve();
 							
-							// Enable done button
+							// Update UI state
 							updateDoneButton.prop( 'disabled', '' );
+							successedImage.show();
+							warningImage.hide();
+							
 						}
 					).complete(
 						function()

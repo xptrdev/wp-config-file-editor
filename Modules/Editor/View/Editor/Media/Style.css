@@ -267,6 +267,12 @@ td.help-label-text {
 {
 	display: none;
 }
+
+.success-status-image
+{
+	display: none;
+}
+
 /* PREVIEW */
 #config-file-content 
 {
