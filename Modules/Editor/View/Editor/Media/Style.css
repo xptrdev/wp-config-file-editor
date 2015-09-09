@@ -131,6 +131,20 @@ div#wcfe-confirm-save-message-dialog p {
     width: 472px;
     list-style-type: disc;
 }
+#wcfe-update-config-file-warning-notes ul 
+{
+	padding-left: 20px;	
+	list-style-type: circle;
+	margin-top: 11px;
+}
+
+#wcfe-update-config-file-warning-notes ul.done-button-note
+{
+  background-color: #723030;
+  width: 404px;
+  padding: 14px 10px 9px 26px;
+}
+
 #wcfe-thickbox-errors-list {
   list-style-type: disc;
   padding: 11px 49px;
