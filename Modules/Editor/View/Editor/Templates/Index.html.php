@@ -42,4 +42,4 @@ $router =& $this->router();
 </div>
 
 <?php // Editor Services Template ?>
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html'; ?>
+<?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>

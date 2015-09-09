@@ -33,6 +33,13 @@ class EmergencyRestore
 	* 
 	* @var mixed
 	*/
+	private $confirmed;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	private $contentDir;
 	
 	/**
@@ -40,8 +47,22 @@ class EmergencyRestore
 	* 
 	* @var mixed
 	*/
-	private $backupDataFile;
+	protected $backupDataFile;
 	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $backupFilePath;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $dataFilePath;
+
 	/**
 	* put your comment there...
 	* 
@@ -85,8 +106,9 @@ class EmergencyRestore
 	* put your comment there...
 	* 
 	*/
-	public function & restore() 
+	public function & confirm()
 	{
+		
 		# load backup data 
 		
 		$dataFileName = self::BACKUP_DATA_FILE_NAME;
@@ -106,6 +128,7 @@ class EmergencyRestore
 			
 			$this->contentDir => array
 			(
+				'',
 				self::BACKUP_DATA_FILE_NAME,
 				self::BACKUP_FILE_NAME
 			)
@@ -117,9 +140,9 @@ class EmergencyRestore
 			
 			foreach ( $files as $file )
 			{
-				if ( ! file_exists( $file ) ) 
+				if ( ! file_exists( $baseDir . DIRECTORY_SEPARATOR . $file ) ) 
 				{
-					throw new \Exception( 'Invalid file/path specified' );
+					throw new \Exception( "Invalid file/path specified {$file}" );
 				}				
 			}
 			
@@ -127,49 +150,79 @@ class EmergencyRestore
 		
 		# Check Data file secure, generatng hash from data file content
 		# must be equal to the passed one
-		$dataFilePath = $this->contentDir . DIRECTORY_SEPARATOR . self::BACKUP_DATA_FILE_NAME;
+		$this->dataFilePath = $this->contentDir . DIRECTORY_SEPARATOR . self::BACKUP_DATA_FILE_NAME;
+		$dataFileContent = file_get_contents( $this->dataFilePath );
 		
-		if ( md5( file_get_contents( $dataFilePath ) ) != $this->dataFileSecure )
+		if ( ( md5( $dataFileContent ) != $this->dataFileSecure ) ||
+				 ( strpos( $dataFileContent, 'WCFE\Modules\Editor\Model\EmergencyRestore' ) === false ) )
 		{
+			
 			throw new \Exception( 'Access Denied!! Invalid Data file!!!!!!!!!!!!' );
+			
 		}
 		
-		
 		# Load data file
-		$this->backupDataFile = require $dataFilePath;
+		$this->backupDataFile = require $this->dataFilePath;
 		
 		if ( ! $this->backupDataFile || ! is_array( $this->backupDataFile ) || empty( $this->backupDataFile ) ) 
 		{
-			throw new \Exception( 'No backup available to be restored' );
+			throw new \Exception( 'Backup data cannot be read!!' );
 		}
 		
-		# Validate passed parameters
-		if ( 	( $this->dataFileSecure[ 'secureKey' ] 	!= $this->secureKey ) || 
-			 		( $this->dataFileSecure[ 'absPath' ] 		!= $this->absPath )  	||
-			 		( $this->dataFileSecure[ 'contentDir' ] != $this->contentDir ) )
+		# Confirm passed parameters
+		if ( 	( $this->backupDataFile[ 'secureKey' ] 	!= $this->secureKey ) || 
+			 		( $this->backupDataFile[ 'absPath' ] 		!= $this->absPath )  	||
+			 		( $this->backupDataFile[ 'contentDir' ] != $this->contentDir ) )
 		{
 			
-			throw neww \Exception( 'Access Denied!! Invalid parameters specified!!!!!!!!' );
+			throw new \Exception( 'Access Denied!! Invalid parameters specified!!!!!!!!' );
 		}
 		
 		# Validate backup file secure
-		$backupFilePath = $this->contentDir . DIRECTORY_SEPARATOR . self::BACKUP_FILE_NAME;
+		$this->backupFilePath =  $this->backupDataFile[ 'contentDir' ] . DIRECTORY_SEPARATOR . self::BACKUP_FILE_NAME;
 		
-		if ( 	! file_exists( $backupFilePath ) || 
-					md5( file_get_contents( $backupFilePath ) != $this->dataFileSecure[ 'backupFileHash' ] ) )
+		if ( 	! file_exists( $this->backupFilePath ) || 
+					( md5( file_get_contents( $this->backupFilePath ) ) != $this->backupDataFile[ 'backupFileHash' ] ) ) 
 		{
 			throw new \Exception( 'Access Denied!!! Invalid Backup specified!!!!!' );
 		}
 		
-		# Check if backup is not yet expired
-		if ( ( $this->dataFileSecure[ 'timeCreated' ] + $this->expiresInterval ) >= time() )
-		{
-			throw new \Exception( 'Backup Expired!!!!!' );
-		}
+		$this->confirmed = true;
 		
+		return $this;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & delete()
+	{
+		# Delete backup and data file
+		unlink( $this->dataFilePath );
+		unlink( $this->backupFilePath );
+		
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function isConfirmed()
+	{
+		return $this->confirmed;
+	}
+	
+	/**      
+	* put your comment there...
+	* 
+	*/
+	public function & restore() 
+	{
 		
 		# Restore backup
-		$backupFile = require $backupFilePath;
+		$backupFile = require $this->backupFilePath;
 		$configFilePath = $this->absPath . DIRECTORY_SEPARATOR . 'wp-config.php';
 		
 		if ( ! file_put_contents( $configFilePath, base64_decode( $backupFile[ 'content' ] ) ) ) 
@@ -177,11 +230,26 @@ class EmergencyRestore
 			throw new \Exception( 'Could not write to config file!!!' );
 		}
 		
-		# Delete backup and data file
-		unlink( $dataFilePath );
-		unlink( $backupFilePath );
+		return $this;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & validate()
+	{
 		
-		return; # We're done!!!!!
+		# Check if backup is not yet expired
+		if ( ( $this->backupDataFile[ 'timeCreated' ] + $this->expiresInterval ) <= time() )
+		{
+			
+			# MAY BE: Delete backup here!!
+			
+			throw new \Exception( 'Backup Expired!!!!!' );
+		}
+		
+		return $this;
 	}
 	
 }

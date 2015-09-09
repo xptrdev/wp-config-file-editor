@@ -18,11 +18,17 @@ $data = array();
 $data[ 'secureKey' ] 	= '<?php echo $secureKey ?>';
 $data[ 'backupFileHash' ] 	= '<?php echo $backupFileHash ?>';
 
-$data[ 'absPath' ] 	= '<?php echo ABSPATH ?>';
+$data[ 'absPath' ] 	= '<?php echo $cleanAbsPath ?>';
 $data[ 'contentDir' ] 	= '<?php echo $contentDir ?>';
 
 $data[ 'timeCreated' ] 	= <?php echo time() ?>;
-<?php // The private key never exposed outside. Its just only for generating unique hash for data file. IMPORANT KEY IN FACT!! ?>
-$data[ 'privateKey' ] = '<?php echo wp_generate_password( 256, true, true ) ?>';
+
+<?php 
+/* The private key never exposed outside. 
+* Its just only for making this file content RANDOM and therefore generating 
+* different MD5 hash for file content to be validated when restored 
+*/
+?>
+$data[ 'privateKey' ] = '<?php echo wp_generate_password( 512, true, true ) ?>';
 
 return $data;

@@ -11,7 +11,7 @@ echo "<?php\n\n";
 ?>
 # No direct access
 $secureSrcClassName  = 'WCFE\Modules\Editor\Model\EmergencyRestore';
-( class_exists( $secureSrcClassName ) && ( get_class( $this ) == $secureSrcClassName ) && $this->authorized() ) or die( 'Access Denied' );
+( class_exists( $secureSrcClassName ) && ( get_class( $this ) == $secureSrcClassName ) && $this->isConfirmed() ) or die( 'Access Denied' );
 
 
 return array( 'content' => '<?php echo $configFileContent ?>' );

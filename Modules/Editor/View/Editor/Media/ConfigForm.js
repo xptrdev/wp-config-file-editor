@@ -54,7 +54,7 @@
 						return false;
 					}
 				
-					editorSrvs.updateConfigFile( 'updateConfigFile' );
+					editorSrvs.updateConfigFile( 'updateConfigFile', formData );
 			
 				}
 			);

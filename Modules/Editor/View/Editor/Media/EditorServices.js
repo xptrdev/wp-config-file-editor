@@ -45,9 +45,9 @@
 					}
 					
 					// Fill update dialog with restore backup parameters
-					$( '.wcfe-restore-parameters .wcfe-restore-link' )
+					$( '.wcfe-restore-link' )
 					
-					.text( response.restoreUrl );
+					.prop( 'href', response.restoreUrl );
 					
 					// Hide errors list as it might be filled from previous save operation!
 					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );				

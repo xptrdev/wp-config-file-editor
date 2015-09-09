@@ -153,18 +153,7 @@ class EditorModel extends PluginModel {
 		$configFileContent = base64_encode( file_get_contents( ABSPATH . DIRECTORY_SEPARATOR . 'wp-config.php' ) );
 		$secureKey = md5( uniqid( ) );
 		$backupFilePath = $contentDir . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_FILE_NAME;
-		$backupFileHash = md5( $configFileContent );
-		
-		# Create backup data file
-		ob_start();
-		require 'Editor' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
-		
-		if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
-		{
-			$this->addError( "Could not create backup Data file: {$dataFilePath}" );
-			
-			return false;
-		}
+		$cleanAbsPath = substr( ABSPATH, 0, strlen( ABSPATH ) - 1 );
 				
 		# Create backup file
 		ob_start();
@@ -177,10 +166,23 @@ class EditorModel extends PluginModel {
 			return false;
 		}		
 		
+		$backupFileHash = md5( file_get_contents( $backupFilePath ) );
+		
+		# Create backup data file
+		ob_start();
+		require 'Editor' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
+		
+		if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
+		{
+			$this->addError( "Could not create backup Data file: {$dataFilePath}" );
+			
+			return false;
+		}
+	
 		# Returns Restore Url
 		$restoreUrlParams = array
 		(
-			'absPath' =>  ABSPATH,
+			'absPath' => $cleanAbsPath, /* Remove extra slash at the end! */
 			'contentDir' => $contentDir,
 			'secureKey' => $secureKey,
 			'dataFileSecure' => md5( file_get_contents( $dataFilePath ) )

@@ -79,7 +79,7 @@ class Tabs {
 		$this->form =& $form;
 		# DOMDocument to hold tab component
 		$this->tab = new \DOMDocument();
-		$this->tab->loadXML(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Tabs.html'));
+		$this->tab->loadXML(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Tabs.html.php'));
 		$this->xpath = new \DOMXPath($this->tab);
 		# Find Navigatpr and Tabs ELement
 		$this->navigatorElement = $this->xpath->query('//*[@id="wcfe-options-tab-navigator"]')->item(0);

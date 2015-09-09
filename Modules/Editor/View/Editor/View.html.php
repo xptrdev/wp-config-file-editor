@@ -23,6 +23,13 @@ class EditorHTMLView extends TemplateView {
 	* @var mixed
 	*/
 	protected $actionsRoute = array();
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $extraExtension = '.php';
 	
 	/**
 	* put your comment there...
