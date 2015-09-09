@@ -20,7 +20,7 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 			</div>
 			<div id="wcfe-restore-section">
 				<p>Please keep this window opened until testing the site in another window as restore link cannot be obtained later.
-				Click <a href="#" class="wcfe-restore-link">Restore Backup</a> to discard all changes you made in the last SAVE process</p>
+				Click <a target="_blank" href="#" class="wcfe-restore-link">Restore Backup</a> to discard all changes you made in the last SAVE process</p>
 			</div>
 			<ul id="wcfe-update-config-file-warning-notes">
 			  <li>Current wp-config.php file has been back-ed up to be restored later if needed</li>
@@ -34,7 +34,7 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 				<li>This is risky process and might stop the site</li>
 				<li>This process never touch your Database or any file except wp-config.php file, in case the site is stopped you just need to revert wp-config.php file back to old values</li>
 				<li>
-					Please don't keep if you care about one of the following reasons:
+					Please don't keep if you care about one of the following:
 					<ul>
 				    <li>wp-config.php contains custom code -- not originally bundled with normal Wordpress installation</li>
 						<li>You're not 100% positive of the values you changed</li>
