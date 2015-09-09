@@ -46,14 +46,36 @@ class EditorModule extends ServiceModule {
 	* @param PluginBase $plugin
 	* @param mixed $services
 	*/
-	protected function initializeServices(PluginBase & $plugin, & $services) {
-		# Viewer page service
-		$services[self::EDITOR_SERVICE_KEY] = new MenuService($plugin, array(
-			self::EDITOR_SERVICE_OBJECT_KEY => new Editor\MenuPages\Editor\Page()
-		));
-		$services[self::EDITOR_AJAX_SERVICE_KEY] = new AjaxService($plugin, array(
-			self::EDITOR_AJAX_SERVICE_OBJECT_KEY => new Editor\Services\Editor\Ajax()
-		));
+	protected function initializeServices(PluginBase & $plugin, & $services) 
+	{
+		
+		# Editor Form Dashboard page
+		$services[ self::EDITOR_SERVICE_KEY ] = new MenuService
+		(
+			$plugin, array
+			(
+				self::EDITOR_SERVICE_OBJECT_KEY => new Editor\MenuPages\Editor\Page()
+				
+			)
+		);
+		
+		# Add Network Dashboard menu in MULTISITES installation
+		# or add administrator menu page in normal installation
+		if ( is_multisite() ) 
+		{
+			$services[ self::EDITOR_SERVICE_KEY ]->setHook( 'network_admin_menu' );
+		}
+		
+		# Ajax endpoint
+		$services[ self::EDITOR_AJAX_SERVICE_KEY ] = new AjaxService
+		(
+			$plugin,
+			array
+			(
+				self::EDITOR_AJAX_SERVICE_OBJECT_KEY => new Editor\Services\Editor\Ajax()
+			)
+		);
+		
 	}
 	
 	/**

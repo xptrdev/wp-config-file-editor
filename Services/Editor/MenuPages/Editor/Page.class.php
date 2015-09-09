@@ -12,7 +12,7 @@ use WPPFW\Services\Dashboard\Menu\MenuPage;
 * 
 */
 class Page extends MenuPage {
-	
+	 
 	/**
 	* put your comment there...
 	* 
@@ -24,10 +24,10 @@ class Page extends MenuPage {
 		( 
 			'WPConfig File Editor', 
 			'Wordpress Config File Editor', 
-			'administrator', 
+			( is_multisite() ? 'manage_network' : 'administrator' ),
 			WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dashboard-menu-icon.png'
 		);
 		
 	}
-
+ 
 }
