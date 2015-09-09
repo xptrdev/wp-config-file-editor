@@ -28,7 +28,7 @@ class MemoryLimit extends Forms\Fields\FormStringField implements IWPConfigFileF
 	* 
 	*/
 	public function read() {
-		$this->setValue( defined( 'MEMORY_LIMIT' ) ? MEMORY_LIMIT : null );
+		$this->setValue( defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : null );
 	}
 
 }

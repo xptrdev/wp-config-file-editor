@@ -26,7 +26,7 @@ class MemoryLimit extends Constant {
 	* 	
 	* @var mixed
 	*/
-	protected $name = 'MEMORY_LIMIT';
+	protected $name = 'WP_MEMORY_LIMIT';
 
 	/**
 	* put your comment there...

@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Max memory Limits';
+		return 'When in the administration area, the memory can be increased or decreased from the Memory Limit by defining Max Memory Limit.';
 	}
 
 }

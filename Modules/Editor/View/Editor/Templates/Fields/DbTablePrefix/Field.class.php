@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Use a unique identifier to be used at the begining of each Database table name. Using this its possible to install multiple application under one database';
+		return 'The value placed in the front of your database tables. Change the value if you want to use something other than wp_ for your database prefix. Typically this is changed if you are installing multiple WordPress blogs in the same database.';
 	}
 
 }

@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Set Debugging mode to one causes PHP and Wordpress to display errors used for debugging Wordpress while development';
+		return 'Added in WordPress Version 2.3.1, controls the reporting of some errors and warnings';
 	}
 
 	/**

@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'LANG LAND DIR DIR';
+		return 'Defines what directory the Language .mo file resides. If Language Directory is not defined WordPress looks first to wp-content/languages and then wp-includes/languages for the .mo defined by Language file.';
 	}
 
 }

@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Show Tools->Network Setup page from which you can configure Multi Site installation';
+		return 'is a feature introduced in WordPress Version 3.0 to enable multisite functionality previously achieved through WordPress MU. If this setting is absent from wp-config.php it defaults to false.';
 	}
 
 	/**

@@ -78,7 +78,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Database Character set';
+		return 'Was made available to allow designation of the database character set (e.g. tis620 for TIS620 Thai) to be used when defining the MySQL database tables.';
 	}
 
 }

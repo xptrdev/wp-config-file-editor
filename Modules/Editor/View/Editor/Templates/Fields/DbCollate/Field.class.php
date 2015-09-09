@@ -78,7 +78,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Database collate used for defining algorithms when querying the database and comparing data';
+		return 'As of WordPress Version 2.2, DB_COLLATE was made available to allow designation of the database collation (i.e. the sort order of the character set). In most cases, this value should be left blank (null) so the database collation will be automatically assigned by MySQL based on the database character set specified by Character Set';
 	}
 
 	

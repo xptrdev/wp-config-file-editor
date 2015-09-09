@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Memory Limits';
+		return 'Allows you to specify the maximum amount of memory that can be consumed by PHP. This setting may be necessary in the event you receive a message such as "Allowed memory size of xxxxxx bytes exhausted".';
 	}
 
 }

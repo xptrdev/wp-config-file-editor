@@ -28,7 +28,7 @@ class MaxMemoryLimit extends Forms\Fields\FormStringField implements IWPConfigFi
 	* 
 	*/
 	public function read() {
-		$this->setValue( defined( 'MAX_MEMORY_LIMIT' ) ? MAX_MEMORY_LIMIT : null );
+		$this->setValue( defined( 'WP_MAX_MEMORY_LIMIT' ) ? WP_MAX_MEMORY_LIMIT : null );
 	}
 
 }

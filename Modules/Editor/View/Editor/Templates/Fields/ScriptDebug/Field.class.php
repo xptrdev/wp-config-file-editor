@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Set Script Debug mode ON to force Wordpress to link unminified JavaScript files';
+		return 'If you are planning on modifying some of WordPress built-in JavaScript or Cascading Style Sheets:';
 	}
 
 	/**

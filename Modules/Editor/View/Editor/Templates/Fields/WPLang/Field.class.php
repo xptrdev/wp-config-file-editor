@@ -27,7 +27,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Choose Wordpress language';
+		return 'Defines the name of the language translation (.mo) file.';
 	}
 
 	/**

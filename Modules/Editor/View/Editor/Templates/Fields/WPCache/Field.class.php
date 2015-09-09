@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'CACHE CACHE CACHE';
+		return 'If true, includes the wp-content/advanced-cache.php script, when executing wp-settings.php.';
 	}
 
 	/**
