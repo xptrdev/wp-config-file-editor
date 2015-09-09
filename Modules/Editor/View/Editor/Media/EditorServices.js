@@ -22,6 +22,38 @@
 		var securityToken;
 		
 		/**
+		* put your comment there...
+		* 
+		*/
+		var updateButton, updateDoneButton;
+		
+		/**
+		* 
+		*/
+		this.postUpdate = function()
+		{
+			
+			return this.makeCall( this.getActionRoute( 'postUpdate' ) ).done(
+			
+				/**
+				* 
+				*/
+			  function( )
+			  {
+					
+					// Close dialog
+					tb_remove();
+					
+					// Refresh page
+					window.location.reload();
+					
+			  }
+			
+			);
+			
+		};
+	
+		/**
 		* 
 		*/
 		this.preUpdate = function()
@@ -51,6 +83,10 @@
 					
 					// Hide errors list as it might be filled from previous save operation!
 					$( '#wcfe-confirm-save-message-dialog .wcfe-thickbox-errors-list' ).css( 'display', 'none' );				
+					
+					// Reset buttons state
+					updateButton.prop( 'disabled', '' );
+					updateDoneButton.prop( 'disabled', 'disabled' );
 					
 					// Show update dialog
 					tb_show( 'UPDATING CONFIG FILE WARNING!!!', '#TB_inline?inlineId=wcfe-confirm-save-message&width=650&height=400' );
@@ -83,7 +119,8 @@
 			securityToken = $( 'input[name="' + formName + '[stoken]"]' ).val();
 			
 			// Update config file button clicked
-			$( '#wcfe-update-config-file' ).click( $.proxy( onUpdateConfigFile ,this ) );
+			updateButton = $( '#wcfe-update-config-file' ).click( $.proxy( onUpdateConfigFile, this ) );
+			updateDoneButton = $( '#wcfe-update-done' ).click( $.proxy( onUpdateDone, this ) );
 			
 		};
 		
@@ -113,8 +150,20 @@
 			$( '#TB_overlay').unbind() 
 			$( document ).unbind( 'keydown.thickbox' );
 			
+			// Diable update button after it has been pressed
+			updateButton.prop( 'disabled', 'disabled' );
+			
 			// Update
 			preUpdateCallback.resolve();
+		};
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var onUpdateDone = function()
+		{
+			this.postUpdate().done();
 		};
 		
 		/**
@@ -132,6 +181,9 @@
 				// This will be called when Warning Dialog Update button is pressed
 				function()
 				{
+					
+					// Show progress
+					var progressImg = $( '.ajax-loader-image' ).show();
 					
 					this.makeCall( this.getActionRoute( actionName ), data ).done(
 					
@@ -154,13 +206,22 @@
 								// Scroll to top for errors list
 								$( '#TB_ajaxContent' ).scrollTop( 0 );
 								
+								// Enable update button
+								updateButton.prop( 'disabled', 'disabled' );
+								
 								return false;
 							}														
 							
 							// We're done, notify!!
 							updateCallback.resolve();
 							
-							 
+							// Enable done button
+							updateDoneButton.prop( 'disabled', '' );
+						}
+					).complete(
+						function()
+						{
+							progressImg.hide();
 						}
 					);
 			
@@ -171,7 +232,7 @@
 			return updateCallback;
 		};
 		
-		$( initialize );
+		$( $.proxy( initialize, this ) );
 		
 	};
 	

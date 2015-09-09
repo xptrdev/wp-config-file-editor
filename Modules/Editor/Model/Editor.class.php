@@ -197,6 +197,45 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function deleteEmergencyBackup()
+	{
+		
+		$contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName;
+		
+		if ( ! file_exists( $contentDir ) )
+		{
+			
+			$this->addError( 'Content directory doesn\'t exists' );
+			
+			return false;
+		}
+		
+		# Delete backup files
+		$filesToDelete = array
+		(
+			EmergencyRestore::BACKUP_DATA_FILE_NAME,
+			EmergencyRestore::BACKUP_FILE_NAME,
+		);
+		
+		foreach ( $filesToDelete as $fileName )
+		{
+			
+			$filePath = $contentDir . DIRECTORY_SEPARATOR . $fileName;
+			
+			if ( file_exists( $filePath ) )
+			{
+				unlink( $filePath );
+			}
+			
+		}
+		
+		return true;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function generateConfigFile() {
 		# Generate config file 
 		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $this->fieldsMap );

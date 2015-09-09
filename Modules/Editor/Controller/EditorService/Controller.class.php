@@ -41,6 +41,29 @@ class EditorServiceController extends ServiceController {
 	* put your comment there...
 	* 
 	*/
+	public function postUpdateAction()
+	{
+		
+		# Check permission
+		if ( ! $this->_checkPermission() )
+		{
+			return null;			
+		}
+		
+		# Delete backup
+		$model =& $this->getModel( 'Editor' );
+		
+		$model->deleteEmergencyBackup();
+		
+		$model->clearErrors();
+		
+		return true;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function preUpdateAction() 
 	{
 		

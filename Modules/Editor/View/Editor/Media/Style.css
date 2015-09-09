@@ -124,20 +124,22 @@ div#wcfe-confirm-save-message-dialog p {
 
 #wcfe-update-config-file-warning-notes
 {
-	height: 194px;
-  overflow: auto;
-  margin: 0;
-  padding: 0px 0 0 26px !important;
-  width: 422px;
-}
-div#wcfe-confirm-save-message-dialog ul {
+    height: 194px;
+    overflow: auto;
+    margin: 0;
+    padding: 0px 0 0 20px !important;
+    width: 472px;
     list-style-type: disc;
-    padding: 11px 49px;
+}
+#wcfe-thickbox-errors-list {
+  list-style-type: disc;
+  padding: 11px 49px;
 }
 
 #wcfe-restore-section {
     margin-bottom: 28px;
     color: red;
+    width: 543px;
 }
 #wcfe-restore-section p {
     font-size: 17px !important;
@@ -173,11 +175,20 @@ p.wcfe-restore-parameters {
 	border: none;
 }
 
-#wcfe-update-config-file {
-	background-color: transparent;
-  color: #EF160A;
-  border: 1px solid yellow;
-  padding: 1px 27px 4px;
+#wcfe-update-config-file, #wcfe-update-done {
+    background-color: transparent;
+    color: #EF160A;
+    padding: 1px 27px 4px;
+    border-color: #685553;
+}
+
+#wcfe-update-config-file:disabled, #wcfe-update-done:disabled
+{
+	color: #4B4545;
+}
+#wcfe-update-config-file
+{
+	margin-right: 5px;
 }
 
 #wcfe-errors-dialog 
@@ -192,9 +203,13 @@ p.wcfe-restore-parameters {
 }
 
 ul.wcfe-thickbox-errors-list {
-    color: red;
+color: #FFB300;
     background-color: #131111;
     display: none;
+    height: 67px;
+    padding: 10px 0 0 10px;
+    overflow: auto;
+    margin: 0;
 }
 
 .wcfe-task-button {
@@ -211,10 +226,11 @@ ul.wcfe-thickbox-errors-list {
 
 .warning-image
 {
-float: right;
-    width: 128px;
-    height: 123px;
-    margin-top: 112px;
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-top: 140px;
+    margin-right: -15px;
 }
 
 .help-box
@@ -236,6 +252,15 @@ float: right;
 td.help-label-text {
     width: 27%;
     color: white;
+}
+
+.ajax-loader-image
+{
+	display: none;
+	border: none;
+  position: absolute;
+  top: 56px;
+  right: 29px;
 }
 
 #wcfe-options-tab

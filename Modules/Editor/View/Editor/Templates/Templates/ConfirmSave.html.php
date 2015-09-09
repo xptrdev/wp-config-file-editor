@@ -13,10 +13,10 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 <div id="wcfe-confirm-save-message">
 	<div id="wcfe-confirm-save-message-dialog">
 		<ul class="wcfe-thickbox-errors-list"></ul>
+		<img class="ajax-loader-image" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/ajax-loader.gif'; ?>" width="32px" height="31px">
 		<div id="wcfe-restore-note">
-		
 			<div class="warning-image">
-				<img src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dialog-warning.png' ?>" alt="Warning" />
+				<img width="95px" height="95px" src="<?php echo WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dialog-warning.png' ?>" alt="Warning" />
 			</div>
 			<div id="wcfe-restore-section">
 				<p>Please keep this window opened until testing the site in another window as restore link cannot be obtained later.
@@ -46,4 +46,5 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 
 	</div>
 	<input type="button" id="wcfe-update-config-file" value="Update" />
+	<input type="button" id="wcfe-update-done" value="Done" />
 </div>
