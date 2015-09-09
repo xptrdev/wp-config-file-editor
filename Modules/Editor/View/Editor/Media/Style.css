@@ -86,6 +86,7 @@ a.secure-key-generator-key {
 #wcfe-options-tab {
 	width: 98%;
 	min-width: 700px;
+	margin-top: 32px;
 }
 
 .field-row, .checkbox-row {
@@ -287,6 +288,12 @@ td.help-label-text {
 	display: none;
 }
 
+.wcfe-support-forums-link
+{
+	float: right;
+  margin-right: 25px;
+  margin-top: -26px;
+}
 /* PREVIEW */
 #config-file-content 
 {

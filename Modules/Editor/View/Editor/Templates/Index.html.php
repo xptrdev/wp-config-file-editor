@@ -16,7 +16,7 @@ $router =& $this->router();
 
 ?>
 <div id="wcfe-body">
-
+  <a class="wcfe-support-forums-link" target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a>
 <?php if ($model->hasErrors()) : ?>
 	<ul id="errors-bar">
 <?php foreach ($model->getCleanErrors() as $errorMessage) : ?>
