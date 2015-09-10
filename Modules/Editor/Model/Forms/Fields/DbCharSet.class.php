@@ -28,7 +28,7 @@ class DbCharSet extends Forms\Fields\FormStringField implements IWPConfigFileFie
 	* 
 	*/
 	public function read() {
-		$this->setValue(DB_CHARSET);
+		$this->setValue( defined( 'DB_CHARSET' ) ? DB_CHARSET : null );
 	}
 
 }

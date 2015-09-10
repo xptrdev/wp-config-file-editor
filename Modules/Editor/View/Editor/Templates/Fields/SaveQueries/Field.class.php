@@ -4,7 +4,7 @@
 */
 
 # Define namespace
-namespace WCFE\Modules\Editor\View\Editor\Templates\Fields\ScriptDebug;
+namespace WCFE\Modules\Editor\View\Editor\Templates\Fields\SaveQueries;
 
 # Input field base
 use WCFE\Modules\Editor\View\Editor\Fields\CheckboxField;
@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getText() {
-		return 'Script Debugging';
+		return 'Save Queries';
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	protected function getTipText() {
-		return 'Force WordPress to use the "dev" versions of core CSS and Javascript files rather than the minified versions that are normally loaded. This is useful when you are testing modifications to any built-in .js or .css files. Default is false.';
+		return 'Saves the database queries to an array and that array can be displayed to help analyze those queries. When set to ON causes each query to be saved, how long that query took to execute, and what function called it.';
 	}
 
 	/**

@@ -28,7 +28,7 @@ class LoggedInSalt extends Forms\Fields\FormStringField implements IWPConfigFile
 	* 
 	*/
 	public function read() {
-		$this->setValue(LOGGED_IN_SALT);
+		$this->setValue( defined( 'LOGGED_IN_SALT' ) ? LOGGED_IN_SALT : null );
 	}
 
 }

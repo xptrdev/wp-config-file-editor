@@ -12,7 +12,7 @@ use WPPFW\Forms;
 /**
 * 
 */
-class WPDebug extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
+class SaveQueries extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
 	
 	/**
 	* put your comment there...
@@ -20,7 +20,7 @@ class WPDebug extends Forms\Fields\FormIntegerField implements IWPConfigFileFiel
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('WPDebug');
+		parent::__construct( 'SaveQueries' );
 	}
 
 	/**
@@ -28,7 +28,7 @@ class WPDebug extends Forms\Fields\FormIntegerField implements IWPConfigFileFiel
 	* 
 	*/
 	public function read() {
-		$this->setValue( defined( 'WP_DEBUG' ) ? WP_DEBUG : null );
+		$this->setValue( defined( 'SAVEQUERIES' ) ? SAVEQUERIES : null );
 	}
 
 }

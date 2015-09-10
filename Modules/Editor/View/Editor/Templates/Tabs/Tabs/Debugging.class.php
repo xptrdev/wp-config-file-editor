@@ -24,7 +24,10 @@ class DebuggingOptionsTab extends FieldsTab {
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
 			'WPDebug',
-			'ScriptDebug'
+			'WPDebugDisplay',
+			'WPDebugLog',
+			'ScriptDebug',
+			'SaveQueries',
 		)
 	);
 

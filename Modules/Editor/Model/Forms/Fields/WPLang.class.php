@@ -28,7 +28,7 @@ class WPLang extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	* 
 	*/
 	public function read() {
-		$this->setValue(WPLANG);
+		$this->setValue( defined( 'WPLANG' ) ? WPLANG : null );
 	}
 
 }

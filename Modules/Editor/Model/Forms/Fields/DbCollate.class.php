@@ -28,7 +28,7 @@ class DbCollate extends Forms\Fields\FormStringField implements IWPConfigFileFie
 	* 
 	*/
 	public function read() {
-		$this->setValue(DB_COLLATE);
+		$this->setValue( defined( 'DB_COLLATE' ) ? DB_COLLATE : null );
 	}
 
 }

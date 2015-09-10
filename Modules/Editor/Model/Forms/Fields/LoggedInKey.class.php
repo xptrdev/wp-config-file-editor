@@ -28,7 +28,7 @@ class LoggedInKey extends Forms\Fields\FormStringField implements IWPConfigFileF
 	* 
 	*/
 	public function read() {
-		$this->setValue(LOGGED_IN_KEY);
+		$this->setValue( defined( 'LOGGED_IN_KEY' ) ? LOGGED_IN_KEY : null );
 	}
 
 }

@@ -28,7 +28,7 @@ class AuthSalt extends Forms\Fields\FormStringField implements IWPConfigFileFiel
 	* 
 	*/
 	public function read() {
-		$this->setValue(AUTH_SALT);
+		$this->setValue( defined( 'AUTH_SALT' ) ? AUTH_SALT : null );
 	}
 
 }

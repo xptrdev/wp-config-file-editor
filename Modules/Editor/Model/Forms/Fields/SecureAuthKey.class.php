@@ -28,7 +28,7 @@ class SecureAuthKey extends Forms\Fields\FormStringField implements IWPConfigFil
 	* 
 	*/
 	public function read() {
-		$this->setValue(SECURE_AUTH_KEY);
+		$this->setValue( defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : null );
 	}
 
 }

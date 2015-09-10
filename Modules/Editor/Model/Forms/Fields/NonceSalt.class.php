@@ -28,7 +28,7 @@ class NonceSalt extends Forms\Fields\FormStringField implements IWPConfigFileFie
 	* 
 	*/
 	public function read() {
-		$this->setValue(NONCE_SALT);
+		$this->setValue( defined( 'NONCE_SALT' ) ? NONCE_SALT : null );
 	}
 
 }

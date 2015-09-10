@@ -28,7 +28,7 @@ class ScriptDebug extends Forms\Fields\FormIntegerField implements IWPConfigFile
 	* 
 	*/
 	public function read() {
-		$this->setValue( SCRIPT_DEBUG );
+		$this->setValue( defined( 'SCRIPT_DEBUG' ) ? SCRIPT_DEBUG : null );
 	}
 
 }

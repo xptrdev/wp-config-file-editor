@@ -52,7 +52,10 @@ class EditorModel extends PluginModel {
 		'NonceSalt',
 		
 		'WPDebug',
+		'WPDebugLog',
+		'WPDebugDisplay',
 		'ScriptDebug',
+		'SaveQueries',
 		
 		'WPLang',
 		'WPLangDir',

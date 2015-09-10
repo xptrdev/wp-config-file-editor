@@ -28,7 +28,7 @@ class DbPassword extends Forms\Fields\FormStringField implements IWPConfigFileFi
 	* 
 	*/
 	public function read() {
-		$this->setValue(DB_PASSWORD);
+		$this->setValue( defined( 'DB_PASSWORD' ) ? DB_PASSWORD : null );
 	}
 
 }

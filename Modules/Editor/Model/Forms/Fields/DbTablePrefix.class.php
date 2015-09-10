@@ -28,7 +28,7 @@ class DbTablePrefix extends Forms\Fields\FormStringField implements IWPConfigFil
 	* 
 	*/
 	public function read() {
-		$this->setValue($GLOBALS['table_prefix']);
+		$this->setValue( isset( $GLOBALS[ 'table_prefix' ] ) ? $GLOBALS[ 'table_prefix' ] : null );
 	}
 
 }

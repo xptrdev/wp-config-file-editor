@@ -28,7 +28,7 @@ class DbHost extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	* 
 	*/
 	public function read() {
-		$this->setValue(DB_HOST);
+		$this->setValue( defined( 'DB_HOST' ) ? DB_HOST : null );
 	}
 
 }

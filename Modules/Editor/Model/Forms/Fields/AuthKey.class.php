@@ -28,7 +28,7 @@ class AuthKey extends Forms\Fields\FormStringField implements IWPConfigFileField
 	* 
 	*/
 	public function read() {
-		$this->setValue(AUTH_KEY);
+		$this->setValue( defined( 'AUTH_KEY' ) ? AUTH_KEY : null );
 	}
 
 }

@@ -28,7 +28,7 @@ class SecureAuthSalt extends Forms\Fields\FormStringField implements IWPConfigFi
 	* 
 	*/
 	public function read() {
-		$this->setValue(SECURE_AUTH_SALT);
+		$this->setValue( defined( 'SECURE_AUTH_SALT' ) ? SECURE_AUTH_SALT : null );
 	}
 
 }
