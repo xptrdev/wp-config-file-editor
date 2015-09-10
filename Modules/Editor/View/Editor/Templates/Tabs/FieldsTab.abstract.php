@@ -16,7 +16,7 @@ abstract class FieldsTab extends Tab {
 	* 
 	* @var mixed
 	*/
-	protected $fields;
+	protected $fields = array();
 	
 	/**
 	* put your comment there...

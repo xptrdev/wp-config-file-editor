@@ -45,6 +45,13 @@ class DeferredExtender
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $uiContainers;
+	
+	/**
+	* put your comment there...
+	* 
 	* @param \WCFE\Plugin $wcfePlugin
 	* @param mixed $baseNs
 	* @param mixed $fields
@@ -114,6 +121,22 @@ class DeferredExtender
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $tabs
+	*/
+	public function _registerUIContainers( $list )
+	{
+		
+		foreach ( $this->uiContainers as $uiContainer )
+		{			
+			$list = array_merge( $list, EditorModel::makeClassesList( $uiContainer ) );
+		}
+		
+		return $list;
+	}
+	
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $fields
 	*/
 	public function _registerViewFields( $fields )
@@ -173,4 +196,24 @@ class DeferredExtender
 		
 		return $namespace;
 	}
+	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $list
+	*/
+	public function registerUIContainers( $list )
+	{
+		
+		$this->uiContainers = $list;
+		
+		# Register ui container hooks
+		foreach ( $list as $filterName => $names )
+		{
+			add_filter( $filterName, array( $this, '_registerUIContainers' ) );
+		}
+		
+		return $this;
+	}
+
 }
