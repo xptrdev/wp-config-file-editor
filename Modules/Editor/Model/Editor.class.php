@@ -18,6 +18,13 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	private $allFields = array();
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $configFileContent;
 	
 	/**
@@ -305,6 +312,8 @@ class EditorModel extends PluginModel {
 		
 		/////////////////////////////////////////////////////////////#$
 		
+		# Make all fields list from built in list and plugged list
+		$this->allFields = array_merge( $this->fieldsMap, $this->pluggedFields );
 		
 		# Make form core fields list
 		$fieldsList = self::makeClassesList( array( 'WCFE\Modules\Editor\Model\Forms\Fields' => $this->fieldsMap ) );
@@ -329,7 +338,7 @@ class EditorModel extends PluginModel {
 		
 		$form =& $this->getForm();
 		
-		foreach ( $this->fieldsMap as $fieldName ) 
+		foreach ( $this->allFields as $fieldName ) 
 		{
 			
 			# Load form values from defined constants
@@ -422,17 +431,21 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function & saveSubmittedVars() {
-		# Initiaize
+	public function & saveSubmittedVars() 
+	{
+
 		$form =& $this->getForm();
+		
 		# Set back for changes flag to true
 		$this->isBackForChange = true;
+		
 		# Save form fields to be used later by 
 		# Don't save all fields, just related to config file
-		$vars = array_intersect_key( $form->getValue(), array_flip( $this->fieldsMap ) );
-		# Save them
+		$vars = array_intersect_key( $form->getValue(), array_flip( $this->allFields ) );
+		
+		# Cache into model state to be used when getting back later
 		$this->savedVars = array( $form->getName() => $vars );
-		# Chain
+		
 		return $this;
 	}
 
