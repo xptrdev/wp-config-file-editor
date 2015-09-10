@@ -11,6 +11,13 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 */
 class WPLangDir extends Constant {
 
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = true;
+
   /**
   * put your comment there...
   * 
