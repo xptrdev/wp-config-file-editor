@@ -40,28 +40,21 @@ class Master {
 		# initialize
 		$this->form =& $form;
 		
-		# Define fields
-		$fields = array
-		(
-			'WCFE\Modules\Editor\Model\ConfigFile\Fields' => $fields
-		);
-		
-		# Make fields list
-		$fields = EditorModel::makeClassesList( $fields );
-		
 		# Create all fieldsw
 		foreach ( $fields as $fieldClass => $fieldName )
 		{
 			$this->fields[ $fieldName ] = new $fieldClass( $this, $form, $form->get( $fieldName ) );
 		}
 		
-		
 		# Allow fields to interact and to Controler each others 
 		# by making second iteration after constructions!!
 		foreach ( $this->fields as $field )
 		{
+			
 			$field->allReady();
-		}		
+			
+		}
+		
 	}
 	
 	/**

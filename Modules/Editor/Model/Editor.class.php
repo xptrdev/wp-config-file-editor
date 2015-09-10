@@ -93,6 +93,13 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	private $pluggedFields = array();
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $savedVars = array();
 	
 	/**
@@ -239,12 +246,25 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function generateConfigFile() {
-		# Generate config file 
-		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $this->fieldsMap );
-		# Set config file content.
+	public function generateConfigFile()
+	{
+		
+		# Prepare generator fields list
+		$fieldsList = self::makeClassesList( array( 'WCFE\Modules\Editor\Model\ConfigFile\Fields' => $this->fieldsMap ) );
+		
+		//////////// PLUGGABLE FIELDS LIST ///////////////#$
+		
+		$fieldsList = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_GENERATOR_FIELDS, $fieldsList );
+		
+		//////////////////////////////////////////////////#$
+		
+		# Get generator instance
+		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $fieldsList );
+		
+		# Save generated config file to model
 		$this->setConfigFileContent( (string) $configFile );
-		# Chain
+		
+		
 		return $this;
 	}
 
@@ -278,8 +298,25 @@ class EditorModel extends PluginModel {
 	*/
 	protected function initialize()
 	{
-		# Creating config form
-		$this->form = new Forms\ConfigFileForm( $this->fieldsMap );
+		
+		/////////////// Allow pluggable fields //////////////////////#$
+		
+		$this->pluggedFields = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_REGISTER_FIELDS, $this->pluggedFields );
+		
+		/////////////////////////////////////////////////////////////#$
+		
+		
+		# Make form core fields list
+		$fieldsList = self::makeClassesList( array( 'WCFE\Modules\Editor\Model\Forms\Fields' => $this->fieldsMap ) );
+		
+		
+		////////////// PLUGGABLE FIELDS LIST ////////////////#$
+		
+		$fieldsList = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_FORM_FIELDS, $fieldsList );
+		
+		////////////////////////////////////////////////////#$
+		
+		$this->form = new Forms\ConfigFileForm( $fieldsList );
 		
 	}
 
@@ -287,14 +324,19 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function & loadFromConfigFile() {
-		# Read fields value from Wordpress config file
+	public function & loadFromConfigFile() 
+	{
+		
 		$form =& $this->getForm();
-		foreach ( $this->fieldsMap as $fieldName ) {
-			# Force field to read data from config file
+		
+		foreach ( $this->fieldsMap as $fieldName ) 
+		{
+			
+			# Load form values from defined constants
 			$form->get( $fieldName )->read();
+			
 		}
-		# Chain
+		
 		return $this;
 	}
 

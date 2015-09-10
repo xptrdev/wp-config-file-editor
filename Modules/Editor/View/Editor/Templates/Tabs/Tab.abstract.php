@@ -162,16 +162,25 @@ abstract class Tab {
 	* put your comment there...
 	* 
 	* @param \DOMDocument $doc
-	* @param {\DOMDocument|\DOMElement} $element
-	* @param mixed $fieldsList
+	* @param {\DOMDocument|\DOMElement} $pElement
+	* @param mixed $fields
+	* @param mixed $pluggableFilterName
+	* @return Tab
 	*/
-	protected function renderFields( \DOMDocument & $doc, \DOMElement & $pElement, $fields ) 
+	protected function renderFields( \DOMDocument & $doc, \DOMElement & $pElement, $fields, $pluggableFilterName ) 
 	{
 		# Initialize
 		$form =& $this->getForm();
 		
 		# Make fields list
 		$fields = EditorModel::makeClassesList( $fields );
+		
+		
+		/////////////////// PLUGGABLE FILTERS ////////////////////////
+			
+		$fields = apply_filters( $pluggableFilterName, $fields );
+		
+		////////////////////////////////////////////////////////////
 		
 		# Create form fields.
 		foreach ( $fields as $fieldClass => $name )

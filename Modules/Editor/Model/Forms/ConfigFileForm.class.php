@@ -31,29 +31,21 @@ class ConfigFileForm extends Forms\SecureForm {
 	* @param mixed $fields
 	* @return ConfigFileForm
 	*/
-	public function __construct( $fields ) {
+	public function __construct( $fields ) 
+	{
 		
 		# Define form parameters
-		parent::__construct('configFileFields', 'stoken');
+		parent::__construct( 'configFileFields', 'stoken' );
 		
-		# Get fields list
-		$fields = array
-		(
-			'WCFE\Modules\Editor\Model\Forms\Fields' => $fields,
-			'WCFE\Modules\Editor\Model\Forms\Fields\Others' => array
-			(
-				'Task', /* Special field for Controller, not part of config file vars */
-			),
-		);
-		
-		# Make sfields list
-		$fields = EditorModel::makeClassesList( $fields );
+		# Add TASK field
+		$fields[ 'WCFE\Modules\Editor\Model\Forms\Fields\Others\Task' ] = 'Task';
 		
 		# Add fields
 		foreach ( $fields as $fieldClass => $fieldName )
 		{
 			$this->addChain( new $fieldClass() );
 		}
+		
 	}
 
 }

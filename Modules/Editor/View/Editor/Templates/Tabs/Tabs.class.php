@@ -95,6 +95,12 @@ class Tabs {
 		# Get tabs list
 		$tabsList = EditorModel::makeClassesList( $this->getTabsList() );
 		
+		///////////////////// PLUGGABLE TABS //////////////////////#$
+		
+		$tabsList = apply_filters( \WCFE\Hooks::FILTER_VIEW_TABS_REGISTER_TABS, $tabsList );
+		
+		////////////////////////////////////////////////////////////
+		
 		# Render tabs
 		foreach ( $tabsList as $tabClass => $tabName ) 
 		{

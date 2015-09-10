@@ -19,6 +19,13 @@ class SecureKeysOptionsTab extends FieldsTab {
 	* 
 	* @var mixed
 	*/
+	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SECUREKEYS_FIELDS;
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $fields = array
 	(
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array

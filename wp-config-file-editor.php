@@ -28,31 +28,83 @@ use WCFE\Services\EditorModule;
 * 
 * @author AHMeD SAiD 
 */
-class Plugin extends PluginBase {
+class Plugin extends PluginBase 
+{
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $bindingHooks;
 	
 	/**
 	* Holds ARV Plugin instance
 	* 
 	* @var Plugin
 	*/
-	protected static $instance;
+	private static $instance;
 	
 	/**
 	* Bootstrap ARV Plugin
 	* 
 	* return void
 	*/
-	protected function __construct() {
+	protected function __construct() 
+	{
 		# Plugin base
-		parent::__construct(__FILE__, new Config\Plugin());
+		parent::__construct( __FILE__, new Config\Plugin() );
+		
 		# Only admin side is used in this Plugin
-		if ( is_admin() ) {
+		if ( is_admin() ) 
+		{
+			
 			# Editor Service Module
 			$editorModule = new EditorModule( $this );
 			$editorModule->start();
-		}		
+			
+			$this->bindingHooks = true;
+			
+		}
+
+		# Start using hooks at this point so that WCFE Extensions can get involved
+		add_action( 'plugins_loaded', array( $this, '_initializePluggableHooks' ) );
+		
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function _initializePluggableHooks()
+	{
+		
+		////////////////////////////////////#$
+		
+		do_action( Hooks::ACTION_PLUGIN_LOADED, $this );
+		
+		////////////////////////////////////#$
+		
+		
+		////////////////////////////////////#$
+		
+		if ( $this->bindingHooks ) 
+		{
+			do_action( Hooks::ACTION_PLUGIN_BINDING_HOOKS, $this );	
+		}
+		
+		////////////////////////////////////#$	
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public static function & me()
+	{
+		return self::$instance;
+	}
+	
 	/**
 	* Run ARV Plugin if not alreayd running
 	* 
@@ -61,13 +113,17 @@ class Plugin extends PluginBase {
 	* 
 	* @return PLugin
 	*/
-	public static function run() {
+	public static function run()
+	{
 		# Create if not yet created
-		if (!self::$instance) {
+		if ( ! self::$instance )
+		{
 			self::$instance = new Plugin();
 		}
+		
 		# Return instance
 		return self::$instance;
+		
 	}
 
 }
