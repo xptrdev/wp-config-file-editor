@@ -16,7 +16,9 @@ $router =& $this->router();
 
 ?>
 <div id="wcfe-body">
-  <a class="wcfe-support-forums-link" target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a>
+	<div class="wcfe-support-forums-link">
+	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>
+	</div>
 <?php if ($model->hasErrors()) : ?>
 	<ul id="errors-bar">
 <?php foreach ($model->getCleanErrors() as $errorMessage) : ?>
