@@ -1,10 +1,10 @@
 === WP Config File Editor ===
 Contributors: xpointer
 Donate link: http://wp-wcfe.xptrdev.com
-Tags: wp-config.php, database, secure keys, secure, constants, language, debugging
+Tags: wp-config.php, database, secure keys, secure, constants, localization, debugging, cache, memory, debug, Multi sites, mu
 Requires at least: 4.0
-Tested up to: 4.1
-Stable tag: 0.5
+Tested up to: 4.3
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,22 +12,46 @@ Modify Wordpress wp-config.php file values using a Simple User Interface Form.
 
 == Description ==
 
-Modify Wordpress database, secure keys, loalization and debugging constants values allocated in wp-config.php file using a friendly parameterized form. In additional to update Wordpress
+Modify Wordpress database, secure keys, loalization, debugging. memory, multi sites and cache constants values allocated in wp-config.php file using a friendly parameterized form. In additional to update Wordpress
 config file it also creates a web form field for every wp-config.php file value, make it very simple to modify values. The plugins is creating wp-config file
 identical to the wp-config.php file comes with Wordpress.
 
-The Plugin also provide a method for previewing the newaly generated wp-config file content before writing to wp-config.php file. Using this method is enabling two other features,
+The Plugin also provide a method for previewing the newly generated wp-config file content before writing to wp-config.php file. Using this method is enabling two other features,
 first is to check the generated wp-config file before updating, second is to provide a custom modification to wp-config.php file.
 
 = Features =
 * Modify wp-config.php file parameters/fields using input form
-* Modify wp-config.php code manually
+* Raw wp-config.php file editing with syntax hightlights and error detections
+* Validating the entered Database parameters by making a connection to the database
+* Filtering and validating input fields to avoid breaking wp-config.php file PHP syntax.
 * Generate Secure keys by single click
 * Update Database parameters
-* Validating the entered Database parameters by making a connection to the database, don't save if unable to connect
-* Filtering the input data to avoid breaking wp-config.php file PHP syntax.
+* Change Memory Limits
+* Enable / Disable Cache
+* Enable / Disable Debugging
+* Enable / Disable Multi sites
+* Create Emergency Backup just before saving wp-config.php file
+* Provide Emergency Restore link from which wp-config.php can be retored in case the site comes down as for invalid inputs
+* Only admins can use it when installed in normal installation while only Network Admins can use it under Multi Sites installations
 
 The following wp-config.php file fields is being supported:
+
+= Maintenance =
+* Wordpress Cache (WP_CACHE)
+* Memory Limit (WP_MEMORY_LIMIT)
+* Max Memory Limit (WP_MAX_MEMORY_LIMIT)
+
+= Localization =
+* Wordpress Language (WPLANG)
+* Wordpress Language Directory (WPLANG_DIR)
+
+= Multi Sites =
+* Confiure Multi Site (WP_ALLOW_MULTISITE)
+* Enable Multi Site (MULTISITE)
+* Sub Domain / Folder installs (SUBDOMAIN_INSTALL)
+* Domain Current Site (DOMAIN_CURRENT_SITE)
+* Path (PATH_CURRENT_SITE)
+* Blog Id (SITE_ID_CURRENT_SITE)
 
 = Database =
 * Database Name (DB_NAME)
@@ -48,11 +72,12 @@ The following wp-config.php file fields is being supported:
 * Logged In Salt (LOGGED_IN_SALT)
 * Nonce Salt (NONCE_SALT)
 
-= Localization =
-* Wordpress Language (WPLANG)
-
 = Debugging =
 * Debug Wordpress (WP_DEBUG)
+* Debug Display (WP_DEBUG_DISPLAY)
+* Debug Log (WP_DEBUG_LOG)
+* Script Debugging (SCRIPT_DEBUG)
+* Save Database Queries (SAVEQUERIES)
 
 == Installation ==
 
@@ -74,14 +99,39 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 
 == Screenshots ==
 
-1. Edit Config File Form Fields part 1
-2. Edit Config File Form Fields part 2
-3. Config File Preview form
+1. Maintenance Tab
+2. Localization Tab
+3. Multi Site Tab
+4. Database Tab
+5. Secure Keys Tab
+6. Developer Tab
+7. Fields Popup help dialog
+8. Raw Syntax Highlights and Error detection Editor
+9. Update Config File Wanring Dialog
+10. Restore Backup Page 
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress versions before Wordpress version 4.0
 
+== Other Notes ==
+I really did hard work to create secure restoring Emergency backup feature. I'm recommending to always close Warning Dialog by pressing
+Done button as it will delete the Emergency Backup when closing the Dialog. I don't recomend closing it from Top X button until you know what you're doing.
+
+If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
+
 == Changelog ==
+
+= 1.0 =
+* Use Tabs UI Control for categorizing fields
+* Create new fields categorization
+* Adding new fields for Multi Sites, Memory Limits, Wordpress cache, Language and more fields for debugging
+* Apply new UI colors
+* Show warning message when saving wp-config.php
+* Create Emergency Backup every time Save Warning message dialog is opened
+* Ability to restore wp-config.php file to the state just before saving the file
+* Raw wp-config.php Editor with Syntax Highlighters and Syntax Error detections
+* Only admins can use it under normal installations while only Network admins can use it under Multi Sites installation
+* Complains when submitted Raw EMPTY config file or if it's not start with PHP Tag
 
 = 0.5 =
 First release
