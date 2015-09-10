@@ -14,13 +14,13 @@ use WPPFW\Services\Queue\ScriptResource;
 /**
 * 
 */
-class ACEThemeChaos extends ScriptResource {
+class ACEThemeTomorrowNightBright extends ScriptResource {
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'theme-chaos.js';
+	protected $fileName = 'theme-tomorrow_night_bright.js';
 	
 }

@@ -81,7 +81,7 @@
 			// Ace Editor
 			rawEditor =  ace.edit( 'config-file-content' );
 			
-			rawEditor.setTheme( 'ace/theme/chaos' );
+			rawEditor.setTheme( 'ace/theme/tomorrow_night_bright' );
 			
 			// Syntax Highlights mode
 			var php = ace.require( 'ace/mode/php' ).Mode;

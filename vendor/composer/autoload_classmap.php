@@ -13,7 +13,7 @@ return array(
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEExtLanguageTools' => $baseDir . '/Libraries/JavaScript/AceEditor/ext-language_tools.class.php',
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEExtSearchBox' => $baseDir . '/Libraries/JavaScript/AceEditor/ext-searchbox.class.php',
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEModePHP' => $baseDir . '/Libraries/JavaScript/AceEditor/mode-php.class.php',
-    'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEThemeChaos' => $baseDir . '/Libraries/JavaScript/AceEditor/theme-chaso.class.php',
+    'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEThemeTomorrowNightBright' => $baseDir . '/Libraries/JavaScript/AceEditor/ThemeTomorrowNightBright.class.php',
     'WCFE\\Libraries\\JavaScript\\AceEditor\\ACEditor' => $baseDir . '/Libraries/JavaScript/AceEditor/ace.class.php',
     'WCFE\\Libraries\\JavaScript\\ErrorsDialog' => $baseDir . '/Libraries/JavaScript/ErrorsDialog.class.php',
     'WCFE\\Libraries\\JavaScript\\jQueryCookies' => $baseDir . '/Libraries/JavaScript/jQueryCookies.class.php',
