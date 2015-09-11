@@ -82,7 +82,11 @@ class EditorModel extends PluginModel {
 		
 		'PostAutoSaveInterval',
 		'PostRevisions',
-		'PostRevisionsMax'
+		'PostRevisionsMax',
+		
+		'Cron',
+		'CronAlternate',
+		'CronLockTimeOut',
 	);
 	
 	/**

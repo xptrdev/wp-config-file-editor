@@ -1,0 +1,33 @@
+<?php
+/**
+* 
+*/
+
+# Define namespace
+namespace WCFE\Modules\Editor\View\Editor\Templates\Fields\CronLockTimeOut;
+
+# Input field base
+use WCFE\Modules\Editor\View\Editor\Fields\InputField;
+
+/**
+* 
+*/
+class Field extends InputField {
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function getText() {
+		return 'Cron Lock Timeout';
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function getTipText() {
+		return 'Make sure a cron process cannot run more than once every XXXX seconds.';
+	}
+
+}

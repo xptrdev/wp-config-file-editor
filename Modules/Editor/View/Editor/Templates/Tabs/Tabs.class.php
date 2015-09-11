@@ -55,6 +55,7 @@ class Tabs {
 		 	'Maintenance',
 		 	'Post',
 		 	'Localization',
+		 	'Cron',
 		 	'MultiSite',
 		 	'Database',
 		 	'SecureKeys',
