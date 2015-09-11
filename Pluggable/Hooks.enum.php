@@ -26,5 +26,6 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_MAINTENANCE_FIELDS = 'wcfe_view-tabs-tab-maintenance-fields';
 	const FILTER_VIEW_TABS_TAB_MULTISITE_FIELDS = 'wcfe_view-tabs-tab-multisite-fields';
 	const FILTER_VIEW_TABS_TAB_SECUREKEYS_FIELDS = 'wcfe_view-tabs-tab-securekeys-fields';
+	const FILTER_VIEW_TABS_TAB_POST_FIELDS = 'wcfe_view-tabs-tab-post-fields';
 	
 }

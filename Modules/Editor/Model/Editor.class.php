@@ -63,6 +63,7 @@ class EditorModel extends PluginModel {
 		'WPDebugDisplay',
 		'ScriptDebug',
 		'SaveQueries',
+		'ConcatenateJavaScript',
 		
 		'WPLang',
 		'WPLangDir',

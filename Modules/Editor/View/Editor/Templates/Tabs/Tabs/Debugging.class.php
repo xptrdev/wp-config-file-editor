@@ -34,6 +34,7 @@ class DebuggingOptionsTab extends FieldsTab {
 			'WPDebugDisplay',
 			'WPDebugLog',
 			'ScriptDebug',
+			'ConcatenateJavaScript',
 			'SaveQueries',
 		)
 	);
