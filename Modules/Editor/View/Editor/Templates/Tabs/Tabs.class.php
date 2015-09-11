@@ -74,16 +74,26 @@ class Tabs {
 	* @param Form $form
 	* @return {Tabs|Form}
 	*/
-	public function __construct(Form & $form) {
+	public function __construct(Form & $form) 
+	{
 		# Initialize
 		$this->form =& $form;
+		
 		# DOMDocument to hold tab component
 		$this->tab = new \DOMDocument();
-		$this->tab->loadXML(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Tabs.html.php'));
+		
+		ob_start();
+		
+		require ( __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Tabs.html.php' );
+		$this->tab->loadXML( ob_get_clean() );
+		
+		
 		$this->xpath = new \DOMXPath($this->tab);
+		
 		# Find Navigatpr and Tabs ELement
 		$this->navigatorElement = $this->xpath->query('//*[@id="wcfe-options-tab-navigator"]')->item(0);
 		$this->tabsElement = $this->xpath->query('//*[@id="wcfe-options-tab-tabs"]')->item(0);
+		
 	}
 	
 	/**
