@@ -79,6 +79,9 @@ class EditorModel extends PluginModel {
 		'MemoryLimit',
 		'MaxMemoryLimit',
 		
+		'PostAutoSaveInterval',
+		'PostRevisions',
+		'PostRevisionsMax'
 	);
 	
 	/**

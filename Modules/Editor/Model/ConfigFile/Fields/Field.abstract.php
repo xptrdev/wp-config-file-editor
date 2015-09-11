@@ -148,6 +148,15 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
+	public function & getField()
+	{
+		return $this->field;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function & getModel() 
 	{
 		return $this->model;	

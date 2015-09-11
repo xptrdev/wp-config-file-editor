@@ -53,6 +53,7 @@ class Tabs {
 		'WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs' => array
 		(
 		 	'Maintenance',
+		 	'Post',
 		 	'Localization',
 		 	'MultiSite',
 		 	'Database',
