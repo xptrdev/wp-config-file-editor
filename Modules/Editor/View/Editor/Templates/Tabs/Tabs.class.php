@@ -53,6 +53,8 @@ class Tabs {
 		'WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs' => array
 		(
 		 	'Maintenance',
+		 	'Security',
+		 	'Upgrade',
 		 	'Post',
 		 	'Localization',
 		 	'Cron',
@@ -97,39 +99,6 @@ class Tabs {
 		$this->tabsElement = $this->xpath->query('//*[@id="wcfe-options-tab-tabs"]')->item(0);
 		
 	}
-	
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function __toString() {
-		
-		# Get tabs list
-		$tabsList = EditorModel::makeClassesList( $this->getTabsList() );
-		
-		///////////////////// PLUGGABLE TABS //////////////////////#$
-		
-		$tabsList = apply_filters( \WCFE\Hooks::FILTER_VIEW_TABS_REGISTER_TABS, $tabsList );
-		
-		////////////////////////////////////////////////////////////
-		
-		# Render tabs
-		foreach ( $tabsList as $tabClass => $tabName ) 
-		{
-			# Get tab class
-			$tabClass = "{$tabClass}OptionsTab";
-			# Instantiate tab object
-			$tab = new $tabClass( $this );
-			# Render Tab
-			$tab->render( $this->getTab(), $this->getNavigatorElement(), $this->getTabsElement() );
-		}
-		# Get tab HTML string
-		$tabsHTML = $this->tab->saveXML();
-		# Remove XML tag from the result
-		$tabsHTML = substr( $tabsHTML, ( strpos($tabsHTML, '?>' ) + 2 ) );
-		# Return
-		return $tabsHTML;
-	}
 
 	/**
 	* put your comment there...
@@ -169,6 +138,39 @@ class Tabs {
 	*/
 	protected function getTabsList() {
 		return $this->tabsList;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function render() {
+		
+		# Get tabs list
+		$tabsList = EditorModel::makeClassesList( $this->getTabsList() );
+		
+		///////////////////// PLUGGABLE TABS //////////////////////#$
+		
+		$tabsList = apply_filters( \WCFE\Hooks::FILTER_VIEW_TABS_REGISTER_TABS, $tabsList );
+		
+		////////////////////////////////////////////////////////////
+		
+		# Render tabs
+		foreach ( $tabsList as $tabClass => $tabName ) 
+		{
+			# Get tab class
+			$tabClass = "{$tabClass}OptionsTab";
+			# Instantiate tab object
+			$tab = new $tabClass( $this );
+			# Render Tab
+			$tab->render( $this->getTab(), $this->getNavigatorElement(), $this->getTabsElement() );
+		}
+		# Get tab HTML string
+		$tabsHTML = $this->tab->saveXML();
+		# Remove XML tag from the result
+		$tabsHTML = substr( $tabsHTML, ( strpos($tabsHTML, '?>' ) + 2 ) );
+		# Return
+		return $tabsHTML;
 	}
 
 }

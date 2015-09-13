@@ -191,8 +191,50 @@ abstract class Tab {
 			# Create field render for current fiels.
 			$rendererClass = "{$fieldClass}\\Field";
 			$renderer = new $rendererClass( $form, $field );
+		
+			$inputId = "{$form->getName()}-{$field->getName()}";
 			
-			$renderer->render( $doc, $pElement );
+			# Label
+			$label = $doc->createElement( 'label' );
+			$label->setAttribute('for', $inputId );
+			$label->nodeValue = $renderer->getText();
+			
+			# Error 
+			$error = $doc->createElement( 'span' );
+			$error->setAttribute( 'class', 'field-error' );
+			$error->nodeValue = $renderer->getErrorMessage();		
+			
+			# Field tip/help
+			$tip = $doc->createElement( 'p' );
+			$tip->setAttribute( 'class', 'field-tip' );
+			$tip->nodeValue = $renderer->getTipText();
+			
+			# Field row
+			$row = $doc->createElement( 'div' );
+			$row->setAttribute( 'class', 'field-row' );
+
+			# Give the row unique id
+			$row->setAttribute('id', "{$inputId}-row");	
+			
+			$row->appendChild( $label );
+			$row->appendChild( $tip );
+			
+			# Add error only if has rules
+			$row->appendChild( $error );
+			
+			################ RENDER INPUT FIELD #################
+			
+			$inputElement = $renderer->render( $doc, $row, compact( 'error', 'label', 'tip' ) );
+			
+			$inputElement->setAttribute( 'id', $inputId );
+			$inputElement->setAttribute( 'name', "{$form->getName()}[{$field->getName()}]" );
+			
+			#####################################################
+			
+			$row->appendChild( $inputElement );
+				
+			$pElement->appendChild( $row );
+		
 		}
 		
 		return $this;

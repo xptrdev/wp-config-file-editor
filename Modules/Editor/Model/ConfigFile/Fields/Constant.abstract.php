@@ -33,7 +33,7 @@ abstract class Constant extends Field {
 	protected function getDefString()
 	{
 		# Prepare Value
-		$value = $this->type->prepareValue($this->field->getValue());
+		$value = $this->type->prepareValue( $this->getValue() );
 		# Final statment
 		return "define('{$this->getName()}', {$value});";
 	}

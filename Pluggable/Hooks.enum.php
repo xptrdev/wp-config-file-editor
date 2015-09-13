@@ -28,5 +28,8 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_SECUREKEYS_FIELDS = 'wcfe_view-tabs-tab-securekeys-fields';
 	const FILTER_VIEW_TABS_TAB_POST_FIELDS = 'wcfe_view-tabs-tab-post-fields';
 	const FILTER_VIEW_TABS_TAB_CRON_FIELDS = 'wcfe_view-tabs-tab-cron-fields';
+	const FILTER_VIEW_TABS_TAB_SECURITY_FIELDS = 'wcfe_view-tabs-tab-security-fields';
+	const FILTER_VIEW_TABS_TAB_PATHS_FIELDS = 'wcfe_view-tabs-tab-paths-fields';
+	const FILTER_VIEW_TABS_TAB_UPGRADE_FIELDS = 'wcfe_view-tabs-tab-upgrade-fields';
 	
 }

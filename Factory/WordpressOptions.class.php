@@ -26,11 +26,12 @@ class WordpressOptions {
 	* @param Obj\Factory $factory
 	* @return Wordpress\WordpressOptions
 	*/
-	public function getInstance(Obj\Factory & $factory) {
+	public function getInstance( Obj\Factory & $factory ) 
+	{
 		# Getting Plugin instance.
-		$plugin =& $factory->get('WPPFW\Plugin\PluginBase');
+		$plugin =& $factory->get( 'WPPFW\Plugin\PluginBase' );
 		# Return Wordpress options object instance
-		return new Wordpress\WordpressOptions(strtolower($plugin->getNamespace()->getNamespace() . '-'));
+		return new Wordpress\WordpressOptions( strtolower( $plugin->getNamespace()->getNamespace() . '-' ) );
 	}
 
 }

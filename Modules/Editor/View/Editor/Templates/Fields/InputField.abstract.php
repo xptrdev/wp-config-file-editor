@@ -49,20 +49,26 @@ abstract class InputField extends FieldBase {
 	* put your comment there...
 	* 
 	* @param \DOMDocument $document
-	* @return {\DOMDocument|\DOMElement}
+	* @param {\DOMDocument|\DOMElement} $parent
+	* @param mixed $elems
+	* @return \DOMElement
 	*/
-	public function & renderInput(\DOMDocument & $document) {
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems ) 
+	{
 		# Create text input
-		$textInput = $document->createElement('input');
+		$textInput = $document->createElement( 'input' );
 		$field =& $this->getField();
+		
 		# Set parameters
-		$textInput->setAttribute('type', $this->getType());
-		$textInput->setAttribute('value', $field->getValue());
+		$textInput->setAttribute( 'type' , $this->getType() );
+		$textInput->setAttribute( 'value', $field->getValue() );
+		
 		# Set other attributes
-		if ($maxLength = $this->getMaxLength()) {
-			$textInput->setAttribute('maxlength', $maxLength);
+		if ( $maxLength = $this->getMaxLength() ) 
+		{
+			$textInput->setAttribute( 'maxlength', $maxLength );
 		}
-		# Return input 
+		
 		return $textInput;
 	}
 

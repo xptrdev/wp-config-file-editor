@@ -20,13 +20,6 @@ abstract class FieldBase {
 	* 
 	* @var mixed
 	*/
-	protected $error;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
 	protected $field;
 	
 	/**
@@ -35,54 +28,36 @@ abstract class FieldBase {
 	* @var mixed
 	*/
 	protected $form;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $text;
 
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $input;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $lbl;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $row;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $tip;
+	protected $tipText;
 	
 	/**
 	* put your comment there...
 	* 
 	* @param Form $form
 	* @param {Form|IField} $field
-	* @return {InputField|Form|IField}
+	* @param mixed $text
+	* @param mixed $tipText
+	* @return FieldBase
 	*/
-	public function __construct(Form & $form, IField & $field) {
+	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null) {
 		# Initialize
 		$this->field =& $field;
 		$this->form =& $form;
-	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function & getError() {
-		return $this->error;
+		$this->text = $text;
+		$this->tipText = $tipText;
 	}
 
 	/**
@@ -120,50 +95,24 @@ abstract class FieldBase {
 	public function & getForm() {
 		return $this->form;
 	}
-	
+
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function & getInput() {
-		return $this->input;
+	public function getText()
+	{
+		return $this->text;
 	}
 
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function & getLabel() {
-		return $this->lbl;
+	public function getTipText()
+	{
+		return $this->tipText;
 	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function & getRow() {
-		return $this->row;
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function & getTip() {
-		return $this->tip;
-	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected abstract function getText();
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected abstract function getTipText();
 
 	/**
 	* put your comment there...
@@ -172,59 +121,20 @@ abstract class FieldBase {
 	* @param {\DOMDocument|\DOMElement} $parent
 	* @return {\DOMDocument|\DOMElement|InputField}
 	*/
-	public function render(\DOMDocument & $document, \DOMElement & $parentDOM) {
-		# Initialize
-		$form =& $this->getForm();
-		$field =& $this->getField();
-		$inputId = "{$form->getName()}-{$field->getName()}";
+	public function render( \DOMDocument & $document, \DOMElement & $parentDOM, $elems ) 
+	{
 		
-		# Label
-		$this->lbl = $document->createElement('label');
-		$this->lbl->setAttribute('for', $inputId);
-		$this->lbl->nodeValue = $this->getText();
-		
-		# Error 
-		$this->error = $document->createElement('span');
-		$this->error->setAttribute('class', 'field-error');
-		$this->error->nodeValue = $this->getErrorMessage();		
-		
-		# Field tip/help
-		$this->tip = $document->createElement('p');
-		$this->tip->setAttribute('class', 'field-tip');
-		$this->tip->nodeValue = $this->getTipText();
-		
-		# Field row
-		$this->row = $document->createElement('div');
-		$this->row->setAttribute( 'class', 'field-row' );
+		return $this->renderInput( $document, $parentDOM, $elems );
 
-		# Give the row unique id
-		$this->row->setAttribute('id', "{$inputId}-row");
-		
-		# Input text
-		$this->input =& $this->renderInput($document);
-		$this->input->setAttribute('id', $inputId);
-		$this->input->setAttribute('name', "{$form->getName()}[{$field->getName()}]");
-	
-		$this->row->appendChild($this->lbl);
-		$this->row->appendChild($this->input);
-		# Add error only if has rules
-		if ($field->hasRules()) {
-			$this->row->appendChild($this->error);
-		}
-		$this->row->appendChild($this->tip);
-			
-		$parentDOM->appendChild($this->row);
-		
-		# Chaining
-		return $this;
 	}
 
 	/**
 	* put your comment there...
 	* 
 	* @param \DOMDocument $document
-	* @return \DOMDocument
+	* @param {\DOMDocument|\DOMElement} $parent
+	* @param mixed $elems
 	*/
-	protected abstract function & renderInput(\DOMDocument & $document);
+	protected abstract function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems );
 	
 }

@@ -18,7 +18,7 @@ class Field extends SecureKeyField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Nonce key';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends SecureKeyField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Wordpress Hash key for NONCE_KEY constant';
 	}
 

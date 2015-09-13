@@ -36,7 +36,9 @@ class DatabaseOptionsTab extends FieldsTab {
 			'DbName', 
 			'DbCharSet', 
 			'DbCollate',
-			'DbTablePrefix'
+			'DbTablePrefix',
+			'DbAllowRepair',
+			'DbDontUpgradeGlobalTables'
 		)
 	);
 

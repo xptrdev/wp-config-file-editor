@@ -18,7 +18,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Language';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Defines the name of the language translation (.mo) file.';
 	}
 

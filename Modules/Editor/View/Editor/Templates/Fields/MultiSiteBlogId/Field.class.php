@@ -18,7 +18,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Current Blog Id';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Current Blog Id';
 	}
 

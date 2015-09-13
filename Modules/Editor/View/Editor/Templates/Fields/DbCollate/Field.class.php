@@ -69,7 +69,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Database Collation';
 	}
 	
@@ -77,7 +77,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'As of WordPress Version 2.2, DB_COLLATE was made available to allow designation of the database collation (i.e. the sort order of the character set). In most cases, this value should be left blank (null) so the database collation will be automatically assigned by MySQL based on the database character set specified by Character Set';
 	}
 

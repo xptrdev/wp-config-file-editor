@@ -18,7 +18,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Host';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'The address in which the Database is located. This can either be an IP or Domain name. In most cases its \'localhost\'';
 	}
 

@@ -13,35 +13,71 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class CheckboxField extends FieldBase {
+class CheckboxField extends FieldBase {
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $value;
+
+	/**
+	* put your comment there...
+	* 
+	* @param Form $form
+	* @param {Form|IField} $field
+	* @param mixed $text
+	* @param mixed $tipText
+	* @param mixed $value
+	* @return CheckboxField
+	*/
+	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $value = null) 
+	{
+		
+		parent::__construct( $form, $field, $text, $tipText );
+		
+		$this->value = $value;
+		
+	}
 
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected abstract function getValue();
+	protected function getValue()
+	{
+		return $this->value;
+	}
 	
 	/**
 	* put your comment there...
 	* 
 	* @param \DOMDocument $document
-	* @return {\DOMDocument|\DOMElement}
+	* @param {\DOMDocument|\DOMElement} $parent
+	* @param mixed $elems
+	* @return \DOMElement
 	*/
-	public function & renderInput(\DOMDocument & $document) {
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems ) 
+	{
 		# Create text input
-		$chkbox = $document->createElement('input');
+		$chkbox = $document->createElement( 'input' );
 		$field =& $this->getField();
+		
 		# Set parameters
-		$chkbox->setAttribute('type', 'checkbox');
-		$chkbox->setAttribute('value', $this->getValue());
+		$chkbox->setAttribute( 'type', 'checkbox' );
+		$chkbox->setAttribute( 'value', $this->getValue() );
+		
 		# Mark checked
-		if ($this->getValue() == $field->getValue()) {
-			$chkbox->setAttribute('checked', 'checked');
+		if ( $this->getValue() == $field->getValue() ) 
+		{
+			$chkbox->setAttribute( 'checked', 'checked' );
 		}
+		
 		# Finally give the row a class for checkbox types
-		$this->getRow()->setAttribute('class', 'checkbox-row');
-		# Return input 
-		return $chkbox;
+		$row->setAttribute( 'class', 'checkbox-row' );
+		
+		return $chkbox;		
 	}
 
 }

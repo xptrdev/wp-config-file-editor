@@ -46,8 +46,13 @@ class EditorModel extends PluginModel {
 		'DbHost',
 		'DbCharSet',
 		'DbCollate',
-		
 		'DbTablePrefix',
+		'DbAllowRepair',
+		'DbDontUpgradeGlobalTables',
+		
+		'SecurityDisablePluggablesEditor',
+		'SecurityBlockExternalUrl',
+		'SecurityAccessibleHosts',
 		
 		'AuthKey',
 		'SecureAuthKey',
@@ -83,6 +88,7 @@ class EditorModel extends PluginModel {
 		'PostAutoSaveInterval',
 		'PostRevisions',
 		'PostRevisionsMax',
+		'PostEmptyTrashDays',
 		
 		'Cron',
 		'CronAlternate',
@@ -443,7 +449,7 @@ class EditorModel extends PluginModel {
 	{
 
 		$form =& $this->getForm();
-		
+
 		# Set back for changes flag to true
 		$this->isBackForChange = true;
 		
@@ -453,7 +459,7 @@ class EditorModel extends PluginModel {
 		
 		# Cache into model state to be used when getting back later
 		$this->savedVars = array( $form->getName() => $vars );
-		
+
 		return $this;
 	}
 

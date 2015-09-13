@@ -172,6 +172,15 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
+	protected function getValue()
+	{
+		return $this->field->getValue();
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	protected function initialize() {}
 	
 	/**

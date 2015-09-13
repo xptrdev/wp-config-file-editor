@@ -82,7 +82,7 @@ class EditorController extends Controller {
 						
 						# generate config file from the given values
 						$model->generateConfigFile();
-					
+					  
 						# Save submitted vars to be used if 
 						# get back from preview to the form again.
 						$model->saveSubmittedVars();

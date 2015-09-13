@@ -294,6 +294,31 @@ td.help-label-text {
   margin-right: 25px;
   margin-top: -26px;
 }
+
+.checkbox-list ul
+{
+background-color: #0B3E6F;
+    width: 200px;
+    height: 217px;
+    display: inline-block;
+    overflow: auto;
+    position: relative;
+    left: -235px;
+    box-shadow: #0B3E6F 0px 0px 12px 1px;
+    padding: 10px 17px;
+    font-size: 14px;
+}
+.checkbox-list label
+{
+    vertical-align: top;
+    margin-top: 111px;
+}
+input.checkbox-list-input {
+    width: 229px;
+    position: relative;
+        left: -5px;
+    top: 11px;
+}
 /* PREVIEW */
 #config-file-content 
 {

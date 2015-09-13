@@ -25,7 +25,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Password';
 	}
 	
@@ -33,7 +33,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Database user password for authenticating the connection between Wordpress and Database';
 	}
 

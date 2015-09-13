@@ -18,7 +18,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Cron Lock Timeout';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends InputField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Make sure a cron process cannot run more than once every XXXX seconds.';
 	}
 

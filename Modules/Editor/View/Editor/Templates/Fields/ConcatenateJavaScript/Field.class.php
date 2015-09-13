@@ -18,7 +18,7 @@ class Field extends CheckboxField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Concatenate JavaScript';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends CheckboxField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'To result in a faster administration area, all Javascript files are concatenated into one URL. If Javascript is failing to work in your administration area, you can try disabling this feature:';
 	}
 

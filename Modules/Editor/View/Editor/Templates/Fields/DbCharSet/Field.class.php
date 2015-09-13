@@ -69,7 +69,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Database Characters Set';
 	}
 	
@@ -77,7 +77,7 @@ class Field extends DropDownField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Was made available to allow designation of the database character set (e.g. tis620 for TIS620 Thai) to be used when defining the MySQL database tables.';
 	}
 

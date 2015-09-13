@@ -18,7 +18,7 @@ class Field extends CheckboxField {
 	* put your comment there...
 	* 
 	*/
-	protected function getText() {
+	public function getText() {
 		return 'Debug Mode';
 	}
 	
@@ -26,7 +26,7 @@ class Field extends CheckboxField {
 	* put your comment there...
 	* 
 	*/
-	protected function getTipText() {
+	public function getTipText() {
 		return 'Added in WordPress Version 2.3.1, controls the reporting of some errors and warnings';
 	}
 

@@ -33,6 +33,7 @@ class PostOptionsTab extends FieldsTab {
 			'PostAutoSaveInterval',
 			'PostRevisions',
 			'PostRevisionsMax',
+			'PostEmptyTrashDays',
 		)
 	);
 

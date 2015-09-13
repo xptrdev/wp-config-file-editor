@@ -21,28 +21,34 @@ abstract class SecureKeyField extends InputField {
 	* @var mixed
 	*/
 	protected $maxLength = 64;
-	
+
 	/**
 	* put your comment there...
 	* 
 	* @param \DOMDocument $document
-	* @param {\DOMDocument|\DOMElement} $parent
-	* @return {\DOMDocument|\DOMElement|InputField}
+	* @param mixed $row
+	* @return SecureKeyField
 	*/
-	public function render(\DOMDocument & $document, \DOMElement & $parentDOM) {
-		# Render field
-		parent::render($document, $parentDOM);
-		# Add key generation button
-		$row =& $this->getRow();
-		$skGenButton = $document->createElement('a');
-		$skGenButton->setAttribute('class', 'secure-key-generator-key');
-		$skGenButton->setAttribute('href', '#');
+	public function & renderInput(\DOMDocument & $document, \DOMElement & $row, $elems )
+	{
+		
+		# Input field
+		$inputField = parent::renderInput( $document, $row, $elems );
+		
+		# Secure key generator link
+		$skGenButton = $document->createElement( 'a' );
+		
+		$skGenButton->setAttribute( 'class', 'secure-key-generator-key' );
+		$skGenButton->setAttribute( 'href', '#' );
+		
 		$skGenButton->nodeValue = '&nbsp;';
+		
 		# Add input field class
-		$this->getInput()->setAttribute('class', 'secure-key-field');
-		$row->insertBefore($skGenButton, $this->getError());
-		# Chain
-		return $this;
+		$inputField->setAttribute( 'class', 'secure-key-field' );
+		
+		$row->insertBefore( $skGenButton, $elems[ 'error' ] );
+		
+		return $inputField;
 	}
 
 }

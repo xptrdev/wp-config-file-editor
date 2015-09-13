@@ -32,7 +32,7 @@ $router =& $this->router();
 <?php
 		# Output options tab
 		$optionsTab = new	Tabs\Tabs( $form );
-		echo $optionsTab;
+		echo $optionsTab->render();
 ?>
 		<div id="wcfe-toolbox">
 			<input type="button" class="wcfe-task-button" value="Save" id="wcfe-editor-form-save" />
