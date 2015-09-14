@@ -229,7 +229,8 @@
 					generateHelpBoxMap( 'Constants List', 'field-constant-name' );
 				}
 			);
-						
+			
+			$( '#wcfe-config-form-main-menu' ).menu();
 		};
 	
 		// Initialize form script when document lodaed

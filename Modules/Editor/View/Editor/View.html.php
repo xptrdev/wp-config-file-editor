@@ -66,7 +66,6 @@ class EditorHTMLView extends TemplateView {
 		$this->stylesQueue = new DashboardStylesQueue();
 		
 		# Scripts
-		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
 		$this->scriptsQueue->enqueueNamedResource( 'jquery-serialize-object' );
 		
@@ -97,8 +96,11 @@ class EditorHTMLView extends TemplateView {
 	private function enqueueIndexResources()
 	{
 		
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
+		
 		# Enqueue specifiec STYLE AND JS
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
 		# Actions route
 		$this->setActionsRoute( array

@@ -16,6 +16,16 @@ $router =& $this->router();
 
 ?>
 <div id="wcfe-body">
+	<ul id="wcfe-config-form-main-menu">
+		<li>
+			Profiles
+			<ul>
+				<li>Create</li>
+				<li>-</li>
+				<li>Profiles</li>
+			</ul>
+		</li>
+	</ul>
 	<div class="wcfe-support-forums-link">
 	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>
 	</div>

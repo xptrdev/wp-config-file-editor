@@ -91,7 +91,7 @@ a.secure-key-generator-key {
 #wcfe-options-tab {
 	width: 98%;
 	min-width: 700px;
-	margin-top: 32px;
+	margin-top: 6px;
 }
 
 .field-row, .checkbox-row {
@@ -339,6 +339,10 @@ input.checkbox-list-input {
     margin-bottom: 10px;
 }
 
+#wcfe-config-form-main-menu
+{
+	width: 200px;
+}
 /* PREVIEW */
 #config-file-content 
 {
