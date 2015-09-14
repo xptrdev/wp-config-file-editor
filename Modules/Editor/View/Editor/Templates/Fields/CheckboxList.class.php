@@ -75,7 +75,9 @@ abstract class CheckboxListField extends FieldBase {
 			
 			# Create option for every option list item
 			$checkBox = new CheckboxField( $form, $item[ 'field' ], $item[ 'text' ], null, $item[ 'value' ] );
+			
 			$checkboxEle = $checkBox->render( $document, $list, $elems );
+			$checkboxEle->setAttribute( 'name', $form->getName() . '[' . $field->getName() . '][]' );
 			
 			$text = $document->createElement( 'span' );
 			$text->nodeValue = $item[ 'text' ];

@@ -56,6 +56,8 @@ class UpgradeAutoCore extends Constant {
 			$this->type = new Types\StringType();
 			$this->value = $stringValue;
 		}
+		
+		return $this;
 	}
 
 	/**
