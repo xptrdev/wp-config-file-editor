@@ -30,7 +30,9 @@ class UpgradeOptionsTab extends FieldsTab {
 	(
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
-		
+			'UpgradeAutoDisable',
+			'UpgradeAutoCore',
+			'UpgradeDisablePluggables',
 		)
 	);
 

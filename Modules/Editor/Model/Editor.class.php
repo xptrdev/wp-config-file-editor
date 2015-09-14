@@ -54,6 +54,10 @@ class EditorModel extends PluginModel {
 		'SecurityBlockExternalUrl',
 		'SecurityAccessibleHosts',
 		
+		'UpgradeAutoDisable',
+		'UpgradeAutoCore',
+		'UpgradeDisablePluggables',
+		
 		'AuthKey',
 		'SecureAuthKey',
 		'LoggedInKey',
