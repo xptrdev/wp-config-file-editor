@@ -31,6 +31,13 @@ class SecurityBlockExternalUrl extends Constant {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = true;
+
+	/**
+	* put your comment there...
+	* 
 	*/
 	public function & allReady()
 	{

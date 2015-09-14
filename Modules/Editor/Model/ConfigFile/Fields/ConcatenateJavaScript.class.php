@@ -4,32 +4,43 @@
 */
 
 # Define namespace
-namespace WCFE\Modules\Editor\Model\Forms\Fields;
-
-# Field base
-use WPPFW\Forms;
+namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 
 /**
 * 
 */
-class ConcatenateJavaScript extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
+class ConcatenateJavaScript extends Constant {
 	
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
 	*/
-	public function __construct() {
-		# Set field name and rules
-		parent::__construct('ConcatenateJavaScript');
-	}
+	protected $suppressOutput = true;
+
+  /**
+  * put your comment there...
+  * 
+  * @var mixed
+  */
+	protected $comments = array
+	(
+		'Enable/ Disable JavaScript Concatenation'
+	);
+
+	/**
+	* put your comment there...
+	* 	
+	* @var mixed
+	*/
+	protected $name = 'CONCATENATE_SCRIPTS';
 
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function read() {
-		$this->setValue( defined( 'CONCATENATE_SCRIPTS' ) ? CONCATENATE_SCRIPTS : null );
+	protected function getType() {
+		return new Types\BooleanType();
 	}
 
 }
-
