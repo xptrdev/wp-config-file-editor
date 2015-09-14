@@ -31,6 +31,8 @@ class SecurityOptionsTab extends FieldsTab {
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
 			'SecurityDisablePluggablesEditor',
+			'SecurityForceSSLAdmin',
+			'SecurityForceSSLLogin',
 			'SecurityBlockExternalUrl',
 			'SecurityAccessibleHosts',
 		)

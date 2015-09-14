@@ -9,7 +9,14 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class SecurityForceSSLAdmin extends Constant {
+class UpgradeFTPUser extends Constant {
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = true;
 
   /**
   * put your comment there...
@@ -18,7 +25,7 @@ class SecurityForceSSLAdmin extends Constant {
   */
 	protected $comments = array
 	(
-		'when you want to secure logins and the admin area so that both passwords and cookies are never sent in the clear. This is the most secure option'
+		'either user FTP or SSH username. Most likely these are the same, but use the appropriate one for the type of update you wish to do.'
 	);
 
 	/**
@@ -26,14 +33,14 @@ class SecurityForceSSLAdmin extends Constant {
 	* 	
 	* @var mixed
 	*/
-	protected $name = 'FORCE_SSL_ADMIN';
+	protected $name = 'FTP_USER';
 
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function getType() {
-		return new Types\BooleanType();
+		return new Types\StringType();
 	}
 
 }

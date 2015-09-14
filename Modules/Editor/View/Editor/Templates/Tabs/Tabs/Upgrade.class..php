@@ -33,6 +33,16 @@ class UpgradeOptionsTab extends FieldsTab {
 			'UpgradeAutoDisable',
 			'UpgradeAutoCore',
 			'UpgradeDisablePluggables',
+			'UpgradeFSMethod',
+			'UpgradeFTPBase',
+			'UpgradeFTPContentDir',
+			'UpgradeFTPPluginDir',
+			'UpgradeFTPPubKey',
+			'UpgradeFTPPriKey',
+			'UpgradeFTPUser',
+			'UpgradeFTPPassword',
+			'UpgradeFTPHost',
+			'UpgradeFTPSSL',
 		)
 	);
 

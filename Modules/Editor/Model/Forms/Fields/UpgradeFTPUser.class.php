@@ -12,7 +12,7 @@ use WPPFW\Forms;
 /**
 * 
 */
-class SecurityForceSSLAdmin extends Forms\Fields\FormIntegerField implements IWPConfigFileField {
+class UpgradeFTPUser extends Forms\Fields\FormStringField implements IWPConfigFileField {
 	
 	/**
 	* put your comment there...
@@ -20,7 +20,7 @@ class SecurityForceSSLAdmin extends Forms\Fields\FormIntegerField implements IWP
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('SecurityForceSSLAdmin');
+		parent::__construct('UpgradeFTPUser');
 	}
 
 	/**
@@ -28,7 +28,7 @@ class SecurityForceSSLAdmin extends Forms\Fields\FormIntegerField implements IWP
 	* 
 	*/
 	public function read() {
-		$this->setValue( defined( 'FORCE_SSL_ADMIN' ) ? FORCE_SSL_ADMIN : null );
+		$this->setValue( defined( 'FTP_USER' ) ? FTP_USER : null );
 	}
 
 }
