@@ -7,12 +7,12 @@
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs;
 
 # Imports
-use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
+use WCFE\Modules\Editor\View\Editor\Templates\Tabs\SimpleSubContainerTab;
 
 /**
 * 
 */
-class SecurityOptionsTab extends FieldsTab {
+class SecurityOptionsTab extends SimpleSubContainerTab {
 	
 	/**
 	* put your comment there...
@@ -28,14 +28,24 @@ class SecurityOptionsTab extends FieldsTab {
 	*/
 	protected $fields = array
 	(
-		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+		'Generic' => array
 		(
-			'SecurityDisablePluggablesEditor',
-			'SecurityForceSSLAdmin',
-			'SecurityForceSSLLogin',
-			'SecurityBlockExternalUrl',
-			'SecurityAccessibleHosts',
-		)
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'SecurityDisablePluggablesEditor',
+				'SecurityForceSSLAdmin',
+				'SecurityForceSSLLogin',
+			)		
+		),
+		'BlockExternal' => array
+		(
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'SecurityBlockExternalUrl',
+				'SecurityAccessibleHosts',
+			)		
+		),
+
 	);
 
 	/**

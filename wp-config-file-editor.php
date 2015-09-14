@@ -4,7 +4,7 @@
 * Plugin URI: http://wp-cfe.xptrdev.com
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.0
+* Version: 1.1
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form
 * License: GPL2
 */
