@@ -228,6 +228,7 @@ return array(
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Fields\\WPLangDir\\Field' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/WPLangDir/Field.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Fields\\WPLang\\Field' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/WPLang/Field.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\FieldsTab' => $baseDir . '/Modules/Editor/View/Editor/Templates/Tabs/FieldsTab.abstract.php',
+    'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\SimpleSubContainerTab' => $baseDir . '/Modules/Editor/View/Editor/Templates/Tabs/SimpleSubContainer.abstract.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\Tab' => $baseDir . '/Modules/Editor/View/Editor/Templates/Tabs/Tab.abstract.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\Tabs' => $baseDir . '/Modules/Editor/View/Editor/Templates/Tabs/Tabs.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\Tabs\\CronOptionsTab' => $baseDir . '/Modules/Editor/View/Editor/Templates/Tabs/Tabs/Cron.class.php',

@@ -257,6 +257,8 @@ color: #FFB300;
 {
     float: right;
     text-decoration: none;
+    margin: 10px;
+
 }
 
 .help-list 
@@ -319,6 +321,12 @@ input.checkbox-list-input {
         left: -5px;
     top: 11px;
 }
+.simple-sub-container {
+    background-color: #212324;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+
 /* PREVIEW */
 #config-file-content 
 {

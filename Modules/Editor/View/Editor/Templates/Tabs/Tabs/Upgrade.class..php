@@ -7,12 +7,12 @@
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs;
 
 # Imports
-use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
+use WCFE\Modules\Editor\View\Editor\Templates\Tabs\SimpleSubContainerTab;
 
 /**
 * 
 */
-class UpgradeOptionsTab extends FieldsTab {
+class UpgradeOptionsTab extends SimpleSubContainerTab {
 	
 	/**
 	* put your comment there...
@@ -28,22 +28,33 @@ class UpgradeOptionsTab extends FieldsTab {
 	*/
 	protected $fields = array
 	(
-		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+	
+		'Generic' => array
 		(
-			'UpgradeAutoDisable',
-			'UpgradeAutoCore',
-			'UpgradeDisablePluggables',
-			'UpgradeFSMethod',
-			'UpgradeFTPBase',
-			'UpgradeFTPContentDir',
-			'UpgradeFTPPluginDir',
-			'UpgradeFTPPubKey',
-			'UpgradeFTPPriKey',
-			'UpgradeFTPUser',
-			'UpgradeFTPPassword',
-			'UpgradeFTPHost',
-			'UpgradeFTPSSL',
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'UpgradeAutoDisable',
+				'UpgradeAutoCore',
+				'UpgradeDisablePluggables',
+			)
+		),
+		'FTP' => array
+		(
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'UpgradeFSMethod',
+				'UpgradeFTPBase',
+				'UpgradeFTPContentDir',
+				'UpgradeFTPPluginDir',
+				'UpgradeFTPPubKey',
+				'UpgradeFTPPriKey',
+				'UpgradeFTPUser',
+				'UpgradeFTPPassword',
+				'UpgradeFTPHost',
+				'UpgradeFTPSSL',
+			)		
 		)
+
 	);
 
 	/**
@@ -52,5 +63,5 @@ class UpgradeOptionsTab extends FieldsTab {
 	* @var mixed
 	*/
 	protected $title = 'Upgrade';
-	
+
 }

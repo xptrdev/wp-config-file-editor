@@ -7,12 +7,12 @@
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs\Tabs;
 
 # Imports
-use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
+use WCFE\Modules\Editor\View\Editor\Templates\Tabs\SimpleSubContainerTab;
 
 /**
 * 
 */
-class PostOptionsTab extends FieldsTab {
+class PostOptionsTab extends SimpleSubContainerTab {
 	
 	/**
 	* put your comment there...
@@ -28,13 +28,22 @@ class PostOptionsTab extends FieldsTab {
 	*/
 	protected $fields = array
 	(
-		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+		'Generic' => array
 		(
-			'PostAutoSaveInterval',
-			'PostRevisions',
-			'PostRevisionsMax',
-			'PostEmptyTrashDays',
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'PostAutoSaveInterval',
+				'PostEmptyTrashDays',
+			)		
+		),
+		'PostRevisions' => array(
+			'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
+			(
+				'PostRevisions',
+				'PostRevisionsMax',
+			)
 		)
+
 	);
 
 	/**
