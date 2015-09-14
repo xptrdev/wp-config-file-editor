@@ -126,6 +126,15 @@ abstract class Tab {
 		
 		$helpLink->setAttribute( 'class', 'help-box-link' );
 		$helpLink->setAttribute( 'href', "#{$this->getId()}" );
+		$helpLink->nodeValue = 'Help';
+		
+		# constants list link
+		$constsListLink = $tabsDoc->createElement( 'a' );
+		$tab->appendChild( $constsListLink );
+		
+		$constsListLink->setAttribute( 'class', 'consts-list-link' );
+		$constsListLink->setAttribute( 'href', "#{$this->getId()}" );
+		$constsListLink->nodeValue = 'Constants List';
 		
 		////////// Render tab content /////////
 		
@@ -136,8 +145,6 @@ abstract class Tab {
 		# Help Box
 		
 		$helpBoxId = "{$this->id}-Help-Box";
-		
-		$helpLink->nodeValue = 'Help';
 		
 		# Help Window
 		$helpBox = $tabsDoc->createElement( 'div' );
@@ -209,6 +216,14 @@ abstract class Tab {
 			$tip->setAttribute( 'class', 'field-tip' );
 			$tip->nodeValue = $renderer->getTipText();
 			
+			# Constants Variables names
+			$fieldGenClass = 'WCFE\Modules\Editor\Model\ConfigFile\Fields\\' . $renderer->getField()->getName();
+			$fieldGenObj = new $fieldGenClass( );
+			
+			$name = $doc->createElement( 'p' );
+			$name->setAttribute( 'class', 'field-constant-name' );
+			$name->nodeValue = $fieldGenObj->getName();
+			
 			# Field row
 			$row = $doc->createElement( 'div' );
 			$row->setAttribute( 'class', 'field-row' );
@@ -218,6 +233,7 @@ abstract class Tab {
 			
 			$row->appendChild( $label );
 			$row->appendChild( $tip );
+			$row->appendChild( $name );
 			
 			# Add error only if has rules
 			$row->appendChild( $error );

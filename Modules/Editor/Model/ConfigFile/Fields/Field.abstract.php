@@ -43,6 +43,13 @@ abstract class Field {
 	* 
 	* @var mixed
 	*/
+	protected $name;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	private $model;
 	
 	/**
@@ -81,7 +88,7 @@ abstract class Field {
 	* @param {Form|IField} $field
 	* @return {Field|Form|IField}
 	*/
-	public function __construct(Master & $model, Form & $form, IField & $field )
+	public function __construct(Master & $model = null, Form & $form = null, IField & $field = null )
 	{
 		# Initialize
 		$this->model =& $model;
@@ -161,7 +168,15 @@ abstract class Field {
 	{
 		return $this->model;	
 	}
-
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getName() {
+		return $this->name;
+	}
+	
 	/**
 	* put your comment there...
 	* 

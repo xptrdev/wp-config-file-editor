@@ -37,6 +37,11 @@ div#wcfe-body {
 	margin-left: 0;
 }
 
+.field-constant-name
+{
+	display: none;
+}
+
 .field-tip, .checkbox-row p.field-tip
 {
 	color: #FFE308;
@@ -252,13 +257,20 @@ color: #FFB300;
 {
 	display: none;
 }
-
 .help-box-link
 {
-    float: right;
-    text-decoration: none;
-    margin: 10px;
+	right: 27px;
+}
+.consts-list-link
+{
+	right: 87px;
+}
 
+.help-box-link, .consts-list-link
+{
+  text-decoration: none;
+  position: absolute;
+  bottom: 7px;
 }
 
 .help-list 
@@ -267,7 +279,7 @@ color: #FFB300;
 	font-size: 15px;
 }
 td.help-label-text {
-    width: 27%;
+    width: 40%;
     color: white;
 }
 
