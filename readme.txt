@@ -164,6 +164,7 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress versions before Wordpress version 4.0
+* If you've awstats-report-viewer installed please upgrade to version 0.7.1 before updating/installing WCFE 1.1
 
 == Other Notes ==
 I really did hard work to create secure restoring Emergency backup feature. I'm recommending to always close Warning Dialog by pressing
