@@ -326,12 +326,18 @@ input.checkbox-list-input {
 
 #wcfe-config-form-main-menu
 {
-	width: 80px;
+	width: 294px;
 }
 #wcfe-config-form-main-menu ul
 {
 	width: 200px;
 }
+#wcfe-config-form-main-menu >li
+{
+    display: inline-block;
+    width: 120px;
+}
+
 #wcfe-config-form-main-menu li 
 {
 	padding: 8px 12px !important;

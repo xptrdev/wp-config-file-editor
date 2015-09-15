@@ -17,9 +17,7 @@ $router =& $this->router();
 ?>
 <div id="wcfe-body">
 	<ul id="wcfe-config-form-main-menu">
-		<li>
-			WCFE
-			<ul>
+
 				<li>
 					Profiles
 					<ul id="wcfe-dmm-profiles">
@@ -34,8 +32,7 @@ $router =& $this->router();
 						<li class="wcfe-dmm-tab-constants-list">Constants List</li>
 					</ul>
 				</li>
-			</ul>
-		</li>
+	
 	</ul>
 	<div class="wcfe-support-forums-link">
 	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>
