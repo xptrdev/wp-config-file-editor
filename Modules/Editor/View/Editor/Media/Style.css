@@ -257,21 +257,6 @@ color: #FFB300;
 {
 	display: none;
 }
-.help-box-link
-{
-	right: 27px;
-}
-.consts-list-link
-{
-	right: 87px;
-}
-
-.help-box-link, .consts-list-link
-{
-  text-decoration: none;
-  position: absolute;
-  bottom: 7px;
-}
 
 .help-list 
 {
@@ -341,7 +326,16 @@ input.checkbox-list-input {
 
 #wcfe-config-form-main-menu
 {
+	width: 80px;
+}
+#wcfe-config-form-main-menu ul
+{
 	width: 200px;
+}
+#wcfe-config-form-main-menu li 
+{
+	padding: 8px 12px !important;
+	background-color: #000000;
 }
 /* PREVIEW */
 #config-file-content 

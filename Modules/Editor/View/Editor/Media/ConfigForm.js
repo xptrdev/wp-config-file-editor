@@ -26,7 +26,7 @@
 		* put your comment there...
 		* 
 		*/
-		var formEle;
+		var formEle, tab, activeTab;
 		
 		/**3
 		* put your comment there...
@@ -100,9 +100,7 @@
 		var generateHelpBoxMap = function(dialogTitle, fieldClass)
 		{
 			
-			var helpHref = event.target.href;
-			
-			var tabId = helpHref.substring( helpHref.indexOf( '#' ) + 1 );
+			var tabId = activeTab.prop( 'id' );
 			
 			var helpBoxId = tabId + '-Help-Box';
 			var helpBoxList = $( '#' + helpBoxId + ' table' );
@@ -187,7 +185,7 @@
 			formEle.submit();
 			
 		};
-
+		
 		/**
 		* 
 		*/
@@ -196,6 +194,30 @@
 			
 			formEle = $( '#wcfe-config-editor-form' );
 			
+			// Tab
+			tab = $( '#wcfe-options-tab' );
+			
+			tab.tabs( 
+			{ 
+				activate : 
+				
+					function(event, ui) 
+					{
+						// Save active tab index into cookies
+						$.cookie( 'wcfe-config-form-active-tab',  tab.tabs( 'option', 'active' ) );
+						
+						// Store actiove Tab object
+						activeTab = ui.newPanel;
+						
+					}
+			} )
+			
+			// Activate tab --> Make sure to receive activate event when loaded
+			.tabs( 'option', 'active', $.cookie( 'wcfe-config-form-active-tab' ) )
+			
+			// Show Tab
+			.show( );
+	
 			// Secure keys generator
 			$('.secure-key-generator-key').click( $.proxy( generateFieldKey, this ) );
 			
@@ -215,7 +237,7 @@
 			 );
 			 
 			// Help box
-			$( '.help-box-link' ).click(
+			$( '.wcfe-dmm-tab-help' ).click(
 				function()
 				{
 					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
@@ -223,14 +245,14 @@
 			);
 
 			// Help box
-			$( '.consts-list-link' ).click(
+			$( '.wcfe-dmm-tab-constants-list' ).click(
 				function()
 				{
 					generateHelpBoxMap( 'Constants List', 'field-constant-name' );
 				}
 			);
 			
-			$( '#wcfe-config-form-main-menu' ).menu();
+			$( '#wcfe-config-form-main-menu' ).menu( { position: { my: "left top", at: "left bottom" } });
 		};
 	
 		// Initialize form script when document lodaed

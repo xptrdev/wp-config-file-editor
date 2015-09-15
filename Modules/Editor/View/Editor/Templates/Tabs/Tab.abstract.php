@@ -119,22 +119,6 @@ abstract class Tab {
 		# Create Tab Panel
 		$tab = $tabsDoc->createElement('div');
 		$tab->setAttribute('id', $this->getId());
-
-		# Help link
-		$helpLink = $tabsDoc->createElement( 'a' );
-		$tab->appendChild( $helpLink );
-		
-		$helpLink->setAttribute( 'class', 'help-box-link' );
-		$helpLink->setAttribute( 'href', "#{$this->getId()}" );
-		$helpLink->nodeValue = 'Help';
-		
-		# constants list link
-		$constsListLink = $tabsDoc->createElement( 'a' );
-		$tab->appendChild( $constsListLink );
-		
-		$constsListLink->setAttribute( 'class', 'consts-list-link' );
-		$constsListLink->setAttribute( 'href', "#{$this->getId()}" );
-		$constsListLink->nodeValue = 'Constants List';
 		
 		////////// Render tab content /////////
 		
