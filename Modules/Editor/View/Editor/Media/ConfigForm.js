@@ -255,6 +255,14 @@
 			$( '#wcfe-config-form-main-menu' ).menu( { position: { my: "left top", at: "left bottom" } });
 		};
 	
+		/**
+		* 
+		*/
+		this._onselectprofile = function(profileId)
+		{
+			alert( profileId );
+		};
+		
 		// Initialize form script when document lodaed
 		$( initialize );
 		

@@ -83,9 +83,38 @@
 				</object>
 			</proxy>
 		</service>
+
+		<service serviceObjectClass="Profiles\Services\Profiles\Ajax"
+						 serviceFront="Service"
+						 routerClass="WPPFW\Plugin\ServiceObjectRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Ajax\Proxy">
+			<proxy typeName="Service" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Ajax\Proxy" frontClass="WPPFW\Plugin\MVCRequestInputFrontProxy">
+				<object class="MVCParams">
+					<param name="module" 						value="Profiles" />
+					<param name="controller" 				value="ProfilesService" />
+				</object>
+			</proxy>
+		</service>
 		
+		<service serviceObjectClass="Profiles\Services\Profiles\AjaxView"
+						 serviceFront="Service"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Ajax\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Ajax\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="Profiles" />
+					<param name="controller" 				value="Profiles" />
+					<param name="view" 							value="Profiles" />
+					<param name="action" 						value="List" />
+				</object>
+			</proxy>
+		</service>
+	
 		<models>
 			<model id="WCFE\Modules\Editor\Model\EditorModel">
+				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
+			</model>
+			<model id="WCFE\Modules\Profiles\Model\ProfilesModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
 		</models>

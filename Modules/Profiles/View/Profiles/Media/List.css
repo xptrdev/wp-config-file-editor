@@ -1,0 +1,20 @@
+table.wcfe-grid-table
+{
+	width: 100%;
+}
+
+table.wcfe-grid-table tr th
+{
+	background-color: blue;
+}
+
+table.wcfe-grid-table tr td
+{
+	background-color: red;
+	text-align: center;
+}
+
+#wcfe-profiles-list-menu
+{
+	width: 80px;
+}

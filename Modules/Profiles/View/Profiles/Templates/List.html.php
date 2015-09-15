@@ -1,0 +1,106 @@
+<?php
+/**
+* 	
+*/
+
+# Define namespace
+namespace WCFE\Modules\Editor\View\Editor\Templates;
+
+# No direct access
+defined('ABSPATH') or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
+
+$result = $this->result();
+$router = $this->router();
+$profiles = $result[ 'profiles' ];
+$securityNonce = $result[ 'securityNonce' ];
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+<?php do_action( 'admin_print_scripts' ); ?>
+<?php do_action( 'admin_print_styles' ); ?>
+		<script type="text/javascript">
+			jQuery( function() {
+				
+				
+				jQuery( '#wcfe-profiles-list-menu' ).menu({
+					select : function(event)
+					{
+						switch ( event.srcElement.id )
+						{
+							case 'wcfe-profiles-list-menu-delete':
+							
+								if ( confirm( 'Would you like to delete selected profiles?' ) )
+								{
+									jQuery( '#wcfe-grid-table-form' ).submit();	
+								}
+								
+							break;
+						}
+					}
+				});
+				
+				
+				jQuery( '#wcfe-table-grid-selectall' ).change(
+					function()
+					{
+						jQuery( '.wcfe-grid-table input[name="id[]"]' ).prop( 'checked', jQuery( this ).prop( 'checked' ) );
+					}
+				);
+				
+				
+				// Notify config form window
+				jQuery( '.wcfe-select-profile' ).click(
+				
+					function()
+					{
+						
+						var callback = window.parent.WCFEEditorForm._onselectprofile;
+						
+						callback( this.href.substring( this.href.indexOf( '#' ) + 1 ) );
+					}
+				);
+				
+				
+				
+			} );
+		</script>
+	</head>
+	<body>
+		<div id="wcfe-profiles-list" class="wcfe-popup-view">
+			<ul id="wcfe-profiles-list-menu">
+				<li id="wcfe-profiles-list-menu-delete">Delete</li>
+			</ul>
+			<form id="wcfe-grid-table-form" action="<?php echo $router->routeAction() ?>" method="post">
+				<table class="wcfe-grid-table" cellpadding="4" cellspacing="2">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>ID</th>
+							<th><input type="checkbox" id="wcfe-table-grid-selectall" /></th>
+						</tr>
+					</thead>
+					<tbody>
+<?php 			foreach ( $profiles as $profile ) : ?>
+						<tr>
+							<td>
+								<?php echo $profile->name ?>
+								<div class="wcfe-table-grid-column-actions">
+									<a href="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&id=<?php echo $profile->id ?>">Edit</a> | 
+									<a class="wcfe-select-profile" href="#<?php echo $profile->id ?>">Select</a>
+								</div>
+							</td>
+							<td><?php echo $profile->description ?></td>
+							<td><?php echo $profile->id ?></td>
+							<td><input type="checkbox" name="id[]" value="<?php echo $profile->id ?>" /></td>
+						</tr>
+<?php 			endforeach; ?>
+					</tbody>
+				</table>
+				<input type="hidden" name="securityNonce" value="<?php echo $result[ 'securityNonce' ] ?>" />
+			</form>	
+		</div>
+	</body>
+</html>

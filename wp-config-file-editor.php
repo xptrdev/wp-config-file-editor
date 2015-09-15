@@ -21,8 +21,8 @@ const NO_DIRECT_ACCESS_MESSAGE = 'Access Denied';
 # Wordpres Plugin Framework
 use WPPFW\Plugin\PluginBase;
 
-# Editor Service Module
-use WCFE\Services\EditorModule;
+# Modules
+use WCFE\Services;
 
 /**
 * 
@@ -60,8 +60,17 @@ class Plugin extends PluginBase
 		{
 			
 			# Editor Service Module
-			$editorModule = new EditorModule( $this );
+			$editorModule = new Services\EditorModule( $this );
 			$editorModule->start();
+			
+			# Profiles is totally relying on AJAX
+			# editor Ajax should be here too however I will do that
+			# in the subsequence releases
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			{
+				$profilesModule = new Services\ProfilesModule( $this );
+				$profilesModule->start();
+			}
 			
 			$this->bindingHooks = true;
 			

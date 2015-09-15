@@ -1,0 +1,29 @@
+div#wcfe-profile-edit {
+    
+}
+
+div#wcfe-profile-edit fieldset {
+    border:none;
+}
+
+div#wcfe-profile-edit fieldset ul
+{
+    list-style-type:none;
+}
+
+div#wcfe-profile-edit fieldset ul li
+{
+    margin-bottom:16px
+}
+div#wcfe-profile-edit fieldset ul li label{
+
+    display:inline-block;
+    width: 200px
+}
+
+
+#profile-description
+{
+    width: 420px;
+    height: 322px;
+}

@@ -18,20 +18,21 @@ $router =& $this->router();
 <div id="wcfe-body">
 	<ul id="wcfe-config-form-main-menu">
 
-				<li>
-					Profiles
-					<ul id="wcfe-dmm-profiles">
-						<li class="wcfe-dmm-profiles-create">Create</li>
-						<li class="wcfe-dmm-profiles-list">Profiles</li>
-					</ul>
-				</li>
-				<li>
-					Tab
-					<ul id="wcfe-dmm-tab">
-						<li class="wcfe-dmm-tab-help">Fields Help</li>
-						<li class="wcfe-dmm-tab-constants-list">Constants List</li>
-					</ul>
-				</li>
+		<li>
+			Profiles
+			<ul id="wcfe-dmm-profiles">
+				<li class="wcfe-dmm-profiles-create">Create</li>
+				<li class="wcfe-dmm-profiles-list">Profiles</li>
+				<li class="wcfe-dmm-profiles-list">Save</li>
+			</ul>
+		</li>
+		<li>
+			Tab
+			<ul id="wcfe-dmm-tab">
+				<li class="wcfe-dmm-tab-help">Fields Help</li>
+				<li class="wcfe-dmm-tab-constants-list">Constants List</li>
+			</ul>
+		</li>
 	
 	</ul>
 	<div class="wcfe-support-forums-link">
