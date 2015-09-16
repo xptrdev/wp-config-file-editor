@@ -1,3 +1,7 @@
+body
+{
+    margin-top: 10px;
+}
 table.wcfe-grid-table
 {
 	width: 100%;
@@ -5,16 +9,31 @@ table.wcfe-grid-table
 
 table.wcfe-grid-table tr th
 {
-	background-color: blue;
+	background-color: #128FF5;
 }
 
 table.wcfe-grid-table tr td
 {
-	background-color: red;
-	text-align: center;
+    background-color: white;
+    text-align: center;
 }
-
+.wcfe-table-grid-column-actions a {
+    font-size: 13px;
+    color: #0B9BD4;
+    font-weight: bold;
+    text-decoration: none;
+}
+.wcfe-table-grid-column-actions a:hover {
+    color: #0D5C7B;
+}
 #wcfe-profiles-list-menu
 {
 	width: 80px;
+	font-size: 0.9em;
 }
+
+#wcfe-profiles-list-menu ul li
+{
+	width: 90px;
+}
+

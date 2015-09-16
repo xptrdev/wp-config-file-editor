@@ -51,11 +51,18 @@ class ProfilesController extends Controller {
 			return;
 		}
 		
+		if ( ! isset( $_GET[ 'caller' ] ) )
+		{
+			die( 'Invalid Caller!!!' );
+		}
+		
 		$form = new \WCFE\Modules\Profiles\Model\Forms\ProfileForm();
 		$model =& $this->getModel();
+		
 		$result[ 'securityToken' ] = wp_create_nonce();
 		$result[ 'form' ] =& $form;
-		$result[ 'updated' ] = false;
+		$result[ 'caller' ] = $_GET[ 'caller' ];
+		$result[ 'storageId' ] = isset( $_GET[ 'storageId' ] ) ? $_GET[ 'storageId' ] : null;
 		
 		# Query profile to ediot or create new one
 		if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
@@ -99,14 +106,8 @@ class ProfilesController extends Controller {
 			
 			if ( $model->validate( $profile ) )
 			{
-				if ( $model->saveProfile( $profile ) )
-				{
-					
-					$router = $this->router();
-					
-					$this->redirect( $router->routeAction() );
-					
-				}
+				$result[ 'profileId' ] = $model->saveProfile( $profile, $result[ 'storageId' ] );
+				
 			}
 			
 		}

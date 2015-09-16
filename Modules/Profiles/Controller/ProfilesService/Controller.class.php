@@ -42,15 +42,44 @@ class ProfilesServiceController extends ServiceController {
 	* put your comment there...
 	* 
 	*/
-	public function listAction()
+	public function createProfileVarsTStorageAction()
 	{
-		if ( 0/* ! $this->_checkPermission() */ )
+		if ( ! $this->_checkPermission() )
 		{
 			
 			return;
 		}
 		
+		$model =& $this->getModel( 'Profiles' );
 		
+		$vars = filter_input( INPUT_POST, 'configFileFields', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
+		
+		$storageId = $model->createProfileVarsTStorage( $vars );
+		
+		return array( 'id' => $storageId );
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function setProfileVarsAction()
+	{
+
+		if ( ! $this->_checkPermission() )
+		{
+			
+			return;
+
+		}
+		$model =& $this->getModel( 'Profiles' );
+		
+		$profile = new \WCFE\Modules\Profiles\Model\Profile();
+		
+		$profile->id = $_POST[ 'profileId' ];
+		$profile->vars = filter_input( INPUT_POST, 'configFileFields', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
+		
+		return $model->updateProfileVars( $profile );
 	}
 
 } # End class

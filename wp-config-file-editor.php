@@ -63,12 +63,13 @@ class Plugin extends PluginBase
 			$editorModule = new Services\EditorModule( $this );
 			$editorModule->start();
 			
+			$profilesModule = new Services\ProfilesModule( $this );
+			
 			# Profiles is totally relying on AJAX
 			# editor Ajax should be here too however I will do that
 			# in the subsequence releases
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
 			{
-				$profilesModule = new Services\ProfilesModule( $this );
 				$profilesModule->start();
 			}
 			

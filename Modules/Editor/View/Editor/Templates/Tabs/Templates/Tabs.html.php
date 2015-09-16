@@ -15,4 +15,5 @@ echo '<?xml version="1.0" encoding="utf-8" ?>';
 <div id="wcfe-options-tab">
 	<ul id="wcfe-options-tab-navigator"></ul>
 	<div id="wcfe-options-tab-tabs"></div>
+	<div id="wcfe-status-bar"><span class="status-text"></span></div>
 </div>

@@ -1,3 +1,7 @@
+body
+{
+	    background-color: white;
+}
 div#wcfe-profile-edit {
     
 }
@@ -25,5 +29,5 @@ div#wcfe-profile-edit fieldset ul li label{
 #profile-description
 {
     width: 420px;
-    height: 322px;
+    height: 219px;
 }

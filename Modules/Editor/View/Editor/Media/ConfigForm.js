@@ -12,7 +12,7 @@
 	/**
 	* 
 	*/
-	var WCFEEditorForm = new function() 
+	WCFEEditorForm = new function() 
 	{
 		
 		/**
@@ -27,7 +27,7 @@
 		* 
 		*/
 		var formEle, tab, activeTab;
-		
+
 		/**3
 		* put your comment there...
 		* 
@@ -92,6 +92,49 @@
 			
 		};
 
+		/**
+		* put your comment there...
+		* 
+		* @param event
+		*/
+		var doMainMenu = function( event )
+		{
+			switch ( event.srcElement.id )
+			{
+				case 'wcfe-dmm-profiles-list':
+				
+					// how profiles list dialog
+					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
+					
+				break;
+				
+				case 'wcfe-dmm-profiles-create':
+					
+					// First create Profile Vars Temporary storage to be associated with
+					// profile when created
+					editorSrvs.makeCall( editorSrvs.getActionRoute( 'createVarsTStorage' ), formEle.serializeObject() ).done
+					(
+						function( temporaryStorage )
+						{
+							if ( ! temporaryStorage || ! temporaryStorage.id )
+							{
+								
+								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporar Storage'  ] );
+								
+								return;
+							}
+							
+							// Create Profile / Send Storage Id along with request
+							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+							
+						}
+					
+					);
+										
+				break;
+			}
+		};
+	
 		/**
 		* put your comment there...
 		* 
@@ -252,13 +295,34 @@
 				}
 			);
 			
-			$( '#wcfe-config-form-main-menu' ).menu( { position: { my: "left top", at: "left bottom" } });
+			$( '#wcfe-config-form-main-menu' ).menu( { position: { my: "left top", at: "left bottom" }, select : doMainMenu });
 		};
 	
 		/**
 		* 
 		*/
-		this._onselectprofile = function(profileId)
+		this._onprofilesdialogready = function()
+		{
+			$( '#TB_window, #TB_window iframe' ).width( '100%' ).height( '100%' ).offset( { top : 0, left : 0 } ).get( 1 ).style.top = '0px';
+		};
+		
+		/**
+		* 
+		*/
+		this._onprofileupdated = function( profileId )
+		{
+			
+			// Close create profile dialog
+			tb_remove();
+			
+			alert( profileId );
+			
+		};
+		
+		/**
+		* 
+		*/
+		this._onselectprofile = function( profileId )
 		{
 			alert( profileId );
 		};
@@ -270,3 +334,34 @@
 	
 	
 })( jQuery );
+
+
+// tatus bar
+WCFEEditorForm.statusBar = new function()
+{
+			
+	/**
+	* 
+	*/
+	this.showStatus = function( text )
+	{
+		
+	};
+			
+}
+
+// Profile
+WCFEEditorForm.profilePrototype = function( profileId )
+{
+
+	this.reflectState = function() 
+	{
+		
+	};
+	
+	this.createActiveProfileMenu = function()
+	{
+		
+	}
+
+};

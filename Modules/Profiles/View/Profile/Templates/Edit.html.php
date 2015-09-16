@@ -24,7 +24,7 @@ $securityToken = $result[ 'securityToken' ];
 	</head>
 	<body>
 		<div id="wcfe-profile-edit" class="wcfe-popup-view">
-			<form action="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>" method="post">
+			<form action="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&caller=<?php echo $result[ 'caller' ] ?>&storageId=<?php echo $result[ 'storageId' ] ?>" method="post">
 				<fieldset>
 					<ul>
 						<li><label for="profile-name">Name</label><input type="text" id="profile-name" name="profileForm[name]" value="<?php echo $form->get( 'name' )->getValue() ?>" /></li>
@@ -36,5 +36,8 @@ $securityToken = $result[ 'securityToken' ];
 				<input type="hidden" name="profileForm[id]" value="<?php echo $form->get( 'id' )->getValue() ?>" />
 			</form>
 		</div>
+<?php if ( isset( $result[ 'profileId' ] ) ) : ?>
+	<script type="text/javascript"> window.parent[ '<?php echo $result[ 'caller' ] ?>' ]._onprofileupdated( '<?php echo $result[ 'profileId' ] ?>' );</script>
+<?php endif; ?>
 	</body>
 </html>

@@ -21,10 +21,19 @@ $securityNonce = $result[ 'securityNonce' ];
 <?php do_action( 'admin_print_scripts' ); ?>
 <?php do_action( 'admin_print_styles' ); ?>
 		<script type="text/javascript">
+		
+			WCFEProfilesList = new function()
+			{
+				 this._onprofileupdated  = function( profileId )
+				 {
+				 	 window.location.reload();
+				 };
+			};
+			
 			jQuery( function() {
 				
 				
-				jQuery( '#wcfe-profiles-list-menu' ).menu({
+				jQuery( '#wcfe-profiles-list-menu' ).menu({ position: { my: "left top", at: "left bottom" },
 					select : function(event)
 					{
 						switch ( event.srcElement.id )
@@ -35,6 +44,12 @@ $securityNonce = $result[ 'securityNonce' ];
 								{
 									jQuery( '#wcfe-grid-table-form' ).submit();	
 								}
+								
+							break;
+							
+							case 'wcfe-profiles-list-menu-create':
+								
+								tb_show( 'Create Profile', actionsRoute[ 'editProfile' ] + '&caller=WCFEProfilesList&TB_iframe=true' );
 								
 							break;
 						}
@@ -62,7 +77,19 @@ $securityNonce = $result[ 'securityNonce' ];
 					}
 				);
 				
+				// Edit Profile
+				jQuery( '.wcfe-edit-profile' ).click(
+					function( event )
+					{
+						
+						tb_show( 'Edit Profile', event.target.href + '&caller=WCFEProfilesList&TB_iframe=true' );
+						
+						return false;
+					}
+				);
 				
+				// Notify when ready
+				window.parent.WCFEEditorForm._onprofilesdialogready();
 				
 			} );
 		</script>
@@ -70,7 +97,12 @@ $securityNonce = $result[ 'securityNonce' ];
 	<body>
 		<div id="wcfe-profiles-list" class="wcfe-popup-view">
 			<ul id="wcfe-profiles-list-menu">
-				<li id="wcfe-profiles-list-menu-delete">Delete</li>
+				<li>Actions
+					<ul>
+						<li id="wcfe-profiles-list-menu-delete">Delete</li>	
+						<li id="wcfe-profiles-list-menu-create">Create</li>	
+					</ul>
+				</li>
 			</ul>
 			<form id="wcfe-grid-table-form" action="<?php echo $router->routeAction() ?>" method="post">
 				<table class="wcfe-grid-table" cellpadding="4" cellspacing="2">
@@ -88,7 +120,7 @@ $securityNonce = $result[ 'securityNonce' ];
 							<td>
 								<?php echo $profile->name ?>
 								<div class="wcfe-table-grid-column-actions">
-									<a href="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&id=<?php echo $profile->id ?>">Edit</a> | 
+									<a class="wcfe-edit-profile" href="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&id=<?php echo $profile->id ?>">Edit</a> | 
 									<a class="wcfe-select-profile" href="#<?php echo $profile->id ?>">Select</a>
 								</div>
 							</td>
@@ -102,5 +134,7 @@ $securityNonce = $result[ 'securityNonce' ];
 				<input type="hidden" name="securityNonce" value="<?php echo $result[ 'securityNonce' ] ?>" />
 			</form>	
 		</div>
+		<script type="text/javascript">var actionsRoute = <?php echo json_encode( $this->actionsRoute ) ?>;</script>
+<?php do_action( 'admin_print_footer_scripts' ) ?>
 	</body>
 </html>

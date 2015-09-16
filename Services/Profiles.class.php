@@ -22,7 +22,7 @@ class ProfilesModule extends ServiceModule {
 	/**
 	* 
 	*/
-	const PROFILES_AJAX_SERVICE_KEY = 0;
+	const PROFILES_AJAX_SERVICE_KEY = 2;
 
 	/**
 	* 

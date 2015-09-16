@@ -21,19 +21,29 @@ $router =& $this->router();
 		<li>
 			Profiles
 			<ul id="wcfe-dmm-profiles">
-				<li class="wcfe-dmm-profiles-create">Create</li>
-				<li class="wcfe-dmm-profiles-list">Profiles</li>
-				<li class="wcfe-dmm-profiles-list">Save</li>
+				<li id="wcfe-dmm-profiles-create">Create</li>
+				<li id="wcfe-dmm-profiles-list">Profiles</li>
+				<li id="wcfe-dmm-profiles-save">Save</li>
 			</ul>
 		</li>
 		<li>
 			Tab
 			<ul id="wcfe-dmm-tab">
-				<li class="wcfe-dmm-tab-help">Fields Help</li>
-				<li class="wcfe-dmm-tab-constants-list">Constants List</li>
+				<li id="wcfe-dmm-tab-help">Fields Help</li>
+				<li id="wcfe-dmm-tab-constants-list">Constants List</li>
 			</ul>
 		</li>
-	
+
+		<li>
+			About
+			<ul id="wcfe-dmm-about">
+				<li id="wcfe-dmm-about-contact">Contact Us</li>
+				<li id="wcfe-dmm-about-website">Web Site</li>
+				<li id="wcfe-dmm-about-support">Support Forum</li>
+				<li id="wcfe-dmm-about-submit-review">Submit Review</li>
+			</ul>
+		</li>
+			
 	</ul>
 	<div class="wcfe-support-forums-link">
 	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>

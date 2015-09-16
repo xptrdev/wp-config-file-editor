@@ -103,14 +103,26 @@ class EditorHTMLView extends TemplateView {
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
 		# Actions route
-		$this->setActionsRoute( array
-		(
-			'createSecureKey',
-			'preUpdate',
-			'validateForm',
-			'postUpdate',
-			'updateConfigFile',
-		) );
+		$this->setActionsRoute( 
+			'Editor', 'editorService', array
+				(
+					'createSecureKey' => 	array( 'action' => 'createSecureKey' ),
+					'preUpdate' => 				array( 'action' => 'preUpdate' ),
+					'validateForm' => 		array( 'action' => 'validateForm' ),
+					'postUpdate' => 			array( 'action' => 'postUpdate' ),
+					'updateConfigFile' => array( 'action' => 'updateConfigFile' ),
+				),
+			'Profiles', 'profilesView', array
+			(
+				'profilesList' => array(),
+				'editProfile' => array( 'action' => 'Edit', 'view' => 'Profile' ),
+			),
+			'Profiles', 'profilesService', array
+			(
+				'createVarsTStorage' => array( 'controller' => 'ProfilesService' , 'action' => 'createProfileVarsTStorage' ),
+				'setProfileVars' => array( 'controller' => 'ProfilesService' , 'action' => 'setProfileVars' ),
+			)
+		);
 	}
 
 	/**
@@ -133,30 +145,57 @@ class EditorHTMLView extends TemplateView {
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\RawView' ) );
 		
 		# Actions route
-		$this->setActionsRoute( array
-		(
-			'preUpdate',
-			'postUpdate',
-			'updateRawConfigFile',
-		) );
+		$this->setActionsRoute( 
+			'Editor', 'editorService', array
+			(
+				'preUpdate' => array( 'action' => 'preUpdate' ),
+				'postUpdate' => array( 'action' => 'postUpdate' ),
+				'updateRawConfigFile' => array( 'action' => 'updateRawConfigFile' ),
+			) 
+		);
 		
 	}
-	
+
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $moduleName
+	* @param mixed $serviceObjectName
 	* @param mixed $actionsList
+	* @return EditorHTMLView
 	*/
-	private function & setActionsRoute( $actionsList )
+	private function & setActionsRoute( $moduleName, $serviceObjectName, $actionsList )
 	{
 		
-		$serviceRouter =& $this->router()->findRouter( 'Editor', 'editorService' );
+		$args = func_get_args();
 		
-		foreach ( $actionsList as $actionName )
+		for ( $argIndex = 0; $argIndex < count( $args ); $argIndex += 3 )
 		{
-			$this->actionsRoute[ $actionName ] = (string) $serviceRouter->routeAction( $actionName );
+			
+			$serviceRouter = $this->router()->findRouter( $args[ $argIndex ], $args[ $argIndex + 1 ] );
+			
+			foreach ( ( $args[ $argIndex + 2 ] ) as $key => $route )
+			{
+				
+				$route = array_merge( array( 'action' => '', 'controller' => '', 'module' => '', 'view' => '', 'format' => '' ),  $route );
+				
+				$this->actionsRoute[ $key ] = (string) $serviceRouter->route
+				(
+					new \WPPFW\MVC\MVCViewParams
+					( 
+						$route[ 'module' ],
+						$route[ 'controller' ],
+						$route[ 'action' ],
+						$route[ 'format' ],
+						$route[ 'view' ]
+					)
+				);
+				
+			}
+		
 		}
 		
 		return $this;
 	}
+	
 }

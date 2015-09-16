@@ -67,31 +67,68 @@ class ProfilesHTMLView extends TemplateView {
 		
 		# Scripts
 		$this->scriptsQueue->enqueueNamedResource( \WPPFW\Services\Queue\DashboardScriptsQueue::JQUERY );
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
+			
 		# Styles
+		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
 		
 		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive' ) );
+		
 		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profiles\Media\Style' ) );
 		
+		# Actions route
+		$this->setActionsRoute( 
+			'Profiles', 'profilesView', array
+			(
+				'editProfile' => array( 'action' => 'Edit', 'view' => 'Profile' )
+			)
+		);
+		
 	}
-	
-	
+
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $moduleName
+	* @param mixed $serviceObjectName
 	* @param mixed $actionsList
+	* @return EditorHTMLView
 	*/
-	private function & setActionsRoute( $actionsList )
+	private function & setActionsRoute( $moduleName, $serviceObjectName, $actionsList )
 	{
 		
-		$serviceRouter =& $this->router()->findRouter( 'Editor', 'editorService' );
+		$args = func_get_args();
 		
-		foreach ( $actionsList as $actionName )
+		for ( $argIndex = 0; $argIndex < count( $args ); $argIndex += 3 )
 		{
-			$this->actionsRoute[ $actionName ] = (string) $serviceRouter->routeAction( $actionName );
+			
+			$serviceRouter = $this->router()->findRouter( $args[ $argIndex ], $args[ $argIndex + 1 ] );
+			
+			foreach ( ( $args[ $argIndex + 2 ] ) as $key => $route )
+			{
+				
+				$route = array_merge( array( 'action' => '', 'controller' => '', 'module' => '', 'view' => '', 'format' => '' ),  $route );
+				
+				$this->actionsRoute[ $key ] = (string) $serviceRouter->route
+				(
+					new \WPPFW\MVC\MVCViewParams
+					( 
+						$route[ 'module' ],
+						$route[ 'controller' ],
+						$route[ 'action' ],
+						$route[ 'format' ],
+						$route[ 'view' ]
+					)
+				);
+				
+			}
+		
 		}
 		
 		return $this;
 	}
+	
 }

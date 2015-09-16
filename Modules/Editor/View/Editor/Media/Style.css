@@ -326,7 +326,8 @@ input.checkbox-list-input {
 
 #wcfe-config-form-main-menu
 {
-	width: 294px;
+	width: 324px;
+	font-size: 1.1em;
 }
 #wcfe-config-form-main-menu ul
 {
@@ -335,13 +336,27 @@ input.checkbox-list-input {
 #wcfe-config-form-main-menu >li
 {
     display: inline-block;
-    width: 120px;
+    width: 81px;
 }
 
 #wcfe-config-form-main-menu li 
 {
-	padding: 8px 12px !important;
+	padding: 2px 12px !important;
 	background-color: #000000;
+}
+
+#wcfe-status-bar
+{
+    height: 19px;
+    color: yellow;
+    position: relative;
+    top: 4px;
+    background-color: #151515;
+    font-size: 11px;
+    font-family: monospace;
+    padding: 0 10px;
+    width: 98% !important;
+    border-radius: 20px;
 }
 /* PREVIEW */
 #config-file-content 

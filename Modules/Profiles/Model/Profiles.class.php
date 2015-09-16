@@ -23,6 +23,30 @@ class ProfilesModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $profileVarsTStorage = array();
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $vars
+	*/
+	public function createProfileVarsTStorage( $vars )
+	{
+		
+		$id = md5( uniqid() );
+		
+		# For now we just need single storage
+		$this->profileVarsTStorage = array( $id => $vars );
+		
+		return $id;
+		
+	}
+	
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $ids
 	*/
 	public function delete( $ids )
@@ -87,8 +111,9 @@ class ProfilesModel extends PluginModel {
 	* put your comment there...
 	* 
 	* @param Profile $profile
+	* @param mixed $storageId
 	*/
-	public function saveProfile( Profile & $profile )
+	public function saveProfile( Profile & $profile, $storageId )
 	{
 		if ( $profile->id )
 		{
@@ -108,11 +133,41 @@ class ProfilesModel extends PluginModel {
 			# Generate new id
 			$profile->id = sanitize_title( $profile->name );
 			
+			# Insert vars too if there is storage Id specifed
+			if ( $storageId )
+			{
+				# Copy vars to profile vars
+				$profile->vars = $this->profileVarsTStorage;
+				
+				# Reset temporary storage
+				$this->profileVarsTStorage = array();
+			}
+			
 			$this->setMessage( 'Profile Added successfuly' );
 		}
 		
 		# Update or Insert
 		$this->profiles[ $profile->id ] = $profile->getArray();
+		
+		return $profile->id;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param Profile $profile
+	*/
+	public function & updateProfileVars( Profile & $profile )
+	{
+		if ( ! isset( $this->profiles[ $profile->id ] ) )
+		{
+			
+			$this->addError( 'Profile doesn\'t exists' );
+			
+			return false;
+		}
+		
+		$this->profiles[ $profile->id ][ 'vars' ] = $profile->vars;
 		
 		return true;
 	}
