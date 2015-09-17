@@ -27,6 +27,8 @@ class EditorController extends Controller {
 		$input =& $this->input();
 		$router =& $this->router();
 		$form =& $model->getForm();
+		$flags = array();
+		$activeProfile = false;
 		
 		# If not posted it then one ofthf following:
 		# 1. Returned from View Action with invalidated form data
@@ -35,6 +37,50 @@ class EditorController extends Controller {
 		if ( ! $input->isPost() ) 
 		{
 			
+			# Read flag
+			if ( isset( $_GET[ 'flags' ] ) )
+			{
+				
+				$flags = explode( ',', $_GET[ 'flags'] );
+				
+			}
+			
+			// Set or clear active profile
+			if ( isset( $_GET[ 'activeProfile' ] ) )
+			{
+				$model->setActiveProfile( $_GET[ 'activeProfile' ] );
+			}
+		  else if ( in_array( 'unsetActiveProfile', $flags ) )
+		  {
+				$model->unsetActiveProfile();
+		  }
+			
+			
+			# Load Active profile
+			if ( $model->hasActiveProfile() )
+			{
+				
+				$profilesModel =& $this->getModel( 'Profiles', 'Profiles' );
+				$activeProfile = $profilesModel->getProfile( $model->getActiveProfileId() );
+				
+				# Its important to don't crash the Config Form base
+				# in case active profile is not there for ANY reason! 
+				if ( ! $activeProfile ) // FALLBACK
+				{
+					
+					// Clea profile and refresh to display normal config file
+					$model->unsetActiveProfile();
+					
+					$model->AddError( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Confirg Form reseted back to wp-config file values!!' );
+					
+					$this->redirect( $router->routeAction() );
+					
+					return;
+				}
+			}
+			
+			
+					
 			# We here process to #2
 			if ( $model->isBackForChange() ) 
 			{
@@ -49,10 +95,19 @@ class EditorController extends Controller {
 			else 
 			{
 				
-				# Force form to read data from Wordpress config file
-				$model->loadFromConfigFile();
+				if ( $model->hasActiveProfile() )
+				{	
+					$model->loadForm( $activeProfile->vars );
+				}
+				else
+				{
+					
+					# Force form to read data from Wordpress config file
+					$model->loadFromConfigFile();
+				}
 				
 			}
+			
 		}
 		else 
 		{
@@ -110,7 +165,7 @@ class EditorController extends Controller {
 		$form->getSecurityToken()->setValue( $this->createSecurityToken() );
 		
 		# Return model to view
-		return $model;
+		return array( 'model' => & $model, 'activeProfile' => $activeProfile );
 	}
 
 	/**

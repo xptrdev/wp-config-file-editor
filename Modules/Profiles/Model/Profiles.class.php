@@ -117,13 +117,15 @@ class ProfilesModel extends PluginModel {
 	{
 		if ( $profile->id )
 		{
-			if ( ! $this->getProfile( $profile->id ) )
+			if ( ! $currentProfile = $this->getProfile( $profile->id ) )
 			{
 				
 				$this->addError( 'Profile doesnt exists!!!' );
 
 				return false;
 			}
+			
+			$profile->vars = $currentProfile->vars;
 			
 			$this->setMessage( 'Profile Updated successfuly' );
 			
@@ -137,7 +139,7 @@ class ProfilesModel extends PluginModel {
 			if ( $storageId )
 			{
 				# Copy vars to profile vars
-				$profile->vars = $this->profileVarsTStorage;
+				$profile->vars = $this->profileVarsTStorage[ $storageId ];
 				
 				# Reset temporary storage
 				$this->profileVarsTStorage = array();
@@ -157,7 +159,7 @@ class ProfilesModel extends PluginModel {
 	* 
 	* @param Profile $profile
 	*/
-	public function & updateProfileVars( Profile & $profile )
+	public function updateProfileVars( Profile & $profile )
 	{
 		if ( ! isset( $this->profiles[ $profile->id ] ) )
 		{

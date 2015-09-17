@@ -10,12 +10,25 @@ namespace WCFE\Modules\Editor\View\Editor\Templates;
 defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 	
 # Getting model
-$model =& $this->result();
+$result = $this->result();
+$model =& $result[ 'model' ];
 $form =& $model->getForm();
 $router =& $this->router();
 
 ?>
 <div id="wcfe-body">
+
+
+<?php if ($model->hasErrors()) : ?>
+	<ul id="errors-bar">
+<?php foreach ($model->getCleanErrors() as $errorMessage) : ?>
+		<li><?php echo $errorMessage; ?></li>
+<?php endforeach; ?>
+	</ul>
+<?php $model->writeState(); # Re-write state as this is running too late! ?>
+<?php endif; ?>
+
+
 	<ul id="wcfe-config-form-main-menu">
 
 		<li>
@@ -23,7 +36,19 @@ $router =& $this->router();
 			<ul id="wcfe-dmm-profiles">
 				<li id="wcfe-dmm-profiles-create">Create</li>
 				<li id="wcfe-dmm-profiles-list">Profiles</li>
-				<li id="wcfe-dmm-profiles-save">Save</li>
+				<li>-</li>
+				<li id="wcfe-dmm-profiles-active-profile">
+					Active Profile
+					<ul>
+						<li id="wcfe-dmm-profiles-save">Save</li>
+						<li>-</li>
+						<li id="wcfe-dmm-profiles-edit">Edit</li>
+						<li id="wcfe-dmm-profiles-delete">Delete</li>
+						<li id="wcfe-dmm-profiles-reload">Reload</li>
+						<li>-</li>
+						<li id="wcfe-dmm-profiles-unload">Unload</li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>
@@ -48,14 +73,6 @@ $router =& $this->router();
 	<div class="wcfe-support-forums-link">
 	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>
 	</div>
-<?php if ($model->hasErrors()) : ?>
-	<ul id="errors-bar">
-<?php foreach ($model->getCleanErrors() as $errorMessage) : ?>
-		<li><?php echo $errorMessage; ?></li>
-<?php endforeach; ?>
-	</ul>
-<?php $model->writeState(); # Re-write state as this is running too late! ?>
-<?php endif; ?>
 
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
@@ -74,3 +91,16 @@ $router =& $this->router();
 
 <?php // Editor Services Template ?>
 <?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
+
+<?php // Client side notificaytion if there is active profile ?>
+<?php 
+	if ( $result[ 'activeProfile' ] !== FALSE ) :
+	
+		$activeProfile = $result[ 'activeProfile' ]->getArray();
+		
+		unset( $activeProfile[ 'vars' ] );
+?>
+<script type="text/javascript">
+	WCFEEditorForm.profile.setActiveProfile( <?php echo json_encode( $activeProfile ) ?> )
+</script>
+<?php endif; ?>

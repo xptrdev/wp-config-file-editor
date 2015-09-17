@@ -116,6 +116,26 @@ class EditorServiceController extends ServiceController {
 	* put your comment there...
 	* 
 	*/
+	public function setActiveProfileAction()
+	{
+
+		# Check permission
+		if ( ! $this->_checkPermission() )
+		{
+			return null;
+		}
+		
+		$model =& $this->getModel( 'Editor' );
+		
+		$model->setActiveProfile( $_POST[ 'activeProfile' ] );
+		
+		return true;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function updateConfigFileAction()
 	{
 		

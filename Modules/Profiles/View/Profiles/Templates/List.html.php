@@ -24,16 +24,23 @@ $securityNonce = $result[ 'securityNonce' ];
 		
 			WCFEProfilesList = new function()
 			{
-				 this._onprofileupdated  = function( profileId )
-				 {
-				 	 window.location.reload();
-				 };
+				
+				this._onprofilecreated = function( profile )
+				{
+					window.location.reload();
+				}
+				this._onprofileupdated  = function( profile )
+				{
+					window.location.reload();
+				};
+				
 			};
 			
 			jQuery( function() {
 				
+				var $ = jQuery;
 				
-				jQuery( '#wcfe-profiles-list-menu' ).menu({ position: { my: "left top", at: "left bottom" },
+				$( '#wcfe-profiles-list-menu' ).menu({ position: { my: "left top", at: "left bottom" },
 					select : function(event)
 					{
 						switch ( event.srcElement.id )
@@ -42,7 +49,7 @@ $securityNonce = $result[ 'securityNonce' ];
 							
 								if ( confirm( 'Would you like to delete selected profiles?' ) )
 								{
-									jQuery( '#wcfe-grid-table-form' ).submit();	
+									$( '#wcfe-grid-table-form' ).submit();	
 								}
 								
 							break;
@@ -57,28 +64,51 @@ $securityNonce = $result[ 'securityNonce' ];
 				});
 				
 				
-				jQuery( '#wcfe-table-grid-selectall' ).change(
+				$( '#wcfe-table-grid-selectall' ).change(
 					function()
 					{
-						jQuery( '.wcfe-grid-table input[name="id[]"]' ).prop( 'checked', jQuery( this ).prop( 'checked' ) );
+						$( '.wcfe-grid-table input[name="id[]"]' ).prop( 'checked', $( this ).prop( 'checked' ) );
 					}
 				);
 				
 				
 				// Notify config form window
-				jQuery( '.wcfe-select-profile' ).click(
+				$( '.wcfe-select-profile' ).click(
 				
 					function()
 					{
 						
+						// Create compatible profile object similar to
+						// the one recivied by server. Aggregat
+						// profile data from greid row
+						
+						///////// This is not currently being used however leav it for a while to make ///////
+						//////// sure I don't need it /////////
+						var profile = {};
+						var profileId = this.href.substring( this.href.indexOf( '#' ) + 1 );
+						var profileFields = $( '.wcfe-grid-table #profile-row-' + profileId + ' td span.profile-field' ).each(
+							function( )
+							{
+								
+								var jField = $( this );
+								
+								// Last word in last class is the field name 
+								var fieldName = this.className.split( '-' )[ 2 ];
+								
+								profile[ fieldName ] = jField.text();
+								
+							}
+						);
+						
+						// Callback with selected profile object
 						var callback = window.parent.WCFEEditorForm._onselectprofile;
 						
-						callback( this.href.substring( this.href.indexOf( '#' ) + 1 ) );
+						callback( profileId );
 					}
 				);
 				
 				// Edit Profile
-				jQuery( '.wcfe-edit-profile' ).click(
+				$( '.wcfe-edit-profile' ).click(
 					function( event )
 					{
 						
@@ -116,16 +146,16 @@ $securityNonce = $result[ 'securityNonce' ];
 					</thead>
 					<tbody>
 <?php 			foreach ( $profiles as $profile ) : ?>
-						<tr>
+						<tr id="profile-row-<?php echo $profile->id ?>">
 							<td>
-								<?php echo $profile->name ?>
+								<span class="profile-field profile-name"><?php echo $profile->name ?></span>
 								<div class="wcfe-table-grid-column-actions">
 									<a class="wcfe-edit-profile" href="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&id=<?php echo $profile->id ?>">Edit</a> | 
-									<a class="wcfe-select-profile" href="#<?php echo $profile->id ?>">Select</a>
+									<a class="wcfe-select-profile" href="#<?php echo $profile->id ?>">Load</a>
 								</div>
 							</td>
-							<td><?php echo $profile->description ?></td>
-							<td><?php echo $profile->id ?></td>
+							<td><span class="profile-field profile-description"><?php echo $profile->description ?></span></td>
+							<td><span class="profile-field profile-id"><?php echo $profile->id ?></span></td>
 							<td><input type="checkbox" name="id[]" value="<?php echo $profile->id ?>" /></td>
 						</tr>
 <?php 			endforeach; ?>

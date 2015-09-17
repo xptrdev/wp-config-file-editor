@@ -36,8 +36,11 @@ $securityToken = $result[ 'securityToken' ];
 				<input type="hidden" name="profileForm[id]" value="<?php echo $form->get( 'id' )->getValue() ?>" />
 			</form>
 		</div>
-<?php if ( isset( $result[ 'profileId' ] ) ) : ?>
-	<script type="text/javascript"> window.parent[ '<?php echo $result[ 'caller' ] ?>' ]._onprofileupdated( '<?php echo $result[ 'profileId' ] ?>' );</script>
+<?php
+			if ( isset( $result[ 'profile' ] ) ) : 
+				$callbackName = $result[ 'isNew' ] ? '_onprofilecreated' : '_onprofileupdated';
+?>
+	<script type="text/javascript"> window.parent[ '<?php echo $result[ 'caller' ] ?>' ].<?php echo $callbackName ?>( <?php echo json_encode( $result[ 'profile' ] ) ?> );</script>
 <?php endif; ?>
 	</body>
 </html>

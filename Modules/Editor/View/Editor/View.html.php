@@ -111,6 +111,7 @@ class EditorHTMLView extends TemplateView {
 					'validateForm' => 		array( 'action' => 'validateForm' ),
 					'postUpdate' => 			array( 'action' => 'postUpdate' ),
 					'updateConfigFile' => array( 'action' => 'updateConfigFile' ),
+					'setActiveProfile' => array( 'action' => 'setActiveProfile' ),
 				),
 			'Profiles', 'profilesView', array
 			(
@@ -121,6 +122,7 @@ class EditorHTMLView extends TemplateView {
 			(
 				'createVarsTStorage' => array( 'controller' => 'ProfilesService' , 'action' => 'createProfileVarsTStorage' ),
 				'setProfileVars' => array( 'controller' => 'ProfilesService' , 'action' => 'setProfileVars' ),
+				'deleteProfile' => array( 'controller' => 'ProfilesService', 'action' => 'deleteProfile' ),
 			)
 		);
 	}

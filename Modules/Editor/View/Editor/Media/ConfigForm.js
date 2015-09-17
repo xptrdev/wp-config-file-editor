@@ -119,7 +119,7 @@
 							if ( ! temporaryStorage || ! temporaryStorage.id )
 							{
 								
-								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporar Storage'  ] );
+								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
 								
 								return;
 							}
@@ -131,6 +131,16 @@
 					
 					);
 										
+				break;
+				case 'wcfe-dmm-profiles-save':
+				case 'wcfe-dmm-profiles-edit':
+				case 'wcfe-dmm-profiles-delete':
+				case 'wcfe-dmm-profiles-reload':
+				case 'wcfe-dmm-profiles-unload':
+				case 'wcfe-dmm-profiles-close':
+				
+					WCFEEditorForm.profile.menuProxy( event.srcElement.id );
+					
 				break;
 			}
 		};
@@ -194,6 +204,14 @@
 		};
 	
 		/**
+		* 
+		*/
+    this.getFormEle = function()
+    {
+			return formEle;
+    };
+	
+		/**
 		* put your comment there...
 		* 
 		*/
@@ -204,6 +222,14 @@
 			
 		};
 		
+		/**
+		* 
+		*/
+		this.ro = function()
+		{
+			return editorSrvs;
+		};
+	
 		/**
 		* put your comment there...
 		* 
@@ -295,7 +321,15 @@
 				}
 			);
 			
-			$( '#wcfe-config-form-main-menu' ).menu( { position: { my: "left top", at: "left bottom" }, select : doMainMenu });
+			// Menu
+			$( '#wcfe-config-form-main-menu' ).menu( 
+				{ 
+					position: { my: "left top", at: "left bottom" }, 
+					select : doMainMenu
+				}
+			);
+			
+			
 		};
 	
 		/**
@@ -309,13 +343,42 @@
 		/**
 		* 
 		*/
-		this._onprofileupdated = function( profileId )
+		this._onprofilecreated = function( profile )
 		{
+			
+			WCFEEditorForm.profile.setActiveProfile( profile );
+			
+			WCFEEditorForm.statusBar.showProgress( 'Set Active Profile ...' );
+			
+			// Set as active profile
+			editorSrvs.makeCall( editorSrvs.getActionRoute( 'setActiveProfile' ), { activeProfile : profile.id } ).done(
+			  function()
+			  {
+					WCFEEditorForm.statusBar.showLog( 'Profile Activated' );
+			  }
+			
+			).error(			
+				function()
+				{
+					WCFEEditorForm.statusBar.showLog( 'Unahanlded error!!' );
+				}
+			);
 			
 			// Close create profile dialog
 			tb_remove();
 			
-			alert( profileId );
+		};
+		
+		/**
+		* 
+		*/
+		this._onprofileupdated = function( profile )
+		{
+			
+			// Config Form is not displaying any editable field (e.g description)
+			// so there is not need to reflect any changes, for now just close edit form
+			
+    	tb_remove();
 			
 		};
 		
@@ -324,44 +387,219 @@
 		*/
 		this._onselectprofile = function( profileId )
 		{
-			alert( profileId );
+			// Request server to load specific profile
+			// it will notify back from Javascirpt to load active profile
+			// in client environment
+			window.location.href += '&activeProfile=' + profileId;
 		};
 		
 		// Initialize form script when document lodaed
 		$( initialize );
 		
 	};
-	
-	
-})( jQuery );
+
+
+
+
 
 
 // tatus bar
 WCFEEditorForm.statusBar = new function()
 {
-			
+	
+	/**
+	* 
+	*/
+	this.showLog	= function( message )
+	{
+		$( '#wcfe-status-bar .log-text' ).text( message ).show().fadeOut( 20000, 
+			function()
+			{
+				$( '#wcfe-status-bar .log-text' ).text( '-' ).show();
+			}
+		);
+	};
+  
+	/**
+	* 
+	*/
+	this.showProgress	= function( message )
+	{
+		$( '#wcfe-status-bar .log-text' ).text( message );
+	};
+	
 	/**
 	* 
 	*/
 	this.showStatus = function( text )
 	{
-		
+		$( '#wcfe-status-bar .status-text' ).text( text );
 	};
 			
-}
+};
 
 // Profile
-WCFEEditorForm.profilePrototype = function( profileId )
+WCFEEditorForm.profile = new function( )
 {
 
-	this.reflectState = function() 
+	/**
+	* put your comment there...
+	* 
+	*/
+	var activeProfile;
+	
+	/**
+	* put your comment there...
+	* 
+	* @type Boolean
+	*/
+	var enabled = false;
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var ro = WCFEEditorForm.ro();
+	
+	/**
+	* put your comment there...
+	* 
+	* @type T_JS_FUNCTION
+	*/
+	var sb = WCFEEditorForm.statusBar;
+	
+	/**
+	* 
+	*/
+	this._ondelete = function()
+	{
+		
+		sb.showProgress( 'Deleting Profile ...' );
+		
+		ro.makeCall( ro.getActionRoute( 'deleteProfile' ), { profileId : activeProfile.id } ).done(
+			function()
+			{
+				sb.showLog( 'Profile deleted ... Refreshing from server...' );
+				
+				window.location.href += '&flags=unsetActiveProfile';
+			}		
+		).error(
+			function()
+			{
+				sb.showLog( 'Unhandle error' );
+			}
+		);
+	};
+	
+	/**
+	* 
+	*/
+	this._onedit = function()
+	{
+		tb_show( 'Edit Active Profile', ro.getActionRoute( 'editProfile' ) + '&id=' + activeProfile.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+	};
+	
+	/**
+	* 
+	*/
+	this._onreload = function()
+	{
+		window.location.reload();
+	};
+	
+	/**
+	* 
+	*/
+	this._onsave = function()
+	{
+		// Server save
+		var vars = WCFEEditorForm.getFormEle().serializeObject();
+		
+		vars.profileId = activeProfile.id;
+		
+		sb.showProgress( 'Saving Profile vars ...' );
+		
+		ro.makeCall( ro.getActionRoute( 'setProfileVars' ), vars ).done(
+		
+			/**
+			* 
+			*/
+			function( response )
+			{
+				sb.showLog( 'Profile vars saved successful' );
+			}
+		
+		).error(
+		
+			function()
+			{
+				sb.showLog( 'Server Unhandled Error while saving Profile vars!!' );
+			}
+		);
+		
+	};	
+	
+	/**
+	* 
+	*/
+	this._onunload = function()
+	{
+		window.location.href += '&flags=unsetActiveProfile';
+	};
+
+	/**
+	* 
+	* 
+	*/
+	this.clearActiveProfile = function()
 	{
 		
 	};
-	
-	this.createActiveProfileMenu = function()
+
+	/**
+	* 
+	*/
+	this.menuProxy = function( item )
+	{
+		var itemName = item.split( '-' ).pop();
+		var callbackName = '_on' + itemName;
+				
+		// Call handler
+		if ( enabled )
+		{
+			
+			WCFEEditorForm.profile[ callbackName ]();
+			
+		}
+	};
+
+	/**
+	* 
+	*/
+	this.setActiveProfile = function( profile )
 	{
 		
-	}
+		activeProfile = profile;
+		
+		enabled = true;
+		
+		$( '#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li' ).css( 'color', 'white' );
+		
+		this.reflectState();
+		
+		return this;
+	};
+	
+	/**
+	* 
+	*/
+	this.reflectState = function() 
+	{
+		WCFEEditorForm.statusBar.showStatus( 'Active Profile: ' + activeProfile.name );
+	};
 
-};
+};	
+	
+})( jQuery );
+
+

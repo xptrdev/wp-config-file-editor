@@ -106,7 +106,13 @@ class ProfilesController extends Controller {
 			
 			if ( $model->validate( $profile ) )
 			{
-				$result[ 'profileId' ] = $model->saveProfile( $profile, $result[ 'storageId' ] );
+				if ( $model->saveProfile( $profile, $result[ 'storageId' ] ) )
+				{
+					
+					$result[ 'profile' ] = $profile->getArray();
+					$result[ 'isNew' ] = ! isset( $postData[ 'id' ] ) || ! $postData[ 'id' ];
+					
+				}
 				
 			}
 			

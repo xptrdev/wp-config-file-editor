@@ -332,6 +332,8 @@ input.checkbox-list-input {
 #wcfe-config-form-main-menu ul
 {
 	width: 200px;
+	background: #0B3E6F;
+	background-image: none;
 }
 #wcfe-config-form-main-menu >li
 {
@@ -339,10 +341,16 @@ input.checkbox-list-input {
     width: 81px;
 }
 
-#wcfe-config-form-main-menu li 
+#wcfe-config-form-main-menu li.ui-menu-item 
 {
 	padding: 2px 12px !important;
-	background-color: #000000;
+	background-color: #0B3E6F;
+}
+
+.ui-menu-divider
+{
+    background-color: #0B3E6F;
+    border-color: #115BA2;
 }
 
 #wcfe-status-bar
@@ -357,6 +365,24 @@ input.checkbox-list-input {
     padding: 0 10px;
     width: 98% !important;
     border-radius: 20px;
+}
+
+#wcfe-status-bar span.status-text
+{
+	min-width: 200px;
+	display: inline-block;
+}
+
+#wcfe-status-bar span.log-text {
+    color: red;
+    /* float: right; */
+    padding-left: 21px;
+    border-left: 2px solid #292626;
+    position: relative;
+}
+#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li
+{
+	color: gray;
 }
 /* PREVIEW */
 #config-file-content 

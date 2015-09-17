@@ -54,9 +54,33 @@ class ProfilesServiceController extends ServiceController {
 		
 		$vars = filter_input( INPUT_POST, 'configFileFields', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
 		
+		# Exclude form internal fields
+		unset( $vars[ 'Task' ] );
+		unset( $vars[ 'stoken' ] );
+		
 		$storageId = $model->createProfileVarsTStorage( $vars );
 		
 		return array( 'id' => $storageId );
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function deleteProfileAction()
+	{
+		
+		if ( ! $this->_checkPermission() )
+		{
+			
+			return;
+
+		}
+		
+		$model =& $this->getModel( 'Profiles' );
+		$profileId = $_POST[ 'profileId' ];
+		
+		return $model->delete( array( $profileId ) );
 	}
 
 	/**
@@ -72,12 +96,17 @@ class ProfilesServiceController extends ServiceController {
 			return;
 
 		}
+		
 		$model =& $this->getModel( 'Profiles' );
 		
 		$profile = new \WCFE\Modules\Profiles\Model\Profile();
 		
 		$profile->id = $_POST[ 'profileId' ];
 		$profile->vars = filter_input( INPUT_POST, 'configFileFields', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
+		
+		# Exclude form internal fields
+		unset( $profile->vars[ 'Task' ] );
+		unset( $profile->vars[ 'stoken' ] );
 		
 		return $model->updateProfileVars( $profile );
 	}

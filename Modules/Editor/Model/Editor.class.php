@@ -18,6 +18,13 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	protected $activeProfile;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	private $allFields = array();
 	
 	/**
@@ -310,6 +317,15 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function getActiveProfileId()
+	{
+		return $this->activeProfile;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function getConfigFileContent() {
 		return $this->configFileContent;
 	}
@@ -320,6 +336,15 @@ class EditorModel extends PluginModel {
 	*/
 	public function & getForm() {
 		return $this->form;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function hasActiveProfile()
+	{
+		return $this->getActiveProfileId() ? true : false;
 	}
 
 	/**
@@ -358,6 +383,20 @@ class EditorModel extends PluginModel {
 		
 		$this->form = new Forms\ConfigFileForm( $fieldsList );
 		
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $values
+	*/
+	public function & loadForm( $values )
+	{
+		$form =& $this->getForm();
+		
+		$form->setValue( array( $form->getName() => $values ) );
+		
+		return $this;
 	}
 
 	/**
@@ -420,6 +459,19 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $profileId
+	*/
+	public function & setActiveProfile( $profileId )
+	{
+		
+		$this->activeProfile = $profileId;
+		
+		return $this;
+	}
+
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $content
 	*/
 	public function & setConfigFileContent($content) {
@@ -477,6 +529,18 @@ class EditorModel extends PluginModel {
 		# Cache into model state to be used when getting back later
 		$this->savedVars = array( $form->getName() => $vars );
 
+		return $this;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & unsetActiveProfile()
+	{
+		
+		$this->activeProfile = null;
+		
 		return $this;
 	}
 
