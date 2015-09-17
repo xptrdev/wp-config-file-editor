@@ -68,11 +68,12 @@ class ProfileHTMLView extends TemplateView {
 		# Scripts
 		$this->scriptsQueue->enqueueNamedResource( \WPPFW\Services\Queue\DashboardScriptsQueue::JQUERY );
 		$this->scriptsQueue->enqueueNamedResource( 'jquery-serialize-object' );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profile\Media\EditJavaScript' ) );
 		
 		# Styles
 		
 		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive' ) );
-		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profile\Media\Edit' ) );
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profile\Media\EditCSS' ) );
 
 	}
 	

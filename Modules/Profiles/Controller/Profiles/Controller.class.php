@@ -58,6 +58,7 @@ class ProfilesController extends Controller {
 		
 		$form = new \WCFE\Modules\Profiles\Model\Forms\ProfileForm();
 		$model =& $this->getModel();
+		$router =& $this->router();
 		
 		$result[ 'securityToken' ] = wp_create_nonce();
 		$result[ 'form' ] =& $form;
@@ -67,6 +68,8 @@ class ProfilesController extends Controller {
 		# Query profile to ediot or create new one
 		if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
 		{
+			
+			$result[ 'isNew' ] = ! isset( $_GET[ 'id' ] ) || ! $_GET[ 'id' ];
 			
 			if ( isset( $_GET[ 'id' ] ) && $_GET[ 'id' ] )
 			{
@@ -94,11 +97,17 @@ class ProfilesController extends Controller {
 						! wp_verify_nonce( $_POST[ 'securityToken' ] ) )
 			{
 				
-				die( 'Access Denied' );
+				$model->addError( 'Invalid Access Token' );
+				
+				$this->redirect( $router->routeAction() ) ;
+				
+				return;
 			}
 			
 			# Upate or insert profile
 			$postData = filter_input( INPUT_POST, $form->getName(), FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
+			
+			$result[ 'isNew' ] = ! isset( $postData[ 'id' ] ) || ! $postData[ 'id' ];
 			
 			$form->setValue( array( $form->getName() => $postData ) );
 			
@@ -110,7 +119,6 @@ class ProfilesController extends Controller {
 				{
 					
 					$result[ 'profile' ] = $profile->getArray();
-					$result[ 'isNew' ] = ! isset( $postData[ 'id' ] ) || ! $postData[ 'id' ];
 					
 				}
 				

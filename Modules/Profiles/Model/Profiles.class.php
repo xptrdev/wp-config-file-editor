@@ -181,7 +181,10 @@ class ProfilesModel extends PluginModel {
 	*/
 	public function validate( Profile & $profile )
 	{
-		return true;
+		
+		# ALways valid when editing, adding new valid only if name doesn't exists
+		return ( $profile->id || ( ! $profile->id && ! isset( $this->profiles[ $profile->id ] ) ) );
+		
 	}
 
 }

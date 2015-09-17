@@ -9,18 +9,18 @@
 namespace WCFE\Modules\Profiles\View\Profile\Media;
 
 # Script resource
-use WPPFW\Services\Queue\StyleResource;
+use WPPFW\Services\Queue\ScriptResource;
 
 /**
 * 
 */
-class Edit extends StyleResource {
-
+class EditJavaScript extends ScriptResource {
+	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'Edit.css';
+	protected $fileName = 'Edit.js';
 	
 }

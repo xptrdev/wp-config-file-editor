@@ -27,9 +27,17 @@ $securityToken = $result[ 'securityToken' ];
 			<form action="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams( '', '', 'Edit', '', 'Profile' ) ) ?>&caller=<?php echo $result[ 'caller' ] ?>&storageId=<?php echo $result[ 'storageId' ] ?>" method="post">
 				<fieldset>
 					<ul>
-						<li><label for="profile-name">Name</label><input type="text" id="profile-name" name="profileForm[name]" value="<?php echo $form->get( 'name' )->getValue() ?>" /></li>
-						<li><label for="profile-description">Description</label><textarea id="profile-description" name="profileForm[description]"><?php echo $form->get( 'description' )->getValue() ?></textarea></li>
-						<li><input type="submit" name="Save" value="Save" /></li>
+						<li>
+							<label for="profile-name">Name</label>
+							<input<?php echo ( ! $result[ 'isNew' ] ? ' readonly="readonly"' : '' ) ?> type="text" id="profile-name" name="profileForm[name]" value="<?php echo $form->get( 'name' )->getValue() ?>" />
+						</li>
+						<li>
+							<label for="profile-description">Description</label>
+							<textarea id="profile-description" name="profileForm[description]"><?php echo $form->get( 'description' )->getValue() ?></textarea>
+						</li>
+						<li>
+							<input type="submit" name="Save" value="Save" />
+						</li>
 					</ul>
 				</fieldset>
 				<input type="hidden" name="securityToken" value="<?php echo $securityToken ?>" />
