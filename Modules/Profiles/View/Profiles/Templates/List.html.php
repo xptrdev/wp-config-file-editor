@@ -121,6 +121,17 @@ $securityNonce = $result[ 'securityNonce' ];
 				// Notify when ready
 				window.parent.WCFEEditorForm._onprofilesdialogready();
 				
+				// Disallow deleteing active profile
+				var gridTable = $( '.wcfe-grid-table' );
+				var profile = window.parent.WCFEEditorForm.profile.getProfile()
+				if ( profile )
+				{
+					var activeProfileCheckbox = gridTable.find( '#profile-row-' + profile.id + ' input[type="checkbox"]');
+					activeProfileCheckbox.parent().append( '<span class="active-profile-state">Active</span>' );
+					activeProfileCheckbox.remove();
+				}
+				
+				gridTable.show(); // Its hidding by inline style attribute
 			} );
 		</script>
 	</head>
@@ -135,7 +146,7 @@ $securityNonce = $result[ 'securityNonce' ];
 				</li>
 			</ul>
 			<form id="wcfe-grid-table-form" action="<?php echo $router->routeAction() ?>" method="post">
-				<table class="wcfe-grid-table" cellpadding="4" cellspacing="2">
+				<table class="wcfe-grid-table" style="display: none;" cellpadding="4" cellspacing="2">
 					<thead>
 						<tr>
 							<th>Name</th>

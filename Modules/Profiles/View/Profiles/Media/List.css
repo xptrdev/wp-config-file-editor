@@ -37,3 +37,7 @@ table.wcfe-grid-table tr td
 	width: 90px;
 }
 
+.active-profile-state {
+	color: red;
+	font-weight: bold;
+}

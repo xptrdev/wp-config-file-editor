@@ -62,17 +62,18 @@ $router =& $this->router();
 		<li>
 			About
 			<ul id="wcfe-dmm-about">
-				<li id="wcfe-dmm-about-contact">Contact Us</li>
+				<li id="wcfe-dmm-about-contact">Contact</li>
 				<li id="wcfe-dmm-about-website">Web Site</li>
 				<li id="wcfe-dmm-about-support">Support Forum</li>
 				<li id="wcfe-dmm-about-submit-review">Submit Review</li>
+				<li>-</li>
+				<li id="wcfe-dmm-about-online-help">Help</li>
+				<li>-</li>
+				<li id="wcfe-dmm-about-follow-development">Follow Development</li>
 			</ul>
 		</li>
 			
 	</ul>
-	<div class="wcfe-support-forums-link">
-	  <a target="_blank" href="http://wp-cfe.xptrdev.com/">Support Forums</a> | <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">Submit Review</a>
-	</div>
 
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php

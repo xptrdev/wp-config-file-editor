@@ -101,6 +101,54 @@
 		{
 			switch ( event.srcElement.id )
 			{
+				
+				case 'wcfe-dmm-tab-help':
+				
+					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
+					
+				break;
+				case 'wcfe-dmm-tab-constants-list':
+				
+					generateHelpBoxMap( 'Constants List', 'field-constant-name' );
+
+				break;
+				
+				case 'wcfe-dmm-about-contact':
+				
+					window.open( 'http://wp-cfe.xptrdev.com/contact/' );
+					
+				break;
+					
+				case 'wcfe-dmm-about-website':
+				
+					window.open( 'http://wp-cfe.xptrdev.com/' );
+					
+				break;
+				
+				case 'wcfe-dmm-about-support':
+				
+					window.open( 'https://wordpress.org/support/plugin/wp-config-file-editor' );
+					
+				break;
+				
+				case 'wcfe-dmm-about-submit-review':
+				
+					window.open( 'https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor' );
+					
+				break;
+				
+				case 'wcfe-dmm-about-online-help':
+				
+					window.open( 'http://wp-cfe.xptrdev.com/docs/' );
+				
+				break;
+				
+				case 'wcfe-dmm-about-follow-development':
+				
+					window.open( 'https://github.com/xptrdev/wp-config-file-editor' );
+					
+				break;				
+				
 				case 'wcfe-dmm-profiles-list':
 				
 					// how profiles list dialog
@@ -304,22 +352,6 @@
 					$( this ).parent().remove();
 				}
 			 );
-			 
-			// Help box
-			$( '.wcfe-dmm-tab-help' ).click(
-				function()
-				{
-					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
-				}
-			);
-
-			// Help box
-			$( '.wcfe-dmm-tab-constants-list' ).click(
-				function()
-				{
-					generateHelpBoxMap( 'Constants List', 'field-constant-name' );
-				}
-			);
 			
 			// Menu
 			$( '#wcfe-config-form-main-menu' ).menu( 
@@ -556,6 +588,14 @@ WCFEEditorForm.profile = new function( )
 		
 	};
 
+	/**
+	* 
+	*/
+	this.getProfile = function()
+	{
+		return activeProfile;
+	};
+	
 	/**
 	* 
 	*/

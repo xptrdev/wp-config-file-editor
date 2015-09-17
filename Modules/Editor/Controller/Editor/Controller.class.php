@@ -49,10 +49,20 @@ class EditorController extends Controller {
 			if ( isset( $_GET[ 'activeProfile' ] ) )
 			{
 				$model->setActiveProfile( $_GET[ 'activeProfile' ] );
+				
+				$this->redirect( $router->routeAction() );
+				
+				return;
 			}
-		  else if ( in_array( 'unsetActiveProfile', $flags ) )
+			
+			
+		  if ( in_array( 'unsetActiveProfile', $flags ) )
 		  {
 				$model->unsetActiveProfile();
+				
+				$this->redirect( $router->routeAction() );
+				
+				return;
 		  }
 			
 			
