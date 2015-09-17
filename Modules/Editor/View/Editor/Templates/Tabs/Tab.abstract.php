@@ -230,8 +230,6 @@ abstract class Tab {
 			$inputElement->setAttribute( 'name', "{$form->getName()}[{$field->getName()}]" );
 			
 			#####################################################
-			
-			$row->appendChild( $inputElement );
 				
 			$pElement->appendChild( $row );
 		

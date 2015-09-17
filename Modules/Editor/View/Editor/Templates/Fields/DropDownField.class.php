@@ -81,6 +81,8 @@ abstract class DropDownField extends FieldBase {
 			
 		}
 		
+		$parent->appendChild( $dropDownList );
+		
 		# Return list
 		return $dropDownList;
 	

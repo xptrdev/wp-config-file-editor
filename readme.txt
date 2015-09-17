@@ -4,7 +4,7 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: wp-config.php, database, secure keys, secure, constants, localization, debugging, cache, memory, debug, Multi sites, mu
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,10 @@ identical to the wp-config.php file comes with Wordpress.
 
 The Plugin also provide a method for previewing the newly generated wp-config file content before writing to wp-config.php file. Using this method is enabling two other features,
 first is to check the generated wp-config file before updating, second is to provide a custom modification to wp-config.php file.
+
+In additional of direct config file manipulation WCFE Plugin is supporting of creating Profiles/Templates. Profile is a single record, that has name and description, 
+where admins can store/save custom config file fields and retrieve them later to be saved to Config File. This is great when you at least to have two basic Profiles 
+'Development' and 'Production' where you always need to set value for each of them every time you need to switch between 'Production' and 'Development'.
 
 = Features =
 * Modify wp-config.php file parameters/fields using input form
@@ -46,6 +50,9 @@ first is to check the generated wp-config file before updating, second is to pro
 * Create Emergency Backup just before saving wp-config.php file
 * Provide Emergency Restore link from which wp-config.php can be retored in case the site comes down as for invalid inputs
 * Only admins can use it when installed in normal installation while only Network Admins can use it under Multi Sites installations
+* Name and Describe Config File fields and save them to database to be retrived later to the form
+* Unlimited number of Profiles
+* Create, Edit, Delete, Load, Unload and Save Profile vars from config file form window.
 
 The following wp-config.php file fields is being supported:
 
@@ -173,6 +180,10 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+= 1.2 =
+* Add profiles
+* Add Progress and Error messages status bar
+* Add Config Form Dashboard Main Menu
 
 = 1.1 =
 * Add Upgrade Tab

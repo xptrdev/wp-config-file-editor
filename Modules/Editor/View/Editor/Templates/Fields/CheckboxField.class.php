@@ -77,6 +77,9 @@ class CheckboxField extends FieldBase {
 		# Finally give the row a class for checkbox types
 		$row->setAttribute( 'class', 'checkbox-row' );
 		
+		# Append to row			
+		$row->appendChild( $chkbox );
+		
 		return $chkbox;		
 	}
 

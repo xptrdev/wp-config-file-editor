@@ -46,7 +46,9 @@ abstract class SecureKeyField extends InputField {
 		# Add input field class
 		$inputField->setAttribute( 'class', 'secure-key-field' );
 		
-		$row->insertBefore( $skGenButton, $elems[ 'error' ] );
+		$row->appendChild( $inputField );
+		
+		$row->appendChild( $skGenButton );
 		
 		return $inputField;
 	}

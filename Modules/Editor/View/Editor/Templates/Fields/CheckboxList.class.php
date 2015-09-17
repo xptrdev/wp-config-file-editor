@@ -94,13 +94,15 @@ abstract class CheckboxListField extends FieldBase {
 		$row->setAttribute( 'class', $row->getAttribute( 'class' ) . " checkbox-list" );
 		
 		# Add button
-		$buttonEle = $document->createElement( 'input' );
+		$inputElement = $document->createElement( 'input' );
 		
-		$buttonEle->setAttribute( 'type', 'text' );
-		$buttonEle->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
-		$buttonEle->setAttribute( 'class', 'checkbox-list-input' );
+		$inputElement->setAttribute( 'type', 'text' );
+		$inputElement->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
+		$inputElement->setAttribute( 'class', 'checkbox-list-input' );
 		
-		$row->appendChild( $buttonEle );
+		$row->appendChild( $inputElement );
+		
+		$row->appendChild( $list );
 		
 		# Return list
 		return $list;

@@ -69,6 +69,9 @@ abstract class InputField extends FieldBase {
 			$textInput->setAttribute( 'maxlength', $maxLength );
 		}
 		
+		# Append to row			
+		$parent->appendChild( $textInput );
+		
 		return $textInput;
 	}
 
