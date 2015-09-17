@@ -361,6 +361,7 @@
 				}
 			);
 			
+      supportPluginDialog.run();
 			
 		};
 	
@@ -640,6 +641,143 @@ WCFEEditorForm.profile = new function( )
 
 };	
 	
+	
+	
+/**
+* put your comment there...
+* 	
+* @type T_JS_FUNCTION
+*/
+var supportPluginDialog = new function()
+{
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var forceDismiss = function()
+	{
+		$.cookie( 'wcfe-support-plugin-dialog-force-dismiss', true );
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var getNextTime = function()
+	{
+		var nextTime = $.cookie( 'wcfe-support-plugin-dialog-time' );
+		
+		return nextTime ? nextTime : 0;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var isDismiss = function()
+	{
+		return $.cookie( 'wcfe-support-plugin-dialog-force-dismiss' );
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var isFirstTime = function()
+	{
+		return getNextTime() ? false : true;
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var isTimeElapsed = function()
+	{
+		
+		var nowTime = new Date();
+		
+		return nowTime.getTime() > getNextTime();
+		
+	};
+				
+	/**
+	* put your comment there...
+	* 
+	*/
+	var setNextTime = function()
+	{
+		
+		// Display dialog every 24 hours
+		var timeNow = new Date();
+		var nextTime = ( new Date( timeNow.getTime() + 86486400 ) );
+		
+		$.cookie( 'wcfe-support-plugin-dialog-time', nextTime.getTime() );
+		
+	}
+	
+	/**
+	* 
+	*/
+	this.run = function()
+	{
+		
+		// Get out if dimissed
+		if ( isDismiss() )
+		{
+			
+			return;
+		}
+		
+		// Give user a chance to test the Pluin
+		// DOnt ask once installed!
+		if ( isFirstTime() )
+		{
+			
+			setNextTime();
+			
+			return;
+		}
+						
+		if ( isTimeElapsed() )
+		{
+			
+			// Bind buttons events
+			var dialog = $( '#wcfe-support-plugin-dialog-popup' );
+			
+			// Close dialog
+			dialog.find( '.remind-me-later' ).click( tb_remove );
+			
+			// Dismiss and close
+			dialog.find( '.force-dismiss' ).click( 
+				function()
+				{
+					
+					forceDismiss();
+					
+					tb_remove();
+					
+				}
+			);
+			
+			// SHow dialog
+			setTimeout(
+			 
+				function() 
+				{
+					tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
+					
+					// Set next time 
+					setNextTime();
+				}
+			, 10000 );
+
+		}
+	}
+	
+};
+			
 })( jQuery );
 
 

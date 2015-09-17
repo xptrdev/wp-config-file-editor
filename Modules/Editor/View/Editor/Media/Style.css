@@ -377,6 +377,24 @@ input.checkbox-list-input {
 {
 	color: gray;
 }
+
+#wcfe-support-plugin-dialog-popup
+{
+	display: none;
+}
+#wcfe-support-plugin-dialog p
+{
+  color: white;
+  font-size: 22px;
+  font-family: monospace;
+}
+#wcfe-support-plugin-dialog input
+{
+	background-color: #0E7CA4;
+	color: #FFFFFF;
+	border-color: #1273BC;	
+}
+
 /* PREVIEW */
 #config-file-content 
 {

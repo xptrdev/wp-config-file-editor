@@ -105,3 +105,12 @@ $router =& $this->router();
 	WCFEEditorForm.profile.setActiveProfile( <?php echo json_encode( $activeProfile ) ?> )
 </script>
 <?php endif; ?>
+
+<?php // Support Plugin dialog ?>
+<div id="wcfe-support-plugin-dialog-popup">
+	<div id="wcfe-support-plugin-dialog">
+		<p>If you like this Plugin please keep it in development by <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">submitting Review</a></p>
+		<input type="button" class="remind-me-later" value="Remind Me Later" />
+		<input type="button" class="force-dismiss" value="Don't Show Again!"  />
+	</div>
+</div>
