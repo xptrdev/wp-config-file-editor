@@ -395,6 +395,30 @@ input.checkbox-list-input {
 	border-color: #1273BC;	
 }
 
+.wcfe-ballon
+{
+display: none;
+    position: fixed;
+    background-color: transparent;
+    color: white;
+    width: 311px;
+    height: 115px;
+    padding: 10px 8px;
+    border-radius: 12px;
+    box-shadow: #0B3E6F -1px 1px 12px 0px;
+    z-index: 99999999999;
+    background-color: #111111;
+    font-family: monospace;
+  
+}
+.wcfe-ballon h2
+{
+    color: red;
+    font-size: 20px;
+    margin-left: 6px;
+    margin: 0;
+}
+
 /* PREVIEW */
 #config-file-content 
 {

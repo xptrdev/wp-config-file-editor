@@ -18,7 +18,7 @@ $router =& $this->router();
 ?>
 <div id="wcfe-body">
 
-
+<?php // Errors ?>
 <?php if ($model->hasErrors()) : ?>
 	<ul id="errors-bar">
 <?php foreach ($model->getCleanErrors() as $errorMessage) : ?>
@@ -28,7 +28,7 @@ $router =& $this->router();
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 
-
+<? // Dashboard Menu ?>
 	<ul id="wcfe-config-form-main-menu">
 
 		<li>
@@ -75,6 +75,7 @@ $router =& $this->router();
 			
 	</ul>
 
+<?php // COnfig Form ?>
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
 		# Output options tab
@@ -90,8 +91,10 @@ $router =& $this->router();
 	</form>
 </div>
 
-<?php // Editor Services Template ?>
+
+<?php // Editor Services Template (save dialog, etc.) ?>
 <?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
+
 
 <?php // Client side notificaytion if there is active profile ?>
 <?php 
@@ -101,10 +104,13 @@ $router =& $this->router();
 		
 		unset( $activeProfile[ 'vars' ] );
 ?>
+
 <script type="text/javascript">
-	WCFEEditorForm.profile.setActiveProfile( <?php echo json_encode( $activeProfile ) ?> )
+	jQuery( function() { WCFEEditorForm.profile.setActiveProfile( <?php echo json_encode( $activeProfile ) ?> ) } );
 </script>
+
 <?php endif; ?>
+
 
 <?php // Support Plugin dialog ?>
 <div id="wcfe-support-plugin-dialog-popup">
@@ -112,5 +118,17 @@ $router =& $this->router();
 		<p>If you like this Plugin please keep it in development by <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">submitting Review</a></p>
 		<input type="button" class="remind-me-later" value="Remind Me Later" />
 		<input type="button" class="force-dismiss" value="Don't Show Again!"  />
+	</div>
+</div>
+
+<?php // Wanrings ballons ?>
+<div>
+	<div class="wcfe-ballon" id="wcfe-active-profile-warning">
+		<h2>Warning</h2>
+		<p>
+			Config Form is loaded from active profile and might not reflect wp-config values
+			<br><br>
+			<span style="color:yellow">Nothing saved yet until using Save button</span>
+		</p>
 	</div>
 </div>

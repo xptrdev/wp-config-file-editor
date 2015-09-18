@@ -467,7 +467,60 @@
 
 
 
+WCFEEditorForm.ballons = new function()
+{
+	
+	/**
+	* put your comment there...
+	* 
+	* @param id
+	*/
+	var setBallonPos = function( id )
+	{
 
+		var jWindow = jQuery( window );
+		var ballon = $( '#' + id )
+	
+		ballon.offset( { 
+			left : ( jWindow.width() - ( ballon.innerWidth() + 8 ) ), 
+			top : ( jWindow.height() - ( ballon.innerHeight() + 8 ) ) } 
+		)
+		
+		return ballon;
+	};
+
+	/**
+	* put your comment there...
+	* 
+	* @param id
+	*/
+	this.show = function( id )
+	{
+				
+		// Dispaly ballnon on bottom right of the window
+		setBallonPos( id ).fadeIn( 1000, 
+		
+			// Fadout when fadin done
+			function()
+			{
+				
+				$ ( this ).fadeOut( 20000 );
+				
+			});
+			
+			
+			$( window ).resize(
+			
+				function()
+				{
+					setBallonPos( id );
+				}
+				
+			);
+
+	};
+	
+};
 
 
 // tatus bar
@@ -670,7 +723,10 @@ WCFEEditorForm.profile = new function( )
 	*/
 	this.reflectState = function() 
 	{
+		
 		WCFEEditorForm.statusBar.showStatus( 'Active Profile: ' + activeProfile.name );
+		
+		WCFEEditorForm.ballons.show( 'wcfe-active-profile-warning' );
 	};
 
 };	
