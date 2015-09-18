@@ -164,10 +164,14 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 7. Database Tab
 8. Secure Keys Tab
 10. Developer Tab
-11. Fields Popup help dialog
-12. Raw Syntax Highlights and Error detection Editor
-13. Update Config File Wanring Dialog
-14. Restore Backup Page 
+11. Active profile and Active Profile Menu
+12. Profiles List
+13. Create Profile
+14. Active Tab Fields Help
+15. Active Tab Constants list
+16. Raw Syntax Highlights and Error detection Editor
+17. Update Config File Wanring Dialog
+18. Restore Backup Page 
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress versions before Wordpress version 4.0
@@ -184,6 +188,7 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Add profiles
 * Add Progress and Error messages status bar
 * Add Config Form Dashboard Main Menu
+* Fix: Secure Key Generator is not working
 
 = 1.1 =
 * Add Upgrade Tab
