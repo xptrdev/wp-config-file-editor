@@ -99,7 +99,7 @@
 		*/
 		var doMainMenu = function( event )
 		{
-			switch ( event.srcElement.id )
+			switch ( event.currentTarget.id )
 			{
 				
 				case 'wcfe-dmm-tab-help':
@@ -187,7 +187,7 @@
 				case 'wcfe-dmm-profiles-unload':
 				case 'wcfe-dmm-profiles-close':
 				
-					WCFEEditorForm.profile.menuProxy( event.srcElement.id );
+					WCFEEditorForm.profile.menuProxy( event.currentTarget.id );
 					
 				break;
 			}

@@ -352,7 +352,7 @@ input.checkbox-list-input {
     height: 19px;
     color: yellow;
     position: relative;
-    top: 4px;
+    top: 0px;
     background-color: #151515;
     font-size: 11px;
     font-family: monospace;
@@ -403,11 +403,10 @@ display: none;
     background-color: transparent;
     color: white;
     width: 311px;
-    height: 170px;
+    height: 200px;
     padding: 10px 8px;
     border-radius: 12px;
     box-shadow: #0B3E6F -1px 1px 12px 0px;
-    z-index: 99999999999;
     background-color: #111111;
     font-family: monospace;
   
