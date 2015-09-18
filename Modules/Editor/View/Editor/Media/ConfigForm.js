@@ -252,6 +252,33 @@
 		};
 	
 		/**
+		* put your comment there...
+		* 
+		*/
+		var getActiveTabIndex = function()
+		{
+			var index = $.cookie( 'wcfe-config-form-active-tab' );
+			
+			if ( ! index )
+			{
+				index = 1;
+			}
+			
+			return index - 1;
+		};
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var setActiveTabIndex = function()
+		{
+			$.cookie( 'wcfe-config-form-active-tab',  tab.tabs( 'option', 'active' ) + 1 )
+			
+			return;
+		};
+			
+		/**
 		* 
 		*/
     this.getFormEle = function()
@@ -321,7 +348,7 @@
 					function(event, ui) 
 					{
 						// Save active tab index into cookies
-						$.cookie( 'wcfe-config-form-active-tab',  tab.tabs( 'option', 'active' ) );
+						setActiveTabIndex();
 						
 						// Store actiove Tab object
 						activeTab = ui.newPanel;
@@ -330,11 +357,18 @@
 			} )
 			
 			// Activate tab --> Make sure to receive activate event when loaded
-			.tabs( 'option', 'active', $.cookie( 'wcfe-config-form-active-tab' ) )
+			.tabs( 'option', 'active', getActiveTabIndex() )
 			
 			// Show Tab
 			.show( );
-	
+			
+			// Activate event won't fired if the ctive index is 0 as its already
+			// the default
+			if ( ! activeTab )
+			{
+				activeTab = $( '#MaintenanceOptionsTab' );
+			}
+			
 			// Secure keys generator
 			$('.secure-key-generator-key').click( $.proxy( generateFieldKey, this ) );
 			
