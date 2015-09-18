@@ -11,6 +11,15 @@
 	background-color: #0B3E6F !important;
 }
 
+.ui-widget {
+	font-size: 1.1em;
+	line-height: 1.2em;
+}
+
+.ui-helper-reset
+{
+	font-size: 90%;
+}
 ul#errors-bar {
     color: yellow;
     font-size: 17px;
