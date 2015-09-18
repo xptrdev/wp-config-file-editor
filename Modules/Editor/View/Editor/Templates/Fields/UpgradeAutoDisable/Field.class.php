@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Automatic Update';
+		return 'Disable Automatic Update';
 	}
 	
 	/**

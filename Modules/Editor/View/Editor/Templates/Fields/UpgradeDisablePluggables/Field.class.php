@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Plugins and Themes';
+		return 'Disable Plugins and Themes';
 	}
 	
 	/**
