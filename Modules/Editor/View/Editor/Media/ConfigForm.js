@@ -393,7 +393,7 @@
 					position: { my: "left top", at: "left bottom" }, 
 					select : doMainMenu
 				}
-			);
+			).show();
 			
       supportPluginDialog.run();
 			

@@ -127,7 +127,9 @@ $router =& $this->router();
 		<h2>Warning</h2>
 		<p>
 			Config Form is loaded from active profile and might not reflect wp-config values
-			<br><br>
+			<br /><br />
+			Unload Profile to check-out wp-config file values
+			<br /><br />
 			<span style="color:yellow">Nothing saved yet until using Save button</span>
 		</p>
 	</div>
