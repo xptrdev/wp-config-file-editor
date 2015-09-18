@@ -289,16 +289,17 @@ td.help-label-text {
 
 .checkbox-list ul
 {
-background-color: #0B3E6F;
-    width: 200px;
-    height: 217px;
+    background-color: #FFFFFF;
+    width: 178px;
+    height: 158px;
     display: inline-block;
+    color: black;
     overflow: auto;
     position: relative;
-    left: -235px;
-    box-shadow: #0B3E6F 0px 0px 12px 1px;
+    left: -213px;
     padding: 10px 17px;
     font-size: 14px;
+    border: 1px solid black;
 }
 .checkbox-list label
 {
@@ -306,10 +307,10 @@ background-color: #0B3E6F;
     margin-top: 111px;
 }
 input.checkbox-list-input {
-    width: 229px;
+width: 213px;
     position: relative;
-        left: -5px;
-    top: 11px;
+    left: 1px;
+    top: 10px;
 }
 .simple-sub-container {
     background-color: #212324;
