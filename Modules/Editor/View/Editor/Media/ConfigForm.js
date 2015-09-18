@@ -657,7 +657,7 @@ var supportPluginDialog = new function()
 	*/
 	var forceDismiss = function()
 	{
-		$.cookie( 'wcfe-support-plugin-dialog-force-dismiss', true );
+		$.cookie( 'wcfe-support-plugin-dialog-force-dismiss', true, { expires : 365 } );
 	};
 	
 	/**
@@ -713,7 +713,7 @@ var supportPluginDialog = new function()
 		var timeNow = new Date();
 		var nextTime = ( new Date( timeNow.getTime() + 86486400 ) );
 		
-		$.cookie( 'wcfe-support-plugin-dialog-time', nextTime.getTime() );
+		$.cookie( 'wcfe-support-plugin-dialog-time', nextTime.getTime(), { expires : 365 } );
 		
 	}
 	
