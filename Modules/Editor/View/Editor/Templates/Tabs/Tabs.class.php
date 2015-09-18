@@ -62,6 +62,7 @@ class Tabs {
 		 	'Database',
 		 	'SecureKeys',
 		 	'Debugging',
+		 	'Proxy',
 		)
 	);
 	

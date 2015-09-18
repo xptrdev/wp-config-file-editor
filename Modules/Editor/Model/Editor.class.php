@@ -62,6 +62,8 @@ class EditorModel extends PluginModel {
 		'SecurityAccessibleHosts',
 		'SecurityForceSSLAdmin',
 		'SecurityForceSSLLogin',
+		'SecurityDisallowUnfilteredHTML',
+		'SecurityAllowUnfilteredUploads',
 		
 		'UpgradeAutoDisable',
 		'UpgradeAutoCore',
@@ -117,6 +119,12 @@ class EditorModel extends PluginModel {
 		'Cron',
 		'CronAlternate',
 		'CronLockTimeOut',
+		
+		'ProxyHost',
+		'ProxyPort',
+		'ProxyUser',
+		'ProxyPassword',
+		'ProxyBypassHosts',	
 	);
 	
 	/**
