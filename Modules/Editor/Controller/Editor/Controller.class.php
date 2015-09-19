@@ -174,8 +174,15 @@ class EditorController extends Controller {
 		# Form security token
 		$form->getSecurityToken()->setValue( $this->createSecurityToken() );
 		
+		$result = array
+		(
+			'model' => & $model, 
+			'activeProfile' => $activeProfile,
+			'info' => $model->getInfo(),
+		);
+		
 		# Return model to view
-		return array( 'model' => & $model, 'activeProfile' => $activeProfile );
+		return $result;
 	}
 
 	/**

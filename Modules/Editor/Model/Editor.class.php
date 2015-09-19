@@ -356,6 +356,35 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function getInfo()
+	{
+		$info = array();
+		
+		# Discover paths
+		$info[ 'paths' ] = array
+		(
+			'absPath' => ABSPATH,
+			'pluginsDir' => PLUGINDIR,
+			'pluginsDirUrl' => WP_PLUGIN_URL,
+			'contentDir' => WP_CONTENT_DIR,
+			'contentDirUrl' => WP_CONTENT_URL,
+			'adminUrl' => admin_url(),
+			'siteUrl' => home_url(),
+		);
+		
+		if ( is_multisite() )
+		{
+			$info[ 'paths' ][ 'networkAdminUrl' ] = network_admin_url();
+			$info[ 'paths' ][ 'networkSiteUrl' ] = network_site_url();
+		}
+		
+		return $info;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function & getForm() {
 		return $this->form;
 	}

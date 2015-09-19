@@ -32,6 +32,13 @@ $router =& $this->router();
 	<ul id="wcfe-config-form-main-menu">
 
 		<li>
+			Info
+			<ul id="wcfe-dmm-info">
+				<li id="wcfe-dmm-info-paths" title="Discover your installation path information">Paths</li>
+			</ul>
+		</li>
+		
+		<li>
 			Profiles
 			<ul id="wcfe-dmm-profiles">
 				<li id="wcfe-dmm-profiles-create" title="Create new profile from config form fields">Create</li>
@@ -122,7 +129,7 @@ $router =& $this->router();
 </div>
 
 <?php // Wanrings ballons ?>
-<div>
+<div id="wcfe-ballons-templates">
 	<div class="wcfe-ballon" id="wcfe-active-profile-warning">
 		<h2>Warning</h2>
 		<p>
@@ -133,4 +140,10 @@ $router =& $this->router();
 			<span style="color:yellow">Nothing saved yet until using Save button</span>
 		</p>
 	</div>
+</div>
+
+
+<?php // Info dialogs templates ?>
+<div id="wcfe-info-templates">
+<?php require 'Templates' . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
 </div>

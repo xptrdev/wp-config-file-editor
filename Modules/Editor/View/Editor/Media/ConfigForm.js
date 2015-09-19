@@ -102,6 +102,12 @@
 			switch ( event.currentTarget.id )
 			{
 				
+				case 'wcfe-dmm-info-paths':
+				
+				tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=400px&height=300px' );
+				
+				break;
+				
 				case 'wcfe-dmm-tab-help':
 				
 					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
