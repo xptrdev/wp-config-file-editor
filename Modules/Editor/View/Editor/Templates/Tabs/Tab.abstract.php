@@ -231,7 +231,7 @@ abstract class Tab {
 			
 			# Use field type as class name
 			$typeClassNameArr = explode( '\\', get_class( $renderer->getField()->type() ) );
-			$inputElement->setAttribute( 'class', strtolower( array_pop( $typeClassNameArr ) ) );
+			$inputElement->setAttribute( 'class', $inputElement->getAttribute( 'class' ) . ' ' . strtolower( array_pop( $typeClassNameArr ) ) );
 			
 			#####################################################
 				

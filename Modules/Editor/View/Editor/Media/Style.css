@@ -441,6 +441,11 @@ input[type="text"].typeinteger, #MaintenanceOptionsTab input[type="text"]
 {
 	width: 536px;
 }
+
+.long-input
+{
+	width: 400px !important;
+}
 /* PREVIEW */
 #config-file-content 
 {

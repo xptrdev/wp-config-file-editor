@@ -17,6 +17,13 @@ class Field extends InputField {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $class = 'path long-input';
+
+	/**
+	* put your comment there...
+	* 
 	*/
 	public function getText() {
 		return 'Plugins Path';

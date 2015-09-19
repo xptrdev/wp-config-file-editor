@@ -20,6 +20,13 @@ abstract class InputField extends FieldBase {
 	* 
 	* @var mixed
 	*/
+	protected $class;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $maxLength;
 	
 	/**
@@ -62,6 +69,7 @@ abstract class InputField extends FieldBase {
 		# Set parameters
 		$textInput->setAttribute( 'type' , $this->getType() );
 		$textInput->setAttribute( 'value', $field->getValue() );
+		$textInput->setAttribute( 'class', $this->class );
 		
 		# Set other attributes
 		if ( $maxLength = $this->getMaxLength() ) 
