@@ -68,7 +68,10 @@ div#wcfe-body {
   font-weight: bold;
 }
 input[type="text"] {
-	width: 350px;
+	width: 155px;
+}
+input[type="password"] {
+	width: 90px;
 }
 fieldset strong {
 	background-color: white; 
@@ -429,6 +432,15 @@ display: none;
     margin: 0;
 }
 
+input[type="text"].typeinteger, #MaintenanceOptionsTab input[type="text"]
+{
+	width: 60px;
+}
+
+#SecureKeysOptionsTab input[type="text"]
+{
+	width: 536px;
+}
 /* PREVIEW */
 #config-file-content 
 {

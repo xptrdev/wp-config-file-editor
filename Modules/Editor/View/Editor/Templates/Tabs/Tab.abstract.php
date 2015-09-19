@@ -229,6 +229,10 @@ abstract class Tab {
 			$inputElement->setAttribute( 'id', $inputId );
 			$inputElement->setAttribute( 'name', "{$form->getName()}[{$field->getName()}]" );
 			
+			# Use field type as class name
+			$typeClassNameArr = explode( '\\', get_class( $renderer->getField()->type() ) );
+			$inputElement->setAttribute( 'class', strtolower( array_pop( $typeClassNameArr ) ) );
+			
 			#####################################################
 				
 			$pElement->appendChild( $row );

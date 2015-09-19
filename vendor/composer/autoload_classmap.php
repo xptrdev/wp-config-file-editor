@@ -180,6 +180,7 @@ return array(
     'WCFE\\Modules\\Editor\\View\\Editor\\Fields\\FieldBase' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/Field.abstract.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Fields\\InputField' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/InputField.abstract.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Fields\\SecureKeyField' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/SecureKeyField.class.php',
+    'WCFE\\Modules\\Editor\\View\\Editor\\Fields\\TextareaField' => $baseDir . '/Modules/Editor/View/Editor/Templates/Fields/Textarea.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\ConfigForm' => $baseDir . '/Modules/Editor/View/Editor/Media/ConfigForm.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\EditorServices' => $baseDir . '/Modules/Editor/View/Editor/Media/EditorServices.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\RawView' => $baseDir . '/Modules/Editor/View/Editor/Media/RawView.class.php',
