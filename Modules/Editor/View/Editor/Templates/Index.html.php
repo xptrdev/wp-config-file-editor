@@ -30,13 +30,6 @@ $router =& $this->router();
 
 <? // Dashboard Menu ?>
 	<ul id="wcfe-config-form-main-menu">
-
-		<li>
-			Info
-			<ul id="wcfe-dmm-info">
-				<li id="wcfe-dmm-info-paths" title="Discover your installation path information">Paths</li>
-			</ul>
-		</li>
 		
 		<li>
 			Profiles
@@ -58,6 +51,14 @@ $router =& $this->router();
 				</li>
 			</ul>
 		</li>
+		
+		<li>
+			Info
+			<ul id="wcfe-dmm-info">
+				<li id="wcfe-dmm-info-paths" title="Discover your installation path information">Paths</li>
+			</ul>
+		</li>
+		
 		<li>
 			Tab
 			<ul id="wcfe-dmm-tab">

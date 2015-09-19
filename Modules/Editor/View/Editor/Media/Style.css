@@ -442,6 +442,11 @@ input[type="text"].typeinteger, #MaintenanceOptionsTab input[type="text"]
 	width: 536px;
 }
 
+.medium-input
+{
+	width: 250px !important;
+}
+
 .long-input
 {
 	width: 400px !important;

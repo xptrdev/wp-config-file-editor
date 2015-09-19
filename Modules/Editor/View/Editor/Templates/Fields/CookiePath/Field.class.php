@@ -13,7 +13,7 @@ use WCFE\Modules\Editor\View\Editor\Fields\InputField;
 * 
 */
 class Field extends InputField {
-
+   
 	/**
 	* put your comment there...
 	* 
