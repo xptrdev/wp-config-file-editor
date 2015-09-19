@@ -104,8 +104,50 @@
 				
 				case 'wcfe-dmm-info-paths':
 				
-				tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=400px&height=300px' );
+				tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=700&height=440' );
 				
+				break;			
+				
+				case 'wcfe-dmm-profiles-list':
+				
+					// how profiles list dialog
+					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
+					
+				break;
+				
+				case 'wcfe-dmm-profiles-create':
+					
+					// First create Profile Vars Temporary storage to be associated with
+					// profile when created
+					editorSrvs.makeCall( editorSrvs.getActionRoute( 'createVarsTStorage' ), formEle.serializeObject() ).done
+					(
+						function( temporaryStorage )
+						{
+							if ( ! temporaryStorage || ! temporaryStorage.id )
+							{
+								
+								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
+								
+								return;
+							}
+							
+							// Create Profile / Send Storage Id along with request
+							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+							
+						}
+					
+					);
+										
+				break;
+				case 'wcfe-dmm-profiles-save':
+				case 'wcfe-dmm-profiles-edit':
+				case 'wcfe-dmm-profiles-delete':
+				case 'wcfe-dmm-profiles-reload':
+				case 'wcfe-dmm-profiles-unload':
+				case 'wcfe-dmm-profiles-close':
+				
+					WCFEEditorForm.profile.menuProxy( event.currentTarget.id );
+					
 				break;
 				
 				case 'wcfe-dmm-tab-help':
@@ -153,49 +195,8 @@
 				
 					window.open( 'https://github.com/xptrdev/wp-config-file-editor' );
 					
-				break;				
+				break;	
 				
-				case 'wcfe-dmm-profiles-list':
-				
-					// how profiles list dialog
-					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
-					
-				break;
-				
-				case 'wcfe-dmm-profiles-create':
-					
-					// First create Profile Vars Temporary storage to be associated with
-					// profile when created
-					editorSrvs.makeCall( editorSrvs.getActionRoute( 'createVarsTStorage' ), formEle.serializeObject() ).done
-					(
-						function( temporaryStorage )
-						{
-							if ( ! temporaryStorage || ! temporaryStorage.id )
-							{
-								
-								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
-								
-								return;
-							}
-							
-							// Create Profile / Send Storage Id along with request
-							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
-							
-						}
-					
-					);
-										
-				break;
-				case 'wcfe-dmm-profiles-save':
-				case 'wcfe-dmm-profiles-edit':
-				case 'wcfe-dmm-profiles-delete':
-				case 'wcfe-dmm-profiles-reload':
-				case 'wcfe-dmm-profiles-unload':
-				case 'wcfe-dmm-profiles-close':
-				
-					WCFEEditorForm.profile.menuProxy( event.currentTarget.id );
-					
-				break;
 			}
 		};
 	

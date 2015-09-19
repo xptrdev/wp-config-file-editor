@@ -466,7 +466,6 @@ table#wcfe-info-paths-table td {
 }
 table#wcfe-info-paths-table input {
     width: 99%;
-    height: 19px;
     background-color: transparent;
     color: white;
     border-color: #173747

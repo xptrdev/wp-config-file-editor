@@ -364,7 +364,7 @@ class EditorModel extends PluginModel {
 		$info[ 'paths' ] = array
 		(
 			'absPath' => ABSPATH,
-			'pluginsDir' => PLUGINDIR,
+			'pluginsDir' => WP_PLUGIN_DIR,
 			'pluginsDirUrl' => WP_PLUGIN_URL,
 			'contentDir' => WP_CONTENT_DIR,
 			'contentDirUrl' => WP_CONTENT_URL,
