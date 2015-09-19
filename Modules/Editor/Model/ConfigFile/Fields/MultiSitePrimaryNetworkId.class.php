@@ -31,6 +31,13 @@ class MultiSitePrimaryNetworkId extends Constant {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = true;
+
+	/**
+	* put your comment there...
+	* 
 	*/
 	protected function getType() {
 		return new Types\NumericType();
