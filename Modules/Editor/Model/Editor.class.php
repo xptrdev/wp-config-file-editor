@@ -125,7 +125,20 @@ class EditorModel extends PluginModel {
 		'ProxyPort',
 		'ProxyUser',
 		'ProxyPassword',
-		'ProxyBypassHosts',	
+		'ProxyBypassHosts',
+		
+		'CookieHash',
+		'CookieUser',
+		'CookiePass',
+		'CookieAuth',
+		'CookieSecureAuth',
+		'CookieLoggedIn',
+		'CookieTest',
+		'CookiePath',
+		'CookieSitePath',
+		'CookieAdminPath',
+		'CookiePluginsPath',
+		'CookieDomain',
 	);
 	
 	/**

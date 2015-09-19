@@ -63,6 +63,7 @@ class Tabs {
 		 	'SecureKeys',
 		 	'Debugging',
 		 	'Proxy',
+		 	'Cookies',
 		)
 	);
 	
