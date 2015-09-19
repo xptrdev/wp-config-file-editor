@@ -106,6 +106,7 @@ class EditorModel extends PluginModel {
 		'MultiSitePathCurrentSite', 
 		'MultiSiteSiteId',
 		'MultiSiteBlogId',
+		'MultiSitePrimaryNetworkId',
 		
 		'WPCache',
 		'MemoryLimit',

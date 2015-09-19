@@ -37,6 +37,7 @@ class MultiSiteOptionsTab extends FieldsTab {
 			'MultiSitePathCurrentSite', 
 			'MultiSiteSiteId',
 			'MultiSiteBlogId',
+			'MultiSitePrimaryNetworkId',
 		)
 	);
 
