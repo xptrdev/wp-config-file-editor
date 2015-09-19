@@ -856,20 +856,37 @@ var supportPluginDialog = new function()
 					
 				}
 			);
-			
-			// SHow dialog
-			setTimeout(
-			 
-				function() 
-				{
-					tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
-					
-					// Set next time 
-					setNextTime();
-				}
-			, 10000 );
 
+			var showDialog = function()
+			{
+				
+				// SHow dialog
+				setTimeout(
+				
+					function() 
+					{
+					
+			 			if ( $( '#TB_window' ).length )
+			 			{
+			 				
+			 				console.log( $( '#TB_window' ).length );
+					    showDialog();
+					    
+					    return;
+			 	 		}
+					 
+				 		tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
+						
+						// Set next time 
+						setNextTime();
+					
+					}, 10000 );
+				
+			};
+			
+      showDialog();
 		}
+		
 	}
 	
 };
