@@ -105,9 +105,15 @@
 				
 				case 'wcfe-dmm-info-paths':
 				
-				tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=700&height=440' );
+					tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=700&height=440' );
 				
 				break;			
+				
+				case 'wcfe-dmm-multisite-enable':
+				
+					tb_show( 'Multi Site Setup Tools', editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
+					
+				break;
 				
 				case 'wcfe-dmm-profiles-list':
 				

@@ -185,6 +185,20 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $name
+	* @return EditorModel
+	*/
+	public function & addField( $name )
+	{
+		
+		$this->fieldsMap[ ] = $name;
+		
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $restoreUrl
 	*/
 	public function createBackup( & $restoreUrl )
@@ -312,8 +326,10 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $generator
+	* @return EditorModel
 	*/
-	public function generateConfigFile()
+	public function & generateConfigFile( & $generator = null )
 	{
 		
 		# Prepare generator fields list
@@ -328,9 +344,8 @@ class EditorModel extends PluginModel {
 		# Get generator instance
 		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $fieldsList );
 		
-		# Save generated config file to model
-		$this->setConfigFileContent( (string) $configFile );
-		
+		# Return generator reference
+		$generator = $configFile;
 		
 		return $this;
 	}

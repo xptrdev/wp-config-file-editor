@@ -184,7 +184,8 @@ class EditorServiceController extends ServiceController {
 		{
 			
 			# Generate config file from submitted fields
-			$model->generateConfigFile();
+			$model->generateConfigFile( $configGenerator );
+			$model->setConfigFileContent( (string) $configGenerator );
 			
 			# If failr return errors back
 			if ( ! $model->saveConfigFile() )

@@ -117,6 +117,10 @@ class EditorHTMLView extends TemplateView {
 					'setActiveProfile' 	=> 		array( 'action' => 'setActiveProfile' ),
 					'getSystemPath'		 	=> 		array( 'action' => 'getSystemPath' )
 				),
+			'Editor', 'editorViews', array
+			(
+				'MultiSiteSetupTools' => array()
+			),
 			'Profiles', 'profilesView', array
 			(
 				'profilesList' => array(),

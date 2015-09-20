@@ -32,6 +32,20 @@ class Master {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $specialFields;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $templateName = 'wp-config.php';
+	
+	/**
+	* put your comment there...
+	* 
 	* @param Form $form
 	* @param mixed $fields
 	* @return Master
@@ -61,11 +75,13 @@ class Master {
 	* put your comment there...
 	* 
 	*/
-	public function __toString() {
-		# Import wp-config.php template files
+	public function __toString() 
+	{
+
 		ob_start();
-		require 'wp-config.php';
-		# Return final file
+		
+		require $this->templateName;
+		
 		return ob_get_clean();
 	}
 
@@ -96,4 +112,35 @@ class Master {
 		return $this->form;
 	}
 
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $specialFiels
+	*/
+	public function & processSpecialFields( $specialFields )
+	{
+
+		$this->specialFields = array();
+		$this->templateName = 'wp-config-special-fields.php';
+		
+		# Remove special fields
+		
+		foreach ( $specialFields as $specialFieldName )
+		{
+			
+			if ( isset( $this->fields[ $specialFieldName ] ) )
+			{
+				
+				$this->specialFields[ $specialFieldName ] =& $this->fields[ $specialFieldName ];
+				
+				unset( $this->fields[ $specialFieldName ] );
+				
+			}
+			
+		}
+		
+		return $this;
+	}
+	
 }

@@ -39,6 +39,11 @@ class EditorModule extends ServiceModule {
 	* 
 	*/
 	const EDITOR_AJAX_SERVICE_OBJECT_KEY = 0;
+	
+	/**
+	* 
+	*/
+	const EDITOR_AJAX_VIEWS_SERVICE_OBJECT_KEY = 1;
 
 	/**
 	* put your comment there...
@@ -72,10 +77,11 @@ class EditorModule extends ServiceModule {
 			$plugin,
 			array
 			(
-				self::EDITOR_AJAX_SERVICE_OBJECT_KEY => new Editor\Services\Editor\Ajax()
+				self::EDITOR_AJAX_SERVICE_OBJECT_KEY => new Editor\Services\Editor\Ajax(),
+				self::EDITOR_AJAX_VIEWS_SERVICE_OBJECT_KEY => new Editor\Services\Editor\AjaxViews()
 			)
 		);
-		
+				
 	}
 	
 	/**
@@ -93,6 +99,15 @@ class EditorModule extends ServiceModule {
 	public function editorService() 
 	{
 		return $this->getServiceObject( self::EDITOR_AJAX_SERVICE_KEY, self::EDITOR_AJAX_SERVICE_OBJECT_KEY );
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function editorViews()
+	{
+		return $this->getServiceObject( self::EDITOR_AJAX_SERVICE_KEY, self::EDITOR_AJAX_VIEWS_SERVICE_OBJECT_KEY );
 	}
 
 }
