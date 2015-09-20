@@ -98,20 +98,24 @@ class EditorHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\AutoPath' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
+				
 		# Enqueue specifiec STYLE AND JS
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
 		# Actions route
 		$this->setActionsRoute( 
 			'Editor', 'editorService', array
 				(
-					'createSecureKey' => 	array( 'action' => 'createSecureKey' ),
-					'preUpdate' => 				array( 'action' => 'preUpdate' ),
-					'validateForm' => 		array( 'action' => 'validateForm' ),
-					'postUpdate' => 			array( 'action' => 'postUpdate' ),
-					'updateConfigFile' => array( 'action' => 'updateConfigFile' ),
-					'setActiveProfile' => array( 'action' => 'setActiveProfile' ),
+					'createSecureKey' 	=> 		array( 'action' => 'createSecureKey' ),
+					'preUpdate' 				=> 		array( 'action' => 'preUpdate' ),
+					'validateForm'		 	=> 		array( 'action' => 'validateForm' ),
+					'postUpdate' 				=> 		array( 'action' => 'postUpdate' ),
+					'updateConfigFile' 	=> 		array( 'action' => 'updateConfigFile' ),
+					'setActiveProfile' 	=> 		array( 'action' => 'setActiveProfile' ),
+					'getSystemPath'		 	=> 		array( 'action' => 'getSystemPath' )
 				),
 			'Profiles', 'profilesView', array
 			(

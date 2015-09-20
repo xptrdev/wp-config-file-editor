@@ -22,6 +22,7 @@
 		*/
 		var editorSrvs = new WCFEEditorServices( 'configFileFields' );
 		
+		var autoPath = new WCFEAutoPath( 'input[type="text"].path' , editorSrvs );
 		/**
 		* put your comment there...
 		* 

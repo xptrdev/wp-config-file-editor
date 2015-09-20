@@ -116,6 +116,27 @@ class EditorServiceController extends ServiceController {
 	* put your comment there...
 	* 
 	*/
+	public function getSystemPathAction()
+	{
+		
+		# Check permission
+		if ( ! $this->_checkPermission() )
+		{
+			return null;
+		}
+		
+		# Get dirs list for current 
+
+		$dirsList = glob( "{$_POST[ 'path' ]}*", GLOB_ONLYDIR );
+		
+		return array( 'list' => $dirsList );
+	}
+	
+
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function setActiveProfileAction()
 	{
 

@@ -475,6 +475,29 @@ table#wcfe-info-paths-table input {
     color: white;
     border-color: #173747
 }
+
+.wcfe-auto-path-list
+{
+    height: 100px;
+    background-color: #FFFFFF;
+    color: black;
+    position: absolute;
+    display: none;
+    font-size: 14px;
+    padding: 3px 5px;
+    overflow: auto;
+    font-family: monospace;
+}
+.wcfe-auto-path-list li {
+    padding: 0;
+    margin: 0px 0 4px;
+    cursor: pointer;
+}
+.wcfe-auto-path-list li.selected
+{
+	background-color: blue;
+	color: white;
+}
 /* PREVIEW */
 #config-file-content 
 {
