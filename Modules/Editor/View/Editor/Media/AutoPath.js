@@ -250,6 +250,8 @@
 									pathsListEle.scrollTop( pathsListEle.scrollTop() + itemTop );
 								}
 								
+								$( this ).val( items.eq( selectedIndex ).text() );
+								
 							}
 							
 						break;
@@ -272,6 +274,8 @@
 									
 									pathsListEle.scrollTop( ( itemTop - pathsListEle.height() ) + item.height() + pathsListEle.scrollTop() );	
 								}
+								
+								$( this ).val( items.eq( selectedIndex ).text() );
 								
 							}
 							
