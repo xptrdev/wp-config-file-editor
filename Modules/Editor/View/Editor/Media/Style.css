@@ -487,6 +487,7 @@ table#wcfe-info-paths-table input {
     padding: 3px 5px;
     overflow: auto;
     font-family: monospace;
+    z-index: 2;
 }
 .wcfe-auto-path-list li {
     padding: 0;
