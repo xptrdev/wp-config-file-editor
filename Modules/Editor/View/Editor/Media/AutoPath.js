@@ -173,10 +173,8 @@
 						{
 							
 							jInput.val( path );
-							
-							pathsListEle.empty().hide();
-							
-							isDisplayed = false;
+
+							closePathsList();
 							
 						}
 					
@@ -203,6 +201,19 @@
 			
 			.show();
 			
+		};
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var closePathsList = function()
+		{
+			pathsListEle.empty().hide();
+			
+			isDisplayed = false;
+			
+			isWorkingOnList = false;
 		};
 		
 		/**
@@ -266,6 +277,17 @@
 							
 						break;
 						
+						case 13:
+						
+							if ( isDisplayed && count )
+							{
+								$( this ).val( items.eq( selectedIndex ).text() );
+								
+								closePathsList();								
+							}
+							
+						break;
+						
 						default:
 						
 							doSearchPath( this );
@@ -301,11 +323,7 @@
 					if ( ! isWorkingOnList )
 					{
 						
-						pathsListEle.empty().hide();
-						
-						isDisplayed = false;
-						
-						isWorkingOnList = false;
+						closePathsList();
 					}
 
 				}
