@@ -4,7 +4,7 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: wp-config.php, database, secure keys, secure, constants, localization, debugging, cache, memory, debug, Multi sites, mu
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,9 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+= 1.2.1
+* Major security enhancments
+
 = 1.2 =
 * Add profiles
 * Add Progress and Error messages status bar

@@ -22,6 +22,14 @@ class EditorController extends Controller {
 	*/
 	public function indexAction() 
 	{
+		
+		if ( ! is_super_admin() )
+		{
+			
+			die( 'Access denied' );
+			
+		}
+		
 		# Initialize
 		$model =& $this->getModel();
 		$input =& $this->input();
@@ -184,6 +192,11 @@ class EditorController extends Controller {
 	*/
 	public function previewAction()
 	{
+		
+		if ( ! is_super_admin() )
+		{
+			die( 'Access denied' );
+		}
 		
 		# Get model
 		$model =& $this->getModel();
