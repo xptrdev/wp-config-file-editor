@@ -37,7 +37,11 @@ class MultiSiteToolPluginLoader {
 	public function __toString()
 	{
 		
-		return "\n\ninclude_once WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'wp-config-file-editor' . DIRECTORY_SEPARATOR . 'wp-config-file-editor.php';\n\n";
+		ob_start();
+		
+		require 'MultiSiteToolPluginLoader.configcode.php';
+		
+		return ob_get_clean();
 		
 	}
 

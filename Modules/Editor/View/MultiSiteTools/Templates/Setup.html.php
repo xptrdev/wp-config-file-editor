@@ -50,31 +50,44 @@ $result = $this->result();
 			    color: #339958;
 			    font-size: 17px;
 			}
+			.step-1
+			{
+				color: #FFFF06 !important;
+			}
+			.step-2
+			{
+				color: #14F514 !important;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="wcfe-multisite-tools-setup" class="wcfe-popup-view">
-		
+
+<?php // Display Multi site Setup Form ?>
 <?php if ( ! $result[ 'isMultiSite' ] ) : ?>
-		
+
+<?php // DISPLAY MULTI SITE SETUP FORM ?>		
 <?php 	if ( ! isset( $result[ 'isSuccessed' ] ) || ! $result[ 'isSuccessed' ] ) : ?>
 
    		<div id="wcfe-multisite-tools-warning">
    			<h2>Welcome to CFE Plugin Multi Site Setup tools</h2>	
    			<p>
    			The main purpose of using this Tools is to write .htaccess file and wp-config file Multi Site configuration for you.
-   			By default Wordpress would ask you to copy the code yourself to those files and this requires to access the file system over FTP.
+   			By default Wordpress would ask you to copy the code yourself. This requires access the file system over FTP.
    			Wordpress is forcing some restrictions on enabling Multi Site. WCFE Plugin needs to do some tricks in order to get around those restriction.
    			Wordpress requires to Deactivate all Plugins before enable/setup Multi Sites.
-   			Therefor there is no chance to WCFE Plugin or any other Plugin to get involved while Wordpress is configuring Multi Sites.
+   			Therefor there is no chance for WCFE Plugin to get involved while Wordpress is configuring Multi Sites.
    			WCFE gets around this by writing a single line of code to wp-config file so it will still running while configuring Multi Sites installation.
    			This process will take the following actions:
    			</p>
-   			<ol>
+   			<ol class="step-1">
    				<li>Deactivate all activate Plugins</li>
-   				<li>Inject PHP Code into wp-config.php file, to load WCFE Plugin after all plugins are deactivated</li>
+   				<li>Backup wp-config.php file, you will be provided with restore link</li>
+   				<li>Inject PHP Code into wp-config.php file that loads WCFE Plugin after all plugins are deactivated</li>
    				<li>Set WP_ALLOW_MULTISITE to true and write to wp-config.php file</li>
    				<li>Redirect to Wordpress Tools->Network Setup Page</li>
+   			</ol>
+   			<ol class="step-2">
    				<li>You will be asked to select few options and then to press Setup</li>
    				<li>WCFE Buttons will be displayed on Tools->Network Setup page once Multi Sites is configureded</li>
    				<li>Use WCFE Buttons will reactivate Plugins</li>
@@ -87,21 +100,23 @@ $result = $this->result();
    				<input type="hidden" name="securityNonce" value="<?php echo $result[ 'securityNonce' ] ?>" />
    			</form>
    		</div>
-   		
+
+<?php 	// DISPLAY MULTI SITE SETUP SUBMISSION RESULT ?>   		
 <?php 	else : ?>
 
 			<div id="wcfe-multisite-setup-tools-start-configuration">
 			
 				<p>Wordpress Multi Sites setup is now enabled on Wordpress.</p>
 				
-				<p>Now its turn to <a target="_blank" href="<?php echo admin_url( 'Network.php' ); ?>">Configure Wordpress Multi Sites</a>.</p>
+				<p>Now its turn to <a target="_blank" href="<?php echo admin_url( 'network.php' ); ?>">Configure Wordpress Multi Sites</a>.</p>
 				
 				<p>If you've any problem you can <a target="_blank" href="<?php echo $result[ 'restoreBackupUrl' ] ?>">revert Config File</a> to the state before processing this operation</p>
 				
 			</div>
 
 <?php 	endif; ?>
-   		
+ 
+<?php // MULTI SITE IS ALREADY ENABLED!! ?>  		
 <?php else : ?>
 
 

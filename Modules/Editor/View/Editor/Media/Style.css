@@ -499,6 +499,12 @@ table#wcfe-info-paths-table input {
 	background-color: blue;
 	color: white;
 }
+
+.beta-feature
+{
+	color: #9BFF00;
+	font-size: 96%;
+}
 /* PREVIEW */
 #config-file-content 
 {

@@ -126,7 +126,23 @@
 				</object>
 			</proxy>
 		</service>
-	
+
+
+		<service serviceObjectClass="Editor\MultiSiteTools\MultiSiteNetworkPageTools"
+						 serviceFront="ServiceFront"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WCFE\Services\Editor\MultiSiteTools\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WCFE\Services\Editor\MultiSiteTools\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="Editor" />
+					<param name="controller" 				value="MultiSiteTools" />
+					<param name="view" 							value="MultiSiteTools" />
+					<param name="action" 						value="SetupNetwork" />
+				</object>
+			</proxy>
+		</service>
+		
+			
 		<models>
 			<model id="WCFE\Modules\Editor\Model\EditorModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>

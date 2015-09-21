@@ -63,7 +63,7 @@ $router =& $this->router();
 					</ul>
 				</li>
 		
-				<li id="wcfe-dmm-multisite-enable">Multi Sites Setup (BETA)</li>
+				<li id="wcfe-dmm-multisite-enable">Multi Sites Setup <span class="beta-feature">( BETA )</span></li>
 			</ul>
 		
 		</li>

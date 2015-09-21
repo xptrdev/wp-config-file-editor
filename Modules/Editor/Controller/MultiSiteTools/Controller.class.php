@@ -111,4 +111,13 @@ class MultiSiteToolsController extends Controller {
 		return $view;
 	}
   
+  /**
+  * put your comment there...
+  * 
+  */
+  public function SetupNetworkAction()
+  {
+		
+  }
+
 } # End class
