@@ -184,7 +184,7 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
-= 1.2.1
+= 1.2.1 =
 * Major security enhancments
 
 = 1.2 =
