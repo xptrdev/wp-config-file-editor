@@ -154,11 +154,12 @@ class EditorController extends Controller {
 					{
 						
 						# generate config file from the given values
-						$model->generateConfigFile();
+						$model->generateConfigFile( $configGenerator )
+									->setConfigFileContent( ( string ) $configGenerator )
 					  
 						# Save submitted vars to be used if 
 						# get back from preview to the form again.
-						$model->saveSubmittedVars();
+									->saveSubmittedVars();
 						
 						# Go to preview action
 						$this->redirect( $router->routeAction( 'Preview' ) );
