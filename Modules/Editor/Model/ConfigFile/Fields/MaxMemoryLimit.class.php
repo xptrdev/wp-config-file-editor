@@ -31,10 +31,26 @@ class MaxMemoryLimit extends Constant {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $suppressOutput = true;
+	
+	/**
+	* put your comment there...
+	* 
 	*/
 	protected function getType() {
 		return new Types\StringType();
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function getSuppressionValue()
+	{ 
+		return '256M';
+	}
+	
 }
 

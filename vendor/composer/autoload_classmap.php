@@ -34,6 +34,7 @@ return array(
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieDomain' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookieDomain.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieHash' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookieHash.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieLoggedIn' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookieLoggedIn.class.php',
+    'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieNamedBase' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookieNamedBase.abstract.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookiePass' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookiePass.class.phps.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookiePath' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookiePath.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookiePluginsPath' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/CookiePluginsPath.class.php',

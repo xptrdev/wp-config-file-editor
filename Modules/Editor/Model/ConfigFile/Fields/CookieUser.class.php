@@ -9,14 +9,15 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class CookieUser extends Constant {
+class CookieUser extends CookieNamedBase {
+
 
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $suppressOutput = true;
+	protected $cookiePrefix = 'wordpressuser_';
 
   /**
   * put your comment there...
@@ -34,14 +35,6 @@ class CookieUser extends Constant {
 	* @var mixed
 	*/
 	protected $name = 'USER_COOKIE';
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function getType() {
-		return new Types\StringType();
-	}
 
 }
 

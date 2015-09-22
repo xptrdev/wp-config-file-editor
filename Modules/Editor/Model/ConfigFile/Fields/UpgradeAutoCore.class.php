@@ -42,6 +42,8 @@ class UpgradeAutoCore extends Constant {
 	public function & allReady()
 	{
 		
+		parent::allReady();
+		
 		# Based on the value create either BOOLEAN or STRING type 
 		# and set the value
 		$stringValue = $this->field->getValue();

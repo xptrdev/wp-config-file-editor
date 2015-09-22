@@ -43,7 +43,7 @@ class Field extends DropDownField {
 	protected function getOptionsList() {
 		# Create locale list
 		$list = array(
-			'',
+			'' => '',
 			'direct' => 'Direct (direct)',
 			'ssh2' => 'SSH 2 (ssh2)',
 			'ftpext' => 'FTP Extension (ftpext)',

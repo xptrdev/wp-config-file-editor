@@ -67,18 +67,18 @@ $router =& $this->router();
 			</ul>
 		
 		</li>
-		
-		<li>
-			Tab
-			<ul id="wcfe-dmm-tab">
-				<li id="wcfe-dmm-tab-help" title="Active tab fields help text">Fields Help</li>
-				<li id="wcfe-dmm-tab-constants-list" title="Active tab fields mapped to wp-config file constants list">Constants List</li>
-			</ul>
-		</li>
-
+	
 		<li>
 			About
 			<ul id="wcfe-dmm-about">
+				<li>
+					Tab
+					<ul id="wcfe-dmm-tab">
+						<li id="wcfe-dmm-tab-help" title="Active tab fields help text">Fields Help</li>
+						<li id="wcfe-dmm-tab-constants-list" title="Active tab fields mapped to wp-config file constants list">Constants List</li>
+					</ul>
+				</li>
+				<li>-</li>
 				<li id="wcfe-dmm-about-contact">Contact</li>
 				<li id="wcfe-dmm-about-website">Web Site</li>
 				<li id="wcfe-dmm-about-support">Support Forum</li>

@@ -9,14 +9,7 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class CookieTest extends Constant {
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $suppressOutput = true;
+class CookieTest extends CookieNamedBase {
 
   /**
   * put your comment there...
@@ -39,8 +32,9 @@ class CookieTest extends Constant {
 	* put your comment there...
 	* 
 	*/
-	protected function getType() {
-		return new Types\StringType();
+	protected function getSuppressionValue()
+	{
+		return 'wordpress_test_cookie';
 	}
 
 }

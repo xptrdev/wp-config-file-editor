@@ -9,14 +9,14 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class CookieLoggedIn extends Constant {
+class CookieLoggedIn extends CookieNamedBase {
 
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $suppressOutput = true;
+	protected $cookiePrefix = 'wordpress_logged_in_';
 
   /**
   * put your comment there...
@@ -34,14 +34,6 @@ class CookieLoggedIn extends Constant {
 	* @var mixed
 	*/
 	protected $name = 'LOGGED_IN_COOKIE';
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function getType() {
-		return new Types\StringType();
-	}
 
 }
 

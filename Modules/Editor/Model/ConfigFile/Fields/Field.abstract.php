@@ -108,15 +108,8 @@ abstract class Field {
 	{
 		
 		# Got out if to suppress output
-		if ( $this->suppressOutputForce || ( $this->suppressOutput && ! $this->field->getValue() ) )
+		if ( $this->suppressOutputForce )
 		{
-			
-			# Force all deps fields to not output as well
-			foreach ( $this->suppressOutputDeps as $fieldName )
-			{
-				$this->getModel()->getField( $fieldName )->setSuppressOutputForce( true );
-			}
-			
 			# Return no contents
 			return '';
 		}
@@ -142,6 +135,23 @@ abstract class Field {
 	*/
 	public function & allReady()
 	{
+		
+		$value = $this->getValue();
+		
+		# Got out if to suppress output
+		if ( $this->suppressOutput && ( ! $value || ( $this->getValue() == $this->getSuppressionValue() ) ) )
+		{
+			
+			$this->setSuppressOutputForce( true );
+			
+			# Force all deps fields to not output as well
+			foreach ( $this->suppressOutputDeps as $fieldName )
+			{
+				$this->getModel()->getField( $fieldName )->setSuppressOutputForce( true );
+			}
+			
+		}
+		
 		return $this;
 	}
 	
@@ -177,6 +187,15 @@ abstract class Field {
 		return $this->name;
 	}
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function getSuppressionValue()
+	{
+		return null;
+	}
+
 	/**
 	* put your comment there...
 	* 

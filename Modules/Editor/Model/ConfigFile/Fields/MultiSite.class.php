@@ -50,8 +50,10 @@ class MultiSite extends Constant {
 	public function & allReady() 
 	{
 		
+		parent::allReady();
+		
 		# Stop WP_ALLOW_MULTISITE if I'm true
-		$this->getModel()->getField( 'MultiSiteAllow' )->setSuppressOutputForce( $this->field->getValue() );
+		$this->getModel()->getField( 'MultiSiteAllow' )->setSuppressOutputForce( $this->getValue() );
 		
 		return $this;
 	}

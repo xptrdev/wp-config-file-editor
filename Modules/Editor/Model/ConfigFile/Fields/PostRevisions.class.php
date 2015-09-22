@@ -35,6 +35,8 @@ class PostRevisions extends Constant {
 	public function & allReady() 
 	{
 		
+		parent::allReady();
+		
 		$PostRevisionsMax = $this->getModel()->getField( 'PostRevisionsMax' );
 		$postRevisionMaxField = $PostRevisionsMax->getField();
 		$postRevisionsField = $this->getField();

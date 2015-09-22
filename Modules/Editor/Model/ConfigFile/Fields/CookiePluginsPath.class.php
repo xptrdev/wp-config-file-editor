@@ -43,5 +43,14 @@ class CookiePluginsPath extends Constant {
 		return new Types\StringType();
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function getSuppressionValue()
+	{
+		return preg_replace( '|https?://[^/]+|i', '', WP_PLUGIN_URL );
+	}
+	
 }
 

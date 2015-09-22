@@ -332,9 +332,10 @@ width: 213px;
 
 #wcfe-config-form-main-menu
 {
-	width: 324px;
+	width: 216px;
 	font-size: 1.0em;
 	display: none;
+	background: #161616;
 }
 #wcfe-config-form-main-menu ul
 {

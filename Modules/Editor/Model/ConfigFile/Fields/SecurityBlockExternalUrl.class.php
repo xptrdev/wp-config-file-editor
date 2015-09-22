@@ -42,9 +42,11 @@ class SecurityBlockExternalUrl extends Constant {
 	public function & allReady()
 	{
 		
+		parent::allReady();
+		
 		# Suppress Accessible hosts if FALSE
 		$accessibleHosts = $this->getModel()->getField( 'SecurityAccessibleHosts' );
-		$accessibleHosts->setSuppressOutputForce( ! $this->getField()->getValue() );
+		$accessibleHosts->setSuppressOutputForce( ! $this->getValue() );
 		
 		return $this;
 	}

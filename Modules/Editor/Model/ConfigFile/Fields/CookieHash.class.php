@@ -9,14 +9,7 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class CookieHash extends Constant {
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $suppressOutput = true;
+class CookieHash extends CookieNamedBase {
 
   /**
   * put your comment there...
@@ -34,14 +27,6 @@ class CookieHash extends Constant {
 	* @var mixed
 	*/
 	protected $name = 'COOKIEHASH';
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function getType() {
-		return new Types\StringType();
-	}
 
 }
 

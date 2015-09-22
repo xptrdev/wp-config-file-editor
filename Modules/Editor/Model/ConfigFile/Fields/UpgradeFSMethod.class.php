@@ -33,7 +33,7 @@ class UpgradeFSMethod extends Constant {
 	* 	
 	* @var mixed
 	*/
-	protected $name = 'FS_METHOD ';
+	protected $name = 'FS_METHOD';
 
 	/**
 	* put your comment there...

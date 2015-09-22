@@ -28,7 +28,7 @@ class SecurityAllowUnfilteredUploads extends Forms\Fields\FormIntegerField imple
 	* 
 	*/
 	public function read() {
-		$this->setValue( defined( 'ALLOW_UNFILTERED_UPLOADS' ) ? WP_DEBUG : null );
+		$this->setValue( defined( 'ALLOW_UNFILTERED_UPLOADS' ) ? ALLOW_UNFILTERED_UPLOADS : null );
 	}
 
 }
