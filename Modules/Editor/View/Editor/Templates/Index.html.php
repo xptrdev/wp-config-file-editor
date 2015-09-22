@@ -56,20 +56,44 @@ $router =& $this->router();
 					</ul>
 				</li>
 				
+				<li>-</li>
+				
 				<li>
 					Info
 					<ul id="wcfe-dmm-info">
 						<li id="wcfe-dmm-info-paths" title="Discover your installation path information">Paths</li>
 					</ul>
 				</li>
-		
+				
+		    <li>-</li>
+
+				<li id="wcfe-dmm-systemcheck" title="Check system compatibility with WCFE Plugin">System check <span class="beta-feature">( BETA )</span></li>
+				
+				<li>-</li>
+				
 				<li id="wcfe-dmm-multisite-enable">Multi Sites Setup <span class="beta-feature">( BETA )</span></li>
+				
+				<li>-</li>
+				
+				<li id="wcfe-dmm-cookies-generateHash">Generate Cookies Hash</li>
+				
+				<li>-</li>
+				
+				<li>
+					Secure Keys
+					<ul>
+						<li id="wcfe-dmm-secure-keys-generate">Generate</li>
+					
+						<li id="wcfe-dmm-secure-keys-generate-all">Generate all</li>
+					</ul>
+				</li>
+				
 			</ul>
 		
 		</li>
 	
 		<li>
-			About
+			Help
 			<ul id="wcfe-dmm-about">
 				<li>
 					Tab
@@ -84,7 +108,9 @@ $router =& $this->router();
 				<li id="wcfe-dmm-about-support">Support Forum</li>
 				<li id="wcfe-dmm-about-submit-review">Submit Review</li>
 				<li>-</li>
-				<li id="wcfe-dmm-about-online-help">Help</li>
+				<li id="wcfe-dmm-about-online-help">Online Docs</li>
+				<li>-</li>
+				<li id="wcfe-dmm-about-info">About</li>
 				<li>-</li>
 				<li id="wcfe-dmm-about-follow-development">Follow Development</li>
 			</ul>

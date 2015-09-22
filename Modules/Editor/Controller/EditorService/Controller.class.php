@@ -108,8 +108,27 @@ class EditorServiceController extends ServiceController {
 			return null;
 		}
 	
+		$count = $_POST[ 'count' ];
+		$list  = array();
+		
+		while ( $count )
+		{
+			$list[ ] = wp_generate_password( 64, true, true );
+			
+			$count --;
+		}
+		
 		# Generate Secure key
-		return wp_generate_password( 64, true, true );
+		return $list;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function generateCookieHashAction()
+	{
+		return md5( uniqid() );
 	}
 
 	/**

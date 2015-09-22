@@ -27,7 +27,7 @@
 		* put your comment there...
 		* 
 		*/
-		var formEle, tab, activeTab;
+		var formEle, tab, activeTab, activeSecureKeyInput, secureKeys;
 
 		/**3
 		* put your comment there...
@@ -107,12 +107,6 @@
 				
 					tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=700&height=440' );
 				
-				break;			
-				
-				case 'wcfe-dmm-multisite-enable':
-				
-					tb_show( 'Multi Site Setup Tools', editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
-					
 				break;
 				
 				case 'wcfe-dmm-profiles-list':
@@ -204,6 +198,63 @@
 					
 				break;	
 				
+				case 'wcfe-dmm-cookies-generateHash':
+				
+				  tab.tabs( 'option', 'active', 11 );
+				  
+				  var prefixesList = 
+				  [ 
+				  	'', 
+				  	'wordpressuser_', 
+				  	'wordpresspass_', 
+				  	'wordpress_', 
+				  	'wordpress_sec_', 
+				  	'wordpress_logged_in_' 
+				  ];
+				
+				var cookiesInputs = $( '#CookiesOptionsTab input[type="text"]' );
+				
+				editorSrvs.makeCall( editorSrvs.getActionRoute( 'generateCookieHash' ) ).done(				
+
+					function ( hash )
+					{
+						
+						$.each( prefixesList,
+							
+							function( index )
+							{
+								cookiesInputs.eq( index ).val( this + hash );
+							}
+						
+						);
+						
+					}
+				
+				);
+				
+				break;
+				
+				case 'wcfe-dmm-secure-keys-generate':
+				
+					tab.tabs( 'option', 'active', 8 );
+				  
+					generateSecureKeys( [ activeSecureKeyInput ] );
+					
+				break;
+				case 'wcfe-dmm-secure-keys-generate-all':
+				
+					tab.tabs( 'option', 'active', 8 );
+					
+        	generateSecureKeys( secureKeys );
+			
+				break;
+				
+				case 'wcfe-dmm-cache-setup':
+				
+					tb_show( 'Enable Cache ( BETA )', '#TB_inline?inlineId=wcfe-setup-cache-popup&width=400&height=220' );
+				
+				break;
+				
 			}
 		};
 	
@@ -244,27 +295,32 @@
 			return false;
 			
 		}
-				
+	
 		/**
+		* put your comment there...
 		* 
 		*/
-		var generateFieldKey = function(event) 
+		var generateSecureKeys = function( inputs )
 		{
 			// Send key generation server request
-			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ) ).done( 
+			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ), { count : inputs.length } ).done( 
 			
-				function( secureKey )
+				function( secureKeysList )
 				{		
-					// Set Input field
-					$( event.target ).prev().val( secureKey );
+					$.each( inputs, 
+						
+						function( index )
+						{
+							$ ( this ).val( secureKeysList[ index ] );
+						}
+					
+					);
+
 				}
 				
 			);
-			
-			// Inactive
-			return false;
 		};
-	
+		
 		/**
 		* put your comment there...
 		* 
@@ -383,9 +439,6 @@
 				activeTab = $( '#MaintenanceOptionsTab' );
 			}
 			
-			// Secure keys generator
-			$('.secure-key-generator-key').click( $.proxy( generateFieldKey, this ) );
-			
 			// Confirm SAVE
 			$( '#wcfe-editor-form-save' ).click( $.proxy( confirmSave, this ) );
 			
@@ -404,11 +457,20 @@
 			// Menu
 			$( '#wcfe-config-form-main-menu' ).menu( 
 				{ 
-					position: { my: "left top", at: "left bottom" }, 
+					position: { my: "left top", at: "left+25 bottom" }, 
 					select : doMainMenu
 				}
 			).show();
 			
+			// Secure keys generator
+			secureKeys = $( '#SecureKeysOptionsTab input[type="text"]' ).focus(
+				function()
+				{
+					activeSecureKeyInput = $( this );
+				}
+			);
+			
+			// Load support WCFE Plugin form
       supportPluginDialog.run();
 			
 		};

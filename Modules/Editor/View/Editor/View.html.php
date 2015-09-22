@@ -115,7 +115,8 @@ class EditorHTMLView extends TemplateView {
 					'postUpdate' 				=> 		array( 'action' => 'postUpdate' ),
 					'updateConfigFile' 	=> 		array( 'action' => 'updateConfigFile' ),
 					'setActiveProfile' 	=> 		array( 'action' => 'setActiveProfile' ),
-					'getSystemPath'		 	=> 		array( 'action' => 'getSystemPath' )
+					'getSystemPath'		 	=> 		array( 'action' => 'getSystemPath' ),
+					'generateCookieHash' => 	array( 'action' => 'generateCookieHash' ),
 				),
 			'Editor', 'editorViews', array
 			(

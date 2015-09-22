@@ -339,9 +339,11 @@ width: 213px;
 }
 #wcfe-config-form-main-menu ul
 {
-	width: 200px;
-	background: #0B3E6F;
-	background-image: none;
+    width: 200px;
+    box-shadow: #0B3E6F 1px 1px 1px 0px;
+    background: #0B3E6F;
+    background-image: none;
+    border: none;
 }
 #wcfe-config-form-main-menu >li
 {
@@ -506,6 +508,7 @@ table#wcfe-info-paths-table input {
 	color: #9BFF00;
 	font-size: 96%;
 }
+
 /* PREVIEW */
 #config-file-content 
 {
