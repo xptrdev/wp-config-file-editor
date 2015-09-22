@@ -44,6 +44,8 @@ class Service extends \WPPFW\Services\ServiceBase {
 			$this->createServiceFront( new Proxy() );
 			
 			$this->dispatch();
+			
+			$this->response();
 		}
 	}
 

@@ -65,8 +65,38 @@ class MultiSiteToolsHTMLView extends TemplateView {
 		$this->scriptsQueue = new DashboardScriptsQueue();
 		$this->stylesQueue = new DashboardStylesQueue();
 		
-
+		$this->{"enqueue{$this->mvcTarget()->getAction()}Resources"}( );
+		
 	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function enqueueSetupNetworkResources()
+	{
+		
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY );
+		
+		# Actions route
+		$this->setActionsRoute( 
+			'Editor', 'editorService', array
+				(
+					'setupNetwork' 	=> 		array
+					( 
+						'controller' => 'MultiSiteToolsService',
+						'action' => 'setupNetwork'
+					),
+				)
+		);
+		
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function enqueueSetupResources() {}
 
 	/**
 	* put your comment there...

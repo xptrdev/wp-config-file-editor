@@ -3,7 +3,7 @@
 * 
 */
 
-namespace WCFE\Modules\Editor\Controller\MultiSiteService;
+namespace WCFE\Modules\Editor\Controller\MultiSiteToolsService;
 
 # Imoprts
 use WPPFW\MVC\Controller\ServiceController;
@@ -11,7 +11,7 @@ use WPPFW\MVC\Controller\ServiceController;
 /**
 * 
 */
-class MultiSiteServiceController extends ServiceController {
+class MultiSiteToolsServiceController extends ServiceController {
 	
 	/**
 	* put your comment there...
@@ -21,9 +21,11 @@ class MultiSiteServiceController extends ServiceController {
 	{
 		
 		# Check if permitted to take such action
-		if ( 	( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
+		if ( 	( ! isset( $_POST[ 'securityToken' ] ) ) || 
+		
+					( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
 					
-					( ! is_super_admin( 'administrator' ) ) )
+					( ! is_super_admin() ) )
 		{
 			
 			header( 'HTTP/1.1 4.3 Forbidden' );
@@ -32,6 +34,54 @@ class MultiSiteServiceController extends ServiceController {
 		}
 		
 		return true;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function setupNetworkAction()
+	{
+		if ( ! $this->_checkPermission() )
+		{
+			
+			return;
+		}
+		
+		$model =& $this->getModel( 'MultiSiteTools' );
+		$result = array( 'error' => true );
+		
+		# Write config file
+		$editorModel =& $this->getModel( 'Editor' );
+		
+		if ( ! $model->writeMSConfigFileConstants( $editorModel, $_POST[ 'configConsts' ] ) )
+		{
+			
+			$result[ 'errorMessages' ] = $model->getErrors();
+			
+			$model->clearErrors();
+			
+			return $result;
+		}
+		
+		# Write htaccess file
+		if ( ! $model->writeMSHtAccessFile( $_POST[ 'htaccessCode' ] ) )
+		{
+			
+			$result[ 'errorMessages' ] = $model->getErrors();
+			
+			$model->clearErrors();
+			
+			return $result;
+		}
+		
+		# Reactivate plugins
+		$model->reactivatePlugins();
+	  
+	  $result[ 'redirectTo' ] = home_url( 'wp-login.php' );
+		$result[ 'error' ] = false;
+		
+		return $result;
 	}
 
 } # End class

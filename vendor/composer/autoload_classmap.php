@@ -23,7 +23,7 @@ return array(
     'WCFE\\Modules\\Editor\\Controller\\EditorService\\EditorServiceController' => $baseDir . '/Modules/Editor/Controller/EditorService/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\Editor\\EditorController' => $baseDir . '/Modules/Editor/Controller/Editor/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\JSONControllerResponder' => $baseDir . '/Modules/Editor/Controller/JSON.class.php',
-    'WCFE\\Modules\\Editor\\Controller\\MultiSiteService\\MultiSiteServiceController' => $baseDir . '/Modules/Editor/Controller/MultiSiteService/Controller.class.php',
+    'WCFE\\Modules\\Editor\\Controller\\MultiSiteToolsService\\MultiSiteToolsServiceController' => $baseDir . '/Modules/Editor/Controller/MultiSiteService/Controller.class.php',
     'WCFE\\Modules\\Editor\\Controller\\MultiSiteTools\\MultiSiteToolsController' => $baseDir . '/Modules/Editor/Controller/MultiSiteTools/Controller.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\AuthKey' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/AuthKey.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\AuthSalt' => $baseDir . '/Modules/Editor/Model/ConfigFile/Fields/AuthSalt.class.php',

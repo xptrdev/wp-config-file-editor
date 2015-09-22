@@ -32,6 +32,11 @@ class Plugin extends PluginBase
 {
 	
 	/**
+	* 
+	*/
+	const DIR = __DIR__;
+	
+	/**
 	* put your comment there...
 	* 
 	* @var mixed
