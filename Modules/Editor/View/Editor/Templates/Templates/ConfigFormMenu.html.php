@@ -69,7 +69,7 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 					<li id="wcfe-dmm-secure-keys-generate-all">Generate all</li>
 				</ul>
 			</li>
-			
+						
 		</ul>
 	
 	</li>

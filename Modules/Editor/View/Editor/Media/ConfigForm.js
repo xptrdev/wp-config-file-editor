@@ -214,6 +214,8 @@
 				
 				var cookiesInputs = $( '#CookiesOptionsTab input[type="text"]' );
 				
+				WCFEEditorForm.statusBar.showProgress( 'Generating Hash' );
+				
 				editorSrvs.makeCall( editorSrvs.getActionRoute( 'generateCookieHash' ) ).done(				
 
 					function ( hash )
@@ -228,8 +230,15 @@
 						
 						);
 						
+						WCFEEditorForm.statusBar.showLog( 'Cookies hash generated' )
+					
 					}
 				
+				).error(
+					function()
+					{
+						WCFEEditorForm.statusBar.showLog( 'Server error! couldn\'t generate Cookie hash' );
+					}
 				);
 				
 				break;
@@ -251,8 +260,14 @@
 				
 				case 'wcfe-dmm-systemcheck':
 				
-					tb_show( 'System Check ( BETA )', editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=300' );
+					tb_show( 'System Check ( BETA )', editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=380' );
 				
+				break;
+				
+				case 'wcfe-dmm-multisite-enable':
+				
+					tb_show( 'Multi Site Setup Tools', editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
+					
 				break;
 				
 			}
@@ -302,6 +317,9 @@
 		*/
 		var generateSecureKeys = function( inputs )
 		{
+			
+			WCFEEditorForm.statusBar.showProgress( 'Generating secure key(s) ....' );
+			
 			// Send key generation server request
 			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ), { count : inputs.length } ).done( 
 			
@@ -316,8 +334,17 @@
 					
 					);
 
+					WCFEEditorForm.statusBar.showLog( 'Secure key(s) generated' );
+					
 				}
 				
+			).error(
+			
+				function()
+				{
+					WCFEEditorForm.statusBar.showLog( 'Server Error! Could not generate secure key(s)' );
+				}
+			
 			);
 		};
 		
@@ -611,7 +638,7 @@ WCFEEditorForm.statusBar = new function()
 		$( '#wcfe-status-bar .log-text' ).text( message ).show().fadeOut( 20000, 
 			function()
 			{
-				$( '#wcfe-status-bar .log-text' ).text( '-' ).show();
+				$( '#wcfe-status-bar .log-text' ).text( '---' ).show();
 			}
 		);
 	};

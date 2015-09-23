@@ -14,11 +14,42 @@ $model = $this->result();
 
 $libraryImagesUrl = \WCFE\Plugin::me()->getURL() . '/Libraries/Images';
 
-$configFile[ 'task' ] = $model->getConfigFileState() ? 'off' : 'on';
-$configFile[ 'taskText' ] = ( $configFile[ 'task' ] == 'off' ) ? 'OFF' : 'ON';
+# CONFIG FILE
+if ( $model->getConfigFileState() )
+{
+	$configFile[ 'task' ]	= 'off';
+	$configFile[ 'taskText' ] = 'OFF';
+	$configFile[ 'tipText' ] = 'Set readonly by changing permission to 0444';
+}
+else {
+	$configFile[ 'task' ]	= 'on';
+	$configFile[ 'taskText' ] = 'ON';	
+	$configFile[ 'tipText' ] = 'Set writable by changing permission to 0664';
+}
 
-$htaccessFile[ 'task' ] = $model->getHTAccessFileState() ? 'off' : 'on';
-$htaccessFile[ 'taskText' ] = ( $htaccessFile[ 'task' ] == 'off' ) ? 'OFF' : 'ON';
+# HTACCESS FILE
+if ( $model->getHTAccessFileState() )
+{
+	$htaccessFile[ 'task' ] = 'off';
+	$htaccessFile[ 'taskText' ] = 'OFF';
+	$htaccessFile[ 'tipText' ] = 'Set readonly by changing permission to 0444';
+}
+else 
+{
+	$htaccessFile[ 'task' ] = 'on';
+	$htaccessFile[ 'taskText' ] = 'ON';	
+	$htaccessFile[ 'tipText' ] = 'Set writable by changing permission to 0664';
+}
+
+# Backup
+if ( $model->getBackupState() )
+{
+	$backup[ 'tipText' ] = 'Emergency backup files detected. Its more secure to delete them only if you dont need it';
+}
+else 
+{
+	$backup[ 'tipText' ] = '';
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -65,21 +96,21 @@ $htaccessFile[ 'taskText' ] = ( $htaccessFile[ 'task' ] == 'off' ) ? 'OFF' : 'ON
 		    font-size: 15px;
 			}
 			div#wcfe-check-tools table td {
-		    background-color: #1088AA;
-		    text-align: center;
-		    vertical-align: middle;
+    background-color: #040607;
+    text-align: center;
+    vertical-align: middle;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="wcfe-check-tools" class="wcfe-popup-view"> 		
-    	<table cellpadding="9" cellspacing="6">
+    	<table cellpadding="9" cellspacing="13">
     		<tbody>
     			<tr>
     				<td>
     					<span>Writable wp-config.php</span>
 							<br />
-							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=config-file&wcfe-task=<?php echo $configFile[ 'task' ]; ?>">Turn <?php echo $configFile[ 'taskText' ] ?></a>
+							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=config-file&wcfe-task=<?php echo $configFile[ 'task' ]; ?>" title="<?php echo $configFile[ 'tipText' ] ?>">Turn <?php echo $configFile[ 'taskText' ] ?></a>
     				</td>
     				<td><img src="<?php echo $libraryImagesUrl ?>/agt_action_<?php echo $model->getConfigFileState() ? 'success' : 'fail' ?>.png" /></td>
     			</tr>
@@ -87,7 +118,7 @@ $htaccessFile[ 'taskText' ] = ( $htaccessFile[ 'task' ] == 'off' ) ? 'OFF' : 'ON
     				<td>
     					<span>Writable .htaccess</span>
 							<br />
-							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=htaccess-file&wcfe-task=<?php echo $htaccessFile[ 'task' ]; ?>">Turn <?php echo $htaccessFile[ 'taskText' ] ?></a>
+							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=htaccess-file&wcfe-task=<?php echo $htaccessFile[ 'task' ]; ?>" title="<?php echo $htaccessFile[ 'tipText' ] ?>">Turn <?php echo $htaccessFile[ 'taskText' ] ?></a>
     				</td>
     				<td><img src="<?php echo $libraryImagesUrl ?>/agt_action_<?php echo $model->getHTAccessFileState() ? 'success' : 'fail' ?>.png" /></td>
     			</tr>
@@ -111,7 +142,7 @@ $htaccessFile[ 'taskText' ] = ( $htaccessFile[ 'task' ] == 'off' ) ? 'OFF' : 'ON
 
 
     				</td>
-    				<td><img src="<?php echo $libraryImagesUrl ?>/<?php echo $model->getBackupState() ? 'alert' : 'agt_action_success' ?>.png" /></td>
+    				<td><img src="<?php echo $libraryImagesUrl ?>/<?php echo $model->getBackupState() ? 'alert' : 'agt_action_success' ?>.png" title="<?php echo $backup[ 'tipText' ] ?>" /></td>
     			</tr>
     		</tbody>
     	</table>
