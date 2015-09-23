@@ -526,6 +526,11 @@ table#wcfe-info-paths-table input {
 	{
 		width: 400px !important;
 	}
+	
+	.field-row label, .checkbox-row label {
+	    width: 169px;
+	}
+
 }
 
 @media only screen and (max-width: 750px) and (orientation: portrait),
@@ -535,6 +540,11 @@ table#wcfe-info-paths-table input {
 	{
 		width: 280px !important;
 	}
+	
+	.field-row label, .checkbox-row label {
+	    width: 120px;
+	}
+	
 }
 
 @media only screen and (max-width: 620px) and (orientation: portrait),
@@ -543,5 +553,9 @@ table#wcfe-info-paths-table input {
 	#SecureKeysOptionsTab input[type="text"], .long-input
 	{
 		width: 180px !important;
+	}
+	
+	.field-row label, .checkbox-row label {
+	    margin-bottom: 7px;
 	}
 }
