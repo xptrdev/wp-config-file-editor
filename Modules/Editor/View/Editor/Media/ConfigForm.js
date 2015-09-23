@@ -42,7 +42,7 @@
 					var input = $( event.target );
 				
 				  // Add to checkbox list when pressing enter
-				 	var list = input.next();
+				 	var list = input.prev();
 				 	var listItem = $( '<li></li>' ).appendTo( list );
 				 	var itemName = input.prop( 'id' ) + '[]';
 				 	

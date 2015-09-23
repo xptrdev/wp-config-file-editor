@@ -304,11 +304,8 @@ td.help-label-text {
     background-color: #FFFFFF;
     width: 178px;
     height: 158px;
-    display: inline-block;
     color: black;
     overflow: auto;
-    position: relative;
-    left: -213px;
     padding: 10px 17px;
     font-size: 14px;
     border: 1px solid black;
@@ -318,12 +315,15 @@ td.help-label-text {
     vertical-align: top;
     margin-top: 111px;
 }
-input.checkbox-list-input {
-width: 213px;
-    position: relative;
-    left: 1px;
-    top: 10px;
+.checkbox-list input[type="text"]
+{
+	width: 214px;
 }
+
+.wcfe-checkbox-list-container {
+	display: inline-block;
+}
+
 .simple-sub-container {
     background-color: #212324;
     padding: 10px 10px;
