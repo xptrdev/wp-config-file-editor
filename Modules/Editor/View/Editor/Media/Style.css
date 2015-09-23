@@ -102,7 +102,6 @@ a.secure-key-generator-key {
 
 #wcfe-options-tab {
 	width: 98%;
-	min-width: 700px;
 	margin-top: 6px;
 }
 
@@ -516,4 +515,33 @@ table#wcfe-info-paths-table input {
 	height:800px; 
 	margin-top: 10px; 
 	font-size: 18px;
+}
+
+
+
+@media only screen and (max-width: 1080px) and (orientation: portrait),
+(max-width:1080px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 400px !important;
+	}
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait),
+(max-width:750px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 280px !important;
+	}
+}
+
+@media only screen and (max-width: 620px) and (orientation: portrait),
+(max-width:620px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 180px !important;
+	}
 }
