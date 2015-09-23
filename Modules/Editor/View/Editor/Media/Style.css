@@ -371,7 +371,7 @@ td.help-label-text {
     background-color: #151515;
     font-size: 11px;
     font-family: monospace;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     width: 98% !important;
     border-radius: 20px;
 }
