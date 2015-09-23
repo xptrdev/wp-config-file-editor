@@ -15,7 +15,80 @@ use WCFE\Modules\Editor\Model\Forms;
 * 
 */
 class EditorController extends Controller {
-	 
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function systemCheckToolsAction()
+	{
+		
+		if ( 	! is_super_admin() )
+		{
+			
+			die( 'Access denied' );
+			
+		}
+		
+		
+		# Process tasks
+		if ( isset( $_GET[ 'wcfe-tool' ] ) )
+		{
+			
+			$model =& $this->getModel( 'SystemCheckTools' );
+			
+			switch ( $_GET[ 'wcfe-tool' ] )
+			{
+				
+				case 'config-file':
+				  
+				  $model->turnConfig( ( $_GET[ 'wcfe-task' ] == 'on' ) ? true : false );
+				  
+				break;
+				
+				case 'htaccess-file':
+				
+					$model->turnHTAccess( ( $_GET[ 'wcfe-task' ] == 'on' ) ? true : false );
+				
+				break;
+				
+				case 'emergency-backup':
+				
+					# We've only delete here
+					$editorModel =& $this->getModel();
+					
+					$editorModel->deleteEmergencyBackup();
+					
+				break;
+				
+			}
+			
+			# Remove tasks query streing parameters (redirect)
+			$selfActionUrl = $this->router()->route
+			( 
+				new \WPPFW\MVC\MVCViewParams
+				( 
+					null, 
+					'Editor', 
+					'SystemCheckTools', 
+					null, 
+					'SystemCheckTools' 
+				) 
+			);
+			
+			$this->redirect( $selfActionUrl );
+		}
+		
+		# Check system requirements
+		$model =& $this->getModel( 'SystemCheckTools' );
+		
+		$model->checkAll();
+		
+		
+		
+		return $model;
+	}
+
 	/**
 	* put your comment there...
 	* 

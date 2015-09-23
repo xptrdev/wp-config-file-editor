@@ -363,6 +363,15 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function getContentDir()
+	{
+		return $this->contentDirName;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function getConfigFileContent() {
 		return $this->configFileContent;
 	}

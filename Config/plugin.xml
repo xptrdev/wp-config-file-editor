@@ -150,6 +150,9 @@
 			<model id="WCFE\Modules\Editor\Model\MultiSiteToolsModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
+			<model id="WCFE\Modules\Editor\Model\SystemCheckToolsModel">
+				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
+			</model>
 			<model id="WCFE\Modules\Profiles\Model\ProfilesModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>

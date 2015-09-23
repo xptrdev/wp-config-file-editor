@@ -77,22 +77,4 @@ class ProfileHTMLView extends TemplateView {
 
 	}
 	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $actionsList
-	*/
-	private function & setActionsRoute( $actionsList )
-	{
-		
-		$serviceRouter =& $this->router()->findRouter( 'Editor', 'editorService' );
-		
-		foreach ( $actionsList as $actionName )
-		{
-			$this->actionsRoute[ $actionName ] = (string) $serviceRouter->routeAction( $actionName );
-		}
-		
-		return $this;
-	}
-	
 }

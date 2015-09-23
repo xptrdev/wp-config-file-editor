@@ -3,7 +3,7 @@
 * 
 */
 
-namespace WCFE\Modules\Editor\View\MultiSiteTools;
+namespace WCFE\Modules\Editor\View\SystemCheckTools;
 
 # Imports
 use WPPFW\MVC\View\TemplateView;
@@ -15,7 +15,7 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 /**
 * 
 */
-class MultiSiteToolsHTMLView extends TemplateView {
+class SystemCheckToolsHTMLView extends TemplateView {
 
 	/**
 	* put your comment there...
@@ -64,40 +64,17 @@ class MultiSiteToolsHTMLView extends TemplateView {
 		# Scripts and Styles queues
 		$this->scriptsQueue = new DashboardScriptsQueue();
 		$this->stylesQueue = new DashboardStylesQueue();
-		
-		$this->{"enqueue{$this->mvcTarget()->getAction()}Resources"}( );
-		
-	}
 
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function enqueueSetupNetworkResources()
-	{
-		
-		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY );
-		
 		# Actions route
 		$this->setActionsRoute( 
-			'Editor', 'editorService', array
-				(
-					'setupNetwork' 	=> 		array
-					( 
-						'controller' => 'MultiSiteToolsService',
-						'action' => 'SetupNetwork'
-					),
-				)
+			'Editor', 'editorViews', array
+			(
+				'systemCheckTools' => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
+			)
 		);
 		
 	}
 	
-	/**
-	* put your comment there...
-	* 
-	*/
-	protected function enqueueSetupResources() {}
-
 	/**
 	* put your comment there...
 	* 
@@ -139,5 +116,5 @@ class MultiSiteToolsHTMLView extends TemplateView {
 		
 		return $this;
 	}
-	
+
 }

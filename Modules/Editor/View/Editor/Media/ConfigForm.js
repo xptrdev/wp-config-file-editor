@@ -249,9 +249,9 @@
 			
 				break;
 				
-				case 'wcfe-dmm-cache-setup':
+				case 'wcfe-dmm-systemcheck':
 				
-					tb_show( 'Enable Cache ( BETA )', '#TB_inline?inlineId=wcfe-setup-cache-popup&width=400&height=220' );
+					tb_show( 'System Check ( BETA )', editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=300' );
 				
 				break;
 				
