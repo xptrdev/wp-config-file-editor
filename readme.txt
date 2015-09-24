@@ -1,7 +1,7 @@
 === WP Config File Editor ===
 Contributors: xpointer
 Donate link: http://wp-cfe.xptrdev.com
-Tags: wp-config.php, database, secure keys, secure, constants, localization, debugging, cache, memory, debug, Multi sites, mu
+Tags: wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies
 Requires at least: 4.0
 Tested up to: 4.3
 Stable tag: 1.3
@@ -49,7 +49,7 @@ is newly added to make setup Multi Sites more fun by passing only 2 steps withou
 * Delete emergency backup
 
 
-The following wp-config.php file fields is being supported:
+The following wp-config.php fields is being supported:
 
 = Maintenance =
 * Wordpress Cache (WP_CACHE)
