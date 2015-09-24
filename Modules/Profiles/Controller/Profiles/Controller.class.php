@@ -24,12 +24,10 @@ class ProfilesController extends Controller {
 	{
 		
 		# Check if permitted to take such action
-		if ( 	( 	is_multisite() && ! current_user_can( 'manage_network' ) ) ||
-					
-					( ! is_multisite() && ! current_user_can( 'administrator' ) ) )
+		if ( ! is_super_admin() )
 		{
 			
-			header( 'HTTP/1.1 4.3 Forbidden' );
+			header( 'HTTP/1.0 4.3 Forbidden' );
 			
 			die( );
 		}

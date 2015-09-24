@@ -10,7 +10,8 @@ namespace WCFE\Modules\Editor\View\SystemCheckTools\Templates;
 defined('ABSPATH') or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 
 $router = $this->router();
-$model = $this->result();
+$result = $this->result();
+$model =& $result[ 'model' ];
 
 $libraryImagesUrl = \WCFE\Plugin::me()->getURL() . '/Libraries/Images';
 

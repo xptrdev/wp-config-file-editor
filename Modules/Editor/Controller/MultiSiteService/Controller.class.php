@@ -28,7 +28,7 @@ class MultiSiteToolsServiceController extends ServiceController {
 					( ! is_super_admin() ) )
 		{
 			
-			header( 'HTTP/1.1 4.3 Forbidden' );
+			header( 'HTTP/1.0 4.3 Forbidden' );
 			
 			die( );
 		}

@@ -73,6 +73,7 @@ class SystemCheckToolsHTMLView extends TemplateView {
 			)
 		);
 		
+		$this->actionsRoute[ 'systemCheckTools' ] .= "&securityNonce={$this->result[ 'securityNonce' ]}";
 	}
 	
 	/**

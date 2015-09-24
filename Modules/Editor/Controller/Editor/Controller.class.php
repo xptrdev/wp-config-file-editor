@@ -35,6 +35,14 @@ class EditorController extends Controller {
 		if ( isset( $_GET[ 'wcfe-tool' ] ) )
 		{
 			
+			if ( 	( ! isset( $_GET[ 'securityNonce' ] ) ) || 
+						( ! $_GET[ 'securityNonce' ] ) ||
+						( ! wp_verify_nonce( $_GET[ 'securityNonce' ] ) ) )
+			{
+
+				die( 'Access Denied' );
+			}
+			
 			$model =& $this->getModel( 'SystemCheckTools' );
 			
 			switch ( $_GET[ 'wcfe-tool' ] )
@@ -84,9 +92,7 @@ class EditorController extends Controller {
 		
 		$model->checkAll();
 		
-		
-		
-		return $model;
+		return array( 'model' => & $model, 'securityNonce' => wp_create_nonce() );
 	}
 
 	/**
