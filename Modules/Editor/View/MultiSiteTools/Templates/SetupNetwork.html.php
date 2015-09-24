@@ -20,7 +20,7 @@ $result = $this->result();
 		padding: 10px 10px;
 		margin-top: 20px;
 		margin-bottom: 35px;
-		width: 822px;
+		width: 75%;
 	}
 	div#wcfe-multisite-setup-network-tools strong {
 	  font-size: 26px;
@@ -47,21 +47,21 @@ $result = $this->result();
 		
 		<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
 		
-		<div style="float: right; margin: 18px 10px;">
+		<div style="float: right; margin: 18px 10px;width: 45%;">
 			<p>Detected htaccess code</p>
-			<textarea id="wcfe-htaccess-file-detected-code" readonly="readonly" cols="50" rows="24"></textarea>
+			<textarea id="wcfe-htaccess-file-detected-code" style="width: 100%;height: 400px;" readonly="readonly"></textarea>
 		</div>
 		
 		<span class="wcfe-htaccess-editors-space" style="display: inline-block;width: 20px;height: 100%;"></span>
 		
-		<div>
+		<div style="width: 45%">
 			<p>Final htaccess File</p>
-			<textarea id="wcfe-htaccess-file-final-code" cols="50" rows="24"><?php echo $result[ 'htaccessCode' ] ?></textarea>		
+			<textarea id="wcfe-htaccess-file-final-code" style="width: 100%;height: 400px"><?php echo $result[ 'htaccessCode' ] ?></textarea>		
 		</div>
 
 		<div>
 			<p>Detected Config File constants</p>
-			<textarea id="wcfe-config-file-detected-code" readonly="readonly" cols="113" rows="14"></textarea>
+			<textarea id="wcfe-config-file-detected-code" style="height: 150px;width: 100%" readonly="readonly"></textarea>
 		</div>
 		
 	</div>
