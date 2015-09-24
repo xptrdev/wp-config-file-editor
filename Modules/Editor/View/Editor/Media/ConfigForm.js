@@ -198,6 +198,12 @@
 					
 				break;	
 				
+				case 'wcfe-dmm-about-info':
+				
+				  window.open( 'http://wp-cfe.xptrdev.com/' );
+				  
+				break;
+				
 				case 'wcfe-dmm-cookies-generateHash':
 				
 				  tab.tabs( 'option', 'active', 11 );
