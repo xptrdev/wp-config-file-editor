@@ -22,7 +22,12 @@ class EditorServiceController extends ServiceController {
 	{
 		
 		# Check if permitted to take such action
-		if ( 	( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
+		if ( 	
+					( ! isset( $_POST[ 'securityToken' ] ) ) ||
+					
+					( ! $_POST[ 'securityToken' ] ) ||
+					
+					( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
 		 
 					( ! is_super_admin() ) )
 		{
