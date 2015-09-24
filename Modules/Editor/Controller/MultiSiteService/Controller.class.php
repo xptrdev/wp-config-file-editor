@@ -64,6 +64,9 @@ class MultiSiteToolsServiceController extends ServiceController {
 			return $result;
 		}
 		
+		# Reactivate plugins
+		$model->reactivatePlugins();
+	  
 		# Write htaccess file
 		if ( ! $model->writeMSHtAccessFile( $_POST[ 'htaccessCode' ] ) )
 		{
@@ -75,9 +78,6 @@ class MultiSiteToolsServiceController extends ServiceController {
 			return $result;
 		}
 		
-		# Reactivate plugins
-		$model->reactivatePlugins();
-	  
 	  $result[ 'redirectTo' ] = home_url( 'wp-login.php' );
 		$result[ 'error' ] = false;
 		

@@ -58,6 +58,12 @@ $result = $this->result();
 			{
 				color: #14F514 !important;
 			}
+			blockquote {
+			    background-color: #100F0B;
+			    padding: 10px 10px;
+			    color: red;
+			    font-size: 19px;
+			}
 		</style>
 	</head>
 	<body>
@@ -80,6 +86,7 @@ $result = $this->result();
    			WCFE gets around this by writing a single line of code to wp-config file so it will still running while configuring Multi Sites installation.
    			This process will take the following actions:
    			</p>
+   			<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
    			<ol class="step-1">
    				<li>Deactivate all activate Plugins</li>
    				<li>Backup wp-config.php file, you will be provided with restore link</li>

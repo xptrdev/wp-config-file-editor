@@ -19,6 +19,7 @@ $result = $this->result();
 		background-color: #0AB6F8;
 		padding: 10px 10px;
 		margin-top: 20px;
+		margin-bottom: 35px;
 		width: 822px;
 	}
 	div#wcfe-multisite-setup-network-tools strong {
@@ -29,7 +30,12 @@ $result = $this->result();
 		color: #EAEAEA;
     font-size: 15px;
 	}
-
+	blockquote {
+		background-color: #FFFFFF;
+		padding: 10px 10px;
+		color: red;
+		font-size: 19px;
+	}
 </style>
 <div id="wcfe-multisite-setup-network-tools" style="display: none;">
 	<div id="wcfe-multisite-network-setup-dialog">
@@ -38,6 +44,9 @@ $result = $this->result();
 		<span style="color:black">Left editor is current htaccess file code. Copy code on the right and put it at the desired position to left editor.</span>
 		<br>
 		<span style="color:black">Left code is the final code that will be write to .htaccess file</span>
+		
+		<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
+		
 		<div style="float: right; margin: 18px 10px;">
 			<p>Detected htaccess code</p>
 			<textarea id="wcfe-htaccess-file-detected-code" readonly="readonly" cols="50" rows="24"></textarea>

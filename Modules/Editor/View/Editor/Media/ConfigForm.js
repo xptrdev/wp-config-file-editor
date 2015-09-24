@@ -697,6 +697,11 @@ WCFEEditorForm.profile = new function( )
 	this._ondelete = function()
 	{
 		
+		if ( ! confirm( 'Would you like to delete current active profile?' ) )
+		{
+			return;
+		}
+		
 		sb.showProgress( 'Deleting Profile ...' );
 		
 		ro.makeCall( ro.getActionRoute( 'deleteProfile' ), { profileId : activeProfile.id } ).done(

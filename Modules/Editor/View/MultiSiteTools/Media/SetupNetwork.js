@@ -114,8 +114,8 @@
 		
 		parseConfigConstants();
 		
-		// Display panel after htaccess textarea
-		$( '#wcfe-multisite-setup-network-tools' ).insertAfter( textAreas.eq( 1 )  ).show();
+		// Display panel before first textarea
+		$( '#wcfe-multisite-setup-network-tools' ).insertBefore( textAreas.eq( 0 )  ).show();
 	};
 
 		

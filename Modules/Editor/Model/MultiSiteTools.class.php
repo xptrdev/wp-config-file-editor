@@ -171,6 +171,12 @@ class MultiSiteToolsModel extends PluginModel
 	public function writeMSHtAccessFile( $code )
 	{
 		
+		# Return true if running on IIS
+		if ( stripos( $_SERVER[ 'SERVER_SOFTWARE' ], 'microsoft-iis' ) !== FALSE )
+		{
+			return true;
+		}
+		
 		$htaccessFilePath = ABSPATH . '.htaccess';
 		
 		if ( ! is_readable( $htaccessFilePath ) || ! is_writable( $htaccessFilePath ) )
