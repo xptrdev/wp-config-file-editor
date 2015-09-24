@@ -85,6 +85,8 @@ class EditorController extends Controller {
 			);
 			
 			$this->redirect( $selfActionUrl );
+			
+			return;
 		}
 		
 		# Check system requirements

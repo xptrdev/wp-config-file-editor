@@ -144,7 +144,18 @@ class SystemCheckToolsModel extends PluginModel
 	*/
 	public function turnHTAccess( $state )
 	{
-		return chmod( ABSPATH . '.htaccess',  0444 | ( abs( ( int ) $state ) * 0220 ) );
+		
+		$htaccessFile = ABSPATH . '.htaccess';
+		
+		if ( ! file_exists( $htaccessFile ) )
+		{
+			
+		  $this->addError( 'HTAccess file doesnt exists' );
+			
+			return false;
+		}
+		
+		return chmod( $htaccessFile,  0444 | ( abs( ( int ) $state ) * 0220 ) );
 	}
 	
 }

@@ -97,13 +97,34 @@ else
 		    font-size: 15px;
 			}
 			div#wcfe-check-tools table td {
-    background-color: #040607;
-    text-align: center;
-    vertical-align: middle;
+		    background-color: #040607;
+		    text-align: center;
+		    vertical-align: middle;
+			}
+			.wcfe-view-errors-list
+			{
+				color: #2DFF09;
 			}
 		</style>
 	</head>
 	<body>
+	
+<?php // Errors ?>
+<?php if ( $model->hasErrors() ) : ?>
+
+	<ul class="wcfe-view-errors-list">
+	
+<?php foreach ( $model->getCleanErrors() as $errorMessage ) : ?>
+
+		<li><?php echo $errorMessage; ?></li>
+		
+<?php endforeach; ?>
+
+	</ul>
+
+<?php $model->writeState(); # Re-write state as this is running too late! ?>
+<?php endif; ?>
+
 		<div id="wcfe-check-tools" class="wcfe-popup-view"> 		
     	<table cellpadding="9" cellspacing="13">
     		<tbody>
