@@ -1,7 +1,7 @@
 === WP Config File Editor ===
 Contributors: xpointer
 Donate link: http://wp-cfe.xptrdev.com
-Tags: wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies
+Tags: admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies
 Requires at least: 4.0
 Tested up to: 4.3
 Stable tag: 1.3
