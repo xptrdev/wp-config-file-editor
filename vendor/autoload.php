@@ -4,8 +4,4 @@
 
 require_once __DIR__ . '/composer' . '/autoload_real.php';
 
-<<<<<<< HEAD
-return ComposerAutoloaderInitfa08ed75932dede8cd7beefc7e8ad7a3::getLoader();
-=======
-return ComposerAutoloaderInita46f0deeef880edab8c7cab8f9fc9cff::getLoader();
->>>>>>> UseWPColors
+return ComposerAutoloaderInit05e699fc0e8214ee8f49d77bcdcecfb2::getLoader();
