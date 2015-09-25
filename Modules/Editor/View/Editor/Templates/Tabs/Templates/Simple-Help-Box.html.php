@@ -10,6 +10,6 @@ namespace WCFE\Modules\Editor\View\Editor\Templates;
 defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 
 ?>
-<div>
-	<table cellpadding="5" class="help-list">_</table>
+<div class="wcfe-simple-help-screen">
+	<table class="help-list" cellpadding="11" cellspacing="4">.</table>
 </div>

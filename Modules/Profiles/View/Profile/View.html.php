@@ -72,7 +72,6 @@ class ProfileHTMLView extends TemplateView {
 		
 		# Styles
 		
-		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive' ) );
 		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profile\Media\EditCSS' ) );
 
 	}

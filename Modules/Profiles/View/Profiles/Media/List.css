@@ -4,12 +4,14 @@ body
 }
 table.wcfe-grid-table
 {
-	width: 100%;
+    width: 100%;
+    background-color: gray;
+    margin-top: 4px;
 }
 
 table.wcfe-grid-table tr th
 {
-	background-color: #128FF5;
+	background-color: #D9D9DA;
 }
 
 table.wcfe-grid-table tr td

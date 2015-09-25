@@ -22,12 +22,12 @@ $result = $this->result();
 			
 			body
 			{
-				color: white;
+				
 			}
-			a {
+			a, a:visited {
 				color: #04B5FB;
 			}
-			a:hover, a:visited 
+			a:hover
 			{
 				color: #106586;
 			}
@@ -35,34 +35,31 @@ $result = $this->result();
 		    padding: 0px 20px;
 		    font-family: monospace;
 			}
-			#wcfe-multisite-tools-setup p {
-			  line-height: 21px;
-			}
 			div#wcfe-multisite-tools-setup h2 {
-			  color: wheat;
+			  color: #736F6E;
 			}
 			#wcfe-multisite-tools-setup p {
-			  line-height: 23px;
-			  color: white;
-			  font-size: 17px;
+				font-size: 16px;
+    		font-style: italic;
 			}
 			div#wcfe-multisite-tools-setup ol {
-			    color: #339958;
-			    font-size: 17px;
+			  color: #339958;
+			  font-size: 17px;
+			  font-weight: bold;
 			}
 			.step-1
 			{
-				color: #FFFF06 !important;
+				color: #05303D !important;
 			}
 			.step-2
 			{
-				color: #14F514 !important;
+				color: #074328 !important;
 			}
 			blockquote {
-			    background-color: #100F0B;
-			    padding: 10px 10px;
-			    color: red;
-			    font-size: 19px;
+		    background-color: #090909;
+		    padding: 10px 10px;
+		    color: #E2FF08;
+		    font-size: 19px;
 			}
 		</style>
 	</head>
@@ -86,7 +83,6 @@ $result = $this->result();
    			WCFE gets around this by writing a single line of code to wp-config file so it will still running while configuring Multi Sites installation.
    			This process will take the following actions:
    			</p>
-   			<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
    			<ol class="step-1">
    				<li>Deactivate all activate Plugins</li>
    				<li>Backup wp-config.php file, you will be provided with restore link</li>
@@ -101,7 +97,8 @@ $result = $this->result();
    				<li>Remove wp-config.php file Code that loads WCFE Plugin</li>
    				<li>Writes Wordpress Multi Sites constants to wp-config.php</li>
    				<li>Writes Wordpress Multi Site htaccess derictives to .htaccess file</li> 
-   			</ol>   			
+   			</ol> 
+   			<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
    			<form action="<?php echo $router->routeAction() ?>" method="post">
    				<input type="submit" value="Setup" />
    				<input type="hidden" name="securityNonce" value="<?php echo $result[ 'securityNonce' ] ?>" />

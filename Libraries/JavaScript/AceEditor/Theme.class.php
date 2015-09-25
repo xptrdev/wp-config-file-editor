@@ -14,13 +14,13 @@ use WPPFW\Services\Queue\ScriptResource;
 /**
 * 
 */
-class ACEThemeTomorrowNightBright extends ScriptResource {
+class Theme extends ScriptResource {
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'theme-tomorrow_night_bright.js';
+	protected $fileName = 'theme-xcode.js';
 	
 }
