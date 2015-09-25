@@ -16,25 +16,27 @@ $result = $this->result();
 <style type="text/css">
 	#wcfe-multisite-setup-network-tools
 	{
-		background-color: #0AB6F8;
-		padding: 10px 10px;
-		margin-top: 20px;
-		margin-bottom: 35px;
-		width: 75%;
+    background-color: #FFFFFF;
+    padding: 10px 10px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    width: 75%;
 	}
 	div#wcfe-multisite-setup-network-tools strong {
-	  font-size: 26px;
-	  color: yellow;
+    font-size: 26px;
+    color: #067F94;
 	}
 	div#wcfe-multisite-setup-network-tools p {
-		color: #EAEAEA;
     font-size: 15px;
+    font-weight: bold;
 	}
 	blockquote {
-		background-color: #FFFFFF;
-		padding: 10px 10px;
-		color: red;
-		font-size: 19px;
+    background-color: #ECECEC;
+    padding: 10px 10px;
+    color: #EB211F;
+    font-size: 19px;
+    line-height: 25px;
+    text-align: center;
 	}
 </style>
 <div id="wcfe-multisite-setup-network-tools" style="display: none;">

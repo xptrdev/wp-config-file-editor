@@ -88,7 +88,7 @@ $router =& $this->router();
 			<br /><br />
 			Unload Profile to check-out wp-config file values
 			<br /><br />
-			<span style="color:yellow">Nothing saved yet until using Save button</span>
+			<span style="color:red">Nothing saved yet until using Save button</span>
 		</p>
 	</div>
 </div>

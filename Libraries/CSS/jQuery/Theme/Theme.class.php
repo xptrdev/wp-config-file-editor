@@ -6,7 +6,7 @@
 /**
 * 
 */
-namespace WCFE\Libraries\CSS\jQuery\DarkHive;
+namespace WCFE\Libraries\CSS\jQuery\Theme;
 
 # Script resource
 use WPPFW\Services\Queue\StyleResource;
@@ -14,7 +14,7 @@ use WPPFW\Services\Queue\StyleResource;
 /**
 * 
 */
-class jQueryDarkHive extends StyleResource {
+class Theme extends StyleResource {
 	
 	/**
 	* put your comment there...

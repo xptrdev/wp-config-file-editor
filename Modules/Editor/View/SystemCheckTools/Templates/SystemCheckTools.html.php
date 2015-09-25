@@ -62,48 +62,35 @@ else
 			
 			body
 			{
-		    color: white;
 		    font-family: monospace;
 		    margin: 0;
-		    background-color: #0A4758;
 			}
-			a {
+			a, a:visited  {
 				color: #04B5FB;
 			}
-			a:hover, a:visited 
+			a:hover
 			{
 				color: #106586;
 			}
 			div#wcfe-check-tools {
 		    padding: 0px 20px;
 			}
-			div#wcfe-check-tools p {
-			  line-height: 23px;
-			  color: white;
-			  font-size: 17px;
-			}
-			div#wcfe-check-tools h2 {
-			  color: wheat;
-			}
-			div#wcfe-check-tools ol {
-			  color: #339958;
-			  font-size: 17px;
-			}
-				
 			div#wcfe-check-tools table {
-		    color: white;
 		    width: 100%;
 		    margin-top: 24px;
 		    font-size: 15px;
+		    font-weight: bold;
 			}
 			div#wcfe-check-tools table td {
-		    background-color: #040607;
-		    text-align: center;
-		    vertical-align: middle;
+				text-align: center;
+				vertical-align: middle;
+				border: 1px dashed #C3BABA;
 			}
 			.wcfe-view-errors-list
 			{
-				color: #2DFF09;
+				color: #FF0606;
+				font-size: 15px;
+				font-weight: bold;
 			}
 		</style>
 	</head>

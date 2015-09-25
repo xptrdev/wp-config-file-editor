@@ -825,7 +825,7 @@ WCFEEditorForm.profile = new function( )
 		
 		enabled = true;
 		
-		$( '#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li' ).css( 'color', 'white' );
+		$( '#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li' ).css( 'color', '' );
 		
 		this.reflectState();
 		

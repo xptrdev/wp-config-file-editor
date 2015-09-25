@@ -75,7 +75,7 @@ class ProfilesHTMLView extends TemplateView {
 		# Styles
 		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
 		
-		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\DarkHive\jQueryDarkHive' ) );
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\Theme\Theme' ) );
 		
 		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profiles\Media\Style' ) );
 		
