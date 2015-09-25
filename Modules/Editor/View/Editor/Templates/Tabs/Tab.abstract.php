@@ -219,9 +219,6 @@ abstract class Tab {
 			$row->appendChild( $tip );
 			$row->appendChild( $name );
 			
-			# Add error only if has rules
-			$row->appendChild( $error );
-			
 			################ RENDER INPUT FIELD #################
 			
 			$inputElement = $renderer->render( $doc, $row, compact( 'error', 'label', 'tip' ) );
@@ -229,8 +226,15 @@ abstract class Tab {
 			$inputElement->setAttribute( 'id', $inputId );
 			$inputElement->setAttribute( 'name', "{$form->getName()}[{$field->getName()}]" );
 			
+			# Use field type as class name
+			$typeClassNameArr = explode( '\\', get_class( $renderer->getField()->type() ) );
+			$inputElement->setAttribute( 'class', $inputElement->getAttribute( 'class' ) . ' ' . strtolower( array_pop( $typeClassNameArr ) ) );
+			
 			#####################################################
-				
+			
+			# Add error
+			$row->appendChild( $error );
+			
 			$pElement->appendChild( $row );
 		
 		}

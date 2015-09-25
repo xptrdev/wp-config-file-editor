@@ -62,6 +62,8 @@ class EditorModel extends PluginModel {
 		'SecurityAccessibleHosts',
 		'SecurityForceSSLAdmin',
 		'SecurityForceSSLLogin',
+		'SecurityDisallowUnfilteredHTML',
+		'SecurityAllowUnfilteredUploads',
 		
 		'UpgradeAutoDisable',
 		'UpgradeAutoCore',
@@ -104,6 +106,7 @@ class EditorModel extends PluginModel {
 		'MultiSitePathCurrentSite', 
 		'MultiSiteSiteId',
 		'MultiSiteBlogId',
+		'MultiSitePrimaryNetworkId',
 		
 		'WPCache',
 		'MemoryLimit',
@@ -117,6 +120,25 @@ class EditorModel extends PluginModel {
 		'Cron',
 		'CronAlternate',
 		'CronLockTimeOut',
+		
+		'ProxyHost',
+		'ProxyPort',
+		'ProxyUser',
+		'ProxyPassword',
+		'ProxyBypassHosts',
+		
+		'CookieHash',
+		'CookieUser',
+		'CookiePass',
+		'CookieAuth',
+		'CookieSecureAuth',
+		'CookieLoggedIn',
+		'CookieTest',
+		'CookiePath',
+		'CookieSitePath',
+		'CookieAdminPath',
+		'CookiePluginsPath',
+		'CookieDomain',
 	);
 	
 	/**
@@ -160,6 +182,20 @@ class EditorModel extends PluginModel {
 		return $this;
 	}
 
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $name
+	* @return EditorModel
+	*/
+	public function & addField( $name )
+	{
+		
+		$this->fieldsMap[ ] = $name;
+		
+		return $this;
+	}
+	
 	/**
 	* put your comment there...
 	* 
@@ -290,8 +326,10 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $generator
+	* @return EditorModel
 	*/
-	public function generateConfigFile()
+	public function & generateConfigFile( & $generator = null )
 	{
 		
 		# Prepare generator fields list
@@ -306,9 +344,8 @@ class EditorModel extends PluginModel {
 		# Get generator instance
 		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $fieldsList );
 		
-		# Save generated config file to model
-		$this->setConfigFileContent( (string) $configFile );
-		
+		# Return generator reference
+		$generator = $configFile;
 		
 		return $this;
 	}
@@ -326,10 +363,48 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
+	public function getContentDir()
+	{
+		return $this->contentDirName;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function getConfigFileContent() {
 		return $this->configFileContent;
 	}
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getInfo()
+	{
+		$info = array();
+		
+		# Discover paths
+		$info[ 'paths' ] = array
+		(
+			'absPath' => ABSPATH,
+			'pluginsDir' => WP_PLUGIN_DIR,
+			'pluginsDirUrl' => WP_PLUGIN_URL,
+			'contentDir' => WP_CONTENT_DIR,
+			'contentDirUrl' => WP_CONTENT_URL,
+			'adminUrl' => admin_url(),
+			'siteUrl' => home_url(),
+		);
+		
+		if ( is_multisite() )
+		{
+			$info[ 'paths' ][ 'networkAdminUrl' ] = network_admin_url();
+			$info[ 'paths' ][ 'networkSiteUrl' ] = network_site_url();
+		}
+		
+		return $info;
+	}
+
 	/**
 	* put your comment there...
 	* 

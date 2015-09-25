@@ -1,10 +1,10 @@
 === WP Config File Editor ===
 Contributors: xpointer
 Donate link: http://wp-cfe.xptrdev.com
-Tags: wp-config.php, database, secure keys, secure, constants, localization, debugging, cache, memory, debug, Multi sites, mu
+Tags: admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,49 +12,44 @@ Modify Wordpress wp-config.php file values using a Simple User Interface Form.
 
 == Description ==
 
-Modify Wordpress database, secure keys, security, ssl, updates, cron, loalization, debugging. memory, multi sites and cache constants values allocated in wp-config.php file using a friendly parameterized form. In additional to update Wordpress
-config file it also creates a web form field for every wp-config.php file value, make it very simple to modify values. The plugins is creating wp-config file
-identical to the wp-config.php file comes with Wordpress.
-
-The Plugin also provide a method for previewing the newly generated wp-config file content before writing to wp-config.php file. Using this method is enabling two other features,
-first is to check the generated wp-config file before updating, second is to provide a custom modification to wp-config.php file.
-
-In additional of direct config file manipulation WCFE Plugin is supporting of creating Profiles/Templates. Profile is a single record, that has name and description, 
-where admins can store/save custom config file fields and retrieve them later to be saved to Config File. This is great when you at least to have two basic Profiles 
-'Development' and 'Production' where you always need to set value for each of them every time you need to switch between 'Production' and 'Development'.
+Modify Wordpress Memory, Cache, Upgrade, Post, Localization, Cron, Multi Sites, Database, Secure Keys, Debugging, Proxy and Cookies constants values allocated in wp-config.php file using web form. Preview generated wp-config file into Syntax Hightlights and Error detection PHP Code Editor, before writing to wp-config.php. 
+In additional to modifying Config File parameters using web form, its also possible to preview generated wp-config file before saving, review and makes updates before saving.
+WCFE Plugin start to include few helpers tools related to wp-config.php file editing like Setup Multi Sites. Setup Multi Site Wizard feature
+is newly added to make setup Multi Sites more fun by passing only 2 steps without any tecnhiqual works.
 
 = Features =
-* Modify wp-config.php file parameters/fields using input form
-* Raw wp-config.php file editing with syntax hightlights and error detections
-* Validating the entered Database parameters by making a connection to the database
-* Filtering and validating input fields to avoid breaking wp-config.php file PHP syntax.
-* Generate Secure keys by single click
-* Update Database parameters
-* Change Memory Limits
-* Enable / Disable Cache
-* Enable / Disable Debugging
-* Enable / Disable Multi sites
-* Enable / Disable Wordpress Updates including core updates
-* Enable / Disable Plugins and Themes Updates
-* Enable / Disable Plugins and Themes Files Editor
-* Updates Wordpress either through FTP or SSH or Direct
-* Enable / Disable Posts revisions with the ability to specify max number of revisions
-* Disable / Enable Post Trash with the ability to specify how many days before trash posts will deleted
-* Enable / Disable Cron
-* Alternate Cron
-* Specify Cron Lock Time out to be set between multiple two crons requests
-* Automatic Database tables repair
-* Force Admin SSL
-* Force Login SSL
-* Disallow Plugins/Themes from contacting External Urls using Block External with the ability to allow just specified hosts
-* Create Emergency Backup just before saving wp-config.php file
-* Provide Emergency Restore link from which wp-config.php can be retored in case the site comes down as for invalid inputs
-* Only admins can use it when installed in normal installation while only Network Admins can use it under Multi Sites installations
-* Name and Describe Config File fields and save them to database to be retrived later to the form
-* Unlimited number of Profiles
-* Create, Edit, Delete, Load, Unload and Save Profile vars from config file form window.
+* Modify wp-config.php file using web form
+* Raw wp-config.php file editor with syntax hightlights and error detections
+* Emergency wp-config.php backup restore.
+* Multi Sites Setup Wizard
+* Increase Memory size limits
+* Configure Multi sites
+* Configure Post
+* Configure localization/lanaguage
+* Configure Wordpress security
+* Configure Wordpress proxy 
+* Configure Wordpress Database access parameters
+* Configure Wordpress Database repair
+* Configure Wordpress updates
+* Configure Cron
+* Configure debugging
+* Configure Secure keys
+* Only super admins (Multi Sites Network admin OR Normal installation admins) can interact with all WCFE Plugin actions/pages
+* Validating the entered Database parameters by making database connection test
+* Filtering and validating input fields to avoid breaking wp-config.php file
+* View System Paths and Urls while changing config form values
+* Path look up for all Path fields
+* View constants list associated for each field
+* View help list for each field
+* Save config fields into Profile, delegate it when needed so it can be saved into wp-config.php
+* Renew all secure keys by single click
+* Renew cookie names constants by single click
+* Check system requirements
+* Turn ON/OFF write permissions for wp-config.php and .htaccess files
+* Delete emergency backup
 
-The following wp-config.php file fields is being supported:
+
+The following wp-config.php fields is being supported:
 
 = Maintenance =
 * Wordpress Cache (WP_CACHE)
@@ -65,6 +60,8 @@ The following wp-config.php file fields is being supported:
 * Disable Plugins and Themes Editors (DISALLOW_FILE_EDIT)
 * Force SSL Admin (FORCE_SSL_ADMIN)
 * Force SSL Login (FORCE_SSL_LOGIN)
+* Disallow Unfiltered HTML (DISALLOW_UNFILTERED_HTML)
+* Allow Unfiltered uploads (ALLOW_UNFILTERED_UPLOADS)
 * Block External Url (WP_HTTP_BLOCK_EXTERNAL)
 * Manage Accessible Hosts (WP_ACCESSIBLE_HOSTS)
 
@@ -104,6 +101,7 @@ The following wp-config.php file fields is being supported:
 * Domain Current Site (DOMAIN_CURRENT_SITE)
 * Path (PATH_CURRENT_SITE)
 * Blog Id (SITE_ID_CURRENT_SITE)
+* Primary Network Id (PRIMARY_NETWORK_ID)
 
 = Database =
 * Database Name (DB_NAME)
@@ -134,6 +132,27 @@ The following wp-config.php file fields is being supported:
 * Save Database Queries (SAVEQUERIES)
 * Concatenate JavaScript (CONCATENATE_SCRIPTS)
 
+= Proxy =
+* Host (WP_PROXY_HOST)
+* Port (WP_PROXY_PORT)
+* User (WP_PROXY_USERNAME)
+* Password (WP_PROXY_PASSWORD)
+* Bypass list (WP_PROXY_BYPASS_HOSTS)
+
+= Cookies =
+* Hash (COOKIEHASH)
+* User (USER_COOKIE)
+* Password (PASS_COOKIE)
+* Authentication (AUTH_COOKIE)
+* Secure Authentication (SECURE_AUTH_COOKIE)
+* Logged In (LOGGED_IN_COOKIE)
+* Test (TEST_COOKIE)
+* Path (COOKIEPATH)
+* Site Path (SITECOOKIEPATH)
+* Admin Path (ADMIN_COOKIE_PATH)
+* Plugins Path (PLUGINS_COOKIE_PATH)
+* Domain (COOKIE_DOMAIN)
+
 == Installation ==
 
 1. Upload `wp-config-file-editor.zip` to the `/wp-content/plugins/` directory
@@ -154,28 +173,34 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 
 == Screenshots ==
 
-1. Maintenance Tab
-2. Security Tab
-3. Upgrade Tab
-4. Post Tab
-5. Localization Tab
-9. Cron Tab
-6. Multi Site Tab
-7. Database Tab
-8. Secure Keys Tab
-10. Developer Tab
-11. Active profile and Active Profile Menu
-12. Profiles List
-13. Create Profile
-14. Active Tab Fields Help
-15. Active Tab Constants list
-16. Raw Syntax Highlights and Error detection Editor
-17. Update Config File Wanring Dialog
-18. Restore Backup Page 
+1. Multi Sites Setup Wizard Part1 ( BETA )
+2. Multi Sites Setup Wizard Part2 ( BETA )
+3. Multi Sites Setup Wizard network activated
+4. Multi Sites Setup Wizard config helper screen
+5. System Check Tools ( BETA )
+6. Config File Maintenance parameters
+7. Config File Security parameters
+8. Config File Upgrade parameters
+9. Config File Post parameters
+10. Config File Localization parameters
+11. Config File Cron parameters
+12. Config File Multi Sites parameters
+13. Config File Database parameters
+14. Config File Secure Key parameters
+15. Config File Developer parameters
+16. Config File Proxy parameters
+17. Config File Cookies parameters
+18. Config File Syntax Highlights and error detection raw editor
+19. Profiles list
+20. Create new profile
+21. System paths and Urls info
+22. Save Config File warning dialog
+23. Restore backup page
+24. Fields help text
+25. Fields constants map
 
 == Upgrade notice ==
-* Don't use this Plugin for Wordpress versions before Wordpress version 4.0
-* If you've awstats-report-viewer installed please upgrade to version 0.7.1 before updating/installing WCFE 1.1
+* Don't use this Plugin for Wordpress < 4.0
 
 == Other Notes ==
 I really did hard work to create secure restoring Emergency backup feature. I'm recommending to always close Warning Dialog by pressing
@@ -184,6 +209,24 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+= 1.3 =
+* Use smaller fonts for Config Form Tabs
+* Responsive User interface
+* Add System Paths Info screen (Discover Wordpress instalations path, plugins path, etc...) while modifying config file
+* System Check Tools Screen [ BETA ] (Turn ON/OFF write permissions wp-config.php and .htaccess file, delete emregency backup )
+* Setup Multi site wizard screen [ BETA ] (Take you through two steps to setup multi site without any manual work)
+* Add Cookies Tab ( Cookie Hash, Cookie Auth, Cookie Secure Auth, Cookie Admin, etc... )
+* Add Proxy Tab (HOST, User, Password, Bypass list, port)
+* Add Multi Site Primary Network field
+* Fix wp-config file string values is not auto escaping backslash character
+* Add Path Look up (Path look when typing into any path specific input field)
+* Add Generate Cookies Hash (Generate Cookies names with single click)
+* Add Generage all secure keys (Renew all secure fields by single click)
+* Remove secure keys tab generate links and add one link to M<ain Menu
+* Aggregate all help menu items under Help Menu
+* Aggregate all tools items under Tools menu
+* Add Security TAB ( Allow Unfiltered Uploads ) and ( Disallow Unfiltered HTML ) field
+
 = 1.2.1 =
 * Major security enhancments
 

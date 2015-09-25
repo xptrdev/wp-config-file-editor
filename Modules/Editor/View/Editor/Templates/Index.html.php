@@ -29,51 +29,7 @@ $router =& $this->router();
 <?php endif; ?>
 
 <? // Dashboard Menu ?>
-	<ul id="wcfe-config-form-main-menu">
-
-		<li>
-			Profiles
-			<ul id="wcfe-dmm-profiles">
-				<li id="wcfe-dmm-profiles-create" title="Create new profile from config form fields">Create</li>
-				<li id="wcfe-dmm-profiles-list" title="Manage profiles">Profiles</li>
-				<li>-</li>
-				<li id="wcfe-dmm-profiles-active-profile">
-					Active Profile
-					<ul>
-						<li id="wcfe-dmm-profiles-save" title="Save config form fields vars into active profile">Save</li>
-						<li>-</li>
-						<li id="wcfe-dmm-profiles-edit" title="Edit active profile description">Edit</li>
-						<li id="wcfe-dmm-profiles-delete" title="Delete active profile, return back to config file values, discard changes">Delete</li>
-						<li id="wcfe-dmm-profiles-reload" title="Reload active profile field values, discard changes">Reload</li>
-						<li>-</li>
-						<li id="wcfe-dmm-profiles-unload" title="Active profile deattach. Return to config file values">Unload</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>
-			Tab
-			<ul id="wcfe-dmm-tab">
-				<li id="wcfe-dmm-tab-help" title="Active tab fields help text">Fields Help</li>
-				<li id="wcfe-dmm-tab-constants-list" title="Active tab fields mapped to wp-config file constants list">Constants List</li>
-			</ul>
-		</li>
-
-		<li>
-			About
-			<ul id="wcfe-dmm-about">
-				<li id="wcfe-dmm-about-contact">Contact</li>
-				<li id="wcfe-dmm-about-website">Web Site</li>
-				<li id="wcfe-dmm-about-support">Support Forum</li>
-				<li id="wcfe-dmm-about-submit-review">Submit Review</li>
-				<li>-</li>
-				<li id="wcfe-dmm-about-online-help">Help</li>
-				<li>-</li>
-				<li id="wcfe-dmm-about-follow-development">Follow Development</li>
-			</ul>
-		</li>
-			
-	</ul>
+<?php require 'Templates' . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
 
 <?php // COnfig Form ?>
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
@@ -122,7 +78,7 @@ $router =& $this->router();
 </div>
 
 <?php // Wanrings ballons ?>
-<div>
+<div id="wcfe-ballons-templates">
 	<div class="wcfe-ballon" id="wcfe-active-profile-warning">
 		<h2>Warning</h2>
 		<p>
@@ -133,4 +89,10 @@ $router =& $this->router();
 			<span style="color:yellow">Nothing saved yet until using Save button</span>
 		</p>
 	</div>
+</div>
+
+
+<?php // Info dialogs templates ?>
+<div id="wcfe-info-templates">
+<?php require 'Templates' . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
 </div>

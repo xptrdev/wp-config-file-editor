@@ -17,6 +17,13 @@ class Field extends InputField {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $type = 'password';
+
+	/**
+	* put your comment there...
+	* 
 	*/
 	public function getText() {
 		return 'Password';

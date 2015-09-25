@@ -11,6 +11,15 @@
 	background-color: #0B3E6F !important;
 }
 
+.ui-widget {
+	font-size: 1.1em;
+	line-height: 1.2em;
+}
+
+.ui-helper-reset
+{
+	font-size: 90%;
+}
 ul#errors-bar {
     color: yellow;
     font-size: 17px;
@@ -59,7 +68,10 @@ div#wcfe-body {
   font-weight: bold;
 }
 input[type="text"] {
-	width: 350px;
+	width: 155px;
+}
+input[type="password"] {
+	width: 90px;
 }
 fieldset strong {
 	background-color: white; 
@@ -90,7 +102,6 @@ a.secure-key-generator-key {
 
 #wcfe-options-tab {
 	width: 98%;
-	min-width: 700px;
 	margin-top: 6px;
 }
 
@@ -289,28 +300,29 @@ td.help-label-text {
 
 .checkbox-list ul
 {
-background-color: #0B3E6F;
-    width: 200px;
-    height: 217px;
-    display: inline-block;
+    background-color: #FFFFFF;
+    width: 178px;
+    height: 158px;
+    color: black;
     overflow: auto;
-    position: relative;
-    left: -235px;
-    box-shadow: #0B3E6F 0px 0px 12px 1px;
     padding: 10px 17px;
     font-size: 14px;
+    border: 1px solid black;
 }
 .checkbox-list label
 {
     vertical-align: top;
     margin-top: 111px;
 }
-input.checkbox-list-input {
-    width: 229px;
-    position: relative;
-        left: -5px;
-    top: 11px;
+.checkbox-list input[type="text"]
+{
+	width: 214px;
 }
+
+.wcfe-checkbox-list-container {
+	display: inline-block;
+}
+
 .simple-sub-container {
     background-color: #212324;
     padding: 10px 10px;
@@ -319,15 +331,18 @@ input.checkbox-list-input {
 
 #wcfe-config-form-main-menu
 {
-	width: 324px;
-	font-size: 1.1em;
+	width: 216px;
+	font-size: 1.0em;
 	display: none;
+	background: #161616;
 }
 #wcfe-config-form-main-menu ul
 {
-	width: 200px;
-	background: #0B3E6F;
-	background-image: none;
+    width: 200px;
+    box-shadow: #0B3E6F 1px 1px 1px 0px;
+    background: #0B3E6F;
+    background-image: none;
+    border: none;
 }
 #wcfe-config-form-main-menu >li
 {
@@ -356,7 +371,7 @@ input.checkbox-list-input {
     background-color: #151515;
     font-size: 11px;
     font-family: monospace;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     width: 98% !important;
     border-radius: 20px;
 }
@@ -419,6 +434,80 @@ display: none;
     margin: 0;
 }
 
+input[type="text"].typeinteger, #MaintenanceOptionsTab input[type="text"]
+{
+	width: 60px;
+}
+
+#SecureKeysOptionsTab input[type="text"]
+{
+	width: 536px;
+}
+
+.medium-input
+{
+	width: 250px !important;
+}
+
+.long-input
+{
+	width: 400px !important;
+}
+
+#wcfe-info-templates > *
+{
+	display: none;
+}
+
+table#wcfe-info-paths-table {
+    /* background-color: navy; */
+    color: white;
+    width: 100%;
+    margin: 26px 0 0 0;
+}
+table#wcfe-info-paths-table th {
+    background-color: #B23232;
+}
+table#wcfe-info-paths-table td {
+    background-color: #000;
+}
+table#wcfe-info-paths-table input {
+    width: 99%;
+    background-color: transparent;
+    color: white;
+    border-color: #173747
+}
+
+.wcfe-auto-path-list
+{
+    height: 100px;
+    background-color: #FFFFFF;
+    color: black;
+    position: absolute;
+    display: none;
+    font-size: 14px;
+    padding: 3px 5px;
+    overflow: auto;
+    font-family: monospace;
+    z-index: 2;
+}
+.wcfe-auto-path-list li {
+    padding: 0;
+    margin: 0px 0 4px;
+    cursor: pointer;
+}
+.wcfe-auto-path-list li.selected
+{
+	background-color: blue;
+	color: white;
+}
+
+.beta-feature
+{
+	color: #9BFF00;
+	font-size: 96%;
+}
+
 /* PREVIEW */
 #config-file-content 
 {
@@ -426,4 +515,47 @@ display: none;
 	height:800px; 
 	margin-top: 10px; 
 	font-size: 18px;
+}
+
+
+
+@media only screen and (max-width: 1080px) and (orientation: portrait),
+(max-width:1080px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 400px !important;
+	}
+	
+	.field-row label, .checkbox-row label {
+	    width: 169px;
+	}
+
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait),
+(max-width:750px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 280px !important;
+	}
+	
+	.field-row label, .checkbox-row label {
+	    width: 120px;
+	}
+	
+}
+
+@media only screen and (max-width: 620px) and (orientation: portrait),
+(max-width:620px) {
+	
+	#SecureKeysOptionsTab input[type="text"], .long-input
+	{
+		width: 180px !important;
+	}
+	
+	.field-row label, .checkbox-row label {
+	    margin-bottom: 7px;
+	}
 }

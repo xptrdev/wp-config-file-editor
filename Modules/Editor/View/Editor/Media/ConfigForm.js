@@ -22,11 +22,12 @@
 		*/
 		var editorSrvs = new WCFEEditorServices( 'configFileFields' );
 		
+		var autoPath = new WCFEAutoPath( 'input[type="text"].path' , editorSrvs );
 		/**
 		* put your comment there...
 		* 
 		*/
-		var formEle, tab, activeTab;
+		var formEle, tab, activeTab, activeSecureKeyInput, secureKeys;
 
 		/**3
 		* put your comment there...
@@ -41,7 +42,7 @@
 					var input = $( event.target );
 				
 				  // Add to checkbox list when pressing enter
-				 	var list = input.next();
+				 	var list = input.prev();
 				 	var listItem = $( '<li></li>' ).appendTo( list );
 				 	var itemName = input.prop( 'id' ) + '[]';
 				 	
@@ -102,6 +103,54 @@
 			switch ( event.currentTarget.id )
 			{
 				
+				case 'wcfe-dmm-info-paths':
+				
+					tb_show( 'System Paths', '#TB_inline?inlineId=wcfe-info-paths&width=700&height=440' );
+				
+				break;
+				
+				case 'wcfe-dmm-profiles-list':
+				
+					// how profiles list dialog
+					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
+					
+				break;
+				
+				case 'wcfe-dmm-profiles-create':
+					
+					// First create Profile Vars Temporary storage to be associated with
+					// profile when created
+					editorSrvs.makeCall( editorSrvs.getActionRoute( 'createVarsTStorage' ), formEle.serializeObject() ).done
+					(
+						function( temporaryStorage )
+						{
+							if ( ! temporaryStorage || ! temporaryStorage.id )
+							{
+								
+								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
+								
+								return;
+							}
+							
+							// Create Profile / Send Storage Id along with request
+							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+							
+						}
+					
+					);
+										
+				break;
+				case 'wcfe-dmm-profiles-save':
+				case 'wcfe-dmm-profiles-edit':
+				case 'wcfe-dmm-profiles-delete':
+				case 'wcfe-dmm-profiles-reload':
+				case 'wcfe-dmm-profiles-unload':
+				case 'wcfe-dmm-profiles-close':
+				
+					WCFEEditorForm.profile.menuProxy( event.currentTarget.id );
+					
+				break;
+				
 				case 'wcfe-dmm-tab-help':
 				
 					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
@@ -147,49 +196,86 @@
 				
 					window.open( 'https://github.com/xptrdev/wp-config-file-editor' );
 					
-				break;				
+				break;	
 				
-				case 'wcfe-dmm-profiles-list':
+				case 'wcfe-dmm-about-info':
 				
-					// how profiles list dialog
-					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
-					
+				  window.open( 'http://wp-cfe.xptrdev.com/' );
+				  
 				break;
 				
-				case 'wcfe-dmm-profiles-create':
-					
-					// First create Profile Vars Temporary storage to be associated with
-					// profile when created
-					editorSrvs.makeCall( editorSrvs.getActionRoute( 'createVarsTStorage' ), formEle.serializeObject() ).done
-					(
-						function( temporaryStorage )
-						{
-							if ( ! temporaryStorage || ! temporaryStorage.id )
+				case 'wcfe-dmm-cookies-generateHash':
+				
+				  tab.tabs( 'option', 'active', 11 );
+				  
+				  var prefixesList = 
+				  [ 
+				  	'', 
+				  	'wordpressuser_', 
+				  	'wordpresspass_', 
+				  	'wordpress_', 
+				  	'wordpress_sec_', 
+				  	'wordpress_logged_in_' 
+				  ];
+				
+				var cookiesInputs = $( '#CookiesOptionsTab input[type="text"]' );
+				
+				WCFEEditorForm.statusBar.showProgress( 'Generating Hash' );
+				
+				editorSrvs.makeCall( editorSrvs.getActionRoute( 'generateCookieHash' ) ).done(				
+
+					function ( hash )
+					{
+						
+						$.each( prefixesList,
+							
+							function( index )
 							{
-								
-								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
-								
-								return;
+								cookiesInputs.eq( index ).val( this + hash );
 							}
-							
-							// Create Profile / Send Storage Id along with request
-							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
-							
-						}
+						
+						);
+						
+						WCFEEditorForm.statusBar.showLog( 'Cookies hash generated' )
 					
-					);
-										
-				break;
-				case 'wcfe-dmm-profiles-save':
-				case 'wcfe-dmm-profiles-edit':
-				case 'wcfe-dmm-profiles-delete':
-				case 'wcfe-dmm-profiles-reload':
-				case 'wcfe-dmm-profiles-unload':
-				case 'wcfe-dmm-profiles-close':
+					}
 				
-					WCFEEditorForm.profile.menuProxy( event.currentTarget.id );
+				).error(
+					function()
+					{
+						WCFEEditorForm.statusBar.showLog( 'Server error! couldn\'t generate Cookie hash' );
+					}
+				);
+				
+				break;
+				
+				case 'wcfe-dmm-secure-keys-generate':
+				
+					tab.tabs( 'option', 'active', 8 );
+				  
+					generateSecureKeys( [ activeSecureKeyInput ] );
 					
 				break;
+				case 'wcfe-dmm-secure-keys-generate-all':
+				
+					tab.tabs( 'option', 'active', 8 );
+					
+        	generateSecureKeys( secureKeys );
+			
+				break;
+				
+				case 'wcfe-dmm-systemcheck':
+				
+					tb_show( 'System Check ( BETA )', editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=380' );
+				
+				break;
+				
+				case 'wcfe-dmm-multisite-enable':
+				
+					tb_show( 'Multi Site Setup Tools', editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
+					
+				break;
+				
 			}
 		};
 	
@@ -230,27 +316,44 @@
 			return false;
 			
 		}
-				
+	
 		/**
+		* put your comment there...
 		* 
 		*/
-		var generateFieldKey = function(event) 
+		var generateSecureKeys = function( inputs )
 		{
-			// Send key generation server request
-			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ) ).done( 
 			
-				function( secureKey )
+			WCFEEditorForm.statusBar.showProgress( 'Generating secure key(s) ....' );
+			
+			// Send key generation server request
+			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ), { count : inputs.length } ).done( 
+			
+				function( secureKeysList )
 				{		
-					// Set Input field
-					$( event.target ).prev().val( secureKey );
+					$.each( inputs, 
+						
+						function( index )
+						{
+							$ ( this ).val( secureKeysList[ index ] );
+						}
+					
+					);
+
+					WCFEEditorForm.statusBar.showLog( 'Secure key(s) generated' );
+					
 				}
 				
-			);
+			).error(
 			
-			// Inactive
-			return false;
+				function()
+				{
+					WCFEEditorForm.statusBar.showLog( 'Server Error! Could not generate secure key(s)' );
+				}
+			
+			);
 		};
-	
+		
 		/**
 		* put your comment there...
 		* 
@@ -369,9 +472,6 @@
 				activeTab = $( '#MaintenanceOptionsTab' );
 			}
 			
-			// Secure keys generator
-			$('.secure-key-generator-key').click( $.proxy( generateFieldKey, this ) );
-			
 			// Confirm SAVE
 			$( '#wcfe-editor-form-save' ).click( $.proxy( confirmSave, this ) );
 			
@@ -390,11 +490,20 @@
 			// Menu
 			$( '#wcfe-config-form-main-menu' ).menu( 
 				{ 
-					position: { my: "left top", at: "left bottom" }, 
+					position: { my: "left top", at: "left+25 bottom" }, 
 					select : doMainMenu
 				}
 			).show();
 			
+			// Secure keys generator
+			secureKeys = $( '#SecureKeysOptionsTab input[type="text"]' ).focus(
+				function()
+				{
+					activeSecureKeyInput = $( this );
+				}
+			);
+			
+			// Load support WCFE Plugin form
       supportPluginDialog.run();
 			
 		};
@@ -535,7 +644,7 @@ WCFEEditorForm.statusBar = new function()
 		$( '#wcfe-status-bar .log-text' ).text( message ).show().fadeOut( 20000, 
 			function()
 			{
-				$( '#wcfe-status-bar .log-text' ).text( '-' ).show();
+				$( '#wcfe-status-bar .log-text' ).text( '---' ).show();
 			}
 		);
 	};
@@ -593,6 +702,11 @@ WCFEEditorForm.profile = new function( )
 	*/
 	this._ondelete = function()
 	{
+		
+		if ( ! confirm( 'Would you like to delete current active profile?' ) )
+		{
+			return;
+		}
 		
 		sb.showProgress( 'Deleting Profile ...' );
 		
@@ -850,20 +964,37 @@ var supportPluginDialog = new function()
 					
 				}
 			);
-			
-			// SHow dialog
-			setTimeout(
-			 
-				function() 
-				{
-					tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
-					
-					// Set next time 
-					setNextTime();
-				}
-			, 10000 );
 
+			var showDialog = function()
+			{
+				
+				// SHow dialog
+				setTimeout(
+				
+					function() 
+					{
+					
+			 			if ( $( '#TB_window' ).length )
+			 			{
+			 				
+			 				console.log( $( '#TB_window' ).length );
+					    showDialog();
+					    
+					    return;
+			 	 		}
+					 
+				 		tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
+						
+						// Set next time 
+						setNextTime();
+					
+					}, 10000 );
+				
+			};
+			
+      showDialog();
 		}
+		
 	}
 	
 };

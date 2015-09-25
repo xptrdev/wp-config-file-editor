@@ -22,14 +22,17 @@ class EditorServiceController extends ServiceController {
 	{
 		
 		# Check if permitted to take such action
-		if ( 	( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
-		 
-					( 	is_multisite() && ! current_user_can( 'manage_network' ) ) ||
+		if ( 	
+					( ! isset( $_POST[ 'securityToken' ] ) ) ||
 					
-					( ! is_multisite() && ! current_user_can( 'administrator' ) ) )
+					( ! $_POST[ 'securityToken' ] ) ||
+					
+					( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
+		 
+					( ! is_super_admin() ) )
 		{
 			
-			header( 'HTTP/1.1 4.3 Forbidden' );
+			header( 'HTTP/1.0 4.3 Forbidden' );
 			
 			die( );
 		}
@@ -108,9 +111,55 @@ class EditorServiceController extends ServiceController {
 			return null;
 		}
 	
+		$count = $_POST[ 'count' ];
+		$list  = array();
+		
+		while ( $count )
+		{
+			$list[ ] = wp_generate_password( 64, true, true );
+			
+			$count --;
+		}
+		
 		# Generate Secure key
-		return wp_generate_password( 64, true, true );
+		return $list;
 	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function generateCookieHashAction()
+	{
+		
+		if ( ! $this->_checkPermission() )
+		{
+			return;
+		}
+		
+		return md5( uniqid() );
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getSystemPathAction()
+	{
+		
+		# Check permission
+		if ( ! $this->_checkPermission() )
+		{
+			return null;
+		}
+		
+		# Get dirs list for current 
+
+		$dirsList = glob( "{$_POST[ 'path' ]}*", GLOB_ONLYDIR );
+		
+		return array( 'list' => $dirsList );
+	}
+	
 
 	/**
 	* put your comment there...
@@ -163,7 +212,8 @@ class EditorServiceController extends ServiceController {
 		{
 			
 			# Generate config file from submitted fields
-			$model->generateConfigFile();
+			$model->generateConfigFile( $configGenerator );
+			$model->setConfigFileContent( (string) $configGenerator );
 			
 			# If failr return errors back
 			if ( ! $model->saveConfigFile() )

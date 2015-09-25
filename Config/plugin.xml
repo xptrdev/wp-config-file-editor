@@ -84,6 +84,23 @@
 			</proxy>
 		</service>
 
+		
+		<service serviceObjectClass="Editor\Services\Editor\AjaxViews"
+						 serviceFront="Service"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Ajax\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Ajax\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="Editor" />
+					<param name="controller" 				value="MultiSiteTools" />
+					<param name="view" 							value="MultiSiteTools" />
+					<param name="action" 						value="Setup" />
+				</object>
+			</proxy>
+		</service>
+		
+		
+		
 		<service serviceObjectClass="Profiles\Services\Profiles\Ajax"
 						 serviceFront="Service"
 						 routerClass="WPPFW\Plugin\ServiceObjectRouter"
@@ -109,9 +126,31 @@
 				</object>
 			</proxy>
 		</service>
-	
+
+
+		<service serviceObjectClass="Editor\MultiSiteTools\MultiSiteNetworkPageTools"
+						 serviceFront="ServiceFront"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WCFE\Services\Editor\MultiSiteTools\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WCFE\Services\Editor\MultiSiteTools\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="Editor" />
+					<param name="controller" 				value="MultiSiteTools" />
+					<param name="view" 							value="MultiSiteTools" />
+					<param name="action" 						value="SetupNetwork" />
+				</object>
+			</proxy>
+		</service>
+		
+			
 		<models>
 			<model id="WCFE\Modules\Editor\Model\EditorModel">
+				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
+			</model>
+			<model id="WCFE\Modules\Editor\Model\MultiSiteToolsModel">
+				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
+			</model>
+			<model id="WCFE\Modules\Editor\Model\SystemCheckToolsModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
 			<model id="WCFE\Modules\Profiles\Model\ProfilesModel">

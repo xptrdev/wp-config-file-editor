@@ -35,6 +35,8 @@ class SecurityOptionsTab extends SimpleSubContainerTab {
 				'SecurityDisablePluggablesEditor',
 				'SecurityForceSSLAdmin',
 				'SecurityForceSSLLogin',
+				'SecurityDisallowUnfilteredHTML',
+				'SecurityAllowUnfilteredUploads',
 			)		
 		),
 		'BlockExternal' => array

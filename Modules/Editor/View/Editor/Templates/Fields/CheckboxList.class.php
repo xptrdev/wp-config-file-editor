@@ -90,6 +90,8 @@ abstract class CheckboxListField extends FieldBase {
 			
 		}
 		
+		$list->appendChild( $document->createTextNode( ' ' ) );
+		
 		# Checkbox list specific css class
 		$row->setAttribute( 'class', $row->getAttribute( 'class' ) . " checkbox-list" );
 		
@@ -100,9 +102,14 @@ abstract class CheckboxListField extends FieldBase {
 		$inputElement->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
 		$inputElement->setAttribute( 'class', 'checkbox-list-input' );
 		
-		$row->appendChild( $inputElement );
+		$container = $document->createElement( 'div' );
+		$container->setAttribute( 'class', 'wcfe-checkbox-list-container' );
 		
-		$row->appendChild( $list );
+		$container->appendChild( $list );
+		
+		$container->appendChild( $inputElement );
+		
+		$row->appendChild( $container );
 		
 		# Return list
 		return $list;

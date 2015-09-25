@@ -4,7 +4,7 @@
 * Plugin URI: http://wp-cfe.xptrdev.com
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.2.1
+* Version: 1.3
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form
 * License: GPL2
 */
@@ -30,6 +30,11 @@ use WCFE\Services;
 */
 class Plugin extends PluginBase 
 {
+	
+	/**
+	* 
+	*/
+	const DIR = __DIR__;
 	
 	/**
 	* put your comment there...
@@ -79,7 +84,6 @@ class Plugin extends PluginBase
 
 		# Start using hooks at this point so that WCFE Extensions can get involved
 		add_action( 'plugins_loaded', array( $this, '_initializePluggableHooks' ) );
-		
 	}
 
 	/**

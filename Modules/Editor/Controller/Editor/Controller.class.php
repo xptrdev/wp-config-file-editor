@@ -15,7 +15,88 @@ use WCFE\Modules\Editor\Model\Forms;
 * 
 */
 class EditorController extends Controller {
-	 
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function systemCheckToolsAction()
+	{
+		
+		if ( 	! is_super_admin() )
+		{
+			
+			die( 'Access denied' );
+			
+		}
+		
+		
+		# Process tasks
+		if ( isset( $_GET[ 'wcfe-tool' ] ) )
+		{
+			
+			if ( 	( ! isset( $_GET[ 'securityNonce' ] ) ) || 
+						( ! $_GET[ 'securityNonce' ] ) ||
+						( ! wp_verify_nonce( $_GET[ 'securityNonce' ] ) ) )
+			{
+
+				die( 'Access Denied' );
+			}
+			
+			$model =& $this->getModel( 'SystemCheckTools' );
+			
+			switch ( $_GET[ 'wcfe-tool' ] )
+			{
+				
+				case 'config-file':
+				  
+				  $model->turnConfig( ( $_GET[ 'wcfe-task' ] == 'on' ) ? true : false );
+				  
+				break;
+				
+				case 'htaccess-file':
+				
+					$model->turnHTAccess( ( $_GET[ 'wcfe-task' ] == 'on' ) ? true : false );
+				
+				break;
+				
+				case 'emergency-backup':
+				
+					# We've only delete here
+					$editorModel =& $this->getModel();
+					
+					$editorModel->deleteEmergencyBackup();
+					
+				break;
+				
+			}
+			
+			# Remove tasks query streing parameters (redirect)
+			$selfActionUrl = $this->router()->route
+			( 
+				new \WPPFW\MVC\MVCViewParams
+				( 
+					null, 
+					'Editor', 
+					'SystemCheckTools', 
+					null, 
+					'SystemCheckTools' 
+				) 
+			);
+			
+			$this->redirect( $selfActionUrl );
+			
+			return;
+		}
+		
+		# Check system requirements
+		$model =& $this->getModel( 'SystemCheckTools' );
+		
+		$model->checkAll();
+		
+		return array( 'model' => & $model, 'securityNonce' => wp_create_nonce() );
+	}
+
 	/**
 	* put your comment there...
 	* 
@@ -154,11 +235,12 @@ class EditorController extends Controller {
 					{
 						
 						# generate config file from the given values
-						$model->generateConfigFile();
+						$model->generateConfigFile( $configGenerator )
+									->setConfigFileContent( ( string ) $configGenerator )
 					  
 						# Save submitted vars to be used if 
 						# get back from preview to the form again.
-						$model->saveSubmittedVars();
+									->saveSubmittedVars();
 						
 						# Go to preview action
 						$this->redirect( $router->routeAction( 'Preview' ) );
@@ -182,8 +264,15 @@ class EditorController extends Controller {
 		# Form security token
 		$form->getSecurityToken()->setValue( $this->createSecurityToken() );
 		
+		$result = array
+		(
+			'model' => & $model, 
+			'activeProfile' => $activeProfile,
+			'info' => $model->getInfo(),
+		);
+		
 		# Return model to view
-		return array( 'model' => & $model, 'activeProfile' => $activeProfile );
+		return $result;
 	}
 
 	/**

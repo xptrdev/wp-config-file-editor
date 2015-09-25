@@ -98,21 +98,31 @@ class EditorHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\AutoPath' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
+				
 		# Enqueue specifiec STYLE AND JS
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
 		# Actions route
 		$this->setActionsRoute( 
 			'Editor', 'editorService', array
 				(
-					'createSecureKey' => 	array( 'action' => 'createSecureKey' ),
-					'preUpdate' => 				array( 'action' => 'preUpdate' ),
-					'validateForm' => 		array( 'action' => 'validateForm' ),
-					'postUpdate' => 			array( 'action' => 'postUpdate' ),
-					'updateConfigFile' => array( 'action' => 'updateConfigFile' ),
-					'setActiveProfile' => array( 'action' => 'setActiveProfile' ),
+					'createSecureKey' 	=> 		array( 'action' => 'CreateSecureKey' ),
+					'preUpdate' 				=> 		array( 'action' => 'PreUpdate' ),
+					'validateForm'		 	=> 		array( 'action' => 'ValidateForm' ),
+					'postUpdate' 				=> 		array( 'action' => 'PostUpdate' ),
+					'updateConfigFile' 	=> 		array( 'action' => 'UpdateConfigFile' ),
+					'setActiveProfile' 	=> 		array( 'action' => 'SetActiveProfile' ),
+					'getSystemPath'		 	=> 		array( 'action' => 'GetSystemPath' ),
+					'generateCookieHash' => 	array( 'action' => 'GenerateCookieHash' ),
 				),
+			'Editor', 'editorViews', array
+			(
+				'MultiSiteSetupTools' => array(),
+				'systemCheckTools' => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
+			),
 			'Profiles', 'profilesView', array
 			(
 				'profilesList' => array(),
@@ -120,9 +130,9 @@ class EditorHTMLView extends TemplateView {
 			),
 			'Profiles', 'profilesService', array
 			(
-				'createVarsTStorage' => array( 'controller' => 'ProfilesService' , 'action' => 'createProfileVarsTStorage' ),
-				'setProfileVars' => array( 'controller' => 'ProfilesService' , 'action' => 'setProfileVars' ),
-				'deleteProfile' => array( 'controller' => 'ProfilesService', 'action' => 'deleteProfile' ),
+				'createVarsTStorage' => array( 'controller' => 'ProfilesService' , 'action' => 'CreateProfileVarsTStorage' ),
+				'setProfileVars' => array( 'controller' => 'ProfilesService' , 'action' => 'SetProfileVars' ),
+				'deleteProfile' => array( 'controller' => 'ProfilesService', 'action' => 'DeleteProfile' ),
 			)
 		);
 	}
@@ -150,9 +160,9 @@ class EditorHTMLView extends TemplateView {
 		$this->setActionsRoute( 
 			'Editor', 'editorService', array
 			(
-				'preUpdate' => array( 'action' => 'preUpdate' ),
-				'postUpdate' => array( 'action' => 'postUpdate' ),
-				'updateRawConfigFile' => array( 'action' => 'updateRawConfigFile' ),
+				'preUpdate' => array( 'action' => 'PreUpdate' ),
+				'postUpdate' => array( 'action' => 'PostUpdate' ),
+				'updateRawConfigFile' => array( 'action' => 'UpdateRawConfigFile' ),
 			) 
 		);
 		
