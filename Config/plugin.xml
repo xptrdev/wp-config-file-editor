@@ -59,7 +59,7 @@
 	
 	<services namespace="WCFE\Services">
 	
-		<!-- Dashboard Module -->
+		<!-- Editor Module -->
 		<service serviceObjectClass="Editor\MenuPages\Editor\Page"
 						 serviceFront="Editor"
 						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
@@ -100,7 +100,7 @@
 		</service>
 		
 		
-		
+		<!-- PROFILES Module -->		
 		<service serviceObjectClass="Profiles\Services\Profiles\Ajax"
 						 serviceFront="Service"
 						 routerClass="WPPFW\Plugin\ServiceObjectRouter"
@@ -127,7 +127,6 @@
 			</proxy>
 		</service>
 
-
 		<service serviceObjectClass="Editor\MultiSiteTools\MultiSiteNetworkPageTools"
 						 serviceFront="ServiceFront"
 						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
@@ -142,18 +141,64 @@
 			</proxy>
 		</service>
 		
-			
+		<!-- Sys FIlters Module -->
+		<service serviceObjectClass="SysFilters\Dashboard\Page"
+						 serviceFront="Dashboard"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Menu\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Menu\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="SysFilters" />
+					<param name="controller" 				value="SysFiltersDashboard" />
+					<param name="view" 							value="SysFiltersDashboard" />
+					<param name="action" 						value="Index" />
+				</object>
+			</proxy>
+		</service>
+		
+		<service serviceObjectClass="Profiles\Services\SysFilters\Ajax"
+						 serviceFront="Service"
+						 routerClass="WPPFW\Plugin\ServiceObjectRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Ajax\Proxy">
+			<proxy typeName="Service" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Ajax\Proxy" frontClass="WPPFW\Plugin\MVCRequestInputFrontProxy">
+				<object class="MVCParams">
+					<param name="module" 						value="SysFilters" />
+					<param name="controller" 				value="SysFiltersServices" />
+				</object>
+			</proxy>
+		</service>
+		
+		<service serviceObjectClass="Profiles\Services\SysFilters\AjaxView"
+						 serviceFront="Service"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Ajax\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Ajax\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 						value="SysFilters" />
+					<param name="controller" 				value="SysFiltersDashboard" />
+				</object>
+			</proxy>
+		</service>
+		
 		<models>
+		
 			<model id="WCFE\Modules\Editor\Model\EditorModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
+			
 			<model id="WCFE\Modules\Editor\Model\MultiSiteToolsModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
+			
 			<model id="WCFE\Modules\Editor\Model\SystemCheckToolsModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
+			
 			<model id="WCFE\Modules\Profiles\Model\ProfilesModel">
+				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
+			</model>
+			
+			<model id="WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel">
 				<stateType>WPPFW\MVC\Model\State\GlobalWPOptionsModelState</stateType>
 			</model>
 		</models>

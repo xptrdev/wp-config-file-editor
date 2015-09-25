@@ -36,6 +36,8 @@ $router =& $this->router();
 <?php
 		# Output options tab
 		$optionsTab = new	Tabs\Tabs( $form );
+		$optionsTab->load();
+		
 		echo $optionsTab->render();
 ?>
 		<div id="wcfe-toolbox">

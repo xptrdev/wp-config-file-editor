@@ -51,6 +51,27 @@ class Plugin extends PluginBase
 	private static $instance;
 	
 	/**
+	* put your comment there...
+	* 
+	* @var Services\EditorModule
+	*/
+	private $editorModule;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var Services\ProfilesModule
+	*/
+	private $profilesModule;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $sysFiltersModule;
+	
+	/**
 	* Bootstrap ARV Plugin
 	* 
 	* return void
@@ -58,32 +79,7 @@ class Plugin extends PluginBase
 	protected function __construct() 
 	{
 		# Plugin base
-		parent::__construct( __FILE__, new Config\Plugin() );
-		
-		# Only admin side is used in this Plugin
-		if ( is_admin() ) 
-		{
-			
-			# Editor Service Module
-			$editorModule = new Services\EditorModule( $this );
-			$editorModule->start();
-			
-			$profilesModule = new Services\ProfilesModule( $this );
-			
-			# Profiles is totally relying on AJAX
-			# editor Ajax should be here too however I will do that
-			# in the subsequence releases
-			if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
-			{
-				$profilesModule->start();
-			}
-			
-			$this->bindingHooks = true;
-			
-		}
-
-		# Start using hooks at this point so that WCFE Extensions can get involved
-		add_action( 'plugins_loaded', array( $this, '_initializePluggableHooks' ) );
+		parent::__construct( __FILE__, new Config\Plugin() );	
 	}
 
 	/**
@@ -114,6 +110,72 @@ class Plugin extends PluginBase
 	* put your comment there...
 	* 
 	*/
+	protected function bootStrap()
+	{
+		
+		# Only admin side is used in this Plugin
+		if ( is_admin() ) 
+		{
+			
+			# Editor Module
+			$this->editorModule = new Services\EditorModule( $this );
+			$this->editorModule->start();
+			
+			# Profile module
+			$this->profilesModule = new Services\ProfilesModule( $this );
+			
+			# System filters module
+			$this->sysFiltersModule = new Services\SysFiltersModule( $this );
+			$this->sysFiltersModule->start();
+			
+			# Profiles is totally relying on AJAX
+			# editor Ajax should be here too however I will do that
+			# in the subsequence releases
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			{
+				$this->profilesModule->start();
+			}
+			
+			$this->bindingHooks = true;
+			
+		}
+
+		# Start using hooks at this point so that WCFE Extensions can get involved
+		add_action( 'plugins_loaded', array( $this, '_initializePluggableHooks' ) );
+			
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & getEditorModule()
+	{
+		return $this->editorModule;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & getProfilesModule()
+	{
+		return $this->profilesModule;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & getSysFiltersModule()
+	{
+		return $this->sysFiltersModule;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	public static function & me()
 	{
 		return self::$instance;
@@ -127,12 +189,16 @@ class Plugin extends PluginBase
 	* 
 	* @return PLugin
 	*/
-	public static function run()
+	public static function plug()
 	{
 		# Create if not yet created
 		if ( ! self::$instance )
 		{
+			# Get Instance
 			self::$instance = new Plugin();
+		
+			# Load
+			self::$instance->bootStrap();
 		}
 		
 		# Return instance
@@ -143,5 +209,5 @@ class Plugin extends PluginBase
 }
 
 # Run The Plugin
-Plugin::run();
+Plugin::plug();
 

@@ -89,7 +89,7 @@ class EditorModule extends ServiceModule {
 	* 
 	*/
 	public function editor() {
-		return $this->getServiceObject(self::EDITOR_SERVICE_KEY, self::EDITOR_SERVICE_OBJECT_KEY);
+		return $this->getServiceObject( self::EDITOR_SERVICE_KEY, self::EDITOR_SERVICE_OBJECT_KEY );
 	}
 
 	/**
