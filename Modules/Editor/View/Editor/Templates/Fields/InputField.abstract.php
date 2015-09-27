@@ -13,14 +13,7 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class InputField extends FieldBase {
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $class;
+class InputField extends FieldBase {
 	
 	/**
 	* put your comment there...

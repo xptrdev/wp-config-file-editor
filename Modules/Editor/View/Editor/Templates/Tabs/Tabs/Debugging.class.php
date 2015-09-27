@@ -46,4 +46,13 @@ class DebuggingOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Developer';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

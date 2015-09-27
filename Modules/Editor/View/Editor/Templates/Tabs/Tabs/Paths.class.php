@@ -41,4 +41,13 @@ class PathsOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Paths';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

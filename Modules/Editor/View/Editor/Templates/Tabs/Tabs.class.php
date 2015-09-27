@@ -6,10 +6,6 @@
 # Define namespace
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
-# Imports
-use WPPFW\Forms\Form;
-use WCFE\Modules\Editor\Model\EditorModel;
-
 /**
 * 
 */

@@ -43,4 +43,13 @@ class CronOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Cron';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

@@ -34,4 +34,7 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_PROXY_FIELDS = 'wcfe_view-tabs-tab-proxy-fields';
 	const FILTER_VIEW_TABS_TAB_COOKIES_FIELDS = 'wcfe_view-tabs-tab-cookies-fields';
 	
+	# SYS Filters Hooks 
+	const FILTER_VIEW_TABS_SYSFILTERS_REGISTER_TABS = 'wcfe_view-tabs-sysfilters-register-tabs';
+	const FILTER_VIEW_TABS_TAB_SYSFILTERS_HTTP_FIELDS = 'wcfe_view-tabs-tab-sysfilters-http-fields';
 }

@@ -13,7 +13,7 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class DropDownField extends FieldBase {
+class DropDownField extends FieldBase {
 
 	/**
 	* put your comment there...
@@ -33,7 +33,7 @@ abstract class DropDownField extends FieldBase {
 	* put your comment there...
 	* 
 	*/
-	protected abstract function getOptionsList();
+	protected function getOptionsList() {}
 
 	/**
 	* put your comment there...

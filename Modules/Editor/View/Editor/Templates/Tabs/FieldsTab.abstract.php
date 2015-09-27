@@ -6,6 +6,8 @@
 # Define namespace
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
+use WCFE\Modules\Editor\Model\EditorModel;
+
 /**
 * 
 */
@@ -24,6 +26,36 @@ abstract class FieldsTab extends Tab {
 	* @var mixed
 	*/
 	protected $fieldsPluggableFilterName;
+	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $list
+	*/  
+	protected function bcCreateFieldsList( $fields )
+	{
+		
+		$renderers = array();
+		
+
+		$fields = EditorModel::makeClassesList( $fields );
+				
+		$form =& $this->getForm();
+		$formAdapter =& $this->getFormAdapter();
+		
+		# Create form fields.
+		foreach ( $fields as $fieldClass => $name )
+		{
+			# Get field
+			$field =& $formAdapter->getField( $fieldClass, $name );
+			
+			# Create field render for current fiels.
+			$rendererClass = $formAdapter->getRendererClass( $fieldClass );
+			$renderers[ ] = new $rendererClass( $form, $field );
+		}
+				
+		return $renderers;
+	}
 	
 	/**
 	* put your comment there...

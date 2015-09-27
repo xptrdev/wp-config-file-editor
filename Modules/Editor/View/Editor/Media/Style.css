@@ -313,9 +313,7 @@ td.help-label-text {
 #wcfe-status-bar
 {
   height: 19px;
-  position: relative;
   color: green;
-  top: 0px;
   background-color: #F9F3F3;
   font-size: 11px;
   font-family: monospace;

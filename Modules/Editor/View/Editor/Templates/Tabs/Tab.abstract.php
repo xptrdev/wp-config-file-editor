@@ -43,12 +43,14 @@ abstract class Tab {
 	* @param Tabs $tabs
 	* @return {Tab|Tabs}
 	*/
-	public function __construct(Tabs & $tabs) {
+	public function __construct(TabsBase & $tabs) {
 		# Initiaize
 		$this->tabs =& $tabs;
 		# Tab Id
 		$thisClass = new ClassName(get_class($this));
 		$this->id = $thisClass->getName();
+		# Tab initiaization
+		$this->initialize();
 	}
 
 	/**
@@ -63,10 +65,18 @@ abstract class Tab {
 	* put your comment there...
 	* 
 	*/
+	protected function & getFormAdapter() {
+		return $this->tabs->getFormAdapter();
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	public function getId() {
 		return $this->id;
 	}
-
+  
 	/**
 	* put your comment there...
 	* 
@@ -96,7 +106,13 @@ abstract class Tab {
 	protected function getTitle() {
 		return $this->title;
 	}
-
+  
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() {}
+	
 	/**
 	* put your comment there...
 	* 
@@ -105,20 +121,25 @@ abstract class Tab {
 	* @param {\DOMDocument|\DOMElement|\DOMElement} $tabs
 	* @return {\DOMDocument|\DOMElement|\DOMElement}
 	*/
-	public function render(\DOMDocument & $tabsDoc, \DOMElement & $navigator, \DOMElement & $tabs) {
-		# Initialize
+	public function render(\DOMDocument & $tabsDoc, \DOMElement & $navigator, \DOMElement & $tabs) 
+	{
+		
 		$templatesNamespace = '\WCFE\Modules\Editor\View\Editor\Templates';
 		$groupsNamespace = "{$templatesNamespace}\\Groups";
 		$fieldsNamespace = "{$templatesNamespace}\\Fields";
+		
 		# Create Tab navigator
 		$tabNavLink = $tabsDoc->createElement('a');
 		$tabNavLink->setAttribute('href', "#{$this->getId()}");
 		$tabNavLink->nodeValue = $this->getTitle();
 		$tabNav = $tabsDoc->createElement('li');
 		$tabNav->appendChild($tabNavLink);
+		
 		# Create Tab Panel
 		$tab = $tabsDoc->createElement('div');
 		$tab->setAttribute('id', $this->getId());
+		
+		$this->getFormAdapter()->renderPanel( $tabsDoc, $tab );
 		
 		////////// Render tab content /////////
 		
@@ -158,32 +179,28 @@ abstract class Tab {
 	* @param mixed $pluggableFilterName
 	* @return Tab
 	*/
-	protected function renderFields( \DOMDocument & $doc, \DOMElement & $pElement, $fields, $pluggableFilterName ) 
+	protected function renderFields( \DOMDocument & $doc, \DOMElement & $pElement, $renderers, $pluggableFilterName ) 
 	{
 		# Initialize
 		$form =& $this->getForm();
-		
-		# Make fields list
-		$fields = EditorModel::makeClassesList( $fields );
-		
+		$formAdapter =& $this->getFormAdapter();		
 		
 		/////////////////// PLUGGABLE FILTERS ////////////////////////
 			
-		$fields = apply_filters( $pluggableFilterName, $fields );
+		$renderers = apply_filters( $pluggableFilterName, $renderers );
 		
 		////////////////////////////////////////////////////////////
 		
-		# Create form fields.
-		foreach ( $fields as $fieldClass => $name )
-		{
-			# Get field
-			$field = $form->get( $name );
-			
-			# Create field render for current fiels.
-			$rendererClass = "{$fieldClass}\\Field";
-			$renderer = new $rendererClass( $form, $field );
+		$fieldsContainer = $doc->createElement( 'div' );
+		$fieldsContainer->setAttribute( 'class', 'wcfe-builtin-fields-container' );
 		
-			$inputId = "{$form->getName()}-{$field->getName()}";
+		$pElement->appendChild( $fieldsContainer );
+		
+		# Create form fields.
+		foreach ( $renderers as $renderer )
+		{
+		
+			$inputId = $formAdapter->getFieldId( $renderer );
 			
 			# Label
 			$label = $doc->createElement( 'label' );
@@ -200,14 +217,6 @@ abstract class Tab {
 			$tip->setAttribute( 'class', 'field-tip' );
 			$tip->nodeValue = $renderer->getTipText();
 			
-			# Constants Variables names
-			$fieldGenClass = 'WCFE\Modules\Editor\Model\ConfigFile\Fields\\' . $renderer->getField()->getName();
-			$fieldGenObj = new $fieldGenClass( );
-			
-			$name = $doc->createElement( 'p' );
-			$name->setAttribute( 'class', 'field-constant-name' );
-			$name->nodeValue = $fieldGenObj->getName();
-			
 			# Field row
 			$row = $doc->createElement( 'div' );
 			$row->setAttribute( 'class', 'field-row' );
@@ -217,14 +226,13 @@ abstract class Tab {
 			
 			$row->appendChild( $label );
 			$row->appendChild( $tip );
-			$row->appendChild( $name );
 			
 			################ RENDER INPUT FIELD #################
 			
 			$inputElement = $renderer->render( $doc, $row, compact( 'error', 'label', 'tip' ) );
 			
 			$inputElement->setAttribute( 'id', $inputId );
-			$inputElement->setAttribute( 'name', "{$form->getName()}[{$field->getName()}]" );
+			$inputElement->setAttribute( 'name', $formAdapter->getFieldName( $renderer ) );
 			
 			# Use field type as class name
 			$typeClassNameArr = explode( '\\', get_class( $renderer->getField()->type() ) );
@@ -232,10 +240,13 @@ abstract class Tab {
 			
 			#####################################################
 			
+			# Form adapter row rendering
+			$formAdapter->renderRow( $doc, $row, $renderer );
+			
 			# Add error
 			$row->appendChild( $error );
 			
-			$pElement->appendChild( $row );
+			$fieldsContainer->appendChild( $row );
 		
 		}
 		

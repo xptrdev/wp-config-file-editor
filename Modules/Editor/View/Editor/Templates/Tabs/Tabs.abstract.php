@@ -27,6 +27,13 @@ abstract class TabsBase {
 	* 
 	* @var mixed
 	*/
+	protected $formAdapter;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $id;
 	
 	/**
@@ -74,14 +81,14 @@ abstract class TabsBase {
 	/**
 	* put your comment there...
 	* 
-	* @param mixed $id
-	* @param mixed $tabsFilterName
-	* @param Form $form
-	* @return {TabsBase|Form}
+	* @param ITabsFormAdapter $formAdapter
+	* @param {Form|ITabsFormAdapter} $form
+	* @return {TabsBase|Form|ITabsFormAdapter}
 	*/
-	public function __construct( Form & $form ) 
+	public function __construct( ITabsFormAdapter $formAdapter, Form & $form ) 
 	{
 		
+		$this->formAdapter =& $formAdapter;
 		$this->form = $form;
 		 
 	}
@@ -94,6 +101,14 @@ abstract class TabsBase {
 		return $this->form;
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function & getFormAdapter() {
+		return $this->formAdapter;
+	}
+	
 	/**
 	* put your comment there...
 	* 

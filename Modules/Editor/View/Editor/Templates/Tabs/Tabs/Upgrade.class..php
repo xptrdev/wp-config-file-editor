@@ -64,4 +64,13 @@ class UpgradeOptionsTab extends SimpleSubContainerTab {
 	*/
 	protected $title = 'Upgrade';
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

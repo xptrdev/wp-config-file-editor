@@ -35,7 +35,7 @@ $router =& $this->router();
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
 		# Output options tab
-		$optionsTab = new	Tabs\Tabs( $form );
+		$optionsTab = new	Tabs\Tabs( new Tabs\EditorFormTabsAdapter( $form ), $form );
 		$optionsTab->load();
 		
 		echo $optionsTab->render();

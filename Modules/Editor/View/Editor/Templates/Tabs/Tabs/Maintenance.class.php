@@ -43,4 +43,13 @@ class MaintenanceOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Maintenance';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

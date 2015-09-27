@@ -74,7 +74,17 @@ class SysFiltersDashboardHTMLView extends TemplateView {
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryCookies' ) );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\IndexScript' ) );
 
+		# Styles
+		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
+		
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\Theme\Theme' ) );
+		
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\Style' )  );
+		
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\IndexStyle' )  );
 		
 		
 		# Link action specifc resources

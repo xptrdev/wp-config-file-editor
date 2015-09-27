@@ -48,4 +48,13 @@ class MultiSiteOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Multi Sites';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

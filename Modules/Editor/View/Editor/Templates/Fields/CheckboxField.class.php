@@ -32,10 +32,10 @@ class CheckboxField extends FieldBase {
 	* @param mixed $value
 	* @return CheckboxField
 	*/
-	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $value = null) 
+	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $value = null, $params = null) 
 	{
 		
-		parent::__construct( $form, $field, $text, $tipText );
+		parent::__construct( $form, $field, $text, $tipText, $params );
 		
 		$this->value = $value;
 		

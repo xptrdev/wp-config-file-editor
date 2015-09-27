@@ -113,6 +113,10 @@ class Plugin extends PluginBase
 	protected function bootStrap()
 	{
 		
+		# System Plugins
+		\WCFE\SysPlugins\Plugins::load()->runPlugins();
+		
+		# MVC components
 		# Only admin side is used in this Plugin
 		if ( is_admin() ) 
 		{

@@ -20,6 +20,13 @@ abstract class FieldBase {
 	* 
 	* @var mixed
 	*/
+	protected $class;
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $field;
 	
 	/**
@@ -34,6 +41,13 @@ abstract class FieldBase {
 	* 
 	* @var mixed
 	*/
+	protected $params;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $text;
 
 	/**
@@ -42,7 +56,7 @@ abstract class FieldBase {
 	* @var mixed
 	*/
 	protected $tipText;
-	
+
 	/**
 	* put your comment there...
 	* 
@@ -50,14 +64,16 @@ abstract class FieldBase {
 	* @param {Form|IField} $field
 	* @param mixed $text
 	* @param mixed $tipText
+	* @param mixed $params
 	* @return FieldBase
 	*/
-	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null) {
+	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $params = null) {
 		# Initialize
 		$this->field =& $field;
 		$this->form =& $form;
 		$this->text = $text;
 		$this->tipText = $tipText;
+		$this->params =& $params;
 	}
 
 	/**
@@ -94,6 +110,16 @@ abstract class FieldBase {
 	*/
 	public function & getForm() {
 		return $this->form;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $name
+	*/
+	public function getParam( $name )
+	{
+		return isset( $this->params[ $name ] ) ? $this->params[ $name ] : null;
 	}
 
 	/**
@@ -137,4 +163,16 @@ abstract class FieldBase {
 	*/
 	protected abstract function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems );
 	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $class
+	* @return FieldBase
+	*/
+	public function & setClassName( $class )
+	{
+		$this->class = $class;
+		
+		return $this;
+	}
 }

@@ -49,4 +49,13 @@ class DatabaseOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Database';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

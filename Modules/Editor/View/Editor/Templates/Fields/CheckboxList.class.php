@@ -13,7 +13,7 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class CheckboxListField extends FieldBase {
+class CheckboxListField extends FieldBase {
 
 	/**
 	* put your comment there...

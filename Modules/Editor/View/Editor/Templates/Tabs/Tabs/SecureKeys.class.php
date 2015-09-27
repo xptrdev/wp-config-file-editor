@@ -48,4 +48,13 @@ class SecureKeysOptionsTab extends FieldsTab {
 	*/
 	protected $title = 'Secure Keys';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

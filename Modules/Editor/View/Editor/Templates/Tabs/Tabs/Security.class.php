@@ -57,4 +57,13 @@ class SecurityOptionsTab extends SimpleSubContainerTab {
 	*/
 	protected $title = 'Security';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }

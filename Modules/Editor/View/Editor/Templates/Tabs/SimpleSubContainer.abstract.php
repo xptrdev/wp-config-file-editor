@@ -6,6 +6,8 @@
 # Define namespace
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
+use WCFE\Modules\Editor\Model\EditorModel;
+
 /**
 * 
 */
@@ -25,7 +27,41 @@ abstract class SimpleSubContainerTab extends Tab {
 	*/
 	protected $fieldsPluggableFilterName;
 	
-	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $list
+	*/  
+	protected function bcCreateFieldsList( $fields )
+	{
+		
+		$form =& $this->getForm();
+		$formAdapter =& $this->getFormAdapter();
+		
+		foreach ( $fields as $groupName => $groupFields )
+		{
+			
+			$groupFields = EditorModel::makeClassesList( $groupFields );	
+			
+			$renderers = array();
+			
+			# Create form fields.
+			foreach ( $groupFields as $fieldClass => $name )
+			{
+				# Get field
+				$field =& $formAdapter->getField( $fieldClass, $name );
+				
+				# Create field render for current fiels.
+				$rendererClass = $formAdapter->getRendererClass( $fieldClass );
+				$renderers[ ] = new $rendererClass( $form, $field );
+			}
+			
+			$fields[ $groupName ] = $renderers;
+		}
+
+		return $fields;
+	}
+
 	/**
 	* put your comment there...
 	* 

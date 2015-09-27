@@ -53,4 +53,13 @@ class PostOptionsTab extends SimpleSubContainerTab {
 	*/
 	protected $title = 'Post';
 	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function initialize() 
+	{
+		$this->fields = $this->bcCreateFieldsList( $this->fields );
+	}
+
 }
