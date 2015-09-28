@@ -16,6 +16,13 @@ class Plugin
 	* 
 	* @var mixed
 	*/
+	protected $data;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $modules;
 	
 	/**
@@ -25,9 +32,13 @@ class Plugin
 	public function __construct()
 	{
 		
-		# Load data
-		$this->data = get_option( 'wcfe-model-state_sysfiltersdashboardmodel' );
+		# Load site data if not in multi site or load primary
+		# site data for multi site (configuration will be applied or all sites)
 		
+		$optionName = 'wcfe-model-state_sysfiltersdashboardmodel';
+		
+		$this->data = is_multisite() ? get_blog_option( get_main_network_id(), $optionName ) :  get_option( $optionName );
+
 	}
 	
 	/**
@@ -38,7 +49,7 @@ class Plugin
 	{
 		
 		// System Parameters page never saved/configured!
-		// Get out
+		// Get out until admin configue it from Dashboard page
 		if ( ! $this->data )
 		{
 			return;
