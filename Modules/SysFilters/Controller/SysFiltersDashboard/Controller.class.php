@@ -23,7 +23,7 @@ class SysFiltersDashboardController extends Controller {
 	public function indexAction()
 	{
 		
-		if ( ! current_user_can( 'manage_options' ) )
+		if ( ! is_super_admin() )
 		{
 			
 			die( 'Access Denied' );
@@ -48,6 +48,14 @@ class SysFiltersDashboardController extends Controller {
 			return $result;
 		}
 		
+		if ( 	! isset( $_POST[ 'securityToken' ] ) || 
+					! $_POST[ 'securityToken' ] ||
+					! wp_verify_nonce( $_POST[ 'securityToken'] ) )
+		{
+			
+			die( 'Access Denied' );
+			
+		}
 		
 		# POST: Validate data
 		$form->setValue

@@ -7,10 +7,10 @@
     overflow: auto;
     position: absolute;
     right: 10px;
-    height: 413px;
+    height: 422px;
     font-size: 84%;
     display: none;
-    margin: 18px 12px 0 0;
+    margin: -5px 0px 0 0;
 }
 
 .wcfe-sysfilters-tab-advanced-panel label
@@ -19,9 +19,10 @@
 }
 
 strong.advanced-options-title {
-    background-color: white;
+    background-color: #DFDFDF;
     padding: 5px 5px;
     display: inherit;
+    color: black;
 }
 
 .fields-container
