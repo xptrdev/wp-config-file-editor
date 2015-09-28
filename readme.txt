@@ -4,7 +4,7 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,9 @@ In additional to modifying Config File parameters using web form, its also possi
 WCFE Plugin start to include few helpers tools related to wp-config.php file editing like Setup Multi Sites. Setup Multi Site Wizard feature
 is newly added to make setup Multi Sites more fun by passing only 2 steps without any tecnhiqual works.
 
-= Features =
+In additional to edit wp-config.php file WCF Plugin start to allow of changing Wordpress/System parameters. This feature going to be huge and many many parameters will be added in the feature. Currently it only provide few parameters, please check below:
+
+= wp-config.php Editor Features =
 * Modify wp-config.php file using web form
 * Raw wp-config.php file editor with syntax hightlights and error detections
 * Emergency wp-config.php backup restore.
@@ -153,6 +155,23 @@ The following wp-config.php fields is being supported:
 * Plugins Path (PLUGINS_COOKIE_PATH)
 * Domain (COOKIE_DOMAIN)
 
+= System Parameters =
+* Configure HTTP Request components that is being internally used by Wordpress for any external HTTP requests
+
+The following System parameters is being supported
+
+= HTTP Request =
+* Time Out
+* Redirect Count
+* HTTP Version
+* User Agent
+* Enable/Disable Reject Unsafe URLs
+* Enable/Disable Proxy Block Local Requests
+* Enable/Disable Local SSL Verify
+* Enable/Disable SSL Verify
+* Enable/Disable Steam Transport
+* Enable/Disable Cron Transport
+
 == Installation ==
 
 1. Upload `wp-config-file-editor.zip` to the `/wp-content/plugins/` directory
@@ -173,31 +192,30 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 
 == Screenshots ==
 
-1. Multi Sites Setup Wizard Part1 ( BETA )
-2. Multi Sites Setup Wizard Part2 ( BETA )
-3. Multi Sites Setup Wizard network activated
-4. Multi Sites Setup Wizard config helper screen
-5. System Check Tools ( BETA )
-6. Config File Maintenance parameters
-7. Config File Security parameters
-8. Config File Upgrade parameters
-9. Config File Post parameters
-10. Config File Localization parameters
-11. Config File Cron parameters
-12. Config File Multi Sites parameters
-13. Config File Database parameters
-14. Config File Secure Key parameters
-15. Config File Developer parameters
-16. Config File Proxy parameters
-17. Config File Cookies parameters
-18. Config File Syntax Highlights and error detection raw editor
-19. Profiles list
-20. Create new profile
-21. System paths and Urls info
+1. Config File Maintenance parameters
+2. Config File Security parameters
+3. Config File Upgrade parameters
+4. Config File Post parameters
+5. Config File Localization parameters
+6. Config File Cron parameters
+7. Config File Multi Sites parameters
+8. Config File Database parameters
+9. Config File Secure Key parameters
+10. Config File Developer parameters
+11. Config File Proxy parameters
+12. Config File Cookies parameters
+13. Config File Syntax Highlights and error detection raw editor
+14. Fields help text
+15. Fields constants map
+16. System paths and Urls info
+17. Create new profile
+18. Profiles list
+19. System Check Tools ( BETA )
+20. Multi Sites Setup Wizard ( BETA )
+21. Multi Sites Setup Wizard config helper screen
 22. Save Config File warning dialog
 23. Restore backup page
-24. Fields help text
-25. Fields constants map
+24. System Parameters ( HTTP Request Parameters )
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress < 4.0
@@ -209,6 +227,12 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+
+= 1.4 =
+* UI use Wordpress colors and feel
+* Add System Parameters Page (HTTP Request Parameters)
+* Rename Dashboard Menu title to WPCF Editor
+
 = 1.3 =
 * Use smaller fonts for Config Form Tabs
 * Responsive User interface
