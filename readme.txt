@@ -158,7 +158,7 @@ The following wp-config.php fields is being supported:
 = System Parameters =
 * Configure HTTP Request components that is being internally used by Wordpress for any external HTTP requests
 
-The following System parameters is being supported
+The following System parameters is being supported:
 
 = HTTP Request =
 * Time Out
@@ -216,6 +216,7 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 22. Save Config File warning dialog
 23. Restore backup page
 24. System Parameters ( HTTP Request Parameters )
+25. Path lookup
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress < 4.0
@@ -232,6 +233,7 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * UI use Wordpress colors and feel
 * Add System Parameters Page (HTTP Request Parameters)
 * Rename Dashboard Menu title to WPCF Editor
+
 
 = 1.3 =
 * Use smaller fonts for Config Form Tabs
@@ -251,14 +253,17 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Aggregate all tools items under Tools menu
 * Add Security TAB ( Allow Unfiltered Uploads ) and ( Disallow Unfiltered HTML ) field
 
+
 = 1.2.1 =
 * Major security enhancments
+
 
 = 1.2 =
 * Add profiles
 * Add Progress and Error messages status bar
 * Add Config Form Dashboard Main Menu
 * Fix: Secure Key Generator is not working
+
 
 = 1.1 =
 * Add Upgrade Tab
@@ -267,6 +272,7 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Add Cron Tab
 * Add Developer Concatenate JavaScript Field
 * Add Database Automatic Repair and Stop Upgrading Global Tables fields
+
 
 = 1.0 =
 * Use Tabs UI Control for categorizing fields
@@ -279,6 +285,7 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Raw wp-config.php Editor with Syntax Highlighters and Syntax Error detections
 * Only admins can use it under normal installations while only Network admins can use it under Multi Sites installation
 * Complains when submitted Raw EMPTY config file or if it's not start with PHP Tag
+
 
 = 0.5 =
 First release
