@@ -40,7 +40,10 @@ class SysFiltersDashboardController extends Controller {
 		if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
 		{
 			
-			$form->setValue( array( $form->getName() => $model->getData() ) );
+			# Load default if never submitted or load previously saved data
+			$data = $model->isNeverSubmitted() ? $model->getDefaults() : $model->getData();
+			
+			$form->setValue( array( $form->getName() => $data ) );
 			
 			return $result;
 		}

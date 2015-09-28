@@ -28,6 +28,15 @@ class Plugin
 		# Load data
 		$this->data = get_option( 'wcfe-model-state_sysfiltersdashboardmodel' );
 		
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function run()
+	{
+		
 		// System Parameters page never saved/configured!
 		// Get out
 		if ( ! $this->data )
@@ -48,22 +57,13 @@ class Plugin
 		# Load modules
 		
 		$this->modules[ 'http' ] = new Modules\HTTPModule();
-
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function & run()
-	{
 		
 		foreach ( $this->modules as $name => $module )
 		{
 			$module->run( isset( $this->data[ $name ] ) ? $this->data[ $name ] : null );
 		}
 		
-		return $this;
+		return;
 	}
 	
 }

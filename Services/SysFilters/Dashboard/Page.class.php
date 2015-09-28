@@ -23,7 +23,7 @@ class Page extends SubMenuPage {
 		
 		parent::__construct
 		( 
-			'System Options', 
+			'System Parameters', 
 			'Change System Wide configuration - Control how Wordpress platform bahave', 
 			( is_multisite() ? 'manage_network' : 'administrator' )
 		);

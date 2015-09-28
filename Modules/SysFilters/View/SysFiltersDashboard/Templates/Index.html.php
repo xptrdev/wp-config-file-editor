@@ -18,7 +18,6 @@ $data = $this->result();
 $model =& $data[ 'model' ];
 $form =& $data[ 'form' ];
 
-wp_remote_get( 'http://wp-cfe.xptrdev.com/feed/' );
 ?>
 <div id="wcfe-body">
 
@@ -32,6 +31,8 @@ wp_remote_get( 'http://wp-cfe.xptrdev.com/feed/' );
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 
+<? // Dashboard Menu ?>
+<?php require 'Templates' . DIRECTORY_SEPARATOR . 'Menu.html.php' ?>
 
 <?php // COnfig Form ?>
 	<form id="wcfe-sysfilters-form" method="post" action="<?php echo $router->routeAction() ?>">
@@ -43,7 +44,7 @@ wp_remote_get( 'http://wp-cfe.xptrdev.com/feed/' );
 		echo $optionsTab->render();
 ?>
 		<div id="wcfe-toolbox">
-			<input type="submit" name="save-sysfilters-form" value="Save"/>
+			<input type="submit" id="save-sysfilters-form" name="save-sysfilters-form" value="Save"/>
 		</div>
 		<input type="hidden" name="securityToken" value="<?php echo $data[ 'securityToken' ] ?>" />
 	</form>

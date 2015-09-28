@@ -8,6 +8,9 @@
     position: absolute;
     right: 10px;
     height: 413px;
+    font-size: 84%;
+    display: none;
+    margin: 18px 12px 0 0;
 }
 
 .wcfe-sysfilters-tab-advanced-panel label
@@ -25,4 +28,17 @@ strong.advanced-options-title {
 {
     margin-top: 10px;
     padding: 10px 14px;
+}
+
+a.toggle-advanced-options-panel {
+    float: right;
+}
+
+#save-sysfilters-form {
+    padding: 1px 33px;
+    margin-top: 9px;
+}
+#wcfe-config-form-main-menu
+{
+	width: 105px;
 }

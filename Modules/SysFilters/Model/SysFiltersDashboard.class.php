@@ -18,7 +18,7 @@ class SysFiltersDashboardModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
-	protected $sysFiltersData = array();
+	protected $sysFiltersData = null;
 	
 	/**
 	* put your comment there...
@@ -34,6 +34,81 @@ class SysFiltersDashboardModel extends PluginModel {
 	public function getData()
 	{
 		return $this->sysFiltersData;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getDefaults()
+	{
+		$defaults = array
+		(
+			'http' => array(
+			
+			 	'timeOut' => array(
+			 		'value' => 5,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'redirectCount' => array(
+			 		'value' => 5,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'version' => array(
+			 		'value' => '1.0',
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'userAgent' => array(
+			 		'value' => ( 'WordPress/' . $GLOBALS[ 'wp_version' ] . '; ' . get_bloginfo( 'url' ) ),
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'rejectUnsafeUrls' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'proxyBlockLocalRequests' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'localSSLVerify' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'sslVerify' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'useSteamTransport' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'useCurlTransport' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			)
+		);
+		
+		return $defaults;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function isNeverSubmitted()
+	{
+		return ( $this->sysFiltersData === null );
 	}
 	
 	/**

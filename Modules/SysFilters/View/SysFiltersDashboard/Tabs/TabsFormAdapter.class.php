@@ -101,9 +101,12 @@ class SysFiltersFormTabsAdapter implements ITabsFormAdapter
 	*/
 	public function renderPanel( \DOMDocument & $tabsDoc, \DOMElement & $tabElement )
 	{
+		
+		$panelId = $tabElement->getAttribute( 'id' ) . '-advanced-panel';
+		
 		# Create Advanced options Panel
 		$this->currentPanel = $tabsDoc->createElement( 'div' );
-		$this->currentPanel->setAttribute( 'id', $tabElement->getAttribute( 'id' ) . '-advanced-panel' );
+		$this->currentPanel->setAttribute( 'id', $panelId );
 		$this->currentPanel->setAttribute( 'class', 'wcfe-sysfilters-tab-advanced-panel' );
 		
 		$tabElement->appendChild( $this->currentPanel );

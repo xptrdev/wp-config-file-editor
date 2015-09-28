@@ -23,7 +23,7 @@ class Page extends MenuPage {
 		
 		parent::__construct
 		( 
-			'WPConfig File Editor', 
+			'WPCF Editor', 
 			'Wordpress Config File Editor', 
 			( is_multisite() ? 'manage_network' : 'administrator' ),
 			WP_PLUGIN_URL . '/wp-config-file-editor/Modules/Editor/View/Editor/Media/Images/dashboard-menu-icon.png'

@@ -67,13 +67,13 @@ class SysFiltersDashboardHTMLView extends TemplateView {
 		
 		# Scripts
 		
-		$this->scriptsQueue->enqueueNamedResource( 'jquery-serialize-object' );
-		
-		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
-		
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::JQUERY_UI_TABS );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryCookies' ) );
+		
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\IndexScript' ) );
 
