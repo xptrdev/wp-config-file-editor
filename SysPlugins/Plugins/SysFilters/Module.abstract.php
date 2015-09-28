@@ -52,9 +52,19 @@ class Module
 		# Remove firest _ from method name to get var name
 		# return it directly to the caller filter
 
-		return $this->getVar( substr( $method, 1 ) );
+		return $this->getVar( $this->getHandlerVarName( $method ) );
 	}
 
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $method
+	*/
+	public function getHandlerVarName( $method )
+	{
+		return substr( $method, 1 );
+	}
+	
 	/**
 	* put your comment there...
 	* 
@@ -87,7 +97,7 @@ class Module
 		
 		$this->data =& $data;
 		
-		foreach ( $this->filters as $filterName => $handler )
+		foreach ( $this->filters as $handler => $filterName )
 		{
 			# Don't involved if disabled
 			if ( ! $this->getVarOption( $handler, 'disabled' ) )
