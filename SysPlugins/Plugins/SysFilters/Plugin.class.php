@@ -46,7 +46,7 @@ class Plugin
 		
 		// No reason for this, however no chance for errors
 		// in Sys Plugins that is always RUNS!!!
-		if ( ! isset( $this->data[ 'sysFiltersData' ] ) )
+		if ( ! isset( $this->data[ 'sysFiltersData' ] ) || ! is_array( $this->data[ 'sysFiltersData' ] ) )
 		{
 			
 			return;
