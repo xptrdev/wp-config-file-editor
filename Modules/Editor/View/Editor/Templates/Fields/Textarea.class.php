@@ -13,7 +13,7 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class TextareaField extends FieldBase {
+class TextareaField extends FieldBase {
 
 	/**
 	* put your comment there...

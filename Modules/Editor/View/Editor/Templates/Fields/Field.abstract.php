@@ -147,10 +147,19 @@ abstract class FieldBase {
 	* @param {\DOMDocument|\DOMElement} $parent
 	* @return {\DOMDocument|\DOMElement|InputField}
 	*/
-	public function render( \DOMDocument & $document, \DOMElement & $parentDOM, $elems ) 
+	public function render( \DOMDocument & $document, \DOMElement & $parentDOM, $elems, & $formAdapter ) 
 	{
 		
-		return $this->renderInput( $document, $parentDOM, $elems );
+		$inputElement = $this->renderInput( $document, $parentDOM, $elems );
+					
+		$inputElement->setAttribute( 'id', $formAdapter->getFieldId( $this ) );
+		$inputElement->setAttribute( 'name', $formAdapter->getFieldName( $this ) );
+		
+		# Use field type as class name
+		$typeClassNameArr = explode( '\\', get_class( $this->getField()->type() ) );
+		$inputElement->setAttribute( 'class', $inputElement->getAttribute( 'class' ) . ' ' . strtolower( array_pop( $typeClassNameArr ) ) );
+		
+		return $inputElement;
 
 	}
 

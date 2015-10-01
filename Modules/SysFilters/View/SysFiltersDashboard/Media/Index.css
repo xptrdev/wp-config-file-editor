@@ -43,3 +43,9 @@ a.toggle-advanced-options-panel {
 {
 	width: 105px;
 }
+
+#wcfe-sysfilters-editor-editorCSS-value
+{
+	width: 300px;
+	height: 130px;
+}

@@ -41,7 +41,17 @@ class SysFiltersDashboardController extends Controller {
 		{
 			
 			# Load default if never submitted or load previously saved data
-			$data = $model->isNeverSubmitted() ? $model->getDefaults() : $model->getData();
+			$defaults = $model->getDefaults();
+
+			$data = $model->isNeverSubmitted() ? array() : $model->getData();
+			
+			foreach ( $defaults as $moduleName => $moduleDefaultValues )
+			{
+				if ( ! isset( $data[ $moduleName ] ) )
+				{
+					$data[ $moduleName ] = $moduleDefaultValues;
+				}
+			}
 			
 			$form->setValue( array( $form->getName() => $data ) );
 			

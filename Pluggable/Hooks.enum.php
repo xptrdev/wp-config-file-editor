@@ -37,4 +37,5 @@ abstract class Hooks
 	# SYS Filters Hooks 
 	const FILTER_VIEW_TABS_SYSFILTERS_REGISTER_TABS = 'wcfe_view-tabs-sysfilters-register-tabs';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_HTTP_FIELDS = 'wcfe_view-tabs-tab-sysfilters-http-fields';
+	const FILTER_VIEW_TABS_TAB_SYSFILTERS_EDITOR_FIELDS = 'wcfe_view-tabs-tab-sysfilters-editor-fields';
 }

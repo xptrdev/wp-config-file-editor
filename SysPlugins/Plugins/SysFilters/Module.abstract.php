@@ -29,6 +29,13 @@ class Module
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	protected $handlers = array();
+	
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $filters
 	* @return Module
 	*/
@@ -49,12 +56,79 @@ class Module
 	public function __call( $method, $params )
 	{
 		
-		# Remove firest _ from method name to get var name
-		# return it directly to the caller filter
-
-		return $this->getVar( $this->getHandlerVarName( $method ) );
+		# Get callback name
+		$components = explode( '_', substr( $method, 1 ) );
+		$handlerName = "_{$components[ 0 ]}";
+		
+		# Call with method name passed
+		$components[ 0 ] = $method;
+		$params = array_merge( $components, $params );
+		
+		return call_user_func_array( array( & $this, $handlerName ), $params ) ;
 	}
 
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $callbackName
+	*/
+	public function _return( $callbackName, $varName )
+	{
+		return $this->getVar( $varName );
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $callbackName
+	* @param mixed $array
+	*/
+	public function _setArrayElement( $callbackName, $varName, $array )
+	{
+		
+		$elementName = $this->handlers[ $callbackName ][ 'params' ][ 'element' ];
+		
+		$array[ $elementName ] = $this->getVar( $varName );
+		
+		return $array;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $filters
+	*/
+	public function & buildFiltersList( $filters )
+	{
+		
+		foreach ( $filters as $handlerName => $handlers )
+		{
+			
+			foreach ( $handlers as $varName => $filter )
+			{
+				
+				$handlerCallbackName = "_{$handlerName}_{$varName}";
+				
+				# Map handlers to retrive associated data later when filter triggered
+				$this->handlers[ $handlerCallbackName ][ 'params' ] = isset( $filter[ 'params' ] ) ? $filter[ 'params' ] : null;
+				
+				# Map filters to be binded
+				$this->filters[ $varName ] = array( 'filter' => $filter[ 'filter' ], 'callback' => $handlerCallbackName );
+			}
+		}
+		
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function getFilters()
+	{
+		return $this->filters;
+	}
+	
 	/**
 	* put your comment there...
 	* 
@@ -97,13 +171,13 @@ class Module
 		
 		$this->data =& $data;
 		
-		foreach ( $this->filters as $handler => $filterName )
+		foreach ( $this->getFilters() as $varName => $handler )
 		{
 			# Don't involved if disabled
-			if ( ! $this->getVarOption( $handler, 'disabled' ) )
+			if ( ! $this->getVarOption( $varName, 'disabled' ) )
 			{
 				
-				add_filter( $filterName, array( & $this, "_{$handler}" ), $this->getVarOption( $handler, 'priority' ) );	
+				add_filter( $handler[ 'filter' ], array( & $this, $handler[ 'callback' ] ), $this->getVarOption( $varName, 'priority' ) );	
 				
 			}
 			

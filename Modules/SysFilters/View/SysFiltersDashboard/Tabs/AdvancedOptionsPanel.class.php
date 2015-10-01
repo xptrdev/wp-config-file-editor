@@ -107,7 +107,7 @@ class AdvancedOptionsPanel
 			$fieldRow->setAttribute( 'class', 'field-row' );
 			
 			# Render input
-			$element = $renderer->render( $doc, $fieldRow, null );
+			$element = $renderer->render( $doc, $fieldRow, null, $formAdapter );
 			
 			$elementId = $formAdapter->getFieldId( $renderer );
 			

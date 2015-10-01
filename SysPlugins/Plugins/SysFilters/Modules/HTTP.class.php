@@ -12,89 +12,38 @@ use WCFE\SysPlugins\SysFilters\Module;
 */
 class HTTPModule extends Module
 {
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $filters = array
-	(
-		'timeOut' => 'http_request_args',
-		'redirectCount' => 'http_request_args',
-		'version' => 'http_request_args',
-		'userAgent' => 'http_request_args',
-		'rejectUnsafeUrls' => 'http_request_args',
-		
-		'proxyBlockLocalRequests' => 'block_local_requests',
-		'localSSLVerify' => 'https_local_ssl_verify',
-		'sslVerify' => 'https_ssl_verify',
-		'useSteamTransport' => 'use_streams_transport',
-		'useCurlTransport' => 'use_curl_transport',
-	);
 
 	/**
 	* put your comment there...
 	* 
-	* @param mixed $r
 	*/
-	public function _redirectCount( $r )
+	public function getFilters()
 	{
 		
-		$r[ 'redirection' ] = $this->getVar( $this->getHandlerVarName( __FUNCTION__ ) );
+		$filtersToBuild = array
+		( 
+			'setArrayElement' => array
+			(
+				'timeOut' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'timeout' ) ),
+				'redirectCount' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'redirection' ) ),
+				'version' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'httpversion' ) ),
+				'userAgent' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'user-agent' ) ),
+				'rejectUnsafeUrls' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'reject_unsafe_urls' ) ),		
+			),
+			
+			'return' => array
+			(
+				'proxyBlockLocalRequests' => array( 'filter' => 'block_local_requests' ),
+				'localSSLVerify' => array( 'filter' => 'https_local_ssl_verify' ),
+				'sslVerify' => array( 'filter' => 'https_ssl_verify' ),
+				'useSteamTransport' => array( 'filter' => 'use_streams_transport' ),
+				'useCurlTransport' => array( 'filter' => 'use_curl_transport' ),
+			)
+		);
 		
-		return $r;
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $r
-	*/
-	public function _rejectUnsafeUrls( $r )	
-	{
-		
-		$r[ 'reject_unsafe_urls' ] = $this->getVar( $this->getHandlerVarName( __FUNCTION__ ) );
-		
-		return $r;
-	}
+		$this->buildFiltersList( $filtersToBuild );
 
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $r
-	*/
-	public function _timeOut( $r )
-	{
-		
-		$r[ 'timeout' ] = $this->getVar( $this->getHandlerVarName( __FUNCTION__ ) );
-		
-		return $r;
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $r
-	*/
-	public function _userAgent( $r )
-	{
-		
-		$r[ 'user-agent' ] = $this->getVar( $this->getHandlerVarName( __FUNCTION__ ) );
-		
-		return $r;
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $r
-	*/
-	public function _version( $r )
-	{
-		
-		$r[ 'httpversion' ] = $this->getVar( $this->getHandlerVarName( __FUNCTION__ ) );
-		
-		return $r;
+		return parent::getFilters();
 	}
 	
 }

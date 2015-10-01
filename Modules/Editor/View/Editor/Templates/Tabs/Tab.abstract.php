@@ -229,14 +229,7 @@ abstract class Tab {
 			
 			################ RENDER INPUT FIELD #################
 			
-			$inputElement = $renderer->render( $doc, $row, compact( 'error', 'label', 'tip' ) );
-			
-			$inputElement->setAttribute( 'id', $inputId );
-			$inputElement->setAttribute( 'name', $formAdapter->getFieldName( $renderer ) );
-			
-			# Use field type as class name
-			$typeClassNameArr = explode( '\\', get_class( $renderer->getField()->type() ) );
-			$inputElement->setAttribute( 'class', $inputElement->getAttribute( 'class' ) . ' ' . strtolower( array_pop( $typeClassNameArr ) ) );
+			$renderer->render( $doc, $row, null, $formAdapter );
 			
 			#####################################################
 			

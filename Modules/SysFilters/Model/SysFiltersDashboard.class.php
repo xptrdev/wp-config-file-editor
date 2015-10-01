@@ -96,7 +96,57 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array( 'priority' => 11 )
 			 	),
 			 	
-			)
+			),
+			
+			'editor' => array(
+			
+			 	'autoParagraph' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'mediaButtons' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'dragDropUpload' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'textAreaRows' => array(
+			 		'value' => 20,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'tabIndex' => array(
+			 		'value' => '',
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'editorCSS' => array(
+			 		'value' => '',
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'editorClass' => array(
+			 		'value' => '',
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'teeny' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'tinyMCE' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			),
+			
 		);
 		
 		return $defaults;

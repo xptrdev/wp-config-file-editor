@@ -68,6 +68,7 @@ class Plugin
 		# Load modules
 		
 		$this->modules[ 'http' ] = new Modules\HTTPModule();
+		$this->modules[ 'editor' ] = new Modules\EditorModule();
 		
 		foreach ( $this->modules as $name => $module )
 		{

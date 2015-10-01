@@ -25,8 +25,122 @@ class SysFiltersOptionsForm extends Forms\Form
 		parent::__construct( 'wcfe-sysfilters' );
 		
 		# HTTP MODULE
-		$http = $this->add( new Forms\Fields\FormListField( 'http' ) );
+		$this->httpModule()
+				 ->editorModule();
+				 
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function & editorModule()
+	{
 		
+		$editor = $this->add( new Forms\Fields\FormListField( 'editor' ) );
+		
+		/////////////
+		$editor->add( new Forms\Fields\FormListField( 'autoParagraph' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		/////////////
+		$editor->add( new Forms\Fields\FormListField( 'mediaButtons' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		/////////////
+		$editor->add( new Forms\Fields\FormListField( 'dragDropUpload' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'textAreaRows' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'tabIndex' ) )
+				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'editorCSS' ) )
+				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'editorClass' ) )
+				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'teeny' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'tinyMCE' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'quickTags' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+				 	 ->addChain( new Forms\Fields\FormStringField( 'buttons' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 				 	 				 	 
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function httpModule()
+	{
+		
+		$http = $this->add( new Forms\Fields\FormListField( 'http' ) );
 		
 		// Timeout
 		$http->add( new Forms\Fields\FormListField( 'timeOut' ) )
@@ -125,9 +239,10 @@ class SysFiltersOptionsForm extends Forms\Form
 				 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-				 
+		
+		return $this;		 
 	}
-	
+
 }
 	
 	
