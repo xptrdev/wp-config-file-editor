@@ -41,7 +41,7 @@ class SysFiltersDashboardController extends Controller {
 		{
 			
 			# Load default if never submitted or load previously saved data
-			$defaults = $model->getDefaults();
+			$defaults = \WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel::getDefaults();
 
 			$data = $model->isNeverSubmitted() ? array() : $model->getData();
 			

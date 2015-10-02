@@ -43,7 +43,7 @@ class DropDownField extends FieldBase {
 	* @param mixed $elems
 	* @return \DOMElement
 	*/
-	protected function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems )
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter ) 
 	{
 		# Create drop down list
 		$dropDownList = $document->createElement( 'select' );
@@ -81,7 +81,7 @@ class DropDownField extends FieldBase {
 			
 		}
 		
-		$parent->appendChild( $dropDownList );
+		$row->appendChild( $dropDownList );
 		
 		# Return list
 		return $dropDownList;

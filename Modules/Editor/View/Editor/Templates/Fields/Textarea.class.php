@@ -23,7 +23,7 @@ class TextareaField extends FieldBase {
 	* @param mixed $elems
 	* @return \DOMElement
 	*/
-	protected function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems ) 
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter ) 
 	{
 		# Create text input
 		$textInput = $document->createElement( 'textarea' );
@@ -33,7 +33,7 @@ class TextareaField extends FieldBase {
 		$textInput->nodeValue = htmlentities( $field->getValue() );
 		
 		# Append to row			
-		$parent->appendChild( $textInput );
+		$row->appendChild( $textInput );
 		
 		return $textInput;
 	}

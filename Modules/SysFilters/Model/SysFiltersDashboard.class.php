@@ -40,7 +40,7 @@ class SysFiltersDashboardModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function getDefaults()
+	public static function getDefaults()
 	{
 		$defaults = array
 		(
@@ -105,6 +105,11 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array( 'priority' => 11 )
 			 	),
 
+			 	'editorHeight' => array(
+			 		'value' => 300,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
 			 	'mediaButtons' => array(
 			 		'value' => true,
 			 		'options' => array( 'priority' => 11 )
@@ -144,12 +149,76 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'value' => true,
 			 		'options' => array( 'priority' => 11 )
 			 	),
-			 	
+
+			 	'quickTags' => array(
+			 		'value' => true,
+			 		'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,more,close',
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 
+			 	'plugins' => array(
+			 		'value' => array
+			 		(
+						'charmap',
+						'colorpicker',
+						'hr',
+						'lists',
+						'media',
+						'paste',
+						'tabfocus',
+						'textcolor',
+						'fullscreen',
+						'wordpress',
+						'wpautoresize',
+						'wpeditimage',
+						'wpemoji',
+						'wpgallery',
+						'wplink',
+						'wpdialogs',
+						'wptextpattern',
+						'wpview',
+						'image'
+			 		),
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'buttons2' => array(
+			 		'value' => array
+			 		(
+			 			'formatselect',
+			 			'underline',
+			 			'alignjustify',
+			 			'forecolor',
+			 			'pastetext',
+			 			'removeformat',
+			 			'charmap',
+			 			'outdent',
+			 			'indent',
+			 			'undo',
+			 			'redo'
+			 		),
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 				 	
 			),
 			
 		);
 		
 		return $defaults;
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $module
+	* @param mixed $var
+	* @param mixed $name
+	*/
+	public static function getDefaultsSection( $module, $var, $name )
+	{
+		$defaults = self::getDefaults();
+		
+		return $defaults[ $module ][ $var ][ $name ];
 	}
 
 	/**
@@ -168,6 +237,7 @@ class SysFiltersDashboardModel extends PluginModel {
 	*/
 	public function setData( $data )
 	{
+
 		$this->sysFiltersData =& $data;
 		
 		return $this;

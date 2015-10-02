@@ -49,16 +49,17 @@ class CheckboxField extends FieldBase {
 	{
 		return $this->value;
 	}
-	
+
 	/**
 	* put your comment there...
 	* 
 	* @param \DOMDocument $document
-	* @param {\DOMDocument|\DOMElement} $parent
+	* @param {\DOMDocument|\DOMElement} $row
 	* @param mixed $elems
+	* @param mixed $formAdapter
 	* @return \DOMElement
 	*/
-	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems ) 
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter ) 
 	{
 		# Create text input
 		$chkbox = $document->createElement( 'input' );

@@ -17,7 +17,7 @@ class Module
 	* 
 	* @var mixed
 	*/
-	protected $data;
+	private $data;
 	
 	/**
 	* put your comment there...
@@ -86,9 +86,22 @@ class Module
 	public function _setArrayElement( $callbackName, $varName, $array )
 	{
 		
-		$elementName = $this->handlers[ $callbackName ][ 'params' ][ 'element' ];
+		$params = $this->handlers[ $callbackName ][ 'params' ];
 		
-		$array[ $elementName ] = $this->getVar( $varName );
+		// call custom handler if specified
+		$params[ 'flags' ] = isset( $params[ 'flags' ] ) ? explode( '|', $params[ 'flags' ] ) : array();
+		
+		$value = $this->getVar( $varName );
+		
+		if ( in_array( 'customHandler', $params[ 'flags' ] ) )
+		{
+			
+			$customHandler = "get_{$varName}Value";
+			
+			$value = $this->$customHandler( $value );
+		}
+		
+		$array[ $params[ 'element' ] ] = $value;
 		
 		return $array;
 	}
@@ -144,9 +157,9 @@ class Module
 	* 
 	* @param mixed $name
 	*/
-	public function getVar( $name )
+	public final function getVar( $varName, $sectionName = 'value' )
 	{
-		return isset( $this->data[ $name ][ 'value' ] ) ? $this->data[ $name ][ 'value' ] : null;
+		return isset( $this->data[ $varName ][ 'value' ] ) ? $this->data[ $varName ][ $sectionName ] : null;
 	}
 	
 	/**
@@ -155,7 +168,7 @@ class Module
 	* @param mixed $varName
 	* @param mixed $optName
 	*/
-	public function getVarOption( $varName, $optName )
+	public final function getVarOption( $varName, $optName )
 	{
 		return isset( $this->data[ $varName ][ 'options' ][ $optName ] ) ? $this->data[ $varName ][ 'options' ][ $optName ] : null;
 	}

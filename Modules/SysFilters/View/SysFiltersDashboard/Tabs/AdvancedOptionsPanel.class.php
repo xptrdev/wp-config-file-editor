@@ -118,8 +118,15 @@ class AdvancedOptionsPanel
 			$label = $doc->createElement( 'label' );
 			$label->setAttribute( 'for', $elementId );
 			$label->nodeValue = $renderer->getText();
+						
+			# Error 
+			$error = $doc->createElement( 'span' );
+			$error->setAttribute( 'class', 'field-error' );
+			$error->nodeValue = $renderer->getErrorMessage();	
 			
 			$fieldRow->insertBefore( $label, $element );
+			
+			$fieldRow->appendChild( $error );
 			
 			$fieldsContainer->appendChild( $fieldRow );
 		}

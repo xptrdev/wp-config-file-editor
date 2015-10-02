@@ -14,30 +14,13 @@ use WPPFW\Forms\Fields\IField;
 * 
 */
 class CheckboxListField extends FieldBase {
-
+	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $items;
-	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $form
-	* @param mixed $field
-	* @param mixed $text
-	* @param mixed $tipText
-	* @param mixed $items
-	* @return CheckboxListField
-	*/
-	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $items = array() ) 
-	{
-		parent::__construct( $form, $field, $text, $tipText );
-		
-		$this->items = $items;
-	}
+	protected $addNew = true;
 	
 	/**
 	* put your comment there...
@@ -45,7 +28,25 @@ class CheckboxListField extends FieldBase {
 	*/
 	public function getItems()
 	{
-		return $this->items;
+		$items = array();
+		
+		$fields = $this->getField()->getFields();
+		
+		foreach ( $fields as $field )
+		{
+			
+			$value = $field->getValue();
+			
+			$items[] = array
+			( 
+				'field' => $field, 
+				'text' => $value, 
+				'value' => $value
+			);
+			
+		}
+		
+		return $items;
 	}
 
 	/**
@@ -56,7 +57,7 @@ class CheckboxListField extends FieldBase {
 	* @param mixed $elems
 	* @return \DOMElement
 	*/
-	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems )
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter )
 	{
 		
 		$form =& $this->getForm();
@@ -76,8 +77,8 @@ class CheckboxListField extends FieldBase {
 			# Create option for every option list item
 			$checkBox = new CheckboxField( $form, $item[ 'field' ], $item[ 'text' ], null, $item[ 'value' ] );
 			
-			$checkboxEle = $checkBox->render( $document, $list, $elems );
-			$checkboxEle->setAttribute( 'name', $form->getName() . '[' . $field->getName() . '][]' );
+			$checkboxEle = $checkBox->render( $document, $list, $elems, $formAdapter );
+			$checkboxEle->setAttribute( 'name', $formAdapter->getFieldName( $this ) . '[]' );
 			
 			$text = $document->createElement( 'span' );
 			$text->nodeValue = $item[ 'text' ];
@@ -95,19 +96,22 @@ class CheckboxListField extends FieldBase {
 		# Checkbox list specific css class
 		$row->setAttribute( 'class', $row->getAttribute( 'class' ) . " checkbox-list" );
 		
-		# Add button
-		$inputElement = $document->createElement( 'input' );
-		
-		$inputElement->setAttribute( 'type', 'text' );
-		$inputElement->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
-		$inputElement->setAttribute( 'class', 'checkbox-list-input' );
-		
 		$container = $document->createElement( 'div' );
 		$container->setAttribute( 'class', 'wcfe-checkbox-list-container' );
 		
 		$container->appendChild( $list );
+						
+		if ( $this->addNew )
+		{
+			# Add button
+			$inputElement = $document->createElement( 'input' );
 		
-		$container->appendChild( $inputElement );
+			$inputElement->setAttribute( 'type', 'text' );
+			$inputElement->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
+			$inputElement->setAttribute( 'class', 'checkbox-list-input' );
+			
+			$container->appendChild( $inputElement );			
+		}
 		
 		$row->appendChild( $container );
 		

@@ -49,6 +49,15 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////
+		$editor->add( new Forms\Fields\FormListField( 'editorHeight' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 
+		/////////////
 		$editor->add( new Forms\Fields\FormListField( 'mediaButtons' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
@@ -129,7 +138,24 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-				 	 				 	 				 	 
+
+		/////////////		 	 
+		$editor->add( new Forms\Fields\FormListField( 'plugins' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'plugin' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		$editor->add( new Forms\Fields\FormListField( 'buttons2' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'button' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 				 	 				 	 				 	 				 	 				 	 
 		return $this;
 	}
 	

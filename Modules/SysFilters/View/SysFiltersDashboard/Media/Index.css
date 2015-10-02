@@ -49,3 +49,9 @@ a.toggle-advanced-options-panel {
 	width: 300px;
 	height: 130px;
 }
+
+.compound-field {
+  background-color: #F5F5F5;
+  display: inline-block;
+  padding: 10px 10px;
+}

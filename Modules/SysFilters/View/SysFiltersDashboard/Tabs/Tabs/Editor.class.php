@@ -10,6 +10,7 @@ namespace WCFE\Modules\SysFilters\View\SysFiltersDashboard\Tabs\Tabs;
 use WCFE\Modules\Editor\View\Editor\Templates\Tabs\FieldsTab;
 use WCFE\Modules\Editor\View\Editor\Fields;
 use WCFE\Modules\SysFilters\View\SysFiltersDashboard\Tabs\AdvancedOptionsPanel;
+use WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel;
 
 /**
 * 
@@ -45,6 +46,14 @@ class EditorOptionsTab extends FieldsTab {
 			'Auto Paragraph', 
 			'XXXX',
 			1, 
+			array( 'optionsPanel' => new AdvancedOptionsPanel() )
+		);
+		
+		$this->fields[] = new Fields\InputField( 
+			$form, 
+			$editorModule->get( 'editorHeight' )->get( 'value' ), 
+			'Editor Height', 
+			'XXXX',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -125,8 +134,7 @@ class EditorOptionsTab extends FieldsTab {
 		);
 		
 		/////////////
-		$this->fields[] = new Editor\QuickTags( 
-			\WCFE\Plugin::DIR,
+		$this->fields[] = new Fields\HTMLComponent( 
 			$form, 
 			array
 			(
@@ -139,7 +147,7 @@ class EditorOptionsTab extends FieldsTab {
 					1
 				),
 				
-				$this->fields[] = new Fields\InputField( 
+				new Fields\InputField( 
 					$form, 
 					$editorModule->get( 'quickTags' )->get( 'buttons' ), 
 					'Buttons', 
@@ -147,13 +155,31 @@ class EditorOptionsTab extends FieldsTab {
 				)
 		
 			),
-			 
-			'Quick Tags', 
-			'XXXX',
+			'Quick Tags',
+			'ZZZZ',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
-
+		/////////////
+		$this->fields[] = $pluginsList = new Fields\PreDefinedCheckboxList( 
+			$form, 
+			$editorModule->get( 'plugins' )->get( 'value' ),
+			'Built-In Plugins', 
+			'XXXX',
+			array( 'optionsPanel' => new AdvancedOptionsPanel() )
+		);
+		$pluginsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'plugins', 'value' ) );
+		
+		/////////////
+		$this->fields[] = $buttons2 = new Fields\PreDefinedCheckboxList( 
+			$form, 
+			$editorModule->get( 'buttons2' )->get( 'value' ),
+			'Second Row Buttons list', 
+			'XXXX',
+			array( 'optionsPanel' => new AdvancedOptionsPanel() )
+		);
+		$buttons2->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'buttons2', 'value' ) );
+				
 	}
 	
 }

@@ -150,7 +150,7 @@ abstract class FieldBase {
 	public function render( \DOMDocument & $document, \DOMElement & $parentDOM, $elems, & $formAdapter ) 
 	{
 		
-		$inputElement = $this->renderInput( $document, $parentDOM, $elems );
+		$inputElement = $this->renderInput( $document, $parentDOM, $elems, $formAdapter );
 					
 		$inputElement->setAttribute( 'id', $formAdapter->getFieldId( $this ) );
 		$inputElement->setAttribute( 'name', $formAdapter->getFieldName( $this ) );
@@ -170,7 +170,7 @@ abstract class FieldBase {
 	* @param {\DOMDocument|\DOMElement} $parent
 	* @param mixed $elems
 	*/
-	protected abstract function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems );
+	protected abstract function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter ); 
 	
 	/**
 	* put your comment there...

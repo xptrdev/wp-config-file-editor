@@ -14,13 +14,6 @@ use WPPFW\Forms\Fields\IField;
 * 
 */
 class HTMLComponent {
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $basePath;
 	
 	/**
 	* put your comment there...
@@ -56,20 +49,19 @@ class HTMLComponent {
 	* @var mixed
 	*/
 	protected $tipText;
-	
+
 	/**
 	* put your comment there...
 	* 
 	* @param mixed $form
-	* @param mixed $field
+	* @param mixed $renderers
 	* @param mixed $text
 	* @param mixed $tipText
-	* @param mixed $basePath
+	* @param mixed $params
 	* @return HTMLComponent
 	*/
-	public function __construct( $basePath, $form, $renderers, $text, $tipText, $params )
+	public function __construct( $form, $renderers, $text, $tipText, $params )
 	{
-		$this->basePath = $basePath;
 		$this->form =& $form;
 		$this->renderers =& $renderers;
 		$this->text = $text;
@@ -153,6 +145,7 @@ class HTMLComponent {
 	{
 		
 		$componentEle = $doc->createElement( 'div' );
+		$componentEle->setAttribute( 'class', 'compound-field' );
 		
 		foreach ( $this->getRenderers() as $renderer )
 		{
@@ -166,6 +159,7 @@ class HTMLComponent {
 			
 			$label = $doc->createElement( 'label' );
 			$label->setAttribute( 'for', $inputId );
+			$label->nodeValue = $renderer->getText() ;
 			
 			# Error 
 			$error = $doc->createElement( 'span' );

@@ -53,7 +53,7 @@ class InputField extends FieldBase {
 	* @param mixed $elems
 	* @return \DOMElement
 	*/
-	protected function & renderInput( \DOMDocument & $document, \DOMElement & $parent, $elems ) 
+	protected function & renderInput( \DOMDocument & $document, \DOMElement & $row, $elems, & $formAdapter ) 
 	{
 		# Create text input
 		$textInput = $document->createElement( 'input' );
@@ -71,7 +71,7 @@ class InputField extends FieldBase {
 		}
 		
 		# Append to row			
-		$parent->appendChild( $textInput );
+		$row->appendChild( $textInput );
 		
 		return $textInput;
 	}
