@@ -66,7 +66,7 @@ class Plugin
 		$this->data = $this->data[ 'sysFiltersData' ];
 		
 		# Load modules
-		
+		$this->modules[ 'misc' ] = new Modules\MiscModule();
 		$this->modules[ 'http' ] = new Modules\HTTPModule();
 		$this->modules[ 'editor' ] = new Modules\EditorModule();
 		

@@ -25,7 +25,8 @@ class SysFiltersOptionsForm extends Forms\Form
 		parent::__construct( 'wcfe-sysfilters' );
 		
 		# HTTP MODULE
-		$this->httpModule()
+		$this->miscModule()
+				 ->httpModule()
 				 ->editorModule();
 				 
 	}
@@ -37,10 +38,10 @@ class SysFiltersOptionsForm extends Forms\Form
 	protected function & editorModule()
 	{
 		
-		$editor = $this->add( new Forms\Fields\FormListField( 'editor' ) );
+		$module = $this->add( new Forms\Fields\FormListField( 'editor' ) );
 		
 		/////////////
-		$editor->add( new Forms\Fields\FormListField( 'autoParagraph' ) )
+		$module->add( new Forms\Fields\FormListField( 'autoParagraph' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -49,7 +50,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////
-		$editor->add( new Forms\Fields\FormListField( 'editorHeight' ) )
+		$module->add( new Forms\Fields\FormListField( 'editorHeight' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -58,7 +59,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 				 	 
 		/////////////
-		$editor->add( new Forms\Fields\FormListField( 'mediaButtons' ) )
+		$module->add( new Forms\Fields\FormListField( 'mediaButtons' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -67,7 +68,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 
 		/////////////
-		$editor->add( new Forms\Fields\FormListField( 'dragDropUpload' ) )
+		$module->add( new Forms\Fields\FormListField( 'dragDropUpload' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -76,7 +77,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 				 	 
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'textAreaRows' ) )
+		$module->add( new Forms\Fields\FormListField( 'textAreaRows' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -85,7 +86,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'tabIndex' ) )
+		$module->add( new Forms\Fields\FormListField( 'tabIndex' ) )
 				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
 					
 					// Field advanced options
@@ -94,7 +95,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'editorCSS' ) )
+		$module->add( new Forms\Fields\FormListField( 'editorCSS' ) )
 				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
 					
 					// Field advanced options
@@ -103,7 +104,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'editorClass' ) )
+		$module->add( new Forms\Fields\FormListField( 'editorClass' ) )
 				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
 					
 					// Field advanced options
@@ -112,16 +113,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'teeny' ) )
-				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
-					
-					// Field advanced options
-				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
-				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
-				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-
-		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'tinyMCE' ) )
+		$module->add( new Forms\Fields\FormListField( 'teeny' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -130,7 +122,16 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'quickTags' ) )
+		$module->add( new Forms\Fields\FormListField( 'tinyMCE' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		/////////////		 	 
+		$module->add( new Forms\Fields\FormListField( 'quickTags' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 				 	 ->addChain( new Forms\Fields\FormStringField( 'buttons' ) )
 					
@@ -140,7 +141,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 
 		/////////////		 	 
-		$editor->add( new Forms\Fields\FormListField( 'plugins' ) )
+		$module->add( new Forms\Fields\FormListField( 'plugins' ) )
 				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'plugin' ) ) )
 					
 					// Field advanced options
@@ -148,7 +149,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 
-		$editor->add( new Forms\Fields\FormListField( 'buttons2' ) )
+		$module->add( new Forms\Fields\FormListField( 'buttons2' ) )
 				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'button' ) ) )
 					
 					// Field advanced options
@@ -166,10 +167,10 @@ class SysFiltersOptionsForm extends Forms\Form
 	protected function httpModule()
 	{
 		
-		$http = $this->add( new Forms\Fields\FormListField( 'http' ) );
+		$module = $this->add( new Forms\Fields\FormListField( 'http' ) );
 		
 		// Timeout
-		$http->add( new Forms\Fields\FormListField( 'timeOut' ) )
+		$module->add( new Forms\Fields\FormListField( 'timeOut' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value', array( new Forms\Rules\RequiredField() ) ) )
 					
 					// Field advanced options
@@ -179,7 +180,7 @@ class SysFiltersOptionsForm extends Forms\Form
 
 				 
 		// Redirect count
-		$http->add( new Forms\Fields\FormListField( 'redirectCount' ) )
+		$module->add( new Forms\Fields\FormListField( 'redirectCount' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -189,7 +190,7 @@ class SysFiltersOptionsForm extends Forms\Form
 
 				 
 		// Version
-		$http->add( new Forms\Fields\FormListField( 'version' ) )
+		$module->add( new Forms\Fields\FormListField( 'version' ) )
 				 ->addChain( new Forms\Fields\FormStringField( 'value', array( new Forms\Rules\RequiredField() ) ) )
 					
 					// Field advanced options
@@ -199,7 +200,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 				 
 		// User Agent
-		$http->add( new Forms\Fields\FormListField( 'userAgent' ) )
+		$module->add( new Forms\Fields\FormListField( 'userAgent' ) )
 				 ->addChain( new Forms\Fields\FormStringField( 'value', array( new Forms\Rules\RequiredField() ) ) )
 					
 					// Field advanced options
@@ -209,7 +210,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 				 
 		// Reject Unsafe Urls
-		$http->add( new Forms\Fields\FormListField( 'rejectUnsafeUrls' ) )
+		$module->add( new Forms\Fields\FormListField( 'rejectUnsafeUrls' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -219,7 +220,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 				 
 		// Proxy Block local requests
-		$http->add( new Forms\Fields\FormListField( 'proxyBlockLocalRequests' ) )
+		$module->add( new Forms\Fields\FormListField( 'proxyBlockLocalRequests' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -229,7 +230,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 			
 		# HTTPS Local SSL verify
-		$http->add( new Forms\Fields\FormListField( 'localSSLVerify' ) )
+		$module->add( new Forms\Fields\FormListField( 'localSSLVerify' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -239,7 +240,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 				 
 		# HTTPS SSL verify
-		$http->add( new Forms\Fields\FormListField( 'sslVerify' ) )
+		$module->add( new Forms\Fields\FormListField( 'sslVerify' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -249,7 +250,7 @@ class SysFiltersOptionsForm extends Forms\Form
 		
 		
 		# Use steam transport
-		$http->add( new Forms\Fields\FormListField( 'useSteamTransport' ) )
+		$module->add( new Forms\Fields\FormListField( 'useSteamTransport' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -258,7 +259,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
 		# Use Curl transport
-		$http->add( new Forms\Fields\FormListField( 'useCurlTransport' ) )
+		$module->add( new Forms\Fields\FormListField( 'useCurlTransport' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
 					// Field advanced options
@@ -269,6 +270,26 @@ class SysFiltersOptionsForm extends Forms\Form
 		return $this;		 
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function miscModule()
+	{
+		
+		$module = $this->add( new Forms\Fields\FormListField( 'misc' ) );
+		
+		$module->add( new Forms\Fields\FormListField( 'queryVars' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'var' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 				 	 				 	 				 	 				 	 				 	 
+		return $this;	
+	}
+	
 }
 	
 	

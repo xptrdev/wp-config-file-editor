@@ -44,6 +44,62 @@ class SysFiltersDashboardModel extends PluginModel {
 	{
 		$defaults = array
 		(
+			'misc' => array(
+			
+			 	'queryVars' => array(
+			 		'value' => array
+			 		(
+			 			'm',
+			 			'p',
+			 			'posts',
+			 			'w',
+			 			'cat',
+			 			'withcomments',
+			 			'withoutcomments',
+			 			's', 
+			 			'search', 
+			 			'exact', 
+			 			'sentence', 
+			 			'calendar', 
+			 			'page', 
+			 			'paged', 
+			 			'more', 
+			 			'tb', 
+			 			'pb', 
+			 			'author', 
+			 			'order', 
+			 			'orderby', 
+			 			'year', 
+			 			'monthnum', 
+			 			'day', 
+			 			'hour', 
+			 			'minute', 
+			 			'second', 
+			 			'name', 
+			 			'category_name', 
+			 			'tag', 
+			 			'feed', 
+			 			'author_name', 
+			 			'static', 
+			 			'pagename', 
+			 			'page_id', 
+			 			'error', 
+			 			'comments_popup', 
+			 			'attachment', 
+			 			'attachment_id', 
+			 			'subpost', 
+			 			'subpost_id', 
+			 			'preview', 
+			 			'robots', 
+			 			'taxonomy', 
+			 			'term', 
+			 			'cpage', 
+			 			'post_type'
+			 		),
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			),
+			
 			'http' => array(
 			
 			 	'timeOut' => array(

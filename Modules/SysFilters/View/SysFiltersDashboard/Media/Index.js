@@ -122,7 +122,7 @@
 			// the default
 			if ( ! activeTab )
 			{
-				activeTab = $( '#HTTPOptionsTab' );
+				activeTab = $( '#MiscOptionsTab' );
 			}
 			
 			// Menu

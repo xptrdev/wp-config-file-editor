@@ -37,6 +37,7 @@ class Tabs extends TabsBase {
 	( 
 		'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Tabs\Tabs' => array
 		(
+			'Misc',
 		 	'HTTP',
 		 	'Editor',
 		)
