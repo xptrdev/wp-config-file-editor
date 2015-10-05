@@ -218,7 +218,51 @@ class SysFiltersOptionsForm extends Forms\Form
 				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
+		
+		
+		
+		$module->add( new Forms\Fields\FormListField( 'stream' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		$module->add( new Forms\Fields\FormListField( 'blocking' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 				 
+		$module->add( new Forms\Fields\FormListField( 'compress' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );		 
+	
+		$module->add( new Forms\Fields\FormListField( 'decompress' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );			 
+		
+		$module->add( new Forms\Fields\FormListField( 'responseSizeLimit' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );			 
+		
+		
+				 				 
 		// Proxy Block local requests
 		$module->add( new Forms\Fields\FormListField( 'proxyBlockLocalRequests' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )

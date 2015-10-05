@@ -45,7 +45,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 			$form, 
 			$module->get( 'queryVars' )->get( 'value' ),
 			'Query Vars', 
-			'XXXX',
+			'Filter which query vars to allow Wordpress to use. For example search can be stopped by unchecking "s" variable',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$queryVarsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'misc', 'queryVars', 'value' ) );
@@ -54,7 +54,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 			$form, 
 			$module->get( 'uploadAllowedMimes' )->get( 'value' ),
 			'Upload Allowed Mime Types', 
-			'XXXX',
+			'Allow/Disallow what type of images can be uploaded and what mime type to associate with the uploaded file.',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -67,7 +67,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 				$form,
 				$module->get( 'themesPersistCache' )->get( 'value' ),
 				'Persistly Cache Themes', 
-				'XXXX',
+				'Filter whether to get the cache of the registered theme directories',
 				1,
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
@@ -83,7 +83,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 				$form,
 				$module->get( 'quality' )->get( 'value' ),
 				'Quality', 
-				'XXXX',
+				'Filter the default image compression quality setting.',
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
 
@@ -92,7 +92,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 				$form,
 				$module->get( 'memoryLimit' )->get( 'value' ),
 				'Memory Limit', 
-				'XXXX',
+				'Filter the memory limit allocated for image manipulation',
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
 						

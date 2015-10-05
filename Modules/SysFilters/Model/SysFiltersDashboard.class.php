@@ -150,6 +150,31 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'value' => ( 'WordPress/' . $GLOBALS[ 'wp_version' ] . '; ' . get_bloginfo( 'url' ) ),
 			 		'options' => array( 'priority' => 11 )
 			 	),
+
+			 	'stream' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'compress' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'decompress' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'blocking' => array(
+			 		'value' => true,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'responseSizeLimit' => array(
+			 		'value' => null,
+			 		'options' => array( 'priority' => 11 )
+			 	),
 			 	
 			 	'rejectUnsafeUrls' => array(
 			 		'value' => false,
