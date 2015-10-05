@@ -72,6 +72,13 @@ class Plugin extends PluginBase
 	private $sysFiltersModule;
 	
 	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	private $version = '1.5.0';
+	
+	/**
 	* Bootstrap ARV Plugin
 	* 
 	* return void
@@ -112,6 +119,8 @@ class Plugin extends PluginBase
 	*/
 	protected function bootStrap()
 	{
+		# Installer
+		\WCFE\Installer::run( $this->factory(), $this->version );
 		
 		# System Plugins
 		\WCFE\SysPlugins\Plugins::load()->runPlugins();
