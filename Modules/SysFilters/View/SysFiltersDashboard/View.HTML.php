@@ -75,6 +75,8 @@ class SysFiltersDashboardHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
 		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ChechboxList' ) );
+		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\IndexScript' ) );
 
 		# Styles

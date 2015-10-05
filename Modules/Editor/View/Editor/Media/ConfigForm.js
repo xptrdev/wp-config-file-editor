@@ -28,37 +28,6 @@
 		* 
 		*/
 		var formEle, tab, activeTab, activeSecureKeyInput, secureKeys;
-
-		/**3
-		* put your comment there...
-		* 
-		*/
-		var checkboxListInput = function( event )
-		{
-			switch ( event.keyCode )
-			{
-				case 13:
-				
-					var input = $( event.target );
-				
-				  // Add to checkbox list when pressing enter
-				 	var list = input.prev();
-				 	var listItem = $( '<li></li>' ).appendTo( list );
-				 	var itemName = input.prop( 'id' ) + '[]';
-				 	
-				 	$( '<input type="checkbox" name="' + itemName + '" value="' + input.val() + '" checked="checked" />' ).appendTo( listItem ).change( 
-				 		function()
-				 		{
-							listItem.remove();
-				 		}
-				 	 ).after( '<span>' + input.val() + '</span>' );
-				  
-				  // Clear input
-					input.val( '' );
-					
-				break;
-			}
-		};
 		
 		/**
 		* put your comment there...
@@ -479,13 +448,7 @@
 			$( '#wcfe-editor-form-preview' ).click( previewConfigFile );
 			
 			// Checkboxes lists
-			$( '.checkbox-list-input' ).keypress( $.proxy( checkboxListInput, this ) );
-			$( '.checkbox-list input:checkbox' ).change( 
-				function()
-				{
-					$( this ).parent().remove();
-				}
-			 );
+			$( '.wcfe-checkbox-list-container' ).WCFECheckboxList();
 			
 			// Menu
 			$( '#wcfe-config-form-main-menu' ).menu( 

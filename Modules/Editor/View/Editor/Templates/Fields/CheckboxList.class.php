@@ -107,7 +107,7 @@ class CheckboxListField extends FieldBase {
 			$inputElement = $document->createElement( 'input' );
 		
 			$inputElement->setAttribute( 'type', 'text' );
-			$inputElement->setAttribute( 'id', $form->getName() . '[' . $field->getName() . ']' );
+			$inputElement->setAttribute( 'id', $formAdapter->getFieldName( $this ) );
 			$inputElement->setAttribute( 'class', 'checkbox-list-input' );
 			
 			$container->appendChild( $inputElement );			

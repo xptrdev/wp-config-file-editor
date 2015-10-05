@@ -42,6 +42,14 @@ class SysFiltersDashboardModel extends PluginModel {
 	*/
 	public static function getDefaults()
 	{
+		# Allowed mime types to be uploaded
+		$wpMimeTypes = wp_get_mime_types();
+		
+		foreach ( $wpMimeTypes as $extensions => $type )
+		{
+			$allowedUploadMimeTypes[] = "{$extensions},{$type}";
+		}
+		
 		$defaults = array
 		(
 			'misc' => array(
@@ -98,6 +106,27 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		),
 			 		'options' => array( 'priority' => 11 )
 			 	),
+
+			 	'quality' => array(
+			 		'value' => 90,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'memoryLimit' => array(
+			 		'value' => WP_MAX_MEMORY_LIMIT,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+
+			 	'themesPersistCache' => array(
+			 		'value' => false,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
+			 	'uploadAllowedMimes' => array(
+			 		'value' => $allowedUploadMimeTypes,
+			 		'options' => array( 'priority' => 11 )
+			 	),
+			 	
 			),
 			
 			'http' => array(

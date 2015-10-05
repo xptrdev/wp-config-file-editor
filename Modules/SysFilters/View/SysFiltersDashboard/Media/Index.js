@@ -133,13 +133,44 @@
 				}
 			).show();
 			
+			// Modules
+			WCFESysFiltersFormMiscModule.load();
 		}
 		
-		
-		
-		
+		// initialize component when doc ready
 		$ ( initialize );
 	
+	};
+	
+	
+	/**
+	* put your comment there...
+	* 
+	* @type T_JS_FUNCTION
+	*/
+	var WCFESysFiltersFormMiscModule = new function()
+	{
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		this.load = function()
+		{
+			// Upload Mime types list
+			
+			$( '#wcfe-sysfilters-misc-uploadAllowedMimes-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
+			( { 
+				allowEdit : true,
+				getEditText : function( value ) 
+				{
+					return value.split( ',' )[ 0 ];
+				},
+				newPlaceholder : 'e.g jpg|jpeg , image/jpg'
+			} );
+	
+		};
+		
 	};
 	
 } ) ( jQuery );

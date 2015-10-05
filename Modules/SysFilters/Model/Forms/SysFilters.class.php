@@ -286,7 +286,39 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-				 	 				 	 				 	 				 	 				 	 				 	 
+
+		$module->add( new Forms\Fields\FormListField( 'quality' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		
+		$module->add( new Forms\Fields\FormListField( 'memoryLimit' ) )
+				 	 ->addChain( new Forms\Fields\FormStringField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		$module->add( new Forms\Fields\FormListField( 'themesPersistCache' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		$module->add( new Forms\Fields\FormListField( 'uploadAllowedMimes' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'type' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	 				 	 				 	 
 		return $this;	
 	}
 	

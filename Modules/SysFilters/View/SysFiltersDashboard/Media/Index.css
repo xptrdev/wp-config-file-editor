@@ -55,3 +55,27 @@ a.toggle-advanced-options-panel {
   display: inline-block;
   padding: 10px 10px;
 }
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value
+{
+	width: 400px;
+	overflow:auto;
+}
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value span
+{
+    overflow: hidden;
+    width: 350px;
+    display: inline-block;
+    height: 17px;
+    cursor: pointer;
+}
+
+#wcfe-sysfilters-misc-uploadAllowedMimes-value-row input[type="text"]
+{
+	width: 430px;
+}
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value li {
+    padding: 3px 0px;
+}
