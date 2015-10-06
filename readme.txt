@@ -4,7 +4,7 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -228,12 +228,13 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+= 1.4.1 =
+* Fix: Could not connect to Database error when using Database port
 
 = 1.4 =
 * UI use Wordpress colors and feel
 * Add System Parameters Page (HTTP Request Parameters)
 * Rename Dashboard Menu title to WPCF Editor
-
 
 = 1.3 =
 * Use smaller fonts for Config Form Tabs
@@ -253,17 +254,14 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Aggregate all tools items under Tools menu
 * Add Security TAB ( Allow Unfiltered Uploads ) and ( Disallow Unfiltered HTML ) field
 
-
 = 1.2.1 =
 * Major security enhancments
-
 
 = 1.2 =
 * Add profiles
 * Add Progress and Error messages status bar
 * Add Config Form Dashboard Main Menu
 * Fix: Secure Key Generator is not working
-
 
 = 1.1 =
 * Add Upgrade Tab
@@ -272,7 +270,6 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Add Cron Tab
 * Add Developer Concatenate JavaScript Field
 * Add Database Automatic Repair and Stop Upgrading Global Tables fields
-
 
 = 1.0 =
 * Use Tabs UI Control for categorizing fields
@@ -285,7 +282,6 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 * Raw wp-config.php Editor with Syntax Highlighters and Syntax Error detections
 * Only admins can use it under normal installations while only Network admins can use it under Multi Sites installation
 * Complains when submitted Raw EMPTY config file or if it's not start with PHP Tag
-
 
 = 0.5 =
 First release

@@ -31,6 +31,7 @@ class DatabaseOptionsTab extends FieldsTab {
 		'WCFE\Modules\Editor\View\Editor\Templates\Fields' => array
 		(
 			'DbHost', 
+			'DbPort',
 			'DbUser', 
 			'DbPassword', 
 			'DbName', 
