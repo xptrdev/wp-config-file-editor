@@ -12,7 +12,7 @@ use WPPFW\Forms;
 /**
 * 
 */
-class DbHost extends Forms\Fields\FormStringField implements IWPConfigFileField {
+class DbPort extends Forms\Fields\FormStringField implements IWPConfigFileField {
 	
 	/**
 	* put your comment there...
@@ -20,7 +20,7 @@ class DbHost extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('DbHost', array(new Forms\Rules\RequiredField()));
+		parent::__construct( 'DbPort' );
 	}
 
 	/**
@@ -31,7 +31,7 @@ class DbHost extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	{
 		$hostData = explode( ':', DB_HOST );
 		
-		$this->setValue( $hostData[ 0 ] );
+		$this->setValue( isset( $hostData[ 1 ] ) ? $hostData[ 1 ] : null );
 	}
 
 }

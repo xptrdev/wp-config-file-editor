@@ -9,8 +9,8 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class DbHost extends Constant {
-  
+class DbPort extends Constant {
+
   /**
   * put your comment there...
   * 
@@ -18,7 +18,7 @@ class DbHost extends Constant {
   */
 	protected $comments = array
 	(
-		'MySQL hostname'
+		'Database connection port'
 	);
 
 	/**
@@ -27,6 +27,13 @@ class DbHost extends Constant {
 	* @var mixed
 	*/
 	protected $name = 'DB_HOST';
+
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
+	protected $suppressOutputForce = true;
 	
 	/**
 	* put your comment there...
@@ -36,21 +43,5 @@ class DbHost extends Constant {
 		return new Types\StringType();
 	}
 
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function getValue()
-	{
-		
-		$value = parent::getValue();
-		
-		if ( $port = $this->form->get( 'DbPort' )->getValue() )
-		{
-			$value .= ":{$port}";
-		}
-
-		return $value;
-	}
 }
 

@@ -51,6 +51,7 @@ class EditorModel extends PluginModel {
 		'DbUser',
 		'DbPassword',
 		'DbHost',
+		'DbPort',
 		'DbCharSet',
 		'DbCollate',
 		'DbTablePrefix',
@@ -639,13 +640,14 @@ class EditorModel extends PluginModel {
 			$password = $form->get( 'DbPassword' )->getValue();
 			$name = $form->get( 'DbName' )->getValue();
 			$host = $form->get( 'DbHost' )->getValue();
+			$port = $form->get( 'DbPort' )->getValue();
 			
 			# Test database parameters
 			# using mysql extension or mysqli is mysql not available
 			if ( function_exists( 'mysqli_init' ) ) 
 			{ # Use Mysqli
 				# Connection successed
-				if ( $clink = @ mysqli_connect( $host, $user, $password ) ) 
+				if ( $clink = @ mysqli_connect( $host, $user, $password, null, $port ) ) 
 				{
 					# Db Selection successed
 					if ( @ mysqli_select_db( $clink, $name ) ) 
