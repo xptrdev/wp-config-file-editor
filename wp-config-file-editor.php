@@ -120,7 +120,7 @@ class Plugin extends PluginBase
 	protected function bootStrap()
 	{
 		# Installer
-		\WCFE\Installer::run( $this->factory(), $this->version );
+		\WCFE\Installer\Installer::run( $this->version );
 		
 		# System Plugins
 		\WCFE\SysPlugins\Plugins::load()->runPlugins();

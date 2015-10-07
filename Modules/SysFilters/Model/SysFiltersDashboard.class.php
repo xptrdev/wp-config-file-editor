@@ -18,6 +18,13 @@ class SysFiltersDashboardModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
+	private static $modelOptionName = 'wcfe-model-state_sysfiltersdashboardmodel';
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $sysFiltersData = null;
 	
 	/**
@@ -26,7 +33,20 @@ class SysFiltersDashboardModel extends PluginModel {
 	*/
 	protected function initialize() {}
 	
-	
+	/**
+	* put your comment there...
+	* 
+	*/
+	public static function getDataArray()
+	{
+		
+		$sysFilterData = 	is_multisite() ? 
+											get_blog_option( get_main_network_id(), self::$modelOptionName, null ) : 
+											get_option( self::$modelOptionName, null );
+		
+		return $sysFilterData;
+	}
+
 	/**
 	* put your comment there...
 	* 
@@ -353,6 +373,24 @@ class SysFiltersDashboardModel extends PluginModel {
 		return $this;
 	}
 	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $data
+	*/
+	public static function setDataArray( $data )
+	{
+		
+		if ( is_multisite() )
+		{
+			update_blog_option( get_main_network_id(), self::$modelOptionName, $data );
+		}
+		else {
+			update_option( self::$modelOptionName, $data );
+		}
+		
+	}
+
 	/**
 	* put your comment there...
 	* 

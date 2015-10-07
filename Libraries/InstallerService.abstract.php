@@ -10,6 +10,12 @@ namespace WCFE\Libraries;
 */
 abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	
+	const STATE_FRESH_INSTALL = 2;
+	const STATE_INSTALLED = 0;
+	const STATE_UPGRADE = -1;
+	const STATE_DOWNGRADE = 1;
+	
+	
 	/**
 	* put your comment there...
 	* 
@@ -53,23 +59,19 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	{
 		return $this->installedVersion;
 	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function isNotInstalled()
-	{
-		return $this->installedVersion ? false : true;
-	}
 	
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function isUpgrade()
+	public function getState()
 	{
-		return ( version_compare( $this->installedVersion, $this->currentVersion ) == -1 );
+		
+		$installedVersion = $this->getInstalledVersion();
+		
+		return ( 	! $installedVersion ) ?
+								self::STATE_FRESH_INSTALL :
+								version_compare( $installedVersion, $this->currentVersion );
 	}
 
 	/**
@@ -78,7 +80,7 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	*/
 	public final function install()
 	{
-		return $this->chainUpgraders( 0 );
+		return $this->processUpgraders( 0 );
 	}
 
 	/**
@@ -86,7 +88,7 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	* 
 	* @param mixed $startIndex
 	*/
-	protected function & processUpgraders( $startIndex )
+	protected function processUpgraders( $startIndex )
 	{
 		
 		# Run all upgraders, stop on error
@@ -115,14 +117,14 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 		# Save state
 		$this->writeState();
 		
-		return $this;
+		return;
 	}
 	
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function unInstall() { }
+	public function uninstall() { }
 
 	/**
 	* put your comment there...
@@ -131,11 +133,13 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	public final function upgrade()
 	{
 		
-		$installedVersionUIdx = array_search( $this->installedVersion, $this->_upgraders );
+		$installedVersion = $this->getInstalledVersion();
+		
+		$installedVersionUIdx = array_search( $installedVersion, $this->_upgraders );
 		
 		if ( $installedVersionUIdx !== FALSE )
 		{
-			$this->chainUpgraders( $installedVersionUIdx );
+			$this->processUpgraders( $installedVersionUIdx );
 		}
 		
 		return $this;

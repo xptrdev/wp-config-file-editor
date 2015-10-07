@@ -37,7 +37,7 @@ class Plugin
 		
 		$optionName = 'wcfe-model-state_sysfiltersdashboardmodel';
 		
-		$this->data = is_multisite() ? get_blog_option( get_main_network_id(), $optionName ) :  get_option( $optionName );
+		$this->data = is_multisite() ? get_blog_option( get_main_network_id(), $optionName ) : get_option( $optionName );
 
 	}
 	

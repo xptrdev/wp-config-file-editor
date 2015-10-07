@@ -34,6 +34,8 @@ abstract class PersistObject
 		
 		// Read state
 		$this->readState();
+		
+		$this->init();
 	}
 	
 	/**
@@ -44,6 +46,12 @@ abstract class PersistObject
 	{
 		return $this->stateAdapter;
 	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	protected function init() { }
 	
 	/**
 	* put your comment there...
