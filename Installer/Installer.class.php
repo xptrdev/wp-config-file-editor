@@ -105,7 +105,40 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	{
 		
 		# Sys filters parameters for all version < 1.4.0
+		$sysFilterOpts = SysFiltersDashboardModel::getDataArray();
+		$defaultData = SysFiltersDashboardModel::getDefaults();
 		
+		# Default Sys filters parameters added in version 1.5.0
+		$parameters = array
+		(
+			'http' => array
+			(
+				'timeOut',
+				'redirectCount',
+				'version',
+				'userAgent',
+				'rejectUnsafeUrls',
+				'proxyBlockLocalRequests',
+				'localSSLVerify',
+				'sslVerify',
+				'useSteamTransport',
+				'useCurlTransport',
+			),
+		);
+		
+		
+		foreach ( $parameters as $moduleName => $moduleParams )
+		{
+			
+			foreach ( $moduleParams as $paramName )
+			{
+				$sysFilterOpts[ 'sysFiltersData' ][ $moduleName ][ $paramName ] = $defaultData[ $moduleName ][ $paramName ];
+			}
+			
+		}
+		
+		# Save sys filter parameters
+		SysFiltersDashboardModel::setDataArray( $sysFilterOpts );
 		
 		return true;
 	}
@@ -149,14 +182,15 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		foreach ( $parameters as $moduleName => $moduleParams )
 		{
 			
-			foreach ( $moduleParams as $paramsName => $value )
+			foreach ( $moduleParams as $paramName )
 			{
-				$sysFilterOpts[ 'sysFiltersData' ][ $moduleName ][ $paramsName ] = $value;
+				$sysFilterOpts[ 'sysFiltersData' ][ $moduleName ][ $paramName ] = $defaultData[ $moduleName ][ $paramName ];
 			}
 			
 		}
 		
-		print_r( $sysFilterOpts );
+		# Save sys filter parameters
+		SysFiltersDashboardModel::setDataArray( $sysFilterOpts );
 		
 		return true;
 	}

@@ -40,20 +40,7 @@ class SysFiltersDashboardController extends Controller {
 		if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
 		{
 			
-			# Load default if never submitted or load previously saved data
-			$defaults = \WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel::getDefaults();
-
-			$data = $model->isNeverSubmitted() ? array() : $model->getData();
-			
-			foreach ( $defaults as $moduleName => $moduleDefaultValues )
-			{
-				if ( ! isset( $data[ $moduleName ] ) )
-				{
-					$data[ $moduleName ] = $moduleDefaultValues;
-				}
-			}
-			
-			$form->setValue( array( $form->getName() => $data ) );
+			$form->setValue( array( $form->getName() => $model->getData() ) );
 			
 			return $result;
 		}
