@@ -27,8 +27,8 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	protected $_upgraders = array
 	(
 	
-		'0.5.0', /* This version never returned from $this->installed Version 
-								however installer witll run this as it always start at index 0 */	
+		'0.5.0', /* This version never returned from $this->getInstalledVersion()
+								however installer will run this as installer is always start at index 0 */	
 		'1.4.0',
 		
 		'1.5.0',
@@ -98,7 +98,10 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	}
 	
 	/**
-	* put your comment there...
+	* Upgrade all version < 1.4.0
+	* 
+	* Add default Sys Filter Parameters when as it initially added
+	* in version 1.4.0
 	* 
 	*/
 	public function upgrade_050()
@@ -146,6 +149,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	/**
 	* Upgrade 1.4.0 to 1.5.0
 	* 
+	* Add default Sysfilter parameters added in version 1.5.0
 	*/
 	public function upgrade_140()
 	{
@@ -153,7 +157,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		$sysFilterOpts = SysFiltersDashboardModel::getDataArray();
 		$defaultData = SysFiltersDashboardModel::getDefaults();
 		
-		# Default Sys filters Modules added in version 1.5.0
+		# Default Sys filters Modules
 		$modules = array
 		(
 			'misc',
@@ -165,7 +169,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 			$sysFilterOpts[ 'sysFiltersData' ][ $moduleName ] = $defaultData[ $moduleName ];
 		}
 		
-		# Default Sys filters parameters added in version 1.5.0
+		# Default Sys filters parameters
 		$parameters = array
 		(
 			'http' => array
