@@ -12,37 +12,62 @@
 	* put your comment there...
 	* 
 	*/
+	var editInput, childListToggler;
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	var _onediting = function( event )
 	{
+		
 		if ( event.keyCode == 13 )
 		{
-			var value = $( event.target ).val();
-			var li = editInput.parent();
-			li.find( 'input[type="checkbox"]' ).val( value );
-
-			// Get display text
-			//console.log( li.parent().data( 'WCFECheckboxList' ) );
-			li.find( 'span' ).text( li.parent().data( 'WCFECheckboxList' ).options.getEditText( value ) );
 			
-			editInput.hide();
+			// End Edit
+			endEdit( 'save' );
 
 			// Dont submit
 			return false;
 		}
 		else if ( event.keyCode == 27 )
-		{
-			var li = editInput.parent();
-			
-			editInput.hide();
-			li.find( 'span' ).show();
+		{			
+      endEdit();
 		}
 	};
 	
 	/**
 	* put your comment there...
 	* 
+	* @param event
 	*/
-	var _onaddnew = function( event )
+	var _oninlineadd = function( event )
+	{
+		var link = $( this );
+		
+		// Get parent checkbox name
+		var li = link.parent().parent();
+		var parentName = li.find( '>input[type="checkbox"]' ).prop( 'name' );
+		
+		// Create new checkbox item from parent checkbox
+		var newLi = li.clone()
+		newLi.find( '>ul' ).remove();
+		newLi.find( '>span' ).text( '' );
+		
+		newLi.find( 'input[type="checkbox"]' ).prop( 'name', parentName );
+		
+		li.find( '>ul' ).prepend( newLi );
+		
+		_onedit( { target : newLi.find( '>span' ).get( 0 ) } );
+		
+		link.hide();
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var _oninputaddnew = function( event )
 	{
 		switch ( event.keyCode )
 		{
@@ -63,7 +88,7 @@
 						listItem.remove();
 				 	}
 				 )
-				 .after( textEle = $( '<span>' + options.getAddText( input.val() ) + '</span>' ) );
+				 .after( textEle = $( '<span>' + input.val() + '</span>' ) );
 				
 				if ( options.allowEdit )
 				{
@@ -85,23 +110,18 @@
 	*/
 	var _onedit = function( event )
 	{
-		// Hide text
 		var li = $( event.target.parentNode );
 		var textEle = $( event.target );
+		
+		// Expand list
+		li.parent().addClass( 'expanded' ).show();
 		
 		textEle.hide();
 		
 		// Show input with checkbox value
 		editInput.insertBefore( textEle )
-		.css( { width : '90%' } )
-		.val( li.find( 'input[type="checkbox"]' ).val() ).blur(
-		
-			function()
-			{
-				textEle.show();
-				editInput.hide();
-			}
-		)
+		.css( { width : '40%' } )
+		.val( textEle.text() )
 		.show()
 		.focus();
 		
@@ -113,10 +133,132 @@
 	*/
 	var _onunchecked = function( event )
 	{
-		$( event.target ).parent().remove();
+		deleteItem( event.target );
 	};
 	
-	var editInput = $( '<input type="text" />' ).keydown( _onediting );
+	/**
+	* put your comment there...
+	* 
+	* @param checkbox
+	*/
+	var deleteItem = function( checkbox )
+	{
+		editInput.detach();
+		childListToggler.detach();
+		
+		$( checkbox ).parent().remove();
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	*/
+	var endEdit = function( action )
+	{
+		
+		var li = editInput.parent();
+		var checkbox = li.find( 'input[type="checkbox"]' );
+		var textEle = li.find( '>span' );
+		value = editInput.val();
+		
+		if ( editInput.css( 'display' ) == 'none' )
+		{
+			return;
+		}
+		
+		// hide edit input element
+		editInput.hide();
+		
+		textEle.show();
+		
+		// Remove if new and no value specified
+		if ( ! value || action == undefined )
+		{
+			
+			if ( ! textEle.text() )
+			{
+				
+				deleteItem( checkbox );	
+			}
+			
+			return;
+		}
+		
+		// Save edit
+		textEle.text( value );
+			
+		// Setting name
+		var checkboxName = checkbox.prop( 'name' );
+		var newCheckboxName = checkboxName.replace( /\[[^\]]*\]$/, '[' + value + ']' );
+		
+		// Add [] if current level is container (can has childs)
+		/// TEMP SOLUTION TO CHECK 0
+		if ( li.parent().data( 'wcfe-ui-hierarchical-component-level' ) == 0 )
+		{
+			newCheckboxName += '[]';
+		}
+		
+		checkbox.prop( 'name', newCheckboxName );
+	};
+	
+	/**
+	* put your comment there...
+	* 
+	* @param list
+	*/
+	var inlineAddNew = function( list )
+	{
+		var checkbox = $( '<input type="checkbox" value="1" checked="checked" />' );
+		var textEle = $( '<span></span>' );
+		var li = $( '<li></li>' );
+		var childList = $( '<ul class="checkbox-row wcfe-ui-hierarchical-component-level_1"></ul>' );
+		var args = list.data( 'WCFECheckboxList' ).options;
+		
+		checkbox.prop( 'name', args.baseName );
+		
+		li.append( checkbox ).append( textEle ).append( childList );
+		
+		list.prepend( li );
+		
+		_onedit( { target : textEle.get( 0 ) } );
+		
+	};
+
+	
+	/**
+	* put your comment there...
+	* 
+	* @param list
+	*/
+	var setListLevels = function( list, level )
+	{
+		
+		var nextLevel = level + 1;
+		
+		// Set list level
+		list.addClass( 'wcfe-ui-hierarchical-component-level_' + level );
+		list.data( 'wcfe-ui-hierarchical-component-level', level );
+		
+		// Find child lists
+		list.find( '>li' ).each(
+		
+			function()
+			{
+				var childList = $( this ).find( '>ul' );
+				
+				childList.each(
+				
+					function()
+					{
+						setListLevels( $( this ), nextLevel );
+					}
+					
+				);
+				
+			}
+		);
+		
+	};
 			
 	/**
 	* 	
@@ -127,22 +269,84 @@
 		var args = $.extend( 
 		{ 
 			allowNew : true,
+			addNewMode : 'input',
 			allowEdit : false,
 			newPlaceholder : null,
-			getAddText : function( value )
-			{
-				return value;
-			}
+			addMaxLevels : -1
 		}, options );
+		
+		// Merge list specific options passed through input hidden field
+		args.baseName = this.find( 'input[name="option[baseName]"]' ).val() + '[]';
 		
 		// Add new item
 		if ( args.allowNew )
 		{
-			this.find( '.checkbox-list-input' ).keydown( _onaddnew ).attr( 'placeholder', args.newPlaceholder );	
+			switch ( args.addNewMode )
+			{
+				
+				case 'inline':
+					
+					var checkboxListElement = this;
+					
+					$( '<a href="#"></a>' ).prependTo( this )
+					.addClass( 'inline-add-button' )
+					.text( args.levels[ 0 ].addText )
+					.click(
+					 
+						function()
+						{
+							
+							inlineAddNew( $( event.target ).next() );
+							
+							return false;
+							
+						}
+					);
+				
+					// Allow adding child items to the max specified level
+					var addNewChildEle = $( '<a href="#" class="add-new-child"></a>' ).click( _oninlineadd );
+					
+					this.delegate( 'li>span', 'mouseenter',
+					
+						/**
+						* 
+						*/
+						function()
+						{
+							
+							var itemEle = $( this );
+							var currentLevel = itemEle.parent().parent().data( 'wcfe-ui-hierarchical-component-level' );
+							
+							if ( currentLevel < args.addMaxLevels )
+							{
+								itemEle.append( addNewChildEle.show().text( args.levels[ currentLevel + 1 ].addText ) );
+							}
+						}
+					);
+					
+					this.delegate( 'li>span', 'mouseleave', 
+					
+						function( event )
+						{
+							
+							addNewChildEle.hide();
+						}
+						
+					);
+					
+				break;
+				
+				default:
+				
+					this.find( '.checkbox-list-input' ).keydown( _oninputaddnew ).attr( 'placeholder', args.newPlaceholder );		
+					
+				break;
+			}
+			
 		}
 		
 		// Delete
-		this.find( 'input:checkbox' ).change( _onunchecked );
+		this.delegate( 'input:checkbox', 'change', _onunchecked );
 		
 		// Edit
 		if ( args.allowEdit )
@@ -150,8 +354,74 @@
 			this.find( 'li>span' ).click( _onedit );
 		}
 		
+		// Set list levels
+		var rootList = this.find( '>ul' );
+		setListLevels( rootList, 0 );
+		
+		editInput = $( '<input type="text" />' ).hide().keydown( _onediting ).blur( endEdit );
+		childListToggler = $( '<a class="child-items-toggler" href="#"></a>' ).hide().click(
+		
+			function()
+			{
+				
+				var childList = childListToggler.parent().next().toggle().toggleClass( 'expanded' );
+				
+				if ( childList.hasClass( 'expanded' ) )
+				{
+					childListToggler.addClass( 'expanded' );
+				}
+				else 
+				{
+					childListToggler.removeClass( 'expanded' );
+				}
+				
+				return false;
+			}
+		
+		);
+		
+		// Child lists toggler
+		$( this ).delegate( '>ul li', 'mouseover', 
+		
+			function()
+			{
+				
+				var itemEle = $( this );
+				var list = itemEle.parent();
+				var childList = itemEle.find( '>ul' );
+				var currentLevel = list.data( 'wcfe-ui-hierarchical-component-level' );
+				
+				if ( currentLevel < args.addMaxLevels )
+				{
+					childListToggler.prependTo( itemEle.find( '>span' ) );
+					
+					if ( childList.hasClass( 'expanded' ) )
+					{
+						childListToggler.addClass( 'expanded' );
+					}
+					else 
+					{
+						childListToggler.removeClass( 'expanded' );
+					}
+					
+					childListToggler.show();
+				}				
+
+			}
+			
+		);
+		
+		$( this ).delegate( '>ul li', 'mouseleave', 
+		
+			function()
+			{
+				childListToggler.detach();
+			}
+			
+		);		
+		
 		// Hold supplied instances vars for later reference
-		this.find( 'ul.checkbox-row' ).each(
+		rootList.each(
 			function()
 			{
 				$( this ).data( 'WCFECheckboxList', { options : args } );

@@ -266,6 +266,52 @@ td.help-label-text {
     font-size: 14px;
     border: 1px solid black;
 }
+.checkbox-list ul ul {
+  border: none;
+  height: auto;
+  overflow: visible !important;
+  padding: 3px 0 0 20px;
+  margin: 1px 0 0 6px;
+  display: none;
+  background-color: #D3D3D3;
+}
+.checkbox-list a.child-items-toggler
+{
+    display: inline-block;
+    width: 16px;
+    position: relative;
+    height: 16px;
+    padding: 0;
+    background: url('Images/bullet_toggle_plus.png') no-repeat -8px -8px;
+    top: 4px;
+    margin-right: 6px;
+    margin-top: -3px;
+}
+
+.checkbox-list a.child-items-toggler.expanded
+{
+	background: url('Images/bullet_toggle_minus.png') no-repeat -8px -8px !important;
+}
+.wcfe-checkbox-list-container > ul > li
+{
+	margin-bottom: 7px;
+}
+.checkbox-list ul ul li span
+{
+	width: 59% !important;
+}
+.checkbox-list .inline-add-button
+{
+  float: right;
+  position: relative;
+  right: 63px;
+  bottom: 5px;
+}
+.checkbox-list a.add-new-child 
+{
+    position: relative;
+    left: 16px;
+}
 .checkbox-list label
 {
     vertical-align: top;

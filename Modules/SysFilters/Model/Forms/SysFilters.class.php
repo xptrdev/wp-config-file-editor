@@ -27,7 +27,8 @@ class SysFiltersOptionsForm extends Forms\Form
 		# HTTP MODULE
 		$this->miscModule()
 				 ->httpModule()
-				 ->editorModule();
+				 ->editorModule()
+				 ->ksesModule();
 				 
 	}
 	
@@ -318,6 +319,50 @@ class SysFiltersOptionsForm extends Forms\Form
 	* put your comment there...
 	* 
 	*/
+	public function ksesModule()
+	{
+		
+		$module = $this->add( new Forms\Fields\FormListField( 'kses' ) );
+		
+		$module->add( new Forms\Fields\FormListField( 'protocols' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'protocol' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		$module->add( new Forms\Fields\FormListField( 'postTags' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormArrayField( 'attributes', new Forms\Fields\FormStringField( 'attribute' ) ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+
+		$module->add( new Forms\Fields\FormListField( 'commentTags' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormArrayField( 'attributes', new Forms\Fields\FormStringField( 'attribute' ) ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+		/*		 	 
+		$module->add( new Forms\Fields\FormListField( 'entities' ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'tag' ) ) )
+					
+					// Field advanced options
+				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 	*/
+		return $this;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	*/
 	protected function miscModule()
 	{
 		
@@ -356,7 +401,7 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 
 		$module->add( new Forms\Fields\FormListField( 'uploadAllowedMimes' ) )
-				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'type' ) ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormArrayField( 'extensions', new Forms\Fields\FormStringField( 'extension' ) ) ) )
 					
 					// Field advanced options
 				 	 ->add( new Forms\Fields\FormListField( 'options' ) )

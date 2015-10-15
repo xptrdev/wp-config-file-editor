@@ -50,7 +50,7 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 		);
 		$queryVarsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'misc', 'queryVars', 'value' ) );
 		
-		$uploadMimeTypes = new Misc\UploadAllowedMimeTypes( 
+		$uploadMimeTypes = new Fields\StructuredCheckboxList( 
 			$form, 
 			$module->get( 'uploadAllowedMimes' )->get( 'value' ),
 			'Upload Allowed Mime Types', 

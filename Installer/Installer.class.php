@@ -80,15 +80,23 @@ class Installer extends \WCFE\Libraries\InstallerService {
 			
 			switch ( $state )
 			{
+				
 				case self::STATE_FRESH_INSTALL:
 				
 					self::$instance->install();					
 				
 				break;
+				
 				case self::STATE_UPGRADE:
 
 					self::$instance->upgrade();
 				
+				break;
+				
+				default:
+				
+					// Installed
+					
 				break;
 			}
 			
@@ -162,6 +170,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		(
 			'misc',
 			'editor',
+			'kses',
 		);
 		
 		foreach ( $modules as $moduleName )

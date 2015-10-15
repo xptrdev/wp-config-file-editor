@@ -21,6 +21,58 @@ class CheckboxListField extends FieldBase {
 	* @var mixed
 	*/
 	protected $addNew = true;
+
+	/**
+	* put your comment there...
+	* 
+	* @param \DOMDocument $document
+	* @param {\DOMDocument|\DOMElement} $list
+	* @param mixed $formAdapter
+	* @param mixed $key
+	* @param mixed $item
+	* @param mixed $field
+	* @param mixed $elems
+	* @return \DOMElement
+	*/
+	protected function createItem( 	\DOMDocument & $document, 
+																	\DOMElement $list, 
+																	& $formAdapter, 
+																	$key, 
+																	$name,
+																	$item,
+																	$elems )
+	{
+		
+		$li = $document->createElement( 'li' );
+		
+		# Create option for every option list item
+		$checkBox = new CheckboxField( $this->getForm(), $item[ 'field' ], $item[ 'text' ], null, $item[ 'value' ] );
+		
+		$checkboxEle = $checkBox->render( $document, $list, $elems, $formAdapter );
+		$checkboxEle->setAttribute( 'name', $name );
+		
+		$text = $document->createElement( 'span' );
+		$text->nodeValue = $item[ 'text' ];
+		
+		$li->appendChild( $checkboxEle );
+		$li->appendChild( $text );
+		
+		$list->appendChild( $li );
+		
+		return $li;
+	}
+	
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $itemKey
+	* @param mixed $item
+	* @param mixed $formAdapter
+	*/
+	protected function getItemName( $itemKey, $item, & $formAdapter )
+	{
+		return $formAdapter->getFieldName( $this ) . '[]';
+	}
 	
 	/**
 	* put your comment there...
@@ -52,6 +104,23 @@ class CheckboxListField extends FieldBase {
 	/**
 	* put your comment there...
 	* 
+	* @param \DOMElement $container
+	*/
+	protected function onListCreated( \DOMElement & $container, & $formAdapter ) {}
+	
+	/**
+	* put your comment there...
+	* 
+	* @param \DOMDocument $doc
+	* @param mixed $item
+	* @param \DOMElement $li
+	* @param mixed $formAdapter
+	*/
+	protected function onRenderItem( \DOMDocument $doc, $item, \DOMElement $li, & $formAdapter ) {}
+	
+	/**
+	* put your comment there...
+	* 
 	* @param \DOMDocument $document
 	* @param {\DOMDocument|\DOMElement} $parent
 	* @param mixed $elems
@@ -69,25 +138,20 @@ class CheckboxListField extends FieldBase {
 		$items = $this->getItems();
 		
 		# Fill list
-		foreach ( $items as $item )
+		foreach ( $items as $key => $item )
 		{
+		
+			$li = $this->createItem( 
+				$document, 
+				$list, 
+				$formAdapter, 
+				$key, 
+				$this->getItemName( $key, $item, $formAdapter ), 
+				$item,
+				$elems 
+			);
 			
-			$li = $document->createElement( 'li' );
-			
-			# Create option for every option list item
-			$checkBox = new CheckboxField( $form, $item[ 'field' ], $item[ 'text' ], null, $item[ 'value' ] );
-			
-			$checkboxEle = $checkBox->render( $document, $list, $elems, $formAdapter );
-			$checkboxEle->setAttribute( 'name', $formAdapter->getFieldName( $this ) . '[]' );
-			
-			$text = $document->createElement( 'span' );
-			$text->nodeValue = $item[ 'text' ];
-			
-			$li->appendChild( $checkboxEle );
-			$li->appendChild( $text );
-			
-			# Add to ilst
-			$list->appendChild( $li );
+			$this->onRenderItem( $document, $item, $li, $formAdapter );
 			
 		}
 		
@@ -112,6 +176,8 @@ class CheckboxListField extends FieldBase {
 			
 			$container->appendChild( $inputElement );			
 		}
+		
+		$this->onListCreated( $container, $formAdapter );
 		
 		$row->appendChild( $container );
 		

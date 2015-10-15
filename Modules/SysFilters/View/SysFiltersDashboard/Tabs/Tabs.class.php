@@ -40,6 +40,7 @@ class Tabs extends TabsBase {
 			'Misc',
 		 	'HTTP',
 		 	'Editor',
+		 	'Kses',
 		)
 	);
 

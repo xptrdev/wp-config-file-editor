@@ -126,7 +126,12 @@ class Module
 				$this->handlers[ $handlerCallbackName ][ 'params' ] = isset( $filter[ 'params' ] ) ? $filter[ 'params' ] : null;
 				
 				# Map filters to be binded
-				$this->filters[ $varName ] = array( 'filter' => $filter[ 'filter' ], 'callback' => $handlerCallbackName );
+				$this->filters[ $varName ] = array
+				( 
+					'filter' => $filter[ 'filter' ], 
+					'callback' => $handlerCallbackName, 
+					'args' => isset( $filter[ 'args' ] ) ? $filter[ 'args' ] : 1
+				);
 			}
 		}
 		
@@ -190,8 +195,7 @@ class Module
 			if ( ! $this->getVarOption( $varName, 'disabled' ) )
 			{
 				
-				add_filter( $handler[ 'filter' ], array( & $this, $handler[ 'callback' ] ), $this->getVarOption( $varName, 'priority' ) );	
-				
+				add_filter( $handler[ 'filter' ], array( & $this, $handler[ 'callback' ] ), $this->getVarOption( $varName, 'priority' ), $handler[ 'args' ] );
 			}
 			
 		}

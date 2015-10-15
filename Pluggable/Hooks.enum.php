@@ -39,4 +39,5 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_HTTP_FIELDS = 'wcfe_view-tabs-tab-sysfilters-http-fields';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_EDITOR_FIELDS = 'wcfe_view-tabs-tab-sysfilters-editor-fields';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_MISC_FIELDS = 'wcfe_view-tabs-tab-sysfilters-misc-fields';
+	const FILTER_VIEW_TABS_TAB_SYSFILTERS_KSES_FIELDS = 'wcfe_view-tabs-tab-sysfilters-kses-fields';
 }

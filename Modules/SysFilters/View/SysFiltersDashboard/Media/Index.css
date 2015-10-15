@@ -56,26 +56,36 @@ a.toggle-advanced-options-panel {
   padding: 10px 10px;
 }
 
-ul#wcfe-sysfilters-misc-uploadAllowedMimes-value
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value,
+ul#wcfe-sysfilters-kses-postTags-value,
+ul#wcfe-sysfilters-kses-commentTags-value
 {
 	width: 400px;
+	height: 300px;
 	overflow:auto;
 }
 
-ul#wcfe-sysfilters-misc-uploadAllowedMimes-value span
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value span,
+ul#wcfe-sysfilters-kses-postTags-value span,
+ul#wcfe-sysfilters-kses-commentTags-value span
 {
-    overflow: hidden;
-    width: 350px;
-    display: inline-block;
-    height: 17px;
-    cursor: pointer;
+  overflow: hidden;
+  width: 350px;
+  display: inline-block;
+  height: 17px;
+  cursor: pointer;
 }
 
-#wcfe-sysfilters-misc-uploadAllowedMimes-value-row input[type="text"]
+#wcfe-sysfilters-misc-uploadAllowedMimes-value-row input[type="text"],
+#wcfe-sysfilters-kses-postTags-value-row input[type="text"]
+#wcfe-sysfilters-kses-commentTags-value-row input[type="text"]
 {
 	width: 430px;
 }
 
-ul#wcfe-sysfilters-misc-uploadAllowedMimes-value li {
-    padding: 3px 0px;
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value li,
+ul#wcfe-sysfilters-kses-postTags-value li
+ul#wcfe-sysfilters-kses-commentTags-value li {
+  padding: 3px 0px;
 }

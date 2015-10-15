@@ -116,7 +116,7 @@
 			} )
 			
 			// Activate tab --> Make sure to receive activate event when loaded
-			.tabs( 'option', 'active', 0 )
+			.tabs( 'option', 'active', 3 )
 			
 			// Show Tab
 			.show( );
@@ -160,18 +160,37 @@
 		*/
 		this.load = function()
 		{
-			// Upload Mime types list
-			
-			$( '#wcfe-sysfilters-misc-uploadAllowedMimes-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
+			//  Post Tags and Comment Tags Checkbox lists
+			$( 	'#wcfe-sysfilters-kses-postTags-value-row .wcfe-checkbox-list-container,' +
+					'#wcfe-sysfilters-kses-commentTags-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
 			( { 
-				allowEdit : true,
-				getEditText : function( value ) 
-				{
-					return value.split( ',' )[ 0 ];
-				},
-				newPlaceholder : 'e.g jpg|jpeg , image/jpg'
+				
+				addMaxLevels : 1,
+				
+				levels : [
+					{ addText : 'Add Tag' },
+					{ addText : 'Add Attribute' }
+				],
+				
+				addNewMode : 'inline'
+				
 			} );
-	
+			
+			//  Post Tags and Comment Tags Checkbox lists
+			$( 	'#wcfe-sysfilters-misc-uploadAllowedMimes-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
+			( { 
+				
+				addMaxLevels : 1,
+				
+				levels : [
+					{ addText : 'Add Type' },
+					{ addText : 'Associate Extension' }
+				],
+				
+				addNewMode : 'inline'
+				
+			} );
+			
 		};
 		
 	};
