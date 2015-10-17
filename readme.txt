@@ -4,11 +4,11 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.4.1
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Modify Wordpress wp-config.php file values using a Simple User Interface Form.
+Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it now support modifying wide System parameters
 
 == Description ==
 
@@ -17,7 +17,7 @@ In additional to modifying Config File parameters using web form, its also possi
 WCFE Plugin start to include few helpers tools related to wp-config.php file editing like Setup Multi Sites. Setup Multi Site Wizard feature
 is newly added to make setup Multi Sites more fun by passing only 2 steps without any tecnhiqual works.
 
-In additional to edit wp-config.php file WCF Plugin start to allow of changing Wordpress/System parameters. This feature going to be huge and many many parameters will be added in the feature. Currently it only provide few parameters, please check below:
+Additionally its possible to modify wide system parameters, Image Quality, Upload allowed mime types, Query Vars, HTTP Client, Post Editor and Kses module. More parameters will be added later!!!
 
 = wp-config.php Editor Features =
 * Modify wp-config.php file using web form
@@ -50,8 +50,14 @@ In additional to edit wp-config.php file WCF Plugin start to allow of changing W
 * Turn ON/OFF write permissions for wp-config.php and .htaccess files
 * Delete emergency backup
 
+In additional to edit wp-config.php file WCF Plugin start to allow of changing Wordpress/System parameters.
 
-The following wp-config.php fields is being supported:
+= System Parameters features =
+* Configure Wordpress HTTP client used to contact external servers (Plugins updates, Feeds, etc...)
+* Configure Kses module (Define HTML Tags and entities list for posts and comments)
+* Configure TinyMCE Editor (Change Size, Style, Enable/Disable Plugins, Hide/Show buttons)
+
+wp-config.php suported fields:
 
 = Maintenance =
 * Wordpress Cache (WP_CACHE)
@@ -155,22 +161,52 @@ The following wp-config.php fields is being supported:
 * Plugins Path (PLUGINS_COOKIE_PATH)
 * Domain (COOKIE_DOMAIN)
 
-= System Parameters =
-* Configure HTTP Request components that is being internally used by Wordpress for any external HTTP requests
+System Parameters supported fields
 
-The following System parameters is being supported:
+= Misc =
+* Enable/Disable single query var
+* Persistly Cache Themes
+* Manage Upload Allowed Mime Types with associated extensions
+* Image Quality
+* Image Manipulation memory limit
 
 = HTTP Request =
-* Time Out
+* Request Time Out
 * Redirect Count
-* HTTP Version
+* Header HTTP Version
 * User Agent
-* Enable/Disable Reject Unsafe URLs
-* Enable/Disable Proxy Block Local Requests
-* Enable/Disable Local SSL Verify
-* Enable/Disable SSL Verify
-* Enable/Disable Steam Transport
-* Enable/Disable Cron Transport
+* Reject Unsafe URLs
+* Stream
+* Blocking
+* Compress
+* Decompress
+* Response Size Limit
+* Allow Local host
+* Proxy Block Local Requests
+* Local SSL Verify
+* SSL Verify
+* Steam Transport
+* Curl Transport
+
+= Editor =
+* Enable / Disable Auto Paragraph
+* Change Height
+* Show / Hide Media Button
+* HTML Textarea rows count
+* Editor Tab Index
+* Editor CSS style
+* Edit CSS class
+* Enable / Disable Teeny
+* Enable / Disable TinyMCE
+* Enable / Disable Quick Tags + Managing quick tags buttons
+* Enable / Disable Built=in Plugins
+* Show / Hide Second Row buttons
+
+= Kses =
+* Enable / Disabled allowed protocols
+* Manage Post Allowed HTML tags and attributes
+* Manage Comment Allowed HTML tags and attributes
+* Manage Allowed HTML Entities
 
 == Installation ==
 
@@ -215,8 +251,11 @@ Yes, if any invalid value added to the wp-config.php file. You will then need to
 21. Multi Sites Setup Wizard config helper screen
 22. Save Config File warning dialog
 23. Restore backup page
-24. System Parameters ( HTTP Request Parameters )
-25. Path lookup
+24. Path lookup
+25. System Parameters: Misc Tab
+26. System Parameters: HTTP Request Tab
+27. System Parameters: Editor Tab
+28. System Parameters: Kses Tab
 
 == Upgrade notice ==
 * Don't use this Plugin for Wordpress < 4.0
@@ -228,6 +267,14 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+
+= 1.5 =
+* Fix: Multi Sites Wizard .htaccess code escaped by Magic Quote
+* Add: System Parameters Misc Tab
+* Add: System Parameters Editor Tab
+* Add: System Parameters Kses Tab
+* Add: System Parameters HTTP Stream, Blocking, Compress, Decompress, Response Size Limit and Allow local host fields
+
 = 1.4.1 =
 * Fix: Could not connect to Database error when using Database port
 
