@@ -54,10 +54,14 @@ class MultiSiteToolsServiceController extends ServiceController {
 		$model =& $this->getModel( 'MultiSiteTools' );
 		$result = array( 'error' => true );
 		
+		# Read raw inputs
+		$configConsts = filter_input( INPUT_POST, 'configConsts', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
+		$htaccessCode = filter_input( INPUT_POST, 'htaccessCode', FILTER_UNSAFE_RAW );
+		
 		# Write config file
 		$editorModel =& $this->getModel( 'Editor' );
 		
-		if ( ! $model->writeMSConfigFileConstants( $editorModel, $_POST[ 'configConsts' ] ) )
+		if ( ! $model->writeMSConfigFileConstants( $editorModel, $configConsts ) )
 		{
 			
 			$result[ 'errorMessages' ] = $model->getErrors();
@@ -71,7 +75,7 @@ class MultiSiteToolsServiceController extends ServiceController {
 		$model->reactivatePlugins();
 	  
 		# Write htaccess file
-		if ( ! $model->writeMSHtAccessFile( $_POST[ 'htaccessCode' ] ) )
+		if ( ! $model->writeMSHtAccessFile( $htaccessCode ) )
 		{
 			
 			$result[ 'errorMessages' ] = $model->getErrors();
