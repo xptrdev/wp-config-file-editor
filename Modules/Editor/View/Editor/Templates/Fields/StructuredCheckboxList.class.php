@@ -48,7 +48,7 @@ class StructuredCheckboxList extends CheckboxListField
 			$items[ $text ] = array
 			(
 				'text' => $text,
-				'value' => true,
+				'checked' => true,
 				'field' => $child
 			);
 			
@@ -102,7 +102,7 @@ class StructuredCheckboxList extends CheckboxListField
 
 			$childItem = array(
 				'text' => $childName,
-				'value' => true,
+				'checked' => true,
 				'field' => $childField
 			);
 			

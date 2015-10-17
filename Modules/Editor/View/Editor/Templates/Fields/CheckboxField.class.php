@@ -20,6 +20,13 @@ class CheckboxField extends FieldBase {
 	* 
 	* @var mixed
 	*/
+	protected $checked = null;
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $value;
 
 	/**
@@ -70,7 +77,7 @@ class CheckboxField extends FieldBase {
 		$chkbox->setAttribute( 'value', $this->getValue() );
 		
 		# Mark checked
-		if ( $this->getValue() == $field->getValue() ) 
+		if ( ( $this->checked ) || ( $this->getValue() == $field->getValue() ) )
 		{
 			$chkbox->setAttribute( 'checked', 'checked' );
 		}
@@ -82,6 +89,16 @@ class CheckboxField extends FieldBase {
 		$row->appendChild( $chkbox );
 		
 		return $chkbox;		
+	}
+
+	/**
+	* put your comment there...
+	* 
+	* @param mixed $checked
+	*/
+	public function setChecked( $checked )
+	{
+		$this->checked = $checked;
 	}
 
 }

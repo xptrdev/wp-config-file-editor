@@ -12,7 +12,7 @@
 	* put your comment there...
 	* 
 	*/
-	var editInput, childListToggler;
+	var editInput, childListToggler, addNewChildEle;
 	
 	/**
 	* put your comment there...
@@ -61,6 +61,8 @@
 		_onedit( { target : newLi.find( '>span' ).get( 0 ) } );
 		
 		link.hide();
+		
+		return false;
 	};
 	
 	/**
@@ -82,13 +84,11 @@
 				var textEle;
 				var options = list.data( 'WCFECheckboxList' ).options;
 				
-				$( '<input type="checkbox" name="' + itemName + '" value="' + input.val() + '" checked="checked" />' ).appendTo( listItem ).change( 
-				 	function()
-				 	{
-						listItem.remove();
-				 	}
-				 )
-				 .after( textEle = $( '<span>' + input.val() + '</span>' ) );
+				$( '<input type="checkbox" name="' + itemName + '" value="' + input.val() + '" checked="checked" />' )
+				
+				.appendTo( listItem )
+				
+				.after( textEle = $( '<span>' + input.val() + '</span>' ) );
 				
 				if ( options.allowEdit )
 				{
@@ -145,6 +145,11 @@
 	{
 		editInput.detach();
 		childListToggler.detach();
+		
+		if ( addNewChildEle ) 
+		{
+			addNewChildEle.detach();
+		}
 		
 		$( checkbox ).parent().remove();
 	};
@@ -302,7 +307,7 @@
 					);
 				
 					// Allow adding child items to the max specified level
-					var addNewChildEle = $( '<a href="#" class="add-new-child"></a>' ).click( _oninlineadd );
+					addNewChildEle = $( '<a href="#" class="add-new-child"></a>' ).click( _oninlineadd );
 					
 					this.delegate( 'li>span', 'mouseenter',
 					

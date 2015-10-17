@@ -47,6 +47,13 @@ class CheckboxListField extends FieldBase {
 		
 		# Create option for every option list item
 		$checkBox = new CheckboxField( $this->getForm(), $item[ 'field' ], $item[ 'text' ], null, $item[ 'value' ] );
+
+		// Structure checkbox list compatibility		
+		if ( isset( $item[ 'checked' ] ) )
+		{
+			$checkBox->setChecked( $item[ 'checked' ] );
+		}
+		
 		
 		$checkboxEle = $checkBox->render( $document, $list, $elems, $formAdapter );
 		$checkboxEle->setAttribute( 'name', $name );
