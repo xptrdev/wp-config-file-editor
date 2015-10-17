@@ -4,7 +4,7 @@
 * Plugin URI: http://wp-cfe.xptrdev.com
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.4.1
+* Version: 1.5
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form
 * License: GPL2
 */
@@ -120,7 +120,11 @@ class Plugin extends PluginBase
 	protected function bootStrap()
 	{
 		# Installer
-		\WCFE\Installer\Installer::run( $this->version );
+		if ( ! \WCFE\Installer\Installer::run( $this->version ) )
+		{
+			// Could not install !!!!
+			return;
+		}
 		
 		# System Plugins
 		\WCFE\SysPlugins\Plugins::load()->runPlugins();

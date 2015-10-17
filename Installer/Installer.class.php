@@ -80,6 +80,8 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	public static function run( $currentVersion )
 	{
 		
+		$result = null;
+		
 		if ( ! self::$instance )
 		{
 			# Create new installer
@@ -93,26 +95,27 @@ class Installer extends \WCFE\Libraries\InstallerService {
 				
 				case self::STATE_FRESH_INSTALL:
 				
-					self::$instance->install();					
+					$result = self::$instance->install();					
 				
 				break;
 				
 				case self::STATE_UPGRADE:
 
-					self::$instance->upgrade();
+					$result = self::$instance->upgrade();
 				
 				break;
 				
 				default:
 				
 					// Installed
+					$result = true;
 					
 				break;
 			}
 			
 		}
 		
-		return self::$instance;
+		return $result;
 	}
 	
 	/**

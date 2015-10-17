@@ -104,7 +104,7 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 				
 				if ( ! $this->$upgraderMethodName() )
 				{
-					return;
+					return false;
 				}
 				
 			}
@@ -117,7 +117,7 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 		# Save state
 		$this->writeState();
 		
-		return;
+		return true;
 	}
 	
 	/**
@@ -133,15 +133,17 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	public final function upgrade()
 	{
 		
+		$result = false;
+		
 		$installedVersion = $this->getInstalledVersion();
 		
 		$installedVersionUIdx = array_search( $installedVersion, $this->_upgraders );
 		
 		if ( $installedVersionUIdx !== FALSE )
 		{
-			$this->processUpgraders( $installedVersionUIdx );
+			$result = $this->processUpgraders( $installedVersionUIdx );
 		}
 		
-		return $this;
+		return $result;
 	}
 }
