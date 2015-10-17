@@ -40,19 +40,6 @@ class SysFiltersDashboardController extends Controller {
 		if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
 		{
 			
-			////////////// TEST CODE /////////////////////////////
-			
-			///$df = \WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel::getDefaults();
-			///print_r( $d );
-			///die();
-			
-			//$testData = array( 'kses' => array( 'postTags' => array( 'value' => array( 'div' => array( 'class' => true ) ) ) ) );
-			//$form->setValue( array( $form->getName() => $testData ) );
-			//print_r( $form->getValue() );
-			//die();
-			
-			////////////// TEST CODE /////////////////////////////
-			
 			$form->setValue( array( $form->getName() => $model->getData() ) );
 			
 			return $result;

@@ -22,6 +22,13 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 	* 
 	* @var mixed
 	*/
+	protected $containersData = array( 'imagesEditor' => array( 'title' => 'Image' ) );
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SYSFILTERS_MISC_FIELDS;
 
 	/**

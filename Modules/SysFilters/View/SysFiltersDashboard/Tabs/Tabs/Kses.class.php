@@ -67,12 +67,22 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$commentTags->setClassName( 'wcfe-editable-checkbox-list' );
-			
-		$this->fields[ 'allowedProtocols' ] = array
+
+		$htmlEntities = new Fields\CheckboxListField( 
+			$form, 
+			$module->get( 'entities' )->get( 'value' ),
+			'HTML Entities', 
+			'Allow what HTML Entities to be inserted',
+			array( 'optionsPanel' => new AdvancedOptionsPanel() )
+		);
+		
+							
+		$this->fields[ 'kses' ] = array
 		(
 			$allowedProtocols,
 			$postTags,
 			$commentTags,
+			$htmlEntities
 		);
 				
 	}

@@ -22,6 +22,9 @@ class KsesModule extends Module
 	public function _tags( $callbackName, $varName, $tags, $context )
 	{
 		
+		# Applying Tags filter single time will call all associated
+		# handlers even those not requested by the variable name
+		# So lets make sure we're returing the correct result with the requested context/varname
 		if ( 	( ( $context == 'post' ) && ( $varName == 'postTags' ) ) || 
 					( ( $context == 'pre_comment_content' ) && ( $varName == 'commentTags' ) ) )
 		{
@@ -49,6 +52,9 @@ class KsesModule extends Module
 			'tags' => array(
 			  'postTags' => array( 'filter' => 'wp_kses_allowed_html', 'args' => 2 ),
 			  'commentTags' => array( 'filter' => 'wp_kses_allowed_html', 'args' => 2 ),
+			),
+			'setGlobalVar' => array(
+			  'entities' => array( 'filter' => 'init', 'params' => array( 'varName' => 'allowedentitynames' ) ),
 			)
 		);
 		

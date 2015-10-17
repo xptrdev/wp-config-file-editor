@@ -17,27 +17,6 @@ class MiscModule extends Module
 	* put your comment there...
 	* 
 	*/
-	public function _uploadAllowedMimeTypes()
-	{
-		$unformattedList = $this->getVar( 'uploadAllowedMimes' );
-		
-		$wpList = array();
-		
-		foreach ( $unformattedList as $item )
-		{
-			
-			$item = explode( ',', $item );
-			
-			$wpList[ trim( $item[ 0 ] ) ] = trim( $item[ 1 ] );
-		}
-		
-		return $wpList;
-	}
-
-	/**
-	* put your comment there...
-	* 
-	*/
 	public function getFilters()
 	{
 		
@@ -49,11 +28,8 @@ class MiscModule extends Module
 				'quality' => array( 'filter' => 'wp_editor_set_quality' ),
 				'memoryLimit' => array( 'filter' => 'image_memory_limit' ),
 				'themesPersistCache' => array( 'filter' => 'wp_cache_themes_persistently' ),
-			),
-			'uploadAllowedMimeTypes' => array
-			(
 				'uploadAllowedMimes' => array( 'filter' => 'upload_mimes' ),
-			)
+			),
 		);
 		
 		$this->buildFiltersList( $filtersToBuild );

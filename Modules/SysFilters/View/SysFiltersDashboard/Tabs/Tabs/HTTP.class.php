@@ -175,6 +175,15 @@ class HTTPOptionsTab extends FieldsTab {
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
+		$this->fields[] = new Fields\CheckboxField( 
+			$form, 
+			$module->get( 'allowLocalHost' )->get( 'value' ), 
+			'Allow local Host', 
+			'If host appears local, reject unless specifically allowed',
+			1, 
+			array( 'optionsPanel' => new AdvancedOptionsPanel() )
+		);
+		
 	}
 	
 }

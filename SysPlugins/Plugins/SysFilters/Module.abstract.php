@@ -109,6 +109,19 @@ class Module
 	/**
 	* put your comment there...
 	* 
+	* @param mixed $callbackName
+	* @param mixed $varName
+	*/
+	public function _setGlobalVar( $callbackName, $varName )
+	{
+		$params = $this->handlers[ $callbackName ][ 'params' ];
+		
+		$GLOBALS[ $params[ 'varName' ] ] = $this->getVar( $varName );
+	}
+
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $filters
 	*/
 	public function & buildFiltersList( $filters )

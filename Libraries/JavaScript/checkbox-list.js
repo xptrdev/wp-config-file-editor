@@ -213,8 +213,9 @@
 		var li = $( '<li></li>' );
 		var childList = $( '<ul class="checkbox-row wcfe-ui-hierarchical-component-level_1"></ul>' );
 		var args = list.data( 'WCFECheckboxList' ).options;
+		var baseName = list.parent().find( 'input[name="option[baseName]"]' ).val() + '[]';
 		
-		checkbox.prop( 'name', args.baseName );
+		checkbox.prop( 'name', baseName );
 		
 		li.append( checkbox ).append( textEle ).append( childList );
 		
@@ -274,9 +275,6 @@
 			newPlaceholder : null,
 			addMaxLevels : -1
 		}, options );
-		
-		// Merge list specific options passed through input hidden field
-		args.baseName = this.find( 'input[name="option[baseName]"]' ).val() + '[]';
 		
 		// Add new item
 		if ( args.allowNew )

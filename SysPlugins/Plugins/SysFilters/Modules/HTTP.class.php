@@ -44,6 +44,7 @@ class HTTPModule extends Module
 				'sslVerify' => array( 'filter' => 'https_ssl_verify' ),
 				'useSteamTransport' => array( 'filter' => 'use_streams_transport' ),
 				'useCurlTransport' => array( 'filter' => 'use_curl_transport' ),
+				'allowLocalHost' => array( 'filter' => 'http_request_host_is_external' ),
 			)
 		);
 		

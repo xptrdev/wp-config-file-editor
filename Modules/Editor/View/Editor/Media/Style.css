@@ -491,6 +491,17 @@ table#wcfe-info-paths-table input {
     font-weight: bold;
 }
 
+div#subcontainer-imagesEditor strong.title {
+    background-color: #eee;
+    padding: 10px 4px;
+    margin-bottom: 17px;
+    font-family: monospace;
+    font-size: 14px;
+    display: block;
+    text-align: left;
+    color: gray;
+}
+
 /* PREVIEW */
 #config-file-content 
 {

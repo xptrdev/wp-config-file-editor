@@ -92,6 +92,22 @@
 		};
 	
 		/**
+		* put your comment there...
+		* 
+		*/
+		var getActiveTabIndex = function()
+		{
+			var index = $.cookie( 'wcfe-system-parameters-active-tab' );
+			
+			if ( ! index )
+			{
+				index = 1;
+			}
+			
+			return index - 1;
+		};
+	
+		/**
 		* 
 		*/
 		var initialize = function()
@@ -107,7 +123,7 @@
 					function(event, ui) 
 					{
 						// Save active tab index into cookies
-						//setActiveTabIndex();
+						setActiveTabIndex();
 						
 						// Store actiove Tab object
 						activeTab = ui.newPanel;
@@ -116,7 +132,7 @@
 			} )
 			
 			// Activate tab --> Make sure to receive activate event when loaded
-			.tabs( 'option', 'active', 3 )
+			.tabs( 'option', 'active', getActiveTabIndex() )
 			
 			// Show Tab
 			.show( );
@@ -138,7 +154,20 @@
 			
 			// Modules
 			WCFESysFiltersFormMiscModule.load();
+			WCFESysFiltersFormKsesModule.load();
 		}
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		var setActiveTabIndex = function()
+		{
+			
+			$.cookie( 'wcfe-system-parameters-active-tab',  tab.tabs( 'option', 'active' ) + 1 );
+			
+			return;
+		};
 		
 		// initialize component when doc ready
 		$ ( initialize );
@@ -160,22 +189,7 @@
 		*/
 		this.load = function()
 		{
-			//  Post Tags and Comment Tags Checkbox lists
-			$( 	'#wcfe-sysfilters-kses-postTags-value-row .wcfe-checkbox-list-container,' +
-					'#wcfe-sysfilters-kses-commentTags-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
-			( { 
-				
-				addMaxLevels : 1,
-				
-				levels : [
-					{ addText : 'Add Tag' },
-					{ addText : 'Add Attribute' }
-				],
-				
-				addNewMode : 'inline'
-				
-			} );
-			
+
 			//  Post Tags and Comment Tags Checkbox lists
 			$( 	'#wcfe-sysfilters-misc-uploadAllowedMimes-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
 			( { 
@@ -194,5 +208,44 @@
 		};
 		
 	};
+	
+	
+	/**
+	* put your comment there...
+	* 
+	* @type T_JS_FUNCTION
+	*/
+	var WCFESysFiltersFormKsesModule = new function()
+	{
+		
+		/**
+		* put your comment there...
+		* 
+		*/
+		this.load = function()
+		{
+			
+			//  Post Tags and Comment Tags Checkbox lists
+			$( 	'#wcfe-sysfilters-kses-postTags-value-row .wcfe-checkbox-list-container,' +
+					'#wcfe-sysfilters-kses-commentTags-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList
+			( { 
+				
+				addMaxLevels : 1,
+				
+				levels : [
+					{ addText : 'Add Tag' },
+					{ addText : 'Add Attribute' }
+				],
+				
+				addNewMode : 'inline'
+				
+			} );
+			
+			//  Post Tags and Comment Tags Checkbox lists
+			$( 	'#wcfe-sysfilters-kses-entities-value-row .wcfe-checkbox-list-container' ).WCFECheckboxList( { } );
+			
+		};
+		
+	}
 	
 } ) ( jQuery );

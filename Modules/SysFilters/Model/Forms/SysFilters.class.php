@@ -219,9 +219,6 @@ class SysFiltersOptionsForm extends Forms\Form
 				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
-		
-		
-		
 		$module->add( new Forms\Fields\FormListField( 'stream' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
 					
@@ -260,10 +257,8 @@ class SysFiltersOptionsForm extends Forms\Form
 					// Field advanced options
 				 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
-				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );			 
-		
-		
-				 				 
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+			 				 
 		// Proxy Block local requests
 		$module->add( new Forms\Fields\FormListField( 'proxyBlockLocalRequests' ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
@@ -312,6 +307,14 @@ class SysFiltersOptionsForm extends Forms\Form
 				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
 		
+		$module->add( new Forms\Fields\FormListField( 'allowLocalHost' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'value' ) )
+					
+					// Field advanced options
+				 ->add( new Forms\Fields\FormListField( 'options' ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
+				 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
+				 
 		return $this;		 
 	}
 
@@ -347,15 +350,15 @@ class SysFiltersOptionsForm extends Forms\Form
 				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-		/*		 	 
+		
 		$module->add( new Forms\Fields\FormListField( 'entities' ) )
-				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'tag' ) ) )
+				 	 ->addChain( new Forms\Fields\FormArrayField( 'value', new Forms\Fields\FormStringField( 'entity' ) ) )
 					
 					// Field advanced options
 				 	 ->add( new Forms\Fields\FormListField( 'options' ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'priority', array( new Forms\Rules\RequiredField() ) ) )
 				 	 ->addChain( new Forms\Fields\FormIntegerField( 'disabled' ) );
-				 	*/
+				 	
 		return $this;
 	}
 	

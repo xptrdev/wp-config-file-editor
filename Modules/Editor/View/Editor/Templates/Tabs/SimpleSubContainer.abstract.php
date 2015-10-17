@@ -18,6 +18,13 @@ abstract class SimpleSubContainerTab extends Tab {
 	* 
 	* @var mixed
 	*/
+	protected $containersData = array();
+	
+	/**
+	* put your comment there...
+	* 
+	* @var mixed
+	*/
 	protected $fields = array();
 	
 	/**
@@ -79,6 +86,20 @@ abstract class SimpleSubContainerTab extends Tab {
 			$containerEle = $tabsDoc->createElement( 'div' );
 			$containerEle->setAttribute( 'id', "subcontainer-{$subContainerName}" );
 			$containerEle->setAttribute( 'class', 'simple-sub-container' );
+			
+			// Display other data if supplied
+			// This is added lately so its conditionally displayed 
+			// for backward compatibility
+			if ( isset( $this->containersData[ $subContainerName ] ) )
+			{
+				$containerData = $this->containersData[ $subContainerName ];
+				
+				$titleEle = $tabsDoc->createElement( 'strong' );
+				$titleEle->setAttribute( 'class', 'title' );
+				$titleEle->nodeValue = $containerData[ 'title' ];
+				
+				$containerEle->appendChild( $titleEle );
+			}
 			
 			$tab->appendChild( $containerEle );
 			

@@ -187,7 +187,8 @@ class Installer extends \WCFE\Libraries\InstallerService {
 				'blocking',
 				'compress',
 				'decompress',
-				'responseSizeLimit'
+				'responseSizeLimit',
+				'allowLocalHost',
 			),
 		);
 		
