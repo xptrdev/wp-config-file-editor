@@ -220,7 +220,8 @@ System Parameters supported fields
 
 = What this Plugin is used for? =
 
-Use this Plugin to modify Wordpress constants values. Those are reached only via FTP
+Use this Plugin to modify Wordpress constants values. Those are reached only via FTP. It also allow controlling Wordpress
+behavior by changing System Parameters
 
 = Is updating wp-config file might break down my site? =
 

@@ -5,7 +5,7 @@
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
 * Version: 1.5
-* Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form
+* Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */
 
