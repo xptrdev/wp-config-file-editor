@@ -29,7 +29,6 @@ class HTTPModule extends Module
 				'version' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'httpversion' ) ),
 				'userAgent' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'user-agent' ) ),
 				'rejectUnsafeUrls' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'reject_unsafe_urls' ) ),		
-				
 				'stream' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'stream' ) ),		
 				'blocking' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'blocking' ) ),		
 				'compress' => array( 'filter' => 'http_request_args', 'params' => array( 'element' => 'compress' ) ),		
