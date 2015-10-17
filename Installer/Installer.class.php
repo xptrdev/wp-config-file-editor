@@ -54,7 +54,17 @@ class Installer extends \WCFE\Libraries\InstallerService {
 			
 			if ( $hasSysFilters )
 			{
-				$installedVersion = '1.4.0';
+				
+				# Sys filter data will be exists if only system parameters
+				# page has been visited however it will be empty if never saved!
+				# We only need to do upgrade if its saved before so we avoid
+				# overriding saved data, otherwise do fresh install
+				
+				if ( isset( $hasSysFilters[ 'sysFiltersData' ][ 'http' ] ) )
+				{
+					$installedVersion = '1.4.0';
+				}
+
 			}
 		}
 		
