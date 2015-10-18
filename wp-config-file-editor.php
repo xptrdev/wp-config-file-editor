@@ -227,3 +227,4 @@ class Plugin extends PluginBase
 
 # Run The Plugin
 Plugin::plug();
+
