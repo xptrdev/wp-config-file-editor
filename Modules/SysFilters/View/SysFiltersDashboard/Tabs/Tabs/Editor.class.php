@@ -22,7 +22,7 @@ class EditorOptionsTab extends FieldsTab {
 	* 
 	* @var mixed
 	*/
-	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SYSFILTERS_HTTP_FIELDS;
+	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SYSFILTERS_EDITOR_FIELDS;
 
 	/**
 	* put your comment there...
@@ -44,7 +44,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'autoParagraph' )->get( 'value' ), 
 			'Auto Paragraph', 
-			'XXXX',
+			'Replaces double line-breaks with paragraph elements',
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -53,7 +53,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'editorHeight' )->get( 'value' ), 
 			'Editor Height', 
-			'XXXX',
+			'Editor Height in pixels',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -62,7 +62,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'mediaButtons' )->get( 'value' ), 
 			'Media Buttons', 
-			'XXXX',
+			'Whether to show the Add Media/other media buttons.',
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -72,7 +72,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'dragDropUpload' )->get( 'value' ), 
 			'Drag and Drop Uploads', 
-			'XXXX',
+			'Whether to enable drag &amp; drop on the editor uploading',
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -82,7 +82,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'textAreaRows' )->get( 'value' ), 
 			'TextArea Rows', 
-			'XXXX',
+			'Number rows in the editor textarea',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -91,7 +91,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'tabIndex' )->get( 'value' ), 
 			'Tab Index', 
-			'XXXX',
+			'Tabindex value to use',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -100,7 +100,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'editorCSS' )->get( 'value' ), 
 			'Editor Style', 
-			'XXXX',
+			'Intended for extra styles for both Visual and Text editors. Should include `&lt;style&gt;` tags, and can use "scoped"',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -109,7 +109,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'editorClass' )->get( 'value' ), 
 			'Editor CSS Class', 
-			'XXXX',
+			'Extra classes to add to the editor textarea element',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -118,7 +118,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'teeny' )->get( 'value' ), 
 			'Teeny', 
-			'XXXX',
+			'Whether to output the minimal editor config. Examples include Press This and the Comment editor',
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -128,7 +128,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'tinyMCE' )->get( 'value' ), 
 			'TinyMCE', 
-			'XXXX',
+			'Whether to load TinyMCE',
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -143,7 +143,7 @@ class EditorOptionsTab extends FieldsTab {
 					$form, 
 					$editorModule->get( 'quickTags' )->get( 'value' ), 
 					'Enable', 
-					'XXXX',
+					null,
 					1
 				),
 				
@@ -151,12 +151,12 @@ class EditorOptionsTab extends FieldsTab {
 					$form, 
 					$editorModule->get( 'quickTags' )->get( 'buttons' ), 
 					'Buttons', 
-					'XXXX'
+					null
 				)
 		
 			),
 			'Quick Tags',
-			'ZZZZ',
+			'Specify Whether to load Quicktags and what buttons to load',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -165,7 +165,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'plugins' )->get( 'value' ),
 			'Built-In Plugins', 
-			'XXXX',
+			'Enable / Disable TinyMCE Built in plugins',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$pluginsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'plugins', 'value' ) );
@@ -175,7 +175,7 @@ class EditorOptionsTab extends FieldsTab {
 			$form, 
 			$editorModule->get( 'buttons2' )->get( 'value' ),
 			'Second Row Buttons list', 
-			'XXXX',
+			'Show / Hide second row buttons',
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$buttons2->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'buttons2', 'value' ) );

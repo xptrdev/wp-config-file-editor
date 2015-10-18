@@ -79,7 +79,11 @@
 						var labelText = tipElems.eq( 0 ).text();
 						var tipText = tipElems.eq( 1 ).text();
 						
-						helpBoxList.append( '<tr><td class="help-label-text"><span>' + labelText + '</span></td><td class="help-text"><span>' + tipText + '</span></td></tr>' );
+						if ( tipText )
+						{
+							helpBoxList.append( '<tr><td class="help-label-text"><span>' + labelText + '</span></td><td class="help-text"><span>' + tipText + '</span></td></tr>' );	
+						}
+						
 					}
 				}
 			
