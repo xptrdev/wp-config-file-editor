@@ -54,14 +54,13 @@ class SysFiltersDashboardController extends Controller {
 			
 		}
 		
+		# This form is currently huge and we need to 
+		# avoid PHP max_input_vars ini restriction
+		# Use WCFE custom parser and parse raw post data
+		$postData =& \WCFE\Libraries\ParseString::parseString( file_get_contents( 'php://input' ) );
+		
 		# POST: Validate data
-		$form->setValue
-		( 
-		  array
-		  ( 
-		  	$form->getName() => filter_input( INPUT_POST, $form->getName(), FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY ) 
-		  )
-		);
+		$form->setValue( array( $form->getName() => $postData[ $form->getName() ] ) );
 		
 		if ( $form->validate() && $model->validate( $data = $form->getValue() ) )
 		{
