@@ -29,9 +29,14 @@ class Installer extends \WCFE\Libraries\InstallerService {
 	
 		'0.5.0', /* This version never returned from $this->getInstalledVersion()
 								however installer will run this as installer is always start at index 0 */	
-		'1.4.0',
+								
+		'1.4.0', 
 		
-		'1.5.0',
+		
+		'1.5.0', // No upgrader
+		
+		
+		'1.5.1', // No upgrader
 		
 	);
 	
