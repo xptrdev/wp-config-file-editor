@@ -45,19 +45,19 @@ class SysFiltersDashboardController extends Controller {
 			return $result;
 		}
 		
-		if ( 	! isset( $_POST[ 'securityToken' ] ) || 
-					! $_POST[ 'securityToken' ] ||
-					! wp_verify_nonce( $_POST[ 'securityToken'] ) )
-		{
-			
-			die( 'Access Denied' );
-			
-		}
-		
 		# This form is currently huge and we need to 
 		# avoid PHP max_input_vars ini restriction
 		# Use WCFE custom parser and parse raw post data
 		$postData =& \WCFE\Libraries\ParseString::parseString( file_get_contents( 'php://input' ) );
+		
+		if ( 	! isset( $postData[ 'securityToken' ] ) || 
+					! $postData[ 'securityToken' ] ||
+					! wp_verify_nonce( $postData[ 'securityToken'] ) )
+		{
+			
+			die( 'Invalid Security Token!!!' );
+			
+		}
 		
 		# POST: Validate data
 		$form->setValue( array( $form->getName() => $postData[ $form->getName() ] ) );
