@@ -218,7 +218,7 @@
 		var li = $( '<li></li>' );
 		var childList = $( '<ul class="checkbox-row wcfe-ui-hierarchical-component-level_1"></ul>' );
 		var args = list.data( 'WCFECheckboxList' ).options;
-		var baseName = list.parent().find( 'input[name="option[baseName]"]' ).val() + '[]';
+		var baseName = list.parent().find( '#' + list.prop( 'id' ) + '-baseName' ).val() + '[]';
 		
 		checkbox.prop( 'name', baseName );
 		

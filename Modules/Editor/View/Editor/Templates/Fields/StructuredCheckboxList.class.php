@@ -49,7 +49,7 @@ class StructuredCheckboxList extends CheckboxListField
 			(
 				'text' => $text,
 				'checked' => true,
-				'value' => null,
+				'value' => true,
 				'field' => $child
 			);
 			
@@ -71,7 +71,7 @@ class StructuredCheckboxList extends CheckboxListField
 		# Add list base name
 		$nameField = $container->ownerDocument->createElement( 'input' );
 		$nameField->setAttribute( 'type', 'hidden' );
-		$nameField->setAttribute( 'name', 'option[baseName]' );
+		$nameField->setAttribute( 'id', $formAdapter->getFieldId( $this ) . '-baseName' );
 		$nameField->setAttribute( 'value', $formAdapter->getFieldName( $this ) );
 		
 		$container->appendChild( $nameField );
@@ -104,7 +104,7 @@ class StructuredCheckboxList extends CheckboxListField
 			$childItem = array(
 				'text' => $childName,
 				'checked' => true,
-				'value' => null,
+				'value' => true,
 				'field' => $childField
 			);
 			
