@@ -271,6 +271,7 @@ If you cannot fix wp-config.php through FTP so please try to open another window
 
 = 1.5.2 =
 * Fix: Forcing HTTP Requests System Parameters brokes Wordpress Plugins Upgrade
+* Disable all System Parameters By default until enabled by site admin
 
 = 1.5.1 =
 * Fix: System Parameters Form save "Access Denied" error
