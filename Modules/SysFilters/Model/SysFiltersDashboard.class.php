@@ -140,27 +140,27 @@ class SysFiltersDashboardModel extends PluginModel {
 			 			'cpage', 
 			 			'post_type'
 			 		),
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'quality' => array(
 			 		'value' => 90,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'memoryLimit' => array(
 			 		'value' => WP_MAX_MEMORY_LIMIT,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'themesPersistCache' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'uploadAllowedMimes' => array(
 			 		'value' => wp_get_mime_types(),
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			),
@@ -169,82 +169,82 @@ class SysFiltersDashboardModel extends PluginModel {
 			
 			 	'timeOut' => array(
 			 		'value' => 5,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'redirectCount' => array(
 			 		'value' => 5,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'version' => array(
 			 		'value' => '1.0',
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'userAgent' => array(
 			 		'value' => ( 'WordPress/' . $GLOBALS[ 'wp_version' ] . '; ' . get_bloginfo( 'url' ) ),
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'stream' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'compress' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'decompress' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'blocking' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'responseSizeLimit' => array(
 			 		'value' => null,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'rejectUnsafeUrls' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'proxyBlockLocalRequests' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'localSSLVerify' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'sslVerify' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'useSteamTransport' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'useCurlTransport' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'allowLocalHost' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			),
@@ -253,58 +253,58 @@ class SysFiltersDashboardModel extends PluginModel {
 			
 			 	'autoParagraph' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'editorHeight' => array(
 			 		'value' => 300,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'mediaButtons' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'dragDropUpload' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'textAreaRows' => array(
 			 		'value' => 20,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'tabIndex' => array(
 			 		'value' => '',
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'editorCSS' => array(
 			 		'value' => '',
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'editorClass' => array(
 			 		'value' => '',
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'teeny' => array(
 			 		'value' => false,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			 	'tinyMCE' => array(
 			 		'value' => true,
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'quickTags' => array(
 			 		'value' => true,
 			 		'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,more,close',
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 
 			 	'plugins' => array(
@@ -330,7 +330,7 @@ class SysFiltersDashboardModel extends PluginModel {
 						'wpview',
 						'image'
 			 		),
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 
 			 	'buttons2' => array(
@@ -348,7 +348,7 @@ class SysFiltersDashboardModel extends PluginModel {
 			 			'undo',
 			 			'redo'
 			 		),
-			 		'options' => array( 'priority' => 11 )
+			 		'options' => array( 'priority' => 11, 'disabled' => true, )
 			 	),
 			 	
 			),
@@ -380,6 +380,7 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array
 			 		(
 			 			'priority' => 11,
+			 			'disabled' => true,
 			 		)
 			 	),
 			 	
@@ -740,6 +741,7 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array
 			 		(
 			 			'priority' => 11,
+			 			'disabled' => true,
 			 		)
 			 	),
 			 	
@@ -777,6 +779,7 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array
 			 		(
 			 			'priority' => 11,
+			 			'disabled' => true,
 			 		)
 			 	),
 			 	
@@ -830,6 +833,7 @@ class SysFiltersDashboardModel extends PluginModel {
 			 		'options' => array
 			 		(
 			 			'priority' => 11,
+			 			'disabled' => true,
 			 		)
 			 	),
 			 	
