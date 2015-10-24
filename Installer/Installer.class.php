@@ -245,7 +245,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		$defaultData = SysFiltersDashboardModel::getDefaults();
 		
 		# Disable all parameters
-		foreach ( $sysFilterOpts as $moduleName => & $moduleParams )
+		foreach ( $sysFilterOpts[ 'sysFiltersData' ] as $moduleName => & $moduleParams )
 		{
 			
 			foreach ( $moduleParams as $paramsName => & $param )
@@ -254,7 +254,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 				$param[ 'options' ][ 'disabled' ] = true;
 			}
 		}
-		
+
 		# Save sys filter parameters
 		SysFiltersDashboardModel::setDataArray( $sysFilterOpts );
 		
