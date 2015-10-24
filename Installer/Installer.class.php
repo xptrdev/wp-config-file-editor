@@ -36,7 +36,10 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		'1.5.0', // No upgrader
 		
 		
-		'1.5.1', // No upgrader
+		'1.5.1', 
+		
+		
+		'1.5.2', 
 		
 	);
 	
@@ -226,6 +229,60 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		
 		return true;
 	}
+
 	
+	/**
+	* Upgrade 1.5.1 
+	* 
+	* Disable all HTTP Request Parameters as it break Wordpress
+	* Upgrades!!!!
+	* 
+	*/
+	public function upgrade_151()
+	{
+		
+		$sysFilterOpts = SysFiltersDashboardModel::getDataArray();
+		$defaultData = SysFiltersDashboardModel::getDefaults();
+		
+		# Parameters to be disabled
+		$parameters = array
+		(
+			'http' => array
+			(
+				'timeOut',
+				'redirectCount',
+				'version',
+				'userAgent',
+				'rejectUnsafeUrls',
+				'proxyBlockLocalRequests',
+				'localSSLVerify',
+				'sslVerify',
+				'useSteamTransport',
+				'useCurlTransport',
+				'stream',
+				'blocking',
+				'compress',
+				'decompress',
+				'responseSizeLimit',
+				'allowLocalHost',
+			),
+		);
+		
+		
+		foreach ( $parameters as $moduleName => $moduleParams )
+		{
+			
+			foreach ( $moduleParams as $paramName )
+			{
+				$sysFilterOpts[ 'sysFiltersData' ][ $moduleName ][ $paramName ][ 'options' ][ 'disabled' ] = true;
+			}
+			
+		}
+		
+		# Save sys filter parameters
+		SysFiltersDashboardModel::setDataArray( $sysFilterOpts );
+		
+		return true;
+	}
 	
 }

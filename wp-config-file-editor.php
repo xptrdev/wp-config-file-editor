@@ -4,7 +4,7 @@
 * Plugin URI: http://wp-cfe.xptrdev.com
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.5.1
+* Version: 1.5.2
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */
@@ -76,7 +76,7 @@ class Plugin extends PluginBase
 	* 
 	* @var mixed
 	*/
-	private $version = '1.5.1';
+	private $version = '1.5.2';
 	
 	/**
 	* Bootstrap ARV Plugin
