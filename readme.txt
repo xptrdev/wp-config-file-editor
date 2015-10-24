@@ -19,6 +19,8 @@ is newly added to make setup Multi Sites more fun by passing only 2 steps withou
 
 Additionally its possible to modify wide system parameters, Image Quality, Upload allowed mime types, Query Vars, HTTP Client, Post Editor and Kses module. More parameters will be added later!!!
 
+For features updates and detected bugs please [follow on twitter](https://twitter.com/wpcfe)
+
 = wp-config.php Editor Features =
 * Modify wp-config.php file using web form
 * Raw wp-config.php file editor with syntax hightlights and error detections
