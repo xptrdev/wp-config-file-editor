@@ -34,6 +34,18 @@ class EditorHTMLView extends TemplateView {
 	/**
 	* put your comment there...
 	* 
+	* @var mixed
+	*/
+	private $possibleActionsResQueueMap = array
+	(
+		'Index' => 'Index',
+		'Preview' => 'Preview',
+		'RawEdit' => 'Preview',
+	);
+	
+	/**
+	* put your comment there...
+	* 
 	* @var \WCFE\Libraries\ResStorage
 	*/
 	private $resFactory;
@@ -86,7 +98,9 @@ class EditorHTMLView extends TemplateView {
 		
 		
 		# Link action specifc resources
-		$this->{"enqueue{$this->mvcTarget()->getAction()}Resources"}( );
+		$resQueueName = $this->possibleActionsResQueueMap[ $this->mvcTarget()->getAction() ];
+		
+		$this->{"enqueue{$resQueueName}Resources"}( );
 	}
 	
 	/**

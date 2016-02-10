@@ -72,6 +72,20 @@
 			</proxy>
 		</service>
 		
+		<service serviceObjectClass="Editor\MenuPages\Editor\RawEdit"
+						 serviceFront="Editor"
+						 routerClass="WPPFW\Plugin\ServiceObjectViewRouter"
+						 homeProxy="WPPFW\Services\Dashboard\Menu\Proxy">
+			<proxy typeName="View" namespace="WPPFW\MVC" class="WPPFW\Services\Dashboard\Menu\Proxy" frontClass="WPPFW\Plugin\MVCViewRequestInputFrontProxy">
+				<object class="MVCViewParams">
+					<param name="module" 				value="Editor" />
+					<param name="action" 				value="RawEdit" />
+					<param name="layout" 			value="Preview" />
+					<param name="view" 					value="Editor" />
+				</object>
+			</proxy>
+		</service>
+		
 		<service serviceObjectClass="Editor\Services\Editor\Ajax"
 						 serviceFront="Service"
 						 routerClass="WPPFW\Plugin\ServiceObjectRouter"

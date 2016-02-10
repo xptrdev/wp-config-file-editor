@@ -33,6 +33,11 @@ class EditorModule extends ServiceModule {
 	/**
 	* 
 	*/
+	const RAW_EDITOR_SERVICE_OBJECT_KEY = 1;
+	
+	/**
+	* 
+	*/
 	const EDITOR_AJAX_SERVICE_KEY = 1;
 	
 	/**
@@ -59,7 +64,10 @@ class EditorModule extends ServiceModule {
 		(
 			$plugin, array
 			(
-				self::EDITOR_SERVICE_OBJECT_KEY => new Editor\MenuPages\Editor\Page()
+			
+				self::EDITOR_SERVICE_OBJECT_KEY => ( $editFormMenu = new Editor\MenuPages\Editor\Page() ),
+				
+				self::RAW_EDITOR_SERVICE_OBJECT_KEY => new Editor\MenuPages\Editor\RawEdit( $editFormMenu )
 				
 			)
 		);
@@ -110,4 +118,12 @@ class EditorModule extends ServiceModule {
 		return $this->getServiceObject( self::EDITOR_AJAX_SERVICE_KEY, self::EDITOR_AJAX_VIEWS_SERVICE_OBJECT_KEY );
 	}
 
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function rawEditor() {
+		return $this->getServiceObject( self::EDITOR_SERVICE_KEY, self::RAW_EDITOR_SERVICE_OBJECT_KEY );
+	}
+	
 }

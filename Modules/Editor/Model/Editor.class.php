@@ -535,6 +535,28 @@ class EditorModel extends PluginModel {
 	/**
 	* put your comment there...
 	* 
+	*/
+	public function readWPConfigFileContent()
+	{
+		
+		$configFilePath = ABSPATH . 'wp-config.php';
+		
+		if ( ! is_readable( $configFilePath ) )
+		{
+			
+			$this->addError( 'Couldn\'t read wp-config.php file' );
+			
+			return false;
+		}
+		
+		$configContent = file_get_contents( $configFilePath );
+		
+		return $configContent;
+	}
+	
+	/**
+	* put your comment there...
+	* 
 	* @param mixed $profileId
 	*/
 	public function & setActiveProfile( $profileId )
@@ -550,7 +572,8 @@ class EditorModel extends PluginModel {
 	* 
 	* @param mixed $content
 	*/
-	public function & setConfigFileContent($content) {
+	public function & setConfigFileContent($content) 
+	{
 		# Set
 		$this->configFileContent =& $content;
 		# Chain

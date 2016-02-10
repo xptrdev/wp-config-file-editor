@@ -298,5 +298,32 @@ class EditorController extends Controller {
 		return array( 'model' => $model, 'form' => $form );
 		
 	}
-  
+
+	/**
+	* put your comment there...
+	* 
+	*/
+	public function rawEditAction()
+	{
+		
+		if ( ! is_super_admin() )
+		{
+			die( 'Access denied' );
+		}
+		
+		# Get model
+		$model =& $this->getModel();
+		$form = new Forms\RawConfigFileForm();
+		
+		# Form security token
+		$form->getSecurityToken()->setValue( $this->createSecurityToken() );
+		
+		# output wp-config.php file
+		$model->setConfigFileContent( $model->readWPConfigFileContent() );
+		
+		# Push model to view
+		return array( 'model' => $model, 'form' => $form );
+		
+	}
+	
 } # End class
