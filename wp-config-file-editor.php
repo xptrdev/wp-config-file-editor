@@ -119,6 +119,9 @@ class Plugin extends PluginBase
 	*/
 	protected function bootStrap()
 	{
+		# Wordpress backward compatibility
+		CompatibleWordpress::loadCompatibilityLayers( $GLOBALS[ 'wp_version' ] );
+		
 		# Installer
 		if ( ! \WCFE\Installer\Installer::run( $this->version ) )
 		{
