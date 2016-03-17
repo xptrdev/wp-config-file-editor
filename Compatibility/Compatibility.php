@@ -60,7 +60,7 @@ class CompatibleWordpress
 			if ( version_compare( $this->versionBase, $chkPointVersion ) == -1 )
 			{
 				
-				$versionFile = "{$chkPointVersion}.php";
+				$versionFile = __DIR__ . DIRECTORY_SEPARATOR . "{$chkPointVersion}.php";
 				
 				if ( file_exists( $versionFile ) )
 				{
