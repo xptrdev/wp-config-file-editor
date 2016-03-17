@@ -14,6 +14,9 @@ $result =& $this->result();
 $router =& $this->router();
 $model =& $result['model'];
 $form =& $result['form'];
+
+$options = array_merge( array( 'backButton' => true), ( isset( $result[ 'options' ] ) ? $result[ 'options' ] : array() ) );
+
 ?>
 
 <div id="wcfe-preview-screen">
@@ -37,7 +40,10 @@ $form =& $result['form'];
 <?php foreach ($router->getRouteParams() as $name => $value) : ?>
 		<input type="hidden" name="<?php echo $name; ?>" value="<?php echo $value; ?>" />
 <?php endforeach; ?>
+
+<?php if ( $options[ 'backButton' ] ) : ?>
 		<input type="submit" class="wcfe-task-button" value="Back" />
+<?php endif; ?>
 	</form>
 </div>
 

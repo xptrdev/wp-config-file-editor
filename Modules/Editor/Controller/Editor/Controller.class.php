@@ -322,7 +322,12 @@ class EditorController extends Controller {
 		$model->setConfigFileContent( $model->readWPConfigFileContent() );
 		
 		# Push model to view
-		return array( 'model' => $model, 'form' => $form );
+		return array
+        ( 
+            'model' => $model, 
+            'form' => $form, 
+            'options' => array( 'backButton' => false ) 
+        );
 		
 	}
 	
