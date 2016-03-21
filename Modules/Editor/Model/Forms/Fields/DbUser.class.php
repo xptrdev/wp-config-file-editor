@@ -20,7 +20,7 @@ class DbUser extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('DbUser', array(new Forms\Rules\RequiredField()));
+		parent::__construct('DbUser', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

@@ -12,6 +12,11 @@ namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 interface ITabsFormAdapter
 {
 	
+    /**
+    * 
+    */
+    public function _( $txt );
+    
 	/**
 	* 
 	*/

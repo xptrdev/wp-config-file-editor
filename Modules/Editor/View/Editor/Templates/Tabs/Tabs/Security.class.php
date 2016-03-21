@@ -49,13 +49,6 @@ class SecurityOptionsTab extends SimpleSubContainerTab {
 		),
 
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Security';
 	
 	/**
 	* put your comment there...
@@ -63,6 +56,8 @@ class SecurityOptionsTab extends SimpleSubContainerTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Security' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

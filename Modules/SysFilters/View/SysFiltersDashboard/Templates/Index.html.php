@@ -38,7 +38,7 @@ $form =& $data[ 'form' ];
 	<form id="wcfe-sysfilters-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
 		# Output options tab
-		$optionsTab = new Tabs\Tabs( new Tabs\SysFiltersFormTabsAdapter( $form ), $form );
+		$optionsTab = new Tabs\Tabs( new Tabs\SysFiltersFormTabsAdapter( $form, $this ), $form );
 		$optionsTab->load();
 		
 		echo $optionsTab->render();

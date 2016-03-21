@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Root path';
+		return $this->_( 'Root path' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Root path for multi site installations';
+		return $this->_( 'Root path for multi site installations' );
 	}
 
 }

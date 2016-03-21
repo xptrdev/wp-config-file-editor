@@ -20,7 +20,7 @@ class DbPassword extends Forms\Fields\FormStringField implements IWPConfigFileFi
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('DbPassword', array(new Forms\Rules\RequiredField()));
+		parent::__construct('DbPassword', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

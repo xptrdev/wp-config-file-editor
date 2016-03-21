@@ -46,13 +46,6 @@ class CookiesOptionsTab extends FieldsTab {
 		)		
 
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Cookies';
 	
 	/**
 	* put your comment there...
@@ -60,6 +53,8 @@ class CookiesOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Cookies' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

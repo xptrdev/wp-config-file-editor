@@ -34,13 +34,6 @@ class LocalizationOptionsTab extends FieldsTab {
 			'WPLangDir'
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Localization';
 	
 	/**
 	* put your comment there...
@@ -48,6 +41,8 @@ class LocalizationOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Localization' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

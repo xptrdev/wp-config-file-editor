@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Max Memory limit';
+		return $this->_( 'Max Memory limit' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'When in the administration area, the memory can be increased or decreased from the Memory Limit by defining Max Memory Limit.';
+		return $this->_( 'When in the administration area, the memory can be increased or decreased from the Memory Limit by defining Max Memory Limit.' );
 	}
 
 }

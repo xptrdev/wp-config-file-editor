@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Pass';
+		return $this->_( 'Pass' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Pass Cookie';
+		return $this->_( 'Pass Cookie' );
 	}
 
 }

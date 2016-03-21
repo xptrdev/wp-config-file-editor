@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Disable Cron';
+		return $this->_( 'Disable Cron' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Disable the cron entirely';
+		return $this->_( 'Disable the cron entirely' );
 	}
 
 	/**

@@ -71,10 +71,13 @@ class EditorHTMLView extends TemplateView {
 	protected function initialize() {
 		
 		# ENQUEUE SCRIPT and STYLES
-		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
+		$this->resFactory = new \WCFE\Libraries\ResStorage( 
+            WP_PLUGIN_URL . '/wp-config-file-editor', 
+            WP_PLUGIN_DIR . '/wp-config-file-editor' 
+        );
 		
 		# Scripts and Styles queues
-		$this->scriptsQueue = new DashboardScriptsQueue();
+		$this->scriptsQueue = new DashboardScriptsQueue( $this, 'js', 'localization.php' );
 		$this->stylesQueue = new DashboardStylesQueue();
 		
 		# Scripts
@@ -85,9 +88,9 @@ class EditorHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryCookies' ) );
 		
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ErrorsDialog' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ErrorsDialog' ), true );
 		
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\EditorServices' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\EditorServices' ), true );
 		
 		# Styles
 		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
@@ -118,36 +121,36 @@ class EditorHTMLView extends TemplateView {
 				
 		# Enqueue specifiec STYLE AND JS
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ChechboxList' ) );
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\ConfigForm' ), true );
 		
 		# Actions route
 		$this->setActionsRoute( 
 			'Editor', 'editorService', array
 				(
-					'createSecureKey' 	=> 		array( 'action' => 'CreateSecureKey' ),
+					'createSecureKey' 	        => 		array( 'action' => 'CreateSecureKey' ),
 					'preUpdate' 				=> 		array( 'action' => 'PreUpdate' ),
-					'validateForm'		 	=> 		array( 'action' => 'ValidateForm' ),
+					'validateForm'		 	    => 		array( 'action' => 'ValidateForm' ),
 					'postUpdate' 				=> 		array( 'action' => 'PostUpdate' ),
-					'updateConfigFile' 	=> 		array( 'action' => 'UpdateConfigFile' ),
-					'setActiveProfile' 	=> 		array( 'action' => 'SetActiveProfile' ),
-					'getSystemPath'		 	=> 		array( 'action' => 'GetSystemPath' ),
-					'generateCookieHash' => 	array( 'action' => 'GenerateCookieHash' ),
+					'updateConfigFile' 	        => 		array( 'action' => 'UpdateConfigFile' ),
+					'setActiveProfile' 	        => 		array( 'action' => 'SetActiveProfile' ),
+					'getSystemPath'		 	    => 		array( 'action' => 'GetSystemPath' ),
+					'generateCookieHash'        => 	    array( 'action' => 'GenerateCookieHash' ),
 				),
 			'Editor', 'editorViews', array
 			(
-				'MultiSiteSetupTools' => array(),
-				'systemCheckTools' => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
+				'MultiSiteSetupTools'   => array(),
+				'systemCheckTools'      => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
 			),
 			'Profiles', 'profilesView', array
 			(
-				'profilesList' => array(),
-				'editProfile' => array( 'action' => 'Edit', 'view' => 'Profile' ),
+				'profilesList'          => array(),
+				'editProfile'           => array( 'action' => 'Edit', 'view' => 'Profile' ),
 			),
 			'Profiles', 'profilesService', array
 			(
-				'createVarsTStorage' => array( 'controller' => 'ProfilesService' , 'action' => 'CreateProfileVarsTStorage' ),
-				'setProfileVars' => array( 'controller' => 'ProfilesService' , 'action' => 'SetProfileVars' ),
-				'deleteProfile' => array( 'controller' => 'ProfilesService', 'action' => 'DeleteProfile' ),
+				'createVarsTStorage'    => array( 'controller' => 'ProfilesService' , 'action' => 'CreateProfileVarsTStorage' ),
+				'setProfileVars'        => array( 'controller' => 'ProfilesService' , 'action' => 'SetProfileVars' ),
+				'deleteProfile'         => array( 'controller' => 'ProfilesService', 'action' => 'DeleteProfile' ),
 			)
 		);
 	}
@@ -169,7 +172,7 @@ class EditorHTMLView extends TemplateView {
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\Theme' ) );
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\AceEditor\ACEModePHP' ) );
 		
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\RawView' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Editor\Media\RawView' ), true );
 		
 		# Actions route
 		$this->setActionsRoute( 

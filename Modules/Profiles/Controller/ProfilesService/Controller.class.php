@@ -22,18 +22,18 @@ class ProfilesServiceController extends ServiceController {
 		
 		# Check if permitted to take such action
 		if ( 	
-					( ! isset( $_POST[ 'securityToken' ] ) ) ||
-					
-					( ! $_POST[ 'securityToken' ] ) ||
-					
-					( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
-		 
-					( ! is_super_admin() ) )
+			    ( ! isset( $_POST[ 'securityToken' ] ) ) ||
+			    
+			    ( ! $_POST[ 'securityToken' ] ) ||
+			    
+			    ( ! wp_verify_nonce( $_POST[ 'securityToken' ] ) ) ||
+     
+			    ( ! is_super_admin() ) )
 		{
 			
 			header( 'HTTP/1.0 4.3 Forbidden' );
 			
-			die( );
+			die( $this->_( 'Access Denies' ) );
 		}
 		
 		return true;

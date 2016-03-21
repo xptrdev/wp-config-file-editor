@@ -59,10 +59,13 @@ class SysFiltersDashboardHTMLView extends TemplateView {
 	protected function initialize() {
 		
 		# ENQUEUE SCRIPT and STYLES
-		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
+		$this->resFactory = new \WCFE\Libraries\ResStorage( 
+            WP_PLUGIN_URL . '/wp-config-file-editor',
+            WP_PLUGIN_DIR . '/wp-config-file-editor' 
+        );
 		
 		# Scripts and Styles queues
-		$this->scriptsQueue = new DashboardScriptsQueue();
+		$this->scriptsQueue = new DashboardScriptsQueue( $this, 'js', 'localization.php' );
 		$this->stylesQueue = new DashboardStylesQueue();
 		
 		# Scripts
@@ -77,7 +80,7 @@ class SysFiltersDashboardHTMLView extends TemplateView {
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\ChechboxList' ) );
 		
-		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\IndexScript' ) );
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\SysFilters\View\SysFiltersDashboard\Media\SysFiltersDashboard' ), true );
 
 		# Styles
 		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );

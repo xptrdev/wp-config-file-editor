@@ -20,7 +20,7 @@ class NonceSalt extends Forms\Fields\FormStringField implements IWPConfigFileFie
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('NonceSalt', array(new Forms\Rules\RequiredField()));
+		parent::__construct('NonceSalt', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'User';
+		return $this->_( 'User' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Proxy username, if it requires authentication';
+		return $this->_( 'Proxy username, if it requires authentication' );
 	}
 
 }

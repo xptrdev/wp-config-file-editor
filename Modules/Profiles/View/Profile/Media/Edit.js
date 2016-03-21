@@ -29,7 +29,7 @@
 					
 					if ( ! profileId && ! $( '#profile-name' ).val() )
 					{
-						alert( 'Profile name cannot be empty' );
+						alert( WCFEEditJavaScriptL10N.msg_profileNameEmpty );
 						
 						return false;
 					}

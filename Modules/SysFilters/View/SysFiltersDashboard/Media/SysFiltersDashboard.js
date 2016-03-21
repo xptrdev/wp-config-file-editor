@@ -32,7 +32,7 @@
 				
 				case 'wcfe-dmm-tab-help':
 				
-					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
+					generateHelpBoxMap( WCFESysFiltersDashboardL10N.title_helpDialog, 'field-tip' );
 					
 				break;
 				
@@ -201,8 +201,8 @@
 				addMaxLevels : 1,
 				
 				levels : [
-					{ addText : 'Add Type' },
-					{ addText : 'Associate Extension' }
+					{ addText : WCFESysFiltersDashboardL10N.btn_addType },
+					{ addText : WCFESysFiltersDashboardL10N.btn_associateExtension }
 				],
 				
 				addNewMode : 'inline'
@@ -237,8 +237,8 @@
 				addMaxLevels : 1,
 				
 				levels : [
-					{ addText : 'Add Tag' },
-					{ addText : 'Add Attribute' }
+					{ addText : WCFESysFiltersDashboardL10N.btn_addTag },
+					{ addText : WCFESysFiltersDashboardL10N.btn_addAttribute }
 				],
 				
 				addNewMode : 'inline'

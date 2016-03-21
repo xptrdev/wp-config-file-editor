@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Script Debugging';
+		return $this->_( 'Script Debugging' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Force WordPress to use the "dev" versions of core CSS and Javascript files rather than the minified versions that are normally loaded. This is useful when you are testing modifications to any built-in .js or .css files. Default is false.';
+		return $this->_( 'Force WordPress to use the "dev" versions of core CSS and Javascript files rather than the minified versions that are normally loaded. This is useful when you are testing modifications to any built-in .js or .css files. Default is false.' );
 	}
 
 	/**

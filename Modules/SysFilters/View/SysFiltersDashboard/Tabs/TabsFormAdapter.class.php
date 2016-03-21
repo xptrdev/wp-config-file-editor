@@ -28,16 +28,36 @@ class SysFiltersFormTabsAdapter implements ITabsFormAdapter
 	*/
 	protected $form;
 	
-	/**
-	* put your comment there...
-	* 
-	* @param \WPPFW\Forms\Form $form
-	* @return {EditorFormTabsAdapter|\WPPFW\Forms\Form}
-	*/
-	public function __construct( \WPPFW\Forms\Form & $form )
-	{
-		$this->form =& $form;
-	}
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $view;
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $txt
+    */
+    public function _( $txt )
+    {
+        return call_user_func_array( array( $this->getView(), '_' ), func_get_args() );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param \WPPFW\Forms\Form $form
+    * @param mixed $view
+    * @return EditorFormTabsAdapter
+    */
+    public function __construct( \WPPFW\Forms\Form & $form, & $view )
+    {
+        $this->form =& $form;
+        $this->view =& $view;
+    }
 	
 	/**
 	* put your comment there...
@@ -91,6 +111,15 @@ class SysFiltersFormTabsAdapter implements ITabsFormAdapter
 	{
 		return $rendererClass;
 	}
+
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & getView()
+    {
+        return $this->view;
+    }
 
 	/**
 	* put your comment there...

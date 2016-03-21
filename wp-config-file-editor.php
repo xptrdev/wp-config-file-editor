@@ -20,6 +20,7 @@ const NO_DIRECT_ACCESS_MESSAGE = 'Access Denied';
 
 # Wordpres Plugin Framework
 use WPPFW\Plugin\PluginBase;
+use WPPFW\Plugin\Localization;
 
 # Modules
 use WCFE\Services;
@@ -43,20 +44,20 @@ class Plugin extends PluginBase
 	*/
 	private $bindingHooks;
 	
+    /**
+    * put your comment there...
+    * 
+    * @var Services\EditorModule
+    */
+    private $editorModule;
+
 	/**
 	* Holds ARV Plugin instance
 	* 
 	* @var Plugin
 	*/
 	private static $instance;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var Services\EditorModule
-	*/
-	private $editorModule;
-	
+    
 	/**
 	* put your comment there...
 	* 
@@ -77,7 +78,17 @@ class Plugin extends PluginBase
 	* @var mixed
 	*/
 	private $version = '1.5.2';
-	
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $txt
+    */
+    public static function _( $txt )
+    {
+        return call_user_func_array( array( self::$instance->getExtension( 'l10n' ), '_' ), func_get_args() );
+    }
+    
 	/**
 	* Bootstrap ARV Plugin
 	* 
@@ -201,6 +212,16 @@ class Plugin extends PluginBase
 		return self::$instance;
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function onCreateServiceFront()
+    {
+        // Load localization extension
+        $this->setExtension( 'l10n',  Localization::localize( strtolower( __NAMESPACE__ ), $this ) );
+    }
+    
 	/**
 	* Run ARV Plugin if not alreayd running
 	* 

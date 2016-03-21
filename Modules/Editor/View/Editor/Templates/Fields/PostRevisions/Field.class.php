@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Enable Revisions';
+		return $this->_( 'Enable Revisions' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Enable / Disable post revisions';
+		return $this->_( 'Enable / Disable post revisions' );
 	}
 
 	/**

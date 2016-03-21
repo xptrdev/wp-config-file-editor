@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Plugins Path';
+		return $this->_( 'Plugins Path' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'PLlugins Path Cookie';
+		return $this->_( 'Plugins Path Cookie' );
 	}
 
 }

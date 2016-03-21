@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Host';
+		return $this->_( 'Host' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Enable proxy support and host for connecting';
+		return $this->_( 'Enable proxy support and host for connecting' );
 	}
 
 }

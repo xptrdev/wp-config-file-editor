@@ -19,7 +19,7 @@ class Field extends SecureKeyField {
 	* 
 	*/
 	public function getText() {
-		return 'Logged In Salt';
+		return $this->_( 'Logged In Salt' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends SecureKeyField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Wordpress Hash key for LOGGED_IN_SALT constant';
+		return $this->_( 'Wordpress Hash key for LOGGED_IN_SALT constant' );
 	}
 
 }

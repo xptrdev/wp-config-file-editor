@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Public Key';
+		return $this->_( 'Public Key' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'The full path to your SSH public key';
+		return $this->_( 'The full path to your SSH public key' );
 	}
 
 }

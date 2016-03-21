@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'User Name';
+		return $this->_( 'User Name' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'User name to be used for connecting to Database';
+		return $this->_( 'User name to be used for connecting to Database' );
 	}
 
 }

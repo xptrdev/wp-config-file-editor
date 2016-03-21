@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Database Name';
+		return $this->_( 'Database Name' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Database name to used for Wordpress installation, All posts/pages/categories and all the data will be stored there';
+		return $this->_( 'Database name to used for Wordpress installation, All posts/pages/categories and all the data will be stored there' );
 	}
 
 }

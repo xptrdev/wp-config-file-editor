@@ -35,13 +35,6 @@ class CronOptionsTab extends FieldsTab {
 			'CronLockTimeOut',
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Cron';
 	
 	/**
 	* put your comment there...
@@ -49,6 +42,8 @@ class CronOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Cron' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

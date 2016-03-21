@@ -30,13 +30,6 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 	* @var mixed
 	*/
 	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SYSFILTERS_MISC_FIELDS;
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Misc';
 	
 	/**
 	* put your comment there...
@@ -47,12 +40,14 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 		$form =& $this->getForm();
 		$module = $form->get( 'misc' );
 		
+        $this->title = $this->_( 'Misc' );
+        
 		# Query vars
 		$queryVarsList = new Fields\PreDefinedCheckboxList( 
 			$form, 
 			$module->get( 'queryVars' )->get( 'value' ),
-			'Query Vars', 
-			'Filter which query vars to allow Wordpress to use. For example search can be stopped by unchecking "s" variable',
+			$this->_( 'Query Vars' ), 
+			$this->_( 'Filter which query vars to allow Wordpress to use. For example search can be stopped by unchecking "s" variable' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$queryVarsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'misc', 'queryVars', 'value' ) );
@@ -60,8 +55,8 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 		$uploadMimeTypes = new Fields\StructuredCheckboxList( 
 			$form, 
 			$module->get( 'uploadAllowedMimes' )->get( 'value' ),
-			'Upload Allowed Mime Types', 
-			'Allow/Disallow what type of images can be uploaded and what mime type to associate with the uploaded file.',
+			$this->_( 'Upload Allowed Mime Types' ), 
+			$this->_( 'Allow/Disallow what type of images can be uploaded and what mime type to associate with the uploaded file.' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -73,8 +68,8 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 			(
 				$form,
 				$module->get( 'themesPersistCache' )->get( 'value' ),
-				'Persistly Cache Themes', 
-				'Filter whether to get the cache of the registered theme directories',
+				$this->_( 'Persistly Cache Themes' ), 
+				$this->_( 'Filter whether to get the cache of the registered theme directories' ),
 				1,
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
@@ -89,8 +84,8 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 			(
 				$form,
 				$module->get( 'quality' )->get( 'value' ),
-				'Quality', 
-				'Filter the default image compression quality setting.',
+				$this->_( 'Quality' ), 
+				$this->_( 'Filter the default image compression quality setting.' ),
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
 
@@ -98,8 +93,8 @@ class MiscOptionsTab extends SimpleSubContainerTab {
 			(
 				$form,
 				$module->get( 'memoryLimit' )->get( 'value' ),
-				'Memory Limit', 
-				'Filter the memory limit allocated for image manipulation',
+				$this->_( 'Memory Limit' ), 
+				$this->_( 'Filter the memory limit allocated for image manipulation' ),
 				array( 'optionsPanel' => new AdvancedOptionsPanel() )
 			),
 						

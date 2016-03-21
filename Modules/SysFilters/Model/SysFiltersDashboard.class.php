@@ -41,8 +41,8 @@ class SysFiltersDashboardModel extends PluginModel {
 	{
 		
 		$sysFilterData = 	is_multisite() ? 
-											get_blog_option( get_main_network_id(), self::$modelOptionName, null ) : 
-											get_option( self::$modelOptionName, null );
+		                    get_blog_option( get_main_network_id(), self::$modelOptionName, null ) : 
+							get_option( self::$modelOptionName, null );
 		
 		return $sysFilterData;
 	}

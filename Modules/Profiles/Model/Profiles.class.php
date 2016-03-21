@@ -66,7 +66,7 @@ class ProfilesModel extends PluginModel {
 			
 		}
 		
-		$this->addError( "{$deletedRecords} profiles deleted" );
+		$this->addError( $this->_( '%d profiles deleted', $deletedRecords ) );
 		
 		return true;
 	}
@@ -120,14 +120,14 @@ class ProfilesModel extends PluginModel {
 			if ( ! $currentProfile = $this->getProfile( $profile->id ) )
 			{
 				
-				$this->addError( 'Profile doesnt exists!!!' );
+				$this->addError( $this->_( 'Profile doesnt exists!!!' ) );
 
 				return false;
 			}
 			
 			$profile->vars = $currentProfile->vars;
 			
-			$this->setMessage( 'Profile Updated successfuly' );
+			$this->setMessage( $this->_( 'Profile Updated successfuly' ) );
 			
 		}
 		else
@@ -145,7 +145,7 @@ class ProfilesModel extends PluginModel {
 				$this->profileVarsTStorage = array();
 			}
 			
-			$this->setMessage( 'Profile Added successfuly' );
+			$this->setMessage( $this->_( 'Profile Added successfuly' ) );
 		}
 		
 		# Update or Insert
@@ -164,7 +164,7 @@ class ProfilesModel extends PluginModel {
 		if ( ! isset( $this->profiles[ $profile->id ] ) )
 		{
 			
-			$this->addError( 'Profile doesn\'t exists' );
+			$this->addError( $this->_( 'Profile doesn\'t exists' ) );
 			
 			return false;
 		}

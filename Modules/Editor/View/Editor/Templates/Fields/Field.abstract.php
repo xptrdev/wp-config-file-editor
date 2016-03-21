@@ -36,6 +36,13 @@ abstract class FieldBase {
 	*/
 	protected $form;
 	
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $formAdapter;
+    
 	/**
 	* put your comment there...
 	* 
@@ -57,6 +64,16 @@ abstract class FieldBase {
 	*/
 	protected $tipText;
 
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $txt
+    */
+    protected function _( $txt )
+    {
+        return call_user_func_array( array( $this->formAdapter, '_' ), func_get_args() );
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -75,6 +92,16 @@ abstract class FieldBase {
 		$this->tipText = $tipText;
 		$this->params =& $params;
 	}
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $formAdapter
+    */
+    public function extensionsInit( & $formAdapter )
+    {
+        $this->formAdapter =& $formAdapter;
+    }
 
 	/**
 	* put your comment there...
@@ -139,7 +166,7 @@ abstract class FieldBase {
 	{
 		return $this->tipText;
 	}
-
+    
 	/**
 	* put your comment there...
 	* 

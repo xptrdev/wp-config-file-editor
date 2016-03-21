@@ -81,7 +81,7 @@
 				case 'wcfe-dmm-profiles-list':
 				
 					// how profiles list dialog
-					tb_show( 'Profiles List', editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
+					tb_show( WCFEConfigFormL10N.profiles_ListTitle, editorSrvs.getActionRoute( 'profilesList' ) + '&TB_iframe=true' ) ;
 					
 				break;
 				
@@ -96,13 +96,13 @@
 							if ( ! temporaryStorage || ! temporaryStorage.id )
 							{
 								
-								WCFEErrorsDialog.show( [ 'Couldn\'t create Profile Temporary Storage'  ] );
+								WCFEErrorsDialog.show( [ WCFEConfigFormL10N.profiles_CouldNotCreateTempStorage ] );
 								
 								return;
 							}
 							
 							// Create Profile / Send Storage Id along with request
-							tb_show( 'Create Profile', editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+							tb_show( WCFEConfigFormL10N.profiles_createProfileTitle , editorSrvs.getActionRoute( 'editProfile' ) + '&storageId=' + temporaryStorage.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
 							
 						}
 					
@@ -122,12 +122,12 @@
 				
 				case 'wcfe-dmm-tab-help':
 				
-					generateHelpBoxMap( 'WCFE Help', 'field-tip' );
+					generateHelpBoxMap( WCFEConfigFormL10N.helpDialogTitle, 'field-tip' );
 					
 				break;
 				case 'wcfe-dmm-tab-constants-list':
 				
-					generateHelpBoxMap( 'Constants List', 'field-constant-name' );
+					generateHelpBoxMap( WCFEConfigFormL10N.constantsDialogList, 'field-constant-name' );
 
 				break;
 				
@@ -189,7 +189,7 @@
 				
 				var cookiesInputs = $( '#CookiesOptionsTab input[type="text"]' );
 				
-				WCFEEditorForm.statusBar.showProgress( 'Generating Hash' );
+				WCFEEditorForm.statusBar.showProgress( WCFEConfigFormL10N.status_generatingHash );
 				
 				editorSrvs.makeCall( editorSrvs.getActionRoute( 'generateCookieHash' ) ).done(				
 
@@ -205,14 +205,14 @@
 						
 						);
 						
-						WCFEEditorForm.statusBar.showLog( 'Cookies hash generated' )
+						WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_hashGenerated )
 					
 					}
 				
 				).error(
 					function()
 					{
-						WCFEEditorForm.statusBar.showLog( 'Server error! couldn\'t generate Cookie hash' );
+						WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_couldntGenerateHash );
 					}
 				);
 				
@@ -229,19 +229,19 @@
 				
 					tab.tabs( 'option', 'active', 8 );
 					
-        	generateSecureKeys( secureKeys );
+        	        generateSecureKeys( secureKeys );
 			
 				break;
 				
 				case 'wcfe-dmm-systemcheck':
 				
-					tb_show( 'System Check ( BETA )', editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=380' );
+					tb_show( WCFEConfigFormL10N.systemCheckDialogTitle, editorSrvs.getActionRoute( 'systemCheckTools' ) + '&TB_iframe=true&width=600&height=380' );
 				
 				break;
 				
 				case 'wcfe-dmm-multisite-enable':
 				
-					tb_show( 'Multi Site Setup Tools', editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
+					tb_show( WCFEConfigFormL10N.multiSiteDialogTitle, editorSrvs.getActionRoute( 'MultiSiteSetupTools' ) + '&width=700&TB_iframe=true' );
 					
 				break;
 				
@@ -293,7 +293,7 @@
 		var generateSecureKeys = function( inputs )
 		{
 			
-			WCFEEditorForm.statusBar.showProgress( 'Generating secure key(s) ....' );
+			WCFEEditorForm.statusBar.showProgress( WCFEConfigFormL10N.status_generatingSecureKeys );
 			
 			// Send key generation server request
 			editorSrvs.makeCall( editorSrvs.getActionRoute( 'createSecureKey' ), { count : inputs.length } ).done( 
@@ -309,7 +309,7 @@
 					
 					);
 
-					WCFEEditorForm.statusBar.showLog( 'Secure key(s) generated' );
+					WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_secureKeyGenerated );
 					
 				}
 				
@@ -317,7 +317,7 @@
 			
 				function()
 				{
-					WCFEEditorForm.statusBar.showLog( 'Server Error! Could not generate secure key(s)' );
+					WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_couldntGenerateSecureKeys );
 				}
 			
 			);
@@ -467,7 +467,7 @@
 			);
 			
 			// Load support WCFE Plugin form
-      supportPluginDialog.run();
+            supportPluginDialog.run();
 			
 		};
 	
@@ -487,19 +487,19 @@
 			
 			WCFEEditorForm.profile.setActiveProfile( profile );
 			
-			WCFEEditorForm.statusBar.showProgress( 'Set Active Profile ...' );
+			WCFEEditorForm.statusBar.showProgress( WCFEConfigFormL10N.status_setActiveProfile );
 			
 			// Set as active profile
 			editorSrvs.makeCall( editorSrvs.getActionRoute( 'setActiveProfile' ), { activeProfile : profile.id } ).done(
 			  function()
 			  {
-					WCFEEditorForm.statusBar.showLog( 'Profile Activated' );
+					WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_profileActivated );
 			  }
 			
 			).error(			
 				function()
 				{
-					WCFEEditorForm.statusBar.showLog( 'Unahanlded error!!' );
+					WCFEEditorForm.statusBar.showLog( WCFEConfigFormL10N.status_unhandledServerError );
 				}
 			);
 			
@@ -666,24 +666,24 @@ WCFEEditorForm.profile = new function( )
 	this._ondelete = function()
 	{
 		
-		if ( ! confirm( 'Would you like to delete current active profile?' ) )
+		if ( ! confirm( WCFEConfigFormL10N.confirm_DeleteActiveProfile ) )
 		{
 			return;
 		}
 		
-		sb.showProgress( 'Deleting Profile ...' );
+		sb.showProgress( WCFEConfigFormL10N.status_deleteingProfile );
 		
 		ro.makeCall( ro.getActionRoute( 'deleteProfile' ), { profileId : activeProfile.id } ).done(
 			function()
 			{
-				sb.showLog( 'Profile deleted ... Refreshing from server...' );
+				sb.showLog( WCFEConfigFormL10N.status_profileDeleted );
 				
 				window.location.href += '&flags=unsetActiveProfile';
 			}		
 		).error(
 			function()
 			{
-				sb.showLog( 'Unhandle error' );
+				sb.showLog( WCFEConfigFormL10N.status_unhandledServerError );
 			}
 		);
 	};
@@ -693,7 +693,7 @@ WCFEEditorForm.profile = new function( )
 	*/
 	this._onedit = function()
 	{
-		tb_show( 'Edit Active Profile', ro.getActionRoute( 'editProfile' ) + '&id=' + activeProfile.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
+		tb_show( WCFEConfigFormL10N.title_EditActiveProfile, ro.getActionRoute( 'editProfile' ) + '&id=' + activeProfile.id + '&caller=WCFEEditorForm&TB_iframe=true' ) ;
 	};
 	
 	/**
@@ -714,7 +714,7 @@ WCFEEditorForm.profile = new function( )
 		
 		vars.profileId = activeProfile.id;
 		
-		sb.showProgress( 'Saving Profile vars ...' );
+		sb.showProgress( WCFEConfigFormL10N.status_savingProfileVars );
 		
 		ro.makeCall( ro.getActionRoute( 'setProfileVars' ), vars ).done(
 		
@@ -723,14 +723,14 @@ WCFEEditorForm.profile = new function( )
 			*/
 			function( response )
 			{
-				sb.showLog( 'Profile vars saved successful' );
+				sb.showLog( WCFEConfigFormL10N.status_profileVarsSaved  );
 			}
 		
 		).error(
 		
 			function()
 			{
-				sb.showLog( 'Server Unhandled Error while saving Profile vars!!' );
+				sb.showLog( WCFEConfigFormL10N.status_unhandledServerError );
 			}
 		);
 		
@@ -801,7 +801,7 @@ WCFEEditorForm.profile = new function( )
 	this.reflectState = function() 
 	{
 		
-		WCFEEditorForm.statusBar.showStatus( 'Active Profile: ' + activeProfile.name );
+		WCFEEditorForm.statusBar.showStatus( WCFEConfigFormL10N.status_activeProfile + activeProfile.name );
 		
 		WCFEEditorForm.ballons.show( 'wcfe-active-profile-warning' );
 	};
@@ -946,7 +946,7 @@ var supportPluginDialog = new function()
 					    return;
 			 	 		}
 					 
-				 		tb_show( 'Support Plugin', '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
+				 		tb_show( WCFEConfigFormL10N.title_supportPlugin, '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
 						
 						// Set next time 
 						setNextTime();

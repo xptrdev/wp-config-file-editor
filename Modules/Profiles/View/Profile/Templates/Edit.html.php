@@ -28,11 +28,11 @@ $securityToken = $result[ 'securityToken' ];
 				<fieldset>
 					<ul>
 						<li>
-							<label for="profile-name">Name</label>
+							<label for="profile-name"><?php $this->_e( 'Name' ) ?></label>
 							<input<?php echo ( ! $result[ 'isNew' ] ? ' readonly="readonly"' : '' ) ?> type="text" id="profile-name" name="profileForm[name]" value="<?php echo $form->get( 'name' )->getValue() ?>" />
 						</li>
 						<li>
-							<label for="profile-description">Description</label>
+							<label for="profile-description"><?php $this->_e( 'Description' ) ?></label>
 							<textarea id="profile-description" name="profileForm[description]"><?php echo $form->get( 'description' )->getValue() ?></textarea>
 						</li>
 						<li>

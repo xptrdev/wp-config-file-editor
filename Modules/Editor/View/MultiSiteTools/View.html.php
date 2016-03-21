@@ -59,10 +59,13 @@ class MultiSiteToolsHTMLView extends TemplateView {
 	protected function initialize() {
 		
 		# ENQUEUE SCRIPT and STYLES
-		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
+		$this->resFactory = new \WCFE\Libraries\ResStorage( 
+            WP_PLUGIN_URL . '/wp-config-file-editor',
+            WP_PLUGIN_DIR . '/wp-config-file-editor'
+        );
 		
 		# Scripts and Styles queues
-		$this->scriptsQueue = new DashboardScriptsQueue();
+		$this->scriptsQueue = new DashboardScriptsQueue( $this, 'js', 'localization.php' );
 		$this->stylesQueue = new DashboardStylesQueue();
 		
 		$this->{"enqueue{$this->mvcTarget()->getAction()}Resources"}( );

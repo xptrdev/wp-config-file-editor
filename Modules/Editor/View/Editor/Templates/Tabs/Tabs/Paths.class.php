@@ -33,13 +33,6 @@ class PathsOptionsTab extends FieldsTab {
 		
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Paths';
 	
 	/**
 	* put your comment there...
@@ -47,6 +40,8 @@ class PathsOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Paths' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Current Blog Id';
+		return $this->_( 'Current Blog Id' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Current Blog Id';
+		return $this->_( 'Current Blog Id' );
 	}
 
 }

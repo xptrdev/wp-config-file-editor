@@ -20,7 +20,7 @@ class SecureAuthKey extends Forms\Fields\FormStringField implements IWPConfigFil
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('SecureAuthKey', array(new Forms\Rules\RequiredField()));
+		parent::__construct('SecureAuthKey', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

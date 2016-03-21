@@ -26,7 +26,7 @@ class SysFiltersDashboardController extends Controller {
 		if ( ! is_super_admin() )
 		{
 			
-			die( 'Access Denied' );
+			die( $this->_( 'Access Denied' ) );
 		}
 		
 		$model =& $this->getModel();
@@ -51,11 +51,11 @@ class SysFiltersDashboardController extends Controller {
 		$postData =& \WCFE\Libraries\ParseString::parseString( file_get_contents( 'php://input' ) );
 		
 		if ( 	! isset( $postData[ 'securityToken' ] ) || 
-					! $postData[ 'securityToken' ] ||
-					! wp_verify_nonce( $postData[ 'securityToken'] ) )
+		        ! $postData[ 'securityToken' ] ||
+				! wp_verify_nonce( $postData[ 'securityToken'] ) )
 		{
 			
-			die( 'Invalid Security Token!!!' );
+			die( $this->_( 'Invalid Security Token!!!' ) );
 			
 		}
 		

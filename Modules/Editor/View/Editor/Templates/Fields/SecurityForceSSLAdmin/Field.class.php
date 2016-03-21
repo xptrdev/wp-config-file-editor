@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Force SSL Admin';
+		return $this->_( 'Force SSL Admin' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'when you want to secure logins and the admin area so that both passwords and cookies are never sent in the clear. This is the most secure option.';
+		return $this->_( 'when you want to secure logins and the admin area so that both passwords and cookies are never sent in the clear. This is the most secure option.' );
 	}
 
 	/**

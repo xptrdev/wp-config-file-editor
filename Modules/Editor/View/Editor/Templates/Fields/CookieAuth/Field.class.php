@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Auth';
+		return $this->_( 'Auth' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Auth cookie name';
+		return $this->_( 'Auth cookie name' );
 	}
 
 }

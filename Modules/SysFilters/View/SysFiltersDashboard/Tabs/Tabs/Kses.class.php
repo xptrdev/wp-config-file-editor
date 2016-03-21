@@ -23,13 +23,6 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 	* @var mixed
 	*/
 	protected $fieldsPluggableFilterName = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_SYSFILTERS_KSES_FIELDS;
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Kses';
 	
 	/**
 	* put your comment there...
@@ -40,12 +33,14 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 		$form =& $this->getForm();
 		$module = $form->get( 'kses' );
 		
+        $this->title = $this->_( 'Kses' );
+        
 		# Query vars
 		$allowedProtocols = new Fields\PreDefinedCheckboxList( 
 			$form, 
 			$module->get( 'protocols' )->get( 'value' ),
-			'Allowed Protocols', 
-			'Filter HTML attributes allowed protocols',
+			$this->_( 'Allowed Protocols' ), 
+			$this->_( 'Filter HTML attributes allowed protocols' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$allowedProtocols->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'kses', 'protocols', 'value' ) );
@@ -53,8 +48,8 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 		$postTags = new Fields\StructuredCheckboxList( 
 			$form, 
 			$module->get( 'postTags' )->get( 'value' ),
-			'Post Tags', 
-			'Allow what HTML Tags and attributes to be inserted into post content',
+			$this->_( 'Post Tags' ), 
+			$this->_( 'Allow what HTML Tags and attributes to be inserted into post content' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
     $postTags->setClassName( 'wcfe-editable-checkbox-list' );
@@ -62,8 +57,8 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 		$commentTags = new Fields\StructuredCheckboxList( 
 			$form, 
 			$module->get( 'commentTags' )->get( 'value' ),
-			'Comment Tags', 
-			'Allow what HTML Tags and attributes to be inserted into comment content',
+			$this->_( 'Comment Tags' ), 
+			$this->_( 'Allow what HTML Tags and attributes to be inserted into comment content' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$commentTags->setClassName( 'wcfe-editable-checkbox-list' );
@@ -71,8 +66,8 @@ class KsesOptionsTab extends SimpleSubContainerTab {
 		$htmlEntities = new Fields\CheckboxListField( 
 			$form, 
 			$module->get( 'entities' )->get( 'value' ),
-			'HTML Entities', 
-			'Allow what HTML Entities to be inserted',
+			$this->_( 'HTML Entities' ), 
+			$this->_( 'Allow what HTML Entities to be inserted' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		

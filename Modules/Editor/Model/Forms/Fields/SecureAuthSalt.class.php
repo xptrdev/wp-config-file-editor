@@ -20,7 +20,7 @@ class SecureAuthSalt extends Forms\Fields\FormStringField implements IWPConfigFi
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('SecureAuthSalt', array(new Forms\Rules\RequiredField()));
+		parent::__construct('SecureAuthSalt', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

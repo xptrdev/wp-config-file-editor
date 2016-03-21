@@ -41,6 +41,6 @@ class AuthKey extends Constant {
 	protected function getType() {
 		return new Types\StringType();
 	}
-
+    
 }
 

@@ -51,7 +51,12 @@ abstract class FieldsTab extends Tab {
 			
 			# Create field render for current fiels.
 			$rendererClass = $formAdapter->getRendererClass( $fieldClass );
-			$renderers[ ] = new $rendererClass( $form, $field );
+			$renderer = new $rendererClass( $form, $field );
+            
+            $renderer->extensionsInit( $this->tabs->getFormAdapter() );
+            
+            $renderers[ ] = $renderer;
+            
 		}
 				
 		return $renderers;

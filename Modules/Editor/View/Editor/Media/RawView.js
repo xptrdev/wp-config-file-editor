@@ -47,14 +47,14 @@
 			
 			if ( ! configFileContent )
 			{
-				alert( 'Config File cannot be empty!!!' );
+				alert( WCFERawViewL10N.msg_configFileEmpty );
 				
 				return false;
 			}
 			
 			if ( configFileContent.indexOf( '<?php' ) != 0 )
 			{
-				alert( 'Config file should always start with <?php TAG!!!!' );
+				alert( WCFERawViewL10N.msg_configFileNotStartByPHPTag );
 
 				return false;
 		 	}

@@ -22,7 +22,7 @@ class MultiSiteToolsController extends Controller {
 		if ( ! is_super_admin() )
 		{
 			
-			die( 'Access Denied' );
+			die( $this->_( 'Access Denied' ) );
 		}
 		
 		$view = array();
@@ -40,11 +40,11 @@ class MultiSiteToolsController extends Controller {
 		
 		# Security Token
 		if ( 	! isset( $_POST[ 'securityNonce' ] ) ||
-					! $_POST[ 'securityNonce' ] ||
-					! wp_verify_nonce( $_POST[ 'securityNonce' ] ) )
+		        ! $_POST[ 'securityNonce' ] ||
+				! wp_verify_nonce( $_POST[ 'securityNonce' ] ) )
 		{
 			
-			die( 'Access Denied !!!' );
+			die( $this->_( 'Access Denied' ) );
 		}
 		
 		$model =& $this->getModel();
@@ -78,7 +78,7 @@ class MultiSiteToolsController extends Controller {
 		if ( ! is_super_admin() )
 		{
 			
-			die( 'Access Denied' );
+			die( $this->_( 'Access Denied' ) );
 		}
 
 		$model =& $this->getModel();

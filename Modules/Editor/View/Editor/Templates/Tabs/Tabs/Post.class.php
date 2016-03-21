@@ -45,13 +45,6 @@ class PostOptionsTab extends SimpleSubContainerTab {
 		)
 
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Post';
 	
 	/**
 	* put your comment there...
@@ -59,6 +52,8 @@ class PostOptionsTab extends SimpleSubContainerTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Post' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

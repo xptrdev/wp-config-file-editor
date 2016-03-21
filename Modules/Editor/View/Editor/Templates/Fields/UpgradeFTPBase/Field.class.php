@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'FTP ABS Path';
+		return $this->_( 'FTP ABS Path' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'The full path to the "base"(ABSPATH) folder of the WordPress installation';
+		return $this->_( 'The full path to the "base"(ABSPATH) folder of the WordPress installation' );
 	}
 
 }

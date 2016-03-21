@@ -33,7 +33,7 @@ class MultiSiteToolsServiceController extends ServiceController {
 			
 			header( 'HTTP/1.0 4.3 Forbidden' );
 			
-			die( );
+			die( $this->_( 'Access Denied' ) );
 		}
 		
 		return true;
@@ -85,7 +85,7 @@ class MultiSiteToolsServiceController extends ServiceController {
 			return $result;
 		}
 		
-	  $result[ 'redirectTo' ] = home_url( 'wp-login.php' );
+	    $result[ 'redirectTo' ] = home_url( 'wp-login.php' );
 		$result[ 'error' ] = false;
 		
 		return $result;

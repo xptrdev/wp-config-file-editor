@@ -35,14 +35,14 @@ $router =& $this->router();
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
 		# Output options tab
-		$optionsTab = new	Tabs\Tabs( new Tabs\EditorFormTabsAdapter( $form ), $form );
+		$optionsTab = new Tabs\Tabs( new Tabs\EditorFormTabsAdapter( $form, $this ), $form );
 		$optionsTab->load();
 		
 		echo $optionsTab->render();
 ?>
 		<div id="wcfe-toolbox">
-			<input type="button" class="wcfe-task-button" value="Save" id="wcfe-editor-form-save" />
-			<input type="button" class="wcfe-task-button" value="Preview" id="wcfe-editor-form-preview" />
+			<input type="button" class="wcfe-task-button" value="<?php $this->_e( 'Save' ) ?>" id="wcfe-editor-form-save" />
+			<input type="button" class="wcfe-task-button" value="<?php $this->_e( 'Preview' ) ?>" id="wcfe-editor-form-preview" />
 			<input type="hidden" name="configFileFields[Task]" value="" />
 		</div>
 		<input type="hidden" name="configFileFields[<?php echo $form->getSecurityTokenName(); ?>]" value="<?php echo $form->getSecurityToken()->getValue(); ?>" />
@@ -73,7 +73,7 @@ $router =& $this->router();
 <?php // Support Plugin dialog ?>
 <div id="wcfe-support-plugin-dialog-popup">
 	<div id="wcfe-support-plugin-dialog">
-		<p>If you like this Plugin please keep it in development by <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/">submitting Review</a></p>
+		<p><?php $this->_e( 'If you like this Plugin please keep it in development by submitting review' ) ?> <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/"><?php $this->_e( '( Submit Review )' ) ?></a></p>
 		<input type="button" class="remind-me-later" value="Remind Me Later" />
 		<input type="button" class="force-dismiss" value="Don't Show Again!"  />
 	</div>
@@ -82,13 +82,13 @@ $router =& $this->router();
 <?php // Wanrings ballons ?>
 <div id="wcfe-ballons-templates">
 	<div class="wcfe-ballon" id="wcfe-active-profile-warning">
-		<h2>Warning</h2>
+		<h2><?php $this->_e( 'Warning' ) ?></h2>
 		<p>
-			Config Form is loaded from active profile and might not reflect wp-config values
+			<?php $this->_e( 'Config Form is loaded from active profile and might not reflect wp-config values' ) ?>
 			<br /><br />
-			Unload Profile to check-out wp-config file values
+			<?php $this->_e( 'Unload Profile to check-out wp-config file values' ) ?>
 			<br /><br />
-			<span style="color:red">Nothing saved yet until using Save button</span>
+			<span style="color:red"><?php $this->_e( 'Nothing saved yet until using Save button' ) ?></span>
 		</p>
 	</div>
 </div>

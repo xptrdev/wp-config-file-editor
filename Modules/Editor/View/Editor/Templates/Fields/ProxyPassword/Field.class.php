@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Password';
+		return $this->_( 'Password' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Proxy password, if it requires authentication';
+		return $this->_( 'Proxy password, if it requires authentication' );
 	}
 
 }

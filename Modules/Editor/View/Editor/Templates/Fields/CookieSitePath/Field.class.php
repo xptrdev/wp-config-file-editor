@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Site Path';
+		return $this->_( 'Site Path' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Site path cookie';
+		return $this->_( 'Site path cookie' );
 	}
 
 }

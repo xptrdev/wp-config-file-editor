@@ -14,11 +14,11 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 <ul id="wcfe-config-form-main-menu">
 
 	<li>
-		Tools
+		<?php $this->_e( 'Tools' ) ?>
 		<ul>
-			<li id="wcfe-dmm-tab-help" title="Fields help">Help</li>
+			<li id="wcfe-dmm-tab-help" title="Fields help"><?php $this->_e( 'Help' ) ?></li>
 			<li>-</li>
-			<li id="wcfe-dmm-tab-control-options" title="Internel Filters control options">Control options</li>
+			<li id="wcfe-dmm-tab-control-options" title="Internel Filters control options"><?php $this->_e( 'Control options' ) ?></li>
 		</ul>
 	
 	</li>

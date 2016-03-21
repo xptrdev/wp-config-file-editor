@@ -19,7 +19,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	public function getText() {
-		return 'Language';
+		return $this->_( 'Language' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Defines the name of the language translation (.mo) file.';
+		return $this->_( 'Defines the name of the language translation (.mo) file.' );
 	}
 
 	/**

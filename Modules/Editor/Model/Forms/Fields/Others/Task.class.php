@@ -20,7 +20,7 @@ class Task extends Forms\Fields\FormStringField {
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('Task', array(new Forms\Rules\RequiredField()));
+		parent::__construct('Task', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 }

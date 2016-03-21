@@ -41,28 +41,28 @@ $result = $this->result();
 </style>
 <div id="wcfe-multisite-setup-network-tools" style="display: none;">
 	<div id="wcfe-multisite-network-setup-dialog">
-		<strong>WCFE Network Setup Tools</strong>
+		<strong><?php $this->_e( 'WCFE Network Setup Tools' ) ?></strong>
 		<br><br>
-		<span style="color:black">Left editor is current htaccess file code. Copy code on the right and put it at the desired position to left editor.</span>
+		<span style="color:black"><?php $this->_e( 'Left editor is current htaccess file code. Copy code on the right and put it at the desired position to left editor.' ) ?></span>
 		<br>
-		<span style="color:black">Left code is the final code that will be write to .htaccess file</span>
+		<span style="color:black"><?php $this->_e( 'Left code is the final code that will be write to .htaccess file' ) ?></span>
 		
-		<blockquote>Writing Rewrite rules is not supported for Windows IIS, only config file will be processed</blockquote>
+		<blockquote><?php $this->_e( 'Writing Rewrite rules is not supported for Windows IIS, only config file will be processed' ) ?></blockquote>
 		
 		<div style="float: right; margin: 18px 10px;width: 45%;">
-			<p>Detected htaccess code</p>
+			<p><?php $this->_e( 'Detected htaccess code' ) ?></p>
 			<textarea id="wcfe-htaccess-file-detected-code" style="width: 100%;height: 400px;" readonly="readonly"></textarea>
 		</div>
 		
 		<span class="wcfe-htaccess-editors-space" style="display: inline-block;width: 20px;height: 100%;"></span>
 		
 		<div style="width: 45%">
-			<p>Final htaccess File</p>
-			<textarea id="wcfe-htaccess-file-final-code" style="width: 100%;height: 400px"><?php echo $result[ 'htaccessCode' ] ?></textarea>		
+			<p><?php $this->_e( 'Final htaccess File' ) ?></p>
+			<textarea id="wcfe-htaccess-file-final-code" style="width: 100%;height: 400px"><?php echo $result[ 'htaccessCode' ] ?></textarea>
 		</div>
 
 		<div>
-			<p>Detected Config File constants</p>
+			<p><?php $this->_e( 'Detected Config File constants' ) ?></p>
 			<textarea id="wcfe-config-file-detected-code" style="height: 150px;width: 100%" readonly="readonly"></textarea>
 		</div>
 		
@@ -87,6 +87,16 @@ var actionsRoute = <?php echo json_encode( $this->actionsRoute ); ?>;
 	)
 ); 
 ?>
-<?php require $this->getPath() . DIRECTORY_SEPARATOR . 'Media' . DIRECTORY_SEPARATOR . 'SetupNetwork.js'; ?>
+<?php
+
+    $mediaDir = $this->getPath() . DIRECTORY_SEPARATOR . 'Media' . DIRECTORY_SEPARATOR;
+    
+    # Inline JS Localization
+    echo json_encode( require $mediaDir . DIRECTORY_SEPARATOR . 'SetupNetwork.localization.js' );
+
+    # Inline JS
+    require $mediaDir . DIRECTORY_SEPARATOR . 'SetupNetwork.js'; 
+    
+?>  
 
 </script>

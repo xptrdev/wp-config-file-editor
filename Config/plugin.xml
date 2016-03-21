@@ -5,6 +5,7 @@
 		<factoryClass>WCFE\Factory</factoryClass>
 		<factoryNamespace>Factory</factoryNamespace>
 		<dbVersion>0.5</dbVersion>
+        <localizationDir>Languages</localizationDir>
 		<serviceModules>
 			<classId>Module</classId>
 		</serviceModules>

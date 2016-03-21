@@ -35,13 +35,6 @@ class MaintenanceOptionsTab extends FieldsTab {
 			'MaxMemoryLimit', 
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Maintenance';
 	
 	/**
 	* put your comment there...
@@ -49,6 +42,8 @@ class MaintenanceOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Maintenance' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

@@ -217,7 +217,7 @@ class EditorModel extends PluginModel {
 			
 			if ( ! is_writable( WP_CONTENT_DIR ) || ! mkdir( $contentDir, 0755 ) )
 			{
-				$this->addError( "Couldn\'t create Content dir:: {$contentDir}. Content directory is not writable!!" );
+				$this->addError( $this->_( 'Couldn\'t create Content dir:: %s. Content directory is not writable!!', $contentDir ) );
 				
 				return false;
 			}
@@ -227,7 +227,7 @@ class EditorModel extends PluginModel {
 									$contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
 			{
 				
-				$this->addError( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' );
+				$this->addError( $this->_( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' ) );
 				
 				return false;
 			}
@@ -253,7 +253,7 @@ class EditorModel extends PluginModel {
 		
 		if ( ! file_put_contents( $backupFilePath, ob_get_clean() ) )
 		{
-			$this->addError( "Could not create backup file: {$backupFilePath}" );
+			$this->addError( $this->_( 'Could not create backup file: %s', $backupFilePath ) );
 			
 			return false;
 		}		
@@ -266,7 +266,7 @@ class EditorModel extends PluginModel {
 		
 		if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
 		{
-			$this->addError( "Could not create backup Data file: {$dataFilePath}" );
+			$this->addError( $this->_( 'Could not create backup Data file: %s', $dataFilePath ) );
 			
 			return false;
 		}
@@ -297,7 +297,7 @@ class EditorModel extends PluginModel {
 		if ( ! file_exists( $contentDir ) )
 		{
 			
-			$this->addError( 'Content directory doesn\'t exists' );
+			$this->addError( $this->_( 'Content directory doesn\'t exists' ) );
 			
 			return false;
 		}
@@ -544,7 +544,7 @@ class EditorModel extends PluginModel {
 		if ( ! is_readable( $configFilePath ) )
 		{
 			
-			$this->addError( 'Couldn\'t read wp-config.php file' );
+			$this->addError( $this->_( 'Couldn\'t read wp-config.php file' ) );
 			
 			return false;
 		}
@@ -593,7 +593,7 @@ class EditorModel extends PluginModel {
 		# Check config file permissions
 		if ( ! is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
 		{
-			$this->addError( "Config file is not writable: {$configFilePath}" );
+			$this->addError( $this->_( 'Config file is not writable: %s', $configFilePath ) );
 			
 			return false;
 		}
@@ -601,7 +601,8 @@ class EditorModel extends PluginModel {
 		# Save config file
 		if ( ! file_put_contents( $configFilePath, $this->getConfigFileContent() ) )
 		{
-			$this->addError( "Could not write config file: {$configFilePath}" );
+            
+			$this->addError( $this->_( 'Could not write config file: %s', $configFilePath ) );
 			
 			return false;
 		}
@@ -659,11 +660,11 @@ class EditorModel extends PluginModel {
 		{
 			
 			# Get database connection parameters.
-			$user = $form->get( 'DbUser' )->getValue();
-			$password = $form->get( 'DbPassword' )->getValue();
-			$name = $form->get( 'DbName' )->getValue();
-			$host = $form->get( 'DbHost' )->getValue();
-			$port = $form->get( 'DbPort' )->getValue();
+			$user       = $form->get( 'DbUser' )->getValue();
+			$password   = $form->get( 'DbPassword' )->getValue();
+			$name       = $form->get( 'DbName' )->getValue();
+			$host       = $form->get( 'DbHost' )->getValue();
+			$port       = $form->get( 'DbPort' )->getValue();
 			
 			# Test database parameters
 			# using mysql extension or mysqli is mysql not available
@@ -681,7 +682,7 @@ class EditorModel extends PluginModel {
 					else 
 					{
 						# Could not select database
-						$this->addError( 'Database doesn\' exists!' );
+						$this->addError( $this->_( 'Database doesn\' exists!' ) );
 					}
 					# Close connection
 					mysqli_close( $clink );
@@ -689,7 +690,7 @@ class EditorModel extends PluginModel {
 				else 
 				{
 					# Could not connect
-					$this->addError( 'Couldn\'t connect to database server!' );
+					$this->addError( $this->_( 'Couldn\'t connect to database server!' ) );
 				}
 			}
 			else if ( function_exists( 'mysql_connect' ) ) 
@@ -706,7 +707,7 @@ class EditorModel extends PluginModel {
 					else 
 					{
 						# Could not select database
-						$this->addError( 'Database doesn\' exists!' );
+						$this->addError( $this->_( 'Database doesn\' exists!' ) );
 					}
 					# Close connection
 					mysql_close( $clink );
@@ -714,13 +715,13 @@ class EditorModel extends PluginModel {
 				else 
 				{
 					# Could not connect
-					$this->addError( 'Couldn\'t connect to database server!' );
+					$this->addError( $this->_( 'Couldn\'t connect to database server!' ) );
 				}
 			}
 			else 
 			{
 				# Doesn't supported
-				$this->addError( 'Could not use mysql or mysqli extension for testing database connection! DB provider doesn\' supported!!' );
+				$this->addError( $this->_( 'Could not use mysql or mysqli extension for testing database connection! DB provider doesn\' supported!!' ) );
 			}
 		}
 		# Return status

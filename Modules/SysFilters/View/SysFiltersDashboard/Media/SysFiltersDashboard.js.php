@@ -14,13 +14,13 @@ use WPPFW\Services\Queue\ScriptResource;
 /**
 * 
 */
-class IndexScript extends ScriptResource {
+class SysFiltersDashboard extends ScriptResource {
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'Index.js';
+	protected $fileName = 'SysFiltersDashboard.js';
 	
 }

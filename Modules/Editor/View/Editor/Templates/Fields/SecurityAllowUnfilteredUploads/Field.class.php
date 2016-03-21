@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Allow Unfiltered Uploads';
+		return $this->_( 'Allow Unfiltered Uploads' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Allow unfilered Uploads';
+		return $this->_( 'Allow unfilered Uploads' );
 	}
 
 	/**

@@ -40,13 +40,6 @@ class SecureKeysOptionsTab extends FieldsTab {
 			'NonceSalt'
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Secure Keys';
 	
 	/**
 	* put your comment there...
@@ -54,6 +47,8 @@ class SecureKeysOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Secure Keys' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

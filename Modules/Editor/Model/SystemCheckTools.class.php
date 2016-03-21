@@ -76,8 +76,8 @@ class SystemCheckToolsModel extends PluginModel
 		
 		$backupDirPath = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->backupDir;
 		
-		$this->backupState = file_exists( $backupDirPath . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_DATA_FILE_NAME ) ||
-												 file_exists( $backupDirPath . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_FILE_NAME );
+		$this->backupState =    file_exists( $backupDirPath . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_DATA_FILE_NAME ) ||
+		                        file_exists( $backupDirPath . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_FILE_NAME );
 		
 		return $this;
 	}
@@ -150,7 +150,7 @@ class SystemCheckToolsModel extends PluginModel
 		if ( ! file_exists( $htaccessFile ) )
 		{
 			
-		  $this->addError( 'HTAccess file doesnt exists' );
+		  $this->addError( $this->_( 'HTAccess file doesnt exists' ) );
 			
 			return false;
 		}

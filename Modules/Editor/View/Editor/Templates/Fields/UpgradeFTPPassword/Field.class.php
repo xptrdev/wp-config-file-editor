@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Password';
+		return $this->_( 'Password' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'The password for the username entered for FTP_USER. If you are using SSH public key authentication this can be omitted.';
+		return $this->_( 'The password for the username entered for FTP_USER. If you are using SSH public key authentication this can be omitted.' );
 	}
 
 }

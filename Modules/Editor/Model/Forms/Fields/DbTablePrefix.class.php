@@ -20,7 +20,7 @@ class DbTablePrefix extends Forms\Fields\FormStringField implements IWPConfigFil
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('DbTablePrefix', array(new Forms\Rules\RequiredField()));
+		parent::__construct('DbTablePrefix', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

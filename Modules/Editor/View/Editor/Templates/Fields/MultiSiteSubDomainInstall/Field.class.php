@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Enable Sub Domains';
+		return $this->_( 'Enable Sub Domains' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Use sub domains for network sites';
+		return $this->_( 'Use sub domains for network sites' );
 	}
 
 	/**

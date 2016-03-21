@@ -18,9 +18,10 @@ class AuthKey extends Forms\Fields\FormStringField implements IWPConfigFileField
 	* put your comment there...
 	* 
 	*/
-	public function __construct() {
+	public function __construct() 
+    {
 		# Set field name and rules
-		parent::__construct('AuthKey', array(new Forms\Rules\RequiredField()));
+		parent::__construct( 'AuthKey', array( new \WPPFW\Forms\Rules\RequiredField() ) );
 	}
 
 	/**

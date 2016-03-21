@@ -14,25 +14,25 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 <ul id="wcfe-config-form-main-menu">
 	
 	<li>
-		Tools
+		<?php $this->_e( 'Tools' ) ?>
 		<ul>
 		
 			<li>
-				Profiles
+				<?php $this->_e( 'Profiles' ) ?>
 				<ul id="wcfe-dmm-profiles">
-					<li id="wcfe-dmm-profiles-create" title="Create new profile from config form fields">Create</li>
-					<li id="wcfe-dmm-profiles-list" title="Manage profiles">Profiles</li>
+					<li id="wcfe-dmm-profiles-create" title="<?php $this->_e( 'Create new profile from config form fields' )?>'"><?php $this->_e( 'Create' ) ?></li>
+					<li id="wcfe-dmm-profiles-list" title="<?php $this->_e( 'Manage profiles' ) ?>"><?php $this->_e( 'Profiles' ) ?></li>
 					<li>-</li>
 					<li id="wcfe-dmm-profiles-active-profile">
-						Active Profile
+						<?php $this->_e( 'Active Profile' ) ?>
 						<ul>
-							<li id="wcfe-dmm-profiles-save" title="Save config form fields vars into active profile">Save</li>
+							<li id="wcfe-dmm-profiles-save" title="<?php $this->_e( 'Save config form fields vars into active profile' )?>"><?php $this->_e( 'Save' ) ?></li>
 							<li>-</li>
-							<li id="wcfe-dmm-profiles-edit" title="Edit active profile description">Edit</li>
-							<li id="wcfe-dmm-profiles-delete" title="Delete active profile, return back to config file values, discard changes">Delete</li>
-							<li id="wcfe-dmm-profiles-reload" title="Reload active profile field values, discard changes">Reload</li>
+							<li id="wcfe-dmm-profiles-edit" title="<?php $this->_e( 'Edit active profile description' )?>"><?php $this->_e( 'Edit' ) ?></li>
+							<li id="wcfe-dmm-profiles-delete" title="<?php $this->_e( 'Delete active profile, return back to config file values, discard changes' )?>"><?php $this->_e( 'Delete' ) ?></li>
+							<li id="wcfe-dmm-profiles-reload" title="<?php $this->_e( 'Reload active profile field values, discard changes' ) ?>"><?php $this->_e( 'Reload' ) ?></li>
 							<li>-</li>
-							<li id="wcfe-dmm-profiles-unload" title="Active profile deattach. Return to config file values">Unload</li>
+							<li id="wcfe-dmm-profiles-unload" title="<?php $this->_e( 'Active profile deattach. Return to config file values' ) ?>"><?php $this->_e( 'Unload' ) ?></li>
 						</ul>
 					</li>
 				</ul>
@@ -41,32 +41,32 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 			<li>-</li>
 			
 			<li>
-				Info
+				<?php $this->_e( 'Info' ) ?>
 				<ul id="wcfe-dmm-info">
-					<li id="wcfe-dmm-info-paths" title="Discover your installation path information">Paths</li>
+					<li id="wcfe-dmm-info-paths" title="<?php $this->_e( 'Discover your installation path information' ) ?>"><?php $this->_e( 'Paths' ) ?></li>
 				</ul>
 			</li>
 			
 		  <li>-</li>
 
-			<li id="wcfe-dmm-systemcheck" title="Check system compatibility with WCFE Plugin">System check <span class="beta-feature">( BETA )</span></li>
+			<li id="wcfe-dmm-systemcheck" title="<?php $this->_e( 'Check system compatibility with WCFE Plugin' ) ?>"><?php $this->_e( 'System check' ) ?></li>
 			
 			<li>-</li>
 			
-			<li id="wcfe-dmm-multisite-enable">Multi Sites Setup <span class="beta-feature">( BETA )</span></li>
+			<li id="wcfe-dmm-multisite-enable"><?php $this->_e( 'Multi Sites Setup' ) ?></li>
 			
 			<li>-</li>
 			
-			<li id="wcfe-dmm-cookies-generateHash">Generate Cookies Hash</li>
+			<li id="wcfe-dmm-cookies-generateHash"><?php $this->_e( 'Generate Cookies Hash' ) ?></li>
 			
 			<li>-</li>
 			
 			<li>
-				Secure Keys
+				<?php $this->_e( 'Secure Keys' ) ?>
 				<ul>
-					<li id="wcfe-dmm-secure-keys-generate">Generate</li>
+					<li id="wcfe-dmm-secure-keys-generate"><?php $this->_e( 'Generate' ) ?></li>
 				
-					<li id="wcfe-dmm-secure-keys-generate-all">Generate all</li>
+					<li id="wcfe-dmm-secure-keys-generate-all"><?php $this->_e( 'Generate all' ) ?></li>
 				</ul>
 			</li>
 						
@@ -75,26 +75,26 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 	</li>
 
 	<li>
-		Help
+		<?php $this->_e( 'Help' ) ?>
 		<ul id="wcfe-dmm-about">
 			<li>
-				Tab
+				<?php $this->_e( 'Tab' ) ?>
 				<ul id="wcfe-dmm-tab">
-					<li id="wcfe-dmm-tab-help" title="Active tab fields help text">Fields Help</li>
-					<li id="wcfe-dmm-tab-constants-list" title="Active tab fields mapped to wp-config file constants list">Constants List</li>
+					<li id="wcfe-dmm-tab-help" title="Active tab fields help text"><?php $this->_e( 'Fields Help' ) ?></li>
+					<li id="wcfe-dmm-tab-constants-list" title="Active tab fields mapped to wp-config file constants list"><?php $this->_e( 'Constants List' ) ?></li>
 				</ul>
 			</li>
 			<li>-</li>
-			<li id="wcfe-dmm-about-contact">Contact</li>
-			<li id="wcfe-dmm-about-website">Web Site</li>
-			<li id="wcfe-dmm-about-support">Support Forum</li>
-			<li id="wcfe-dmm-about-submit-review">Submit Review</li>
+			<li id="wcfe-dmm-about-contact"><?php $this->_e( 'Contact' ) ?></li>
+			<li id="wcfe-dmm-about-website"><?php $this->_e( 'Web Site' ) ?></li>
+			<li id="wcfe-dmm-about-support"><?php $this->_e( 'Support Forum' ) ?></li>
+			<li id="wcfe-dmm-about-submit-review"><?php $this->_e( 'Submit Review' ) ?></li>
 			<li>-</li>
-			<li id="wcfe-dmm-about-online-help">Online Docs</li>
+			<li id="wcfe-dmm-about-online-help"><?php $this->_e( 'Online Docs' ) ?></li>
 			<li>-</li>
-			<li id="wcfe-dmm-about-info">About</li>
+			<li id="wcfe-dmm-about-info"><?php $this->_e( 'About' ) ?></li>
 			<li>-</li>
-			<li id="wcfe-dmm-about-follow-development">Follow Development</li>
+			<li id="wcfe-dmm-about-follow-development"><?php $this->_e( 'Follow Development' ) ?></li>
 		</ul>
 	</li>
 		

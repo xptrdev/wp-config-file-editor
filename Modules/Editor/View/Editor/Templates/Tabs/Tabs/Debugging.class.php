@@ -38,13 +38,6 @@ class DebuggingOptionsTab extends FieldsTab {
 			'SaveQueries',
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Developer';
 	
 	/**
 	* put your comment there...
@@ -52,6 +45,8 @@ class DebuggingOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Developer' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

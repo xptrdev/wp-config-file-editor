@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Port';
+		return $this->_( 'Port' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Alternate Database host port';
+		return $this->_( 'Alternate Database host port' );
 	}
 
 }

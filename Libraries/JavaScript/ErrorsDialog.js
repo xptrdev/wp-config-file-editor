@@ -21,7 +21,7 @@
 			}
 			
 			// Show Popup
-			tb_show( 'Config File Editor Errors', '#TB_inline?inlineId=wcfe-errors-dialog&width=500px&height=400px' )
+			tb_show( WCFEErrorsDialogL10N.title , '#TB_inline?inlineId=wcfe-errors-dialog&width=500px&height=400px' )
 		};
 		
 	}

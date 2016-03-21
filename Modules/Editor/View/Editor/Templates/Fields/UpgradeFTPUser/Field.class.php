@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'User';
+		return $this->_( 'User' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'either user FTP or SSH username. Most likely these are the same, but use the appropriate one for the type of update you wish to do.';
+		return $this->_( 'either user FTP or SSH username. Most likely these are the same, but use the appropriate one for the type of update you wish to do.' );
 	}
 
 }

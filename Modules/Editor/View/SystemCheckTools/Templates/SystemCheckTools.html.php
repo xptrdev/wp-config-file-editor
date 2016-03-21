@@ -117,7 +117,7 @@ else
     		<tbody>
     			<tr>
     				<td>
-    					<span>Writable wp-config.php</span>
+    					<span><?php $this->_e( 'Writable wp-config.php' ) ?></span>
 							<br />
 							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=config-file&wcfe-task=<?php echo $configFile[ 'task' ]; ?>" title="<?php echo $configFile[ 'tipText' ] ?>">Turn <?php echo $configFile[ 'taskText' ] ?></a>
     				</td>
@@ -125,28 +125,28 @@ else
     			</tr>
     			<tr>
     				<td>
-    					<span>Writable .htaccess</span>
-							<br />
-							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=htaccess-file&wcfe-task=<?php echo $htaccessFile[ 'task' ]; ?>" title="<?php echo $htaccessFile[ 'tipText' ] ?>">Turn <?php echo $htaccessFile[ 'taskText' ] ?></a>
+    					<span><?php $this->_e( 'Writable .htaccess' ) ?></span>
+						<br />
+						<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=htaccess-file&wcfe-task=<?php echo $htaccessFile[ 'task' ]; ?>" title="<?php echo $htaccessFile[ 'tipText' ] ?>">Turn <?php echo $htaccessFile[ 'taskText' ] ?></a>
     				</td>
     				<td><img src="<?php echo $libraryImagesUrl ?>/agt_action_<?php echo $model->getHTAccessFileState() ? 'success' : 'fail' ?>.png" /></td>
     			</tr>
     			<tr>
-    				<td>Application Server</td>
+    				<td><?php $this->_e( 'Application Server' ) ?></td>
     				<td><?php echo $model->getApplicationServer() ?></td>
     			</tr>
     			<tr>
-    				<td>Backup directory</td>
+    				<td><?php $this->_e( 'Backup directory' ) ?></td>
     				<td><?php echo $model->getBackupDir() ?></td>
     			</tr>
     			<tr>
     				<td>
-    					<span>Emergency Backup</span>
+    					<span><?php $this->_e( 'Emergency Backup' ) ?></span>
 
     					
 <?php 			if ( $model->getBackupState() ) : ?>
 							<br />
-							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=emergency-backup">Delete</a>
+							<a href="<?php echo $this->actionsRoute[ 'systemCheckTools' ] ?>&wcfe-tool=emergency-backup"><?php $this->_e( 'Delete' ) ?></a>
 <?php 			endif; ?>
 
 

@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Config File Editor Plugin\n"
+"POT-Creation-Date: 2016-03-19 00:10-0000\n"
+"PO-Revision-Date: 2016-03-19 00:11-0000\n"
+"Last-Translator: Ahmed Said\n"
+"Language-Team: Ahmed Said <author@wp-cfe.xptrdev.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: E:\\wamp\\www\\test\\wp-config-file-editor\\wp-content"
+"\\plugins\\wp-config-file-editor\n"
+
+#: E:\wamp\www\test\wp-config-file-editor\wp-content\plugins\wp-config-file-editor/Libraries/JavaScript/ErrorsDialog.localization.php:11
+msgid "Config File Editor Errors"
+msgstr ""
+
+#: E:\wamp\www\test\wp-config-file-editor\wp-content\plugins\wp-config-file-editor/Modules/Editor/View/Editor/Templates/Index.html.php:76
+msgid "If you like this Plugin please keep it in development by"
+msgstr ""
+
+#: E:\wamp\www\test\wp-config-file-editor\wp-content\plugins\wp-config-file-editor/Modules/Editor/View/Editor/Templates/Index.html.php:76
+msgid "submitting Review"
+msgstr ""
+
+#: E:\wamp\www\test\wp-config-file-editor\wp-content\plugins\wp-config-file-editor/Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:17
+msgid "Tools"
+msgstr ""

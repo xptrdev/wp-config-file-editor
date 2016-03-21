@@ -37,6 +37,16 @@ abstract class Tab {
 	*/
 	protected $title;
 
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $txt
+    */
+    protected function _( $txt )
+    {
+        return call_user_func_array( array( $this->tabs->getFormAdapter(), '_' ), func_get_args() );
+    }
+
 	/**
 	* put your comment there...
 	* 

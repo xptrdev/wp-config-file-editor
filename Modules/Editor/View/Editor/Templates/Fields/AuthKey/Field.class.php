@@ -19,7 +19,7 @@ class Field extends SecureKeyField {
 	* 
 	*/
 	public function getText() {
-		return 'Authentication';
+		return $this->_( 'Authentication' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends SecureKeyField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Wordpress Hash key for AUTH_KEY constant';
+		return $this->_( 'Wordpress Hash key for AUTH_KEY constant' );
 	}
 
 }

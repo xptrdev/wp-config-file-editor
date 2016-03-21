@@ -20,7 +20,7 @@ class AuthSalt extends Forms\Fields\FormStringField implements IWPConfigFileFiel
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('AuthSalt', array(new Forms\Rules\RequiredField()));
+		parent::__construct('AuthSalt', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

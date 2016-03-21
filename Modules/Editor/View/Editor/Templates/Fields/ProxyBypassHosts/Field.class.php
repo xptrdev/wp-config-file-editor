@@ -46,7 +46,7 @@ class Field extends CheckboxListField {
 	* 
 	*/
 	public function getText() {
-		return 'Bypass Hosts';
+		return $this->_( 'Bypass Hosts' );
 	}
 	
 	/**
@@ -54,7 +54,7 @@ class Field extends CheckboxListField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Will prevent the hosts in this list from going through the proxy';
+		return $this->_( 'Will prevent the hosts in this list from going through the proxy' );
 	}
   
 }

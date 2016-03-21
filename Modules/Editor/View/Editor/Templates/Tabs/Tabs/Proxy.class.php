@@ -38,13 +38,6 @@ class ProxyOptionsTab extends FieldsTab {
 		)		
 
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Proxy';
 	
 	/**
 	* put your comment there...
@@ -52,6 +45,8 @@ class ProxyOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Proxy' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

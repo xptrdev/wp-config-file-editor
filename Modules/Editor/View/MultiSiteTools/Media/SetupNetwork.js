@@ -37,7 +37,7 @@
 		*/
 		var setupNetworkBtn = function()
 		{
-			if ( ! confirm( 'Would you like to write Config andf htaccess Multi Sites configurations code?' ) )
+			if ( ! confirm( WCFESetupNetworkL10N.confirm_writeConfigAndHtaccessCode ) )
 			{
 				return;
 			}
@@ -68,7 +68,7 @@
 							
 				function()
 				{
-					alert( 'Internal server error!' );
+					alert( WCFESetupNetworkL10N.msg_internlServerError );
 				}
 				
 			);

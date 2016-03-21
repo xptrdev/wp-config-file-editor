@@ -19,7 +19,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	public function getText() {
-		return 'Core';
+		return $this->_( 'Core' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends DropDownField {
 	* 
 	*/
 	public function getTipText() {
-		return 'The easiest way to manipulate core updates is with the WP_AUTO_UPDATE_CORE constant:';
+		return $this->_( 'The easiest way to manipulate core updates is with the WP_AUTO_UPDATE_CORE constant:' );
 	}
 
 	/**
@@ -38,9 +38,9 @@ class Field extends DropDownField {
 	{
 		
 		$list = array(
-			'true' => 'Enable',
-			'minor' => 'Enable only Minor updates',
-			'false' => 'Disable',
+			'true' => $this->_( 'Enable' ),
+			'minor' => $this->_( 'Enable only Minor updates' ),
+			'false' => $this->_( 'Disable' ),
 		);
 		
 		return $list;

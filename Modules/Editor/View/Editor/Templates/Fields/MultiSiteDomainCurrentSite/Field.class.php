@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Domain';
+		return $this->_( 'Domain' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Root domain for multi site installations';
+		return $this->_( 'Root domain for multi site installations' );
 	}
 
 }

@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Host';
+		return $this->_( 'Host' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'The address in which the Database is located. This can either be an IP or Domain name. In most cases its \'localhost\'';
+		return $this->_( 'The address in which the Database is located. This can either be an IP or Domain name. In most cases its \'localhost\'' );
 	}
 
 }

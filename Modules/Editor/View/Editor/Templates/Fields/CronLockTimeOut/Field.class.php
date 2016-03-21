@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Cron Lock Timeout';
+		return $this->_( 'Cron Lock Timeout' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Make sure a cron process cannot run more than once every XXXX seconds.';
+		return $this->_( 'Make sure a cron process cannot run more than once every XXXX seconds.' );
 	}
 
 }

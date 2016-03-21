@@ -42,13 +42,6 @@ class DatabaseOptionsTab extends FieldsTab {
 			'DbDontUpgradeGlobalTables'
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Database';
 	
 	/**
 	* put your comment there...
@@ -56,6 +49,8 @@ class DatabaseOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Database' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

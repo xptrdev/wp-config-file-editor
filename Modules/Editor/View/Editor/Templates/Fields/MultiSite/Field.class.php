@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Enable Multi Site';
+		return $this->_( 'Enable Multi Site' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Multi site feature is enabled on current Wordpress installation';
+		return $this->_( 'Multi site feature is enabled on current Wordpress installation' );
 	}
 
 	/**

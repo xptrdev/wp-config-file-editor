@@ -40,13 +40,6 @@ class MultiSiteOptionsTab extends FieldsTab {
 			'MultiSitePrimaryNetworkId',
 		)
 	);
-
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $title = 'Multi Sites';
 	
 	/**
 	* put your comment there...
@@ -54,6 +47,8 @@ class MultiSiteOptionsTab extends FieldsTab {
 	*/
 	protected function initialize() 
 	{
+        $this->title = $this->_( 'Multi Sites' );
+        
 		$this->fields = $this->bcCreateFieldsList( $this->fields );
 	}
 

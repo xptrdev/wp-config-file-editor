@@ -20,7 +20,7 @@ class DbName extends Forms\Fields\FormStringField implements IWPConfigFileField 
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('DbName', array(new Forms\Rules\RequiredField()));
+		parent::__construct('DbName', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

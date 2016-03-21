@@ -71,8 +71,8 @@ class AdvancedOptionsPanel
 		( 
 			$form, 
 			$optionsFields->get( 'disabled' ), 
-			'Disable', 
-			'Dont modify system parameter value',
+			$formAdapter->_( 'Disable' ), 
+			$formAdapter->_( 'Dont modify system parameter value' ),
 			1
 		);
 		
@@ -80,8 +80,8 @@ class AdvancedOptionsPanel
 		( 
 			$form, 
 			$optionsFields->get( 'priority' ), 
-			'Priority', 
-			'Filter Priority' 
+			$formAdapter->_( 'Priority' ), 
+			$formAdapter->_( 'Filter Priority' ) 
 		);
 		
 		# Section / Field name advanced options

@@ -23,10 +23,10 @@ class EditorController extends Controller {
 	public function systemCheckToolsAction()
 	{
 		
-		if ( 	! is_super_admin() )
+		if ( ! is_super_admin() )
 		{
 			
-			die( 'Access denied' );
+			die( $this->_( 'Access denied' ) );
 			
 		}
 		
@@ -40,7 +40,7 @@ class EditorController extends Controller {
 						( ! wp_verify_nonce( $_GET[ 'securityNonce' ] ) ) )
 			{
 
-				die( 'Access Denied' );
+				die( $this->_( 'Access Denied' ) );
 			}
 			
 			$model =& $this->getModel( 'SystemCheckTools' );
@@ -107,7 +107,7 @@ class EditorController extends Controller {
 		if ( ! is_super_admin() )
 		{
 			
-			die( 'Access denied' );
+			die( $this->_( 'Access denied' ) );
 			
 		}
 		
@@ -170,7 +170,7 @@ class EditorController extends Controller {
 					// Clea profile and refresh to display normal config file
 					$model->unsetActiveProfile();
 					
-					$model->AddError( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Confirg Form reseted back to wp-config file values!!' );
+					$model->AddError( $this->_( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Config Form reseted back to wp-config file values!!' ) );
 					
 					$this->redirect( $router->routeAction() );
 					
@@ -257,7 +257,7 @@ class EditorController extends Controller {
 			else
 			{
 				# Not authorized
-				$model->addError('Not authorized to take such action!! Please refrehs the page if you think this is wrong.');
+				$model->addError( $this->_( 'Not authorized to take such action!! Please refrehs the page if you think this is wrong.' ) );
 			}
 		}
 		
@@ -284,7 +284,7 @@ class EditorController extends Controller {
 		
 		if ( ! is_super_admin() )
 		{
-			die( 'Access denied' );
+			die( $this->_( 'Access denied' ) );
 		}
 		
 		# Get model
@@ -308,7 +308,7 @@ class EditorController extends Controller {
 		
 		if ( ! is_super_admin() )
 		{
-			die( 'Access denied' );
+			die( $this->_( 'Access denied' ) );
 		}
 		
 		# Get model

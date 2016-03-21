@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Primary Network Id';
+		return $this->_( 'Primary Network Id' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Primary Network Id';
+		return $this->_( 'Primary Network Id' );
 	}
 
 }

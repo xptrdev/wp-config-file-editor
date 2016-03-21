@@ -20,7 +20,7 @@ class LoggedInSalt extends Forms\Fields\FormStringField implements IWPConfigFile
 	*/
 	public function __construct() {
 		# Set field name and rules
-		parent::__construct('LoggedInSalt', array(new Forms\Rules\RequiredField()));
+		parent::__construct('LoggedInSalt', array( new \WPPFW\Forms\Rules\RequiredField() ));
 	}
 
 	/**

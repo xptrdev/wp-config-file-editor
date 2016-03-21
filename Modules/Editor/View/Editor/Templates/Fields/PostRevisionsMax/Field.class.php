@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Max Revisions Count';
+		return $this->_( 'Max Revisions Count' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Maximum number of revisions per post or page can be specified.';
+		return $this->_( 'Maximum number of revisions per post or page can be specified.' );
 	}
 
 }

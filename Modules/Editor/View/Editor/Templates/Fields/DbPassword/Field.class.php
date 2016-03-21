@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Password';
+		return $this->_( 'Password' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Database user password for authenticating the connection between Wordpress and Database';
+		return $this->_( 'Database user password for authenticating the connection between Wordpress and Database' );
 	}
 
 }

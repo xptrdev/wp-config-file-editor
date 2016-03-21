@@ -12,15 +12,15 @@ defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 $paths = $result[ 'info' ][ 'paths' ];
 $pathDisplay = array
 (
-	'absPath' => array( 'title' => 'Absolute Path' ),
-	'pluginsDir' => array( 'title' => 'Plugins directory path' ),
-	'pluginsDirUrl' => array( 'title' => 'Plugins directory URL' ),
-	'contentDir' => array( 'title' => 'Content directory path' ),
-	'contentDirUrl' => array( 'title' => 'Content directory Url' ),
-	'adminUrl' => array( 'title' => 'Admin Url' ),
-	'siteUrl' => array( 'title' => 'Site Url' ),
-	'networkAdminUrl' => array( 'title' => 'Network Admin Url' ),
-	'networkSiteUrl' => array( 'title' => 'Network Site Url' ),
+	'absPath' => array( 'title' => $this->_( 'Absolute Path' ) ),
+	'pluginsDir' => array( 'title' => $this->_( 'Plugins directory path' ) ),
+	'pluginsDirUrl' => array( 'title' => $this->_( 'Plugins directory URL' ) ),
+	'contentDir' => array( 'title' => $this->_( 'Content directory path' ) ),
+	'contentDirUrl' => array( 'title' => $this->_( 'Content directory Url' ) ),
+	'adminUrl' => array( 'title' => $this->_( 'Admin Url' ) ),
+	'siteUrl' => array( 'title' => $this->_( 'Site Url' ) ),
+	'networkAdminUrl' => array( 'title' => $this->_( 'Network Admin Url' ) ),
+	'networkSiteUrl' => array( 'title' => $this->_( 'Network Site Url' ) ),
 );
 
 # COnvery to array
@@ -38,8 +38,8 @@ foreach ( $paths as $key => $location )
 	<table id="wcfe-info-paths-table" cellpadding="5" cellspacing="1">
 		<thead>
 			<tr>
-				<th style="width: 28%;">Name</th>
-				<th>Path</th>
+				<th style="width: 28%;"><?php $this->_e( 'Name' ) ?></th>
+				<th><?php $this->_e( 'Path' ) ?></th>
 			</tr>
 		</thead>
 		<tbody>

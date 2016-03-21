@@ -26,7 +26,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Logged In';
+		return $this->_( 'Logged In' );
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Logged In Cookie';
+		return $this->_( 'Logged In Cookie' );
 	}
 
 }

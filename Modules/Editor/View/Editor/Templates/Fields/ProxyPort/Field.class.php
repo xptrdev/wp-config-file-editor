@@ -19,7 +19,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getText() {
-		return 'Port';
+		return $this->_( 'Port' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends InputField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Proxy port for connection. No default, must be defined';
+		return $this->_( 'Proxy port for connection. No default, must be defined' );
 	}
 
 }

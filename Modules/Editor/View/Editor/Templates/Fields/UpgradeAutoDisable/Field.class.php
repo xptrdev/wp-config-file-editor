@@ -19,7 +19,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getText() {
-		return 'Disable Automatic Update';
+		return $this->_( 'Disable Automatic Update' );
 	}
 	
 	/**
@@ -27,7 +27,7 @@ class Field extends CheckboxField {
 	* 
 	*/
 	public function getTipText() {
-		return 'Disable all automatic updates';
+		return $this->_( 'Disable all automatic updates' );
 	}
 
 	/**
