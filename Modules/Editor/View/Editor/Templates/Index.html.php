@@ -73,7 +73,7 @@ $router =& $this->router();
 <?php // Support Plugin dialog ?>
 <div id="wcfe-support-plugin-dialog-popup">
 	<div id="wcfe-support-plugin-dialog">
-		<p><?php $this->_e( 'If you like this Plugin please keep it in development by submitting review' ) ?> <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/"><?php $this->_e( '( Submit Review )' ) ?></a></p>
+		<p><?php $this->_e( 'If you like this Plugin please keep it in development by submitting review' ) ?> <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wp-config-file-editor/"><?php $this->_e( '-> Submit Review' ) ?></a></p>
 		<input type="button" class="remind-me-later" value="Remind Me Later" />
 		<input type="button" class="force-dismiss" value="Don't Show Again!"  />
 	</div>

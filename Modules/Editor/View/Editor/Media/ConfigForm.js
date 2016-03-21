@@ -946,7 +946,7 @@ var supportPluginDialog = new function()
 					    return;
 			 	 		}
 					 
-				 		tb_show( WCFEConfigFormL10N.title_supportPlugin, '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=600&height=158' );	
+				 		tb_show( WCFEConfigFormL10N.title_supportPlugin, '#TB_inline?inlineId=wcfe-support-plugin-dialog-popup&width=620&height=180' );	
 						
 						// Set next time 
 						setNextTime();
