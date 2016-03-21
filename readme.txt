@@ -4,7 +4,7 @@ Donate link: http://wp-cfe.xptrdev.com
 Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.5.2
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,8 @@ Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it
 
 == Description ==
 
-Modify Wordpress Memory, Cache, Upgrade, Post, Localization, Cron, Multi Sites, Database, Secure Keys, Debugging, Proxy and Cookies constants values allocated in wp-config.php file using web form. Preview generated wp-config file into Syntax Hightlights and Error detection PHP Code Editor, before writing to wp-config.php. 
+Modify Wordpress Memory, Cache, Upgrade, Post, Localization, Cron, Multi Sites, Database, Secure Keys, Debugging, Proxy and Cookies constants values allocated in wp-config.php file using web form or even through Raw Editor.
+Preview generated wp-config file into Syntax Hightlights and Error detection PHP Code Editor, before writing to wp-config.php. 
 In additional to modifying Config File parameters using web form, its also possible to preview generated wp-config file before saving, review and makes updates before saving.
 WCFE Plugin start to include few helpers tools related to wp-config.php file editing like Setup Multi Sites. Setup Multi Site Wizard feature
 is newly added to make setup Multi Sites more fun by passing only 2 steps without any tecnhiqual works.
@@ -270,6 +271,12 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
+= 1.6.0 =
+* Fix: Multisite Wordpress 4.0 - 4.3 incomatibility
+* Fix: Missing Database Collations
+* Fix: Missing Database Character Sets
+* Add: Raw Editor
+* Add: Localization support only English Pack Bundled
 
 = 1.5.2 =
 * Fix: Forcing HTTP Requests System Parameters brokes Wordpress Plugins Upgrade

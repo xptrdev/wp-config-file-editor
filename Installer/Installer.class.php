@@ -39,10 +39,22 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		'1.5.1', 
 		
 		
-		'1.5.2', 
+		'1.5.2',
+        
+        
+        '1.6.0',
 		
 	);
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function _getCurrentVersion()
+    {
+        return end( $this->_upgraders );
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -78,14 +90,12 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		
 		return $installedVersion;
 	}
-	
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $currentVersion
-	* @return Installer
-	*/
-	public static function run( $currentVersion )
+
+    /**
+    * put your comment there...
+    * 
+    */
+	public static function run( )
 	{
 		
 		$result = null;
@@ -93,7 +103,7 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		if ( ! self::$instance )
 		{
 			# Create new installer
-			self::$instance = new Installer( new Factory( __NAMESPACE__ ), $currentVersion );
+			self::$instance = new Installer( new Factory( __NAMESPACE__ ) );
 			
 			# Install or upgrade
 			$state = self::$instance->getState();

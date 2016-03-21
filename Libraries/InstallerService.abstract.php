@@ -44,13 +44,19 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	* @param mixed $currentVersion
 	* @return InstallerService
 	*/
-	public function __construct( \WPPFW\Obj\IFactory & $factory, $currentVersion )
+	public function __construct( \WPPFW\Obj\IFactory & $factory )
 	{
 		parent::__construct( new \WPPFW\MVC\Model\State\GlobalWPOptionsModelState( $factory, get_class( $this ) ) );
 		
-		$this->currentVersion = $currentVersion;
+		$this->currentVersion = $this->_getCurrentVersion();
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    protected abstract function _getCurrentVersion();
+    
 	/**
 	* put your comment there...
 	* 
