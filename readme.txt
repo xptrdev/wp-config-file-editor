@@ -22,6 +22,10 @@ Additionally its possible to modify wide system parameters, Image Quality, Uploa
 
 For features updates, suggest features and detected bugs please [follow on twitter](https://twitter.com/wpcfe)
 
+Translation PO File is under /Languages folder.
+
+Author Email: author@wp-cfe.xptrdev.com
+
 = wp-config.php Editor Features =
 * Modify wp-config.php file using web form
 * Raw wp-config.php file editor with syntax hightlights and error detections
