@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wordpress Config File Editor Plugin\n"
-"POT-Creation-Date: 2016-03-21 17:52-0000\n"
-"PO-Revision-Date: 2016-03-21 17:52-0000\n"
+"POT-Creation-Date: 2016-03-21 22:13-0000\n"
+"PO-Revision-Date: 2016-03-21 22:13-0000\n"
 "Last-Translator: Ahmed Said\n"
 "Language-Team: Ahmed Said <author@wp-cfe.xptrdev.com>\n"
 "Language: English\n"
@@ -14,439 +14,449 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: "wp-config-file-editor\n"
 
-#: Libraries/Forms/Rule-Required.class.php:26
+#: /Libraries/Forms/Rule-Required.class.php:26
 msgid "Field Cannot be empty"
 msgstr ""
 
-#: Libraries/JavaScript/ErrorsDialog.localization.php:11
+#: /Libraries/JavaScript/ErrorsDialog.localization.php:11
 msgid "Config File Editor Errors"
 msgstr ""
 
-#: Modules/Editor/Controller/Editor/Controller.class.php:29
-#: Modules/Editor/Controller/Editor/Controller.class.php:110
-#: Modules/Editor/Controller/Editor/Controller.class.php:287
-#: Modules/Editor/Controller/Editor/Controller.class.php:311
+#: /Modules/Editor/Controller/Editor/Controller.class.php:29
+#: /Modules/Editor/Controller/Editor/Controller.class.php:110
+#: /Modules/Editor/Controller/Editor/Controller.class.php:287
+#: /Modules/Editor/Controller/Editor/Controller.class.php:311
 msgid "Access denied"
 msgstr ""
 
-#: Modules/Editor/Controller/Editor/Controller.class.php:43
-#: Modules/Editor/Controller/EditorService/Controller.class.php:37
-#: Modules/Editor/Controller/MultiSiteService/Controller.class.php:36
-#: Modules/Editor/Controller/MultiSiteTools/Controller.class.php:25
-#: Modules/Editor/Controller/MultiSiteTools/Controller.class.php:47
-#: Modules/Editor/Controller/MultiSiteTools/Controller.class.php:81
-#: Modules/SysFilters/Controller/SysFiltersDashboard/Controller.class.php:29
+#: /Modules/Editor/Controller/Editor/Controller.class.php:43
+#: /Modules/Editor/Controller/EditorService/Controller.class.php:37
+#: /Modules/Editor/Controller/MultiSiteService/Controller.class.php:36
+#: /Modules/Editor/Controller/MultiSiteTools/Controller.class.php:25
+#: /Modules/Editor/Controller/MultiSiteTools/Controller.class.php:47
+#: /Modules/Editor/Controller/MultiSiteTools/Controller.class.php:81
+#: /Modules/SysFilters/Controller/SysFiltersDashboard/Controller.class.php:29
 msgid "Access Denied"
 msgstr ""
 
-#: Modules/Editor/Controller/Editor/Controller.class.php:173
+#: /Modules/Editor/Controller/Editor/Controller.class.php:173
 msgid ""
 "Unhandled Catchable Error!!! Active Profile doesnt exists!!! Config Form "
 "reseted back to wp-config file values!!"
 msgstr ""
 
-#: Modules/Editor/Controller/Editor/Controller.class.php:260
+#: /Modules/Editor/Controller/Editor/Controller.class.php:260
 msgid ""
 "Not authorized to take such action!! Please refrehs the page if you think "
 "this is wrong."
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:220
+#: /Modules/Editor/Model/Editor.class.php:220
 #, php-format
 msgid "Couldn't create Content dir:: %s. Content directory is not writable!!"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:230
+#: /Modules/Editor/Model/Editor.class.php:230
 msgid ""
 "Could't create htaccess file to protect wcfe content dir from being access "
 "by public"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:256
+#: /Modules/Editor/Model/Editor.class.php:256
 #, php-format
 msgid "Could not create backup file: %s"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:269
+#: /Modules/Editor/Model/Editor.class.php:269
 #, php-format
 msgid "Could not create backup Data file: %s"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:300
+#: /Modules/Editor/Model/Editor.class.php:300
 msgid "Content directory doesn't exists"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:547
+#: /Modules/Editor/Model/Editor.class.php:547
 msgid "Couldn't read wp-config.php file"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:596
+#: /Modules/Editor/Model/Editor.class.php:596
 #, php-format
 msgid "Config file is not writable: %s"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:605
+#: /Modules/Editor/Model/Editor.class.php:605
 #, php-format
 msgid "Could not write config file: %s"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:685
-#: Modules/Editor/Model/Editor.class.php:710
+#: /Modules/Editor/Model/Editor.class.php:685
+#: /Modules/Editor/Model/Editor.class.php:710
 msgid "Database doesn' exists!"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:693
-#: Modules/Editor/Model/Editor.class.php:718
+#: /Modules/Editor/Model/Editor.class.php:693
+#: /Modules/Editor/Model/Editor.class.php:718
 msgid "Couldn't connect to database server!"
 msgstr ""
 
-#: Modules/Editor/Model/Editor.class.php:724
+#: /Modules/Editor/Model/Editor.class.php:724
 msgid ""
 "Could not use mysql or mysqli extension for testing database connection! DB "
 "provider doesn' supported!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:145
+#: /Modules/Editor/Model/EmergencyRestore.class.php:145
 #, php-format
 msgid "Invalid file/path specified %s"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:160
+#: /Modules/Editor/Model/EmergencyRestore.class.php:160
 msgid "Access Denied!! Invalid Data file!!!!!!!!!!!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:169
+#: /Modules/Editor/Model/EmergencyRestore.class.php:169
 msgid "Backup data cannot be read!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:178
+#: /Modules/Editor/Model/EmergencyRestore.class.php:178
 msgid "Access Denied!! Invalid parameters specified!!!!!!!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:187
+#: /Modules/Editor/Model/EmergencyRestore.class.php:187
 msgid "Access Denied!!! Invalid Backup specified!!!!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:230
+#: /Modules/Editor/Model/EmergencyRestore.class.php:230
 msgid "Could not write to config file!!!"
 msgstr ""
 
-#: Modules/Editor/Model/EmergencyRestore.class.php:249
+#: /Modules/Editor/Model/EmergencyRestore.class.php:249
 msgid "Backup Expired!!!!!"
 msgstr ""
 
-#: Modules/Editor/Model/MultiSiteTools.class.php:102
+#: /Modules/Editor/Model/MultiSiteTools.class.php:102
 msgid "Unable to write config file!"
 msgstr ""
 
-#: Modules/Editor/Model/MultiSiteTools.class.php:159
+#: /Modules/Editor/Model/MultiSiteTools.class.php:159
 msgid "Could not write config file!"
 msgstr ""
 
-#: Modules/Editor/Model/MultiSiteTools.class.php:185
+#: /Modules/Editor/Model/MultiSiteTools.class.php:185
 msgid "HTAccess file is not witrable"
 msgstr ""
 
-#: Modules/Editor/Model/MultiSiteTools.class.php:192
+#: /Modules/Editor/Model/MultiSiteTools.class.php:192
 msgid "Error writing htaccess file!!"
 msgstr ""
 
-#: Modules/Editor/Model/SystemCheckTools.class.php:153
+#: /Modules/Editor/Model/SystemCheckTools.class.php:153
 msgid "HTAccess file doesnt exists"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:12
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:12
 msgid "Profiles List"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:13
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:13
 msgid "Couldn't create Profile Temporary Storage"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:14
-#: Modules/Profiles/View/Profiles/Media/Profiles.localization.php:14
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:14
+#: /Modules/Profiles/View/Profiles/Media/Profiles.localization.php:14
 msgid "Create Profile"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:16
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:16
 msgid "Edit Active Profile"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:17
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:17
 msgid "Support Plugin"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:19
-#: Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:12
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:19
+#: /Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:12
 msgid "WCFE Help"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:20
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:84
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:20
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:84
 msgid "Constants List"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:22
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:22
 msgid "Generating Hash"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:23
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:23
 msgid "Cookies hash generated"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:24
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:24
 msgid "Server error! couldn't generate Cookie hash"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:25
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:25
 msgid "Generating secure key(s) ...."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:26
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:26
 msgid "Secure key(s) generated"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:27
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:27
 msgid "Server Error! Could not generate secure key(s)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:28
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:28
 msgid "Set Active Profile ..."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:29
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:29
 msgid "Profile Activated"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:30
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:30
 msgid "Unahanlded error!!"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:31
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:31
 msgid "Deleting Profile ..."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:32
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:32
 msgid "Profile deleted ... Refreshing from server..."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:33
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:33
 msgid "Saving Profile vars ..."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:34
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:34
 msgid "Profile vars saved successful"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:35
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:35
 msgid "Active Profile: "
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:37
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:37
 msgid "System Check"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:38
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:38
 msgid "Multi Site Setup Tools"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/ConfigForm.localization.php:40
+#: /Modules/Editor/View/Editor/Media/ConfigForm.localization.php:40
 msgid "Would you like to delete current active profile?"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/EditorServices.localization.php:11
-msgid "WCFE Plugin couldn't reache the server after updating config file."
+#: /Modules/Editor/View/Editor/Media/EditorServices.localization.php:11
+msgid ""
+"WCFE Plugin couldn't reache the server after updating config file.\n"
+"This might be because config file causes the site to get down or some "
+"changed configuration forced Log out.\n"
+"\n"
+" This error is likly done when switching when ON/OFF Multi Site feature\n"
+"\n"
+"This form will still open for you to decide if to want to restore config "
+"file or to just close the form\n"
+"\n"
+" Its recommended to refresh the page after closing this form"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/EditorServices.localization.php:18
+#: /Modules/Editor/View/Editor/Media/EditorServices.localization.php:18
 msgid "UPDATING CONFIG FILE WARNING!!!"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/RawView.localization.php:12
+#: /Modules/Editor/View/Editor/Media/RawView.localization.php:12
 msgid "Config File cannot be empty!!!"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Media/RawView.localization.php:13
+#: /Modules/Editor/View/Editor/Media/RawView.localization.php:13
 msgid "Config file should always start with <?php TAG!!!!"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:44
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:29
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:44
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:29
 msgid "Save"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:45
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:45
 msgid "Preview"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:76
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:76
 msgid ""
 "If you like this Plugin please keep it in development by submitting review"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:76
-msgid "( Submit Review )"
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:76
+msgid "-> Submit Review"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:85
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:20
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:85
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:20
 msgid "Warning"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:87
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:87
 msgid ""
 "Config Form is loaded from active profile and might not reflect wp-config "
 "values"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:89
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:89
 msgid "Unload Profile to check-out wp-config file values"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Index.html.php:91
+#: /Modules/Editor/View/Editor/Templates/Index.html.php:91
 msgid "Nothing saved yet until using Save button"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/AuthKey/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/AuthKey/Field.class.php:22
 msgid "Authentication"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/AuthKey/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/AuthKey/Field.class.php:30
 msgid "Wordpress Hash key for AUTH_KEY constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/AuthSalt/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/AuthSalt/Field.class.php:22
 msgid "Authentication Salt"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/AuthSalt/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/AuthSalt/Field.class.php:30
 msgid "Wordpress Hash key for AUTH_SALT constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ConcatenateJavaScript/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/ConcatenateJavaScript/Field.class.php:22
 msgid "Concatenate JavaScript"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ConcatenateJavaScript/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/ConcatenateJavaScript/Field.class.php:30
 msgid ""
 "To result in a faster administration area, all Javascript files are "
 "concatenated into one URL. If Javascript is failing to work in your "
 "administration area, you can try disabling this feature:"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieAdminPath/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieAdminPath/Field.class.php:29
 msgid "Admin path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieAdminPath/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieAdminPath/Field.class.php:37
 msgid "Admin path cookie name"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieAuth/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieAuth/Field.class.php:29
 msgid "Auth"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieAuth/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieAuth/Field.class.php:37
 msgid "Auth cookie name"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieDomain/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteDomainCurrentSite/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieDomain/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteDomainCurrentSite/Field.class.php:22
 msgid "Domain"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieDomain/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieDomain/Field.class.php:30
 msgid "Cookie domain"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieHash/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieHash/Field.class.php:29
 msgid "Hash"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieHash/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieHash/Field.class.php:37
 msgid "Hash Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieLoggedIn/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieLoggedIn/Field.class.php:29
 msgid "Logged In"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieLoggedIn/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieLoggedIn/Field.class.php:37
 msgid "Logged In Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePass/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePass/Field.class.php:29
 msgid "Pass"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePass/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePass/Field.class.php:37
 msgid "Pass Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePath/Field.class.php:29
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:42
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePath/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:42
 msgid "Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePath/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePath/Field.class.php:37
 msgid "Path Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePluginsPath/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePluginsPath/Field.class.php:29
 msgid "Plugins Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookiePluginsPath/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookiePluginsPath/Field.class.php:37
 msgid "Plugins Path Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieSecureAuth/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieSecureAuth/Field.class.php:29
 msgid "Secure Auth"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieSecureAuth/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieSecureAuth/Field.class.php:37
 msgid "Secure Auth cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieSitePath/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieSitePath/Field.class.php:29
 msgid "Site Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieSitePath/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieSitePath/Field.class.php:37
 msgid "Site path cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieTest/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieTest/Field.class.php:29
 msgid "Test"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieTest/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieTest/Field.class.php:37
 msgid "Test Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieUser/Field.class.php:29
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyUser/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPUser/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieUser/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyUser/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPUser/Field.class.php:22
 msgid "User"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CookieUser/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/CookieUser/Field.class.php:37
 msgid "User Cookie"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/Cron/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/Cron/Field.class.php:22
 msgid "Disable Cron"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/Cron/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/Cron/Field.class.php:30
 msgid "Disable the cron entirely"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CronAlternate/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/CronAlternate/Field.class.php:22
 msgid "Alternate Cron"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CronAlternate/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/CronAlternate/Field.class.php:30
 msgid ""
 "Use this, for example, if scheduled posts are not getting published. "
 "According to Otto's forum explanation, \"this alternate method uses a "
@@ -456,19 +466,19 @@ msgid ""
 "iffy sometimes, which is why it's not the default.\""
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CronLockTimeOut/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/CronLockTimeOut/Field.class.php:22
 msgid "Cron Lock Timeout"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/CronLockTimeOut/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/CronLockTimeOut/Field.class.php:30
 msgid "Make sure a cron process cannot run more than once every XXXX seconds."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbAllowRepair/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbAllowRepair/Field.class.php:22
 msgid "Automatic Repair"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbAllowRepair/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbAllowRepair/Field.class.php:30
 msgid ""
 "Added with Version 2.9, there is automatic database optimization support, "
 "which you can enable by adding the following define to your wp-config.php "
@@ -479,21 +489,21 @@ msgid ""
 "database is corrupt."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbCharSet/Field.class.php:73
+#: /Modules/Editor/View/Editor/Templates/Fields/DbCharSet/Field.class.php:121
 msgid "Database Characters Set"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbCharSet/Field.class.php:81
+#: /Modules/Editor/View/Editor/Templates/Fields/DbCharSet/Field.class.php:129
 msgid ""
 "Was made available to allow designation of the database character set (e.g. "
 "tis620 for TIS620 Thai) to be used when defining the MySQL database tables."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbCollate/Field.class.php:73
+#: /Modules/Editor/View/Editor/Templates/Fields/DbCollate/Field.class.php:475
 msgid "Database Collation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbCollate/Field.class.php:81
+#: /Modules/Editor/View/Editor/Templates/Fields/DbCollate/Field.class.php:483
 msgid ""
 "As of WordPress Version 2.2, DB_COLLATE was made available to allow "
 "designation of the database collation (i.e. the sort order of the character "
@@ -502,11 +512,11 @@ msgid ""
 "character set specified by Character Set"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbDontUpgradeGlobalTables/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbDontUpgradeGlobalTables/Field.class.php:22
 msgid "Stop Upgrading Global Tables"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbDontUpgradeGlobalTables/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbDontUpgradeGlobalTables/Field.class.php:30
 msgid ""
 "A DO_NOT_UPGRADE_GLOBAL_TABLES define prevents dbDelta() and the upgrade "
 "functions from doing expensive queries against global tables. Sites that "
@@ -521,53 +531,53 @@ msgid ""
 "master."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbHost/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyHost/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbHost/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyHost/Field.class.php:22
 msgid "Host"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbHost/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbHost/Field.class.php:30
 msgid ""
 "The address in which the Database is located. This can either be an IP or "
 "Domain name. In most cases its 'localhost'"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbName/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbName/Field.class.php:22
 msgid "Database Name"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbName/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbName/Field.class.php:30
 msgid ""
 "Database name to used for Wordpress installation, All posts/pages/categories "
 "and all the data will be stored there"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbPassword/Field.class.php:29
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyPassword/Field.class.php:29
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPassword/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/DbPassword/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyPassword/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPassword/Field.class.php:29
 msgid "Password"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbPassword/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/DbPassword/Field.class.php:37
 msgid ""
 "Database user password for authenticating the connection between Wordpress "
 "and Database"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbPort/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyPort/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbPort/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyPort/Field.class.php:22
 msgid "Port"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbPort/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbPort/Field.class.php:30
 msgid "Alternate Database host port"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbTablePrefix/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbTablePrefix/Field.class.php:22
 msgid "Table Prefix"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbTablePrefix/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbTablePrefix/Field.class.php:30
 msgid ""
 "The value placed in the front of your database tables. Change the value if "
 "you want to use something other than wp_ for your database prefix. Typically "
@@ -575,129 +585,129 @@ msgid ""
 "database."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbUser/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/DbUser/Field.class.php:22
 msgid "User Name"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/DbUser/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/DbUser/Field.class.php:30
 msgid "User name to be used for connecting to Database"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/LoggedInKey/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/LoggedInKey/Field.class.php:22
 msgid "Logged In key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/LoggedInKey/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/LoggedInKey/Field.class.php:30
 msgid "Wordpress Hash key for LOGGED_IN_KEY constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/LoggedInSalt/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/LoggedInSalt/Field.class.php:22
 msgid "Logged In Salt"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/LoggedInSalt/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/LoggedInSalt/Field.class.php:30
 msgid "Wordpress Hash key for LOGGED_IN_SALT constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MaxMemoryLimit/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MaxMemoryLimit/Field.class.php:22
 msgid "Max Memory limit"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MaxMemoryLimit/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MaxMemoryLimit/Field.class.php:30
 msgid ""
 "When in the administration area, the memory can be increased or decreased "
 "from the Memory Limit by defining Max Memory Limit."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MemoryLimit/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MemoryLimit/Field.class.php:22
 msgid "Memory limit"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MemoryLimit/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MemoryLimit/Field.class.php:30
 msgid ""
 "Allows you to specify the maximum amount of memory that can be consumed by "
 "PHP. This setting may be necessary in the event you receive a message such "
 "as \"Allowed memory size of xxxxxx bytes exhausted\"."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSite/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSite/Field.class.php:22
 msgid "Enable Multi Site"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSite/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSite/Field.class.php:30
 msgid "Multi site feature is enabled on current Wordpress installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteAllow/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteAllow/Field.class.php:22
 msgid "Setup Multi Site installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteAllow/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteAllow/Field.class.php:30
 msgid ""
 "is a feature introduced in WordPress Version 3.0 to enable multisite "
 "functionality previously achieved through WordPress MU. If this setting is "
 "absent from wp-config.php it defaults to false."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteBlogId/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteBlogId/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteBlogId/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteBlogId/Field.class.php:30
 msgid "Current Blog Id"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteDomainCurrentSite/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteDomainCurrentSite/Field.class.php:30
 msgid "Root domain for multi site installations"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSitePathCurrentSite/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSitePathCurrentSite/Field.class.php:29
 msgid "Root path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSitePathCurrentSite/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSitePathCurrentSite/Field.class.php:37
 msgid "Root path for multi site installations"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSitePrimaryNetworkId/Field.class.php:22
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSitePrimaryNetworkId/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSitePrimaryNetworkId/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSitePrimaryNetworkId/Field.class.php:30
 msgid "Primary Network Id"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteSiteId/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteSiteId/Field.class.php:22
 msgid "Site Id"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteSiteId/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteSiteId/Field.class.php:30
 msgid "Current Site Id"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteSubDomainInstall/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteSubDomainInstall/Field.class.php:22
 msgid "Enable Sub Domains"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/MultiSiteSubDomainInstall/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/MultiSiteSubDomainInstall/Field.class.php:30
 msgid "Use sub domains for network sites"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/NonceKey/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/NonceKey/Field.class.php:22
 msgid "Nonce key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/NonceKey/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/NonceKey/Field.class.php:30
 msgid "Wordpress Hash key for NONCE_KEY constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/NonceSalt/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/NonceSalt/Field.class.php:22
 msgid "Nonce salt"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/NonceSalt/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/NonceSalt/Field.class.php:30
 msgid "Wordpress Hash key for NONCE_SALT constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostAutoSaveInterval/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/PostAutoSaveInterval/Field.class.php:22
 msgid "Autosave Interval"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostAutoSaveInterval/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/PostAutoSaveInterval/Field.class.php:30
 msgid ""
 "When editing a post, WordPress uses Ajax to auto-save revisions to the post "
 "as you edit. You may want to increase this setting for longer delays in "
@@ -705,11 +715,11 @@ msgid ""
 "changes. The default is 60 seconds"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostEmptyTrashDays/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/PostEmptyTrashDays/Field.class.php:22
 msgid "Empty Trash (Days)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostEmptyTrashDays/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/PostEmptyTrashDays/Field.class.php:30
 msgid ""
 "Added with Version 2.9, this constant controls the number of days before "
 "WordPress permanently deletes posts, pages, attachments, and comments, from "
@@ -718,62 +728,62 @@ msgid ""
 "clicks on \"Delete Permanently"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostRevisions/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/PostRevisions/Field.class.php:22
 msgid "Enable Revisions"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostRevisions/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/PostRevisions/Field.class.php:30
 msgid "Enable / Disable post revisions"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostRevisionsMax/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/PostRevisionsMax/Field.class.php:22
 msgid "Max Revisions Count"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/PostRevisionsMax/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/PostRevisionsMax/Field.class.php:30
 msgid "Maximum number of revisions per post or page can be specified."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyBypassHosts/Field.class.php:49
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyBypassHosts/Field.class.php:49
 msgid "Bypass Hosts"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyBypassHosts/Field.class.php:57
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyBypassHosts/Field.class.php:57
 msgid "Will prevent the hosts in this list from going through the proxy"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyHost/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyHost/Field.class.php:30
 msgid "Enable proxy support and host for connecting"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyPassword/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyPassword/Field.class.php:37
 msgid "Proxy password, if it requires authentication"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyPort/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyPort/Field.class.php:30
 msgid "Proxy port for connection. No default, must be defined"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ProxyUser/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/ProxyUser/Field.class.php:30
 msgid "Proxy username, if it requires authentication"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SaveQueries/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SaveQueries/Field.class.php:22
 msgid "Save Queries"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SaveQueries/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SaveQueries/Field.class.php:30
 msgid ""
 "Saves the database queries to an array and that array can be displayed to "
 "help analyze those queries. When set to ON causes each query to be saved, "
 "how long that query took to execute, and what function called it."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ScriptDebug/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/ScriptDebug/Field.class.php:22
 msgid "Script Debugging"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/ScriptDebug/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/ScriptDebug/Field.class.php:30
 msgid ""
 "Force WordPress to use the \"dev\" versions of core CSS and Javascript files "
 "rather than the minified versions that are normally loaded. This is useful "
@@ -781,27 +791,27 @@ msgid ""
 "Default is false."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecureAuthKey/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecureAuthKey/Field.class.php:22
 msgid "Secure Authentication key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecureAuthKey/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecureAuthKey/Field.class.php:30
 msgid "Wordpress Hash key for SECURE_AUTH_KEY constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecureAuthSalt/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecureAuthSalt/Field.class.php:22
 msgid "Secure Authentication Salt"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecureAuthSalt/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecureAuthSalt/Field.class.php:30
 msgid "Wordpress Hash key for SECURE_AUTH_SALT constant"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityAccessibleHosts/Field.class.php:49
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityAccessibleHosts/Field.class.php:49
 msgid "Accessible Hosts List"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityAccessibleHosts/Field.class.php:57
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityAccessibleHosts/Field.class.php:57
 msgid ""
 "Write host you would like to allow in the input field and preess Enter. The "
 "constant WP_ACCESSIBLE_HOSTS will allow additional hosts to go through for "
@@ -810,29 +820,29 @@ msgid ""
 "wordpress.org will allow for all subdomains of wordpress.org to be contacted."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityAllowUnfilteredUploads/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityAllowUnfilteredUploads/Field.class.php:22
 msgid "Allow Unfiltered Uploads"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityAllowUnfilteredUploads/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityAllowUnfilteredUploads/Field.class.php:30
 msgid "Allow unfilered Uploads"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityBlockExternalUrl/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityBlockExternalUrl/Field.class.php:22
 msgid "Block External Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityBlockExternalUrl/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityBlockExternalUrl/Field.class.php:30
 msgid ""
 "Block external URL requests by defining WP_HTTP_BLOCK_EXTERNAL as true and "
 "this will only allow localhost and your blog to make requests"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityDisablePluggablesEditor/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityDisablePluggablesEditor/Field.class.php:22
 msgid "Disable Plugin &amp; Theme Editor"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityDisablePluggablesEditor/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityDisablePluggablesEditor/Field.class.php:30
 msgid ""
 "Occasionally you may wish to disable the plugin or theme editor to prevent "
 "overzealous users from being able to edit sensitive files and potentially "
@@ -845,73 +855,73 @@ msgid ""
 "plugin is not working this may be the cause.<strong>"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityDisallowUnfilteredHTML/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityDisallowUnfilteredHTML/Field.class.php:22
 msgid "Disallow Unfiltered HTML"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityDisallowUnfilteredHTML/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityDisallowUnfilteredHTML/Field.class.php:30
 msgid ""
 "Disallow unfiltered HTML for everyone, including administrators and super "
 "administrators. To disallow unfiltered HTML for all users, you can add this "
 "to wp-config.php:"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLAdmin/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLAdmin/Field.class.php:22
 msgid "Force SSL Admin"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLAdmin/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLAdmin/Field.class.php:30
 msgid ""
 "when you want to secure logins and the admin area so that both passwords and "
 "cookies are never sent in the clear. This is the most secure option."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLLogin/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLLogin/Field.class.php:22
 msgid "Force SSL Login"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLLogin/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/SecurityForceSSLLogin/Field.class.php:30
 msgid ""
 "when you want to secure logins so that passwords are not sent in the clear, "
 "but you still want to allow non-SSL admin sessions (since SSL can be slow)."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:22
 msgid "Core"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:30
 msgid ""
 "The easiest way to manipulate core updates is with the WP_AUTO_UPDATE_CORE "
 "constant:"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:41
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:41
 msgid "Enable"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:42
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:42
 msgid "Enable only Minor updates"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:43
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:74
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoCore/Field.class.php:43
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:74
 msgid "Disable"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoDisable/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoDisable/Field.class.php:22
 msgid "Disable Automatic Update"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoDisable/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeAutoDisable/Field.class.php:30
 msgid "Disable all automatic updates"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeDisablePluggables/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeDisablePluggables/Field.class.php:22
 msgid "Disable Plugins and Themes"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeDisablePluggables/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeDisablePluggables/Field.class.php:30
 msgid ""
 "This will block users being able to use the plugin and theme installation/"
 "update functionality from the WordPress admin area. Setting this constant "
@@ -920,11 +930,11 @@ msgid ""
 "will have the same effect)."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:22
 msgid "File System Method"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:30
 msgid ""
 "forces the filesystem method. It should only be \"direct\", \"ssh2\", "
 "\"ftpext\", or \"ftpsockets\". Generally, you should only change this if you "
@@ -945,120 +955,120 @@ msgid ""
 "Access.</strong>"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:47
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:47
 msgid "Direct (direct)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:48
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:48
 msgid "SSH 2 (ssh2)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:49
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:49
 msgid "FTP Extension (ftpext)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:50
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFSMethod/Field.class.php:50
 msgid "FTP Sockets (ftpsockets)"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPBase/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPBase/Field.class.php:29
 msgid "FTP ABS Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPBase/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPBase/Field.class.php:37
 msgid ""
 "The full path to the \"base\"(ABSPATH) folder of the WordPress installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPContentDir/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPContentDir/Field.class.php:29
 msgid "FTP Content Dir ABS Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPContentDir/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPContentDir/Field.class.php:37
 msgid "The full path to the wp-content folder of the WordPress installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPHost/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPHost/Field.class.php:22
 msgid "FTP Host"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPHost/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPHost/Field.class.php:30
 msgid ""
 "the hostname:port combination for your SSH/FTP server. The default FTP port "
 "is 21 and the default SSH port is 22. These do not need to be mentioned."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPassword/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPassword/Field.class.php:37
 msgid ""
 "The password for the username entered for FTP_USER. If you are using SSH "
 "public key authentication this can be omitted."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPluginDir/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPluginDir/Field.class.php:29
 msgid "Plugins Dir ABS Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPluginDir/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPluginDir/Field.class.php:37
 msgid "The full path to the plugins folder of the WordPress installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPriKey/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPriKey/Field.class.php:29
 msgid "Private Key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPriKey/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPriKey/Field.class.php:37
 msgid "The full path to your SSH private key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPubKey/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPubKey/Field.class.php:29
 msgid "Public Key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPubKey/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPPubKey/Field.class.php:37
 msgid "The full path to your SSH public key"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPSSL/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPSSL/Field.class.php:22
 msgid "Secure Connection"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPSSL/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPSSL/Field.class.php:30
 msgid ""
 "TRUE for SSL-connection if supported by the underlying transport (not "
 "available on all servers). This is for \"Secure FTP\" not for SSH SFTP."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPUser/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/UpgradeFTPUser/Field.class.php:30
 msgid ""
 "either user FTP or SSH username. Most likely these are the same, but use the "
 "appropriate one for the type of update you wish to do."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPCache/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/WPCache/Field.class.php:22
 msgid "Enable Cache"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPCache/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/WPCache/Field.class.php:30
 msgid ""
 "If true, includes the wp-content/advanced-cache.php script, when executing "
 "wp-settings.php."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebug/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebug/Field.class.php:22
 msgid "Debug Mode"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebug/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebug/Field.class.php:30
 msgid ""
 "Added in WordPress Version 2.3.1, controls the reporting of some errors and "
 "warnings"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebugDisplay/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebugDisplay/Field.class.php:22
 msgid "Debug Display"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebugDisplay/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebugDisplay/Field.class.php:30
 msgid ""
 "Another companion to Debug Mode field that controls whether debug messages "
 "are shown inside the HTML of pages or not. The default is ON which shows "
@@ -1067,11 +1077,11 @@ msgid ""
 "can be reviewed later."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebugLog/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebugLog/Field.class.php:22
 msgid "Debug Log"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPDebugLog/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/WPDebugLog/Field.class.php:30
 msgid ""
 "Companion to Debug Mode field that causes all errors to also be saved to a "
 "debug.log log file inside the /wp-content/ directory. This is useful if you "
@@ -1081,384 +1091,384 @@ msgid ""
 "function, which can be useful for instance when debugging AJAX events."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPLang/Field.class.php:22
+#: /Modules/Editor/View/Editor/Templates/Fields/WPLang/Field.class.php:22
 msgid "Language"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPLang/Field.class.php:30
+#: /Modules/Editor/View/Editor/Templates/Fields/WPLang/Field.class.php:30
 msgid "Defines the name of the language translation (.mo) file."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPLangDir/Field.class.php:29
+#: /Modules/Editor/View/Editor/Templates/Fields/WPLangDir/Field.class.php:29
 msgid "Language Directory"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Fields/WPLangDir/Field.class.php:37
+#: /Modules/Editor/View/Editor/Templates/Fields/WPLangDir/Field.class.php:37
 msgid ""
 "Defines what directory the Language .mo file resides. If Language Directory "
 "is not defined WordPress looks first to wp-content/languages and then wp-"
 "includes/languages for the .mo defined by Language file."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Cookies.class.php:56
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Cookies.class.php:56
 msgid "Cookies"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Cron.class.php:45
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Cron.class.php:45
 msgid "Cron"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Database.class.php:52
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Database.class.php:52
 msgid "Database"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Debugging.class.php:48
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Debugging.class.php:48
 msgid "Developer"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Localization.class.php:44
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Localization.class.php:44
 msgid "Localization"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Maintenance.class.php:45
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Maintenance.class.php:45
 msgid "Maintenance"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/MultiSite.class.php:50
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/MultiSite.class.php:50
 msgid "Multi Sites"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Paths.class.php:43
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:46
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Paths.class.php:43
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:46
 msgid "Paths"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Post.class.php:55
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Post.class.php:55
 msgid "Post"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Proxy.class.php:48
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Proxy.class.php:48
 msgid "Proxy"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/SecureKeys.class.php:50
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:65
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/SecureKeys.class.php:50
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:65
 msgid "Secure Keys"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Security.class.php:59
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Security.class.php:59
 msgid "Security"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Tabs/Tabs/Upgrade.class..php:66
+#: /Modules/Editor/View/Editor/Templates/Tabs/Tabs/Upgrade.class..php:66
 msgid "Upgrade"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:17
-#: Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:17
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:17
+#: /Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:17
 msgid "Tools"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:21
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:24
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:21
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:24
 msgid "Profiles"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:23
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:23
 msgid "Create new profile from config form fields"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:23
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:30
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:23
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:30
 msgid "Create"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:24
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:24
 msgid "Manage profiles"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:27
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:27
 msgid "Active Profile"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:29
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:29
 msgid "Save config form fields vars into active profile"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:31
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:31
 msgid "Edit active profile description"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:31
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:50
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:31
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:50
 msgid "Edit"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:32
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:32
 msgid ""
 "Delete active profile, return back to config file values, discard changes"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:32
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:149
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:29
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:32
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:149
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:29
 msgid "Delete"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:33
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:33
 msgid "Reload active profile field values, discard changes"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:33
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:33
 msgid "Reload"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:35
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:35
 msgid "Active profile deattach. Return to config file values"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:35
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:35
 msgid "Unload"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:44
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:44
 msgid "Info"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:46
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:46
 msgid "Discover your installation path information"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:52
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:52
 msgid "Check system compatibility with WCFE Plugin"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:52
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:52
 msgid "System check"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:56
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:56
 msgid "Multi Sites Setup"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:60
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:60
 msgid "Generate Cookies Hash"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:67
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:67
 msgid "Generate"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:69
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:69
 msgid "Generate all"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:78
-#: Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:19
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:78
+#: /Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:19
 msgid "Help"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:81
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:81
 msgid "Tab"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:83
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:83
 msgid "Fields Help"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:88
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:88
 msgid "Contact"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:89
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:89
 msgid "Web Site"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:90
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:90
 msgid "Support Forum"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:91
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:91
 msgid "Submit Review"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:93
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:93
 msgid "Online Docs"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:95
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:95
 msgid "About"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:97
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfigFormMenu.html.php:97
 msgid "Follow Development"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:19
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:19
 msgid "Successed"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:23
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:23
 msgid ""
 "Please keep this window opened until testing the site in another window as "
 "restore link cannot be obtained later. "
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:24
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:24
 msgid "Here is a link to discard all changes you made in the last SAVE process"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:24
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:24
 msgid "Restore Backup"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:27
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:27
 msgid ""
 "Current wp-config.php file has been back-ed up to be restored later if needed"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:28
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:28
 msgid ""
 "Its recommended to test the site is not broken after updating wp-config.php "
 "file"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:29
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:29
 msgid "Please test the site is still working by opening new browser window/tab"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:30
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:30
 msgid ""
 "Its recommended to leave this screen opened until testing the site in "
 "another TAB/WINDOW"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:31
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:31
 msgid "After closing this form the backup will be deleted"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:32
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:32
 msgid "Restore Url is valid for only 1 hour"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:34
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:34
 msgid "You can close this window either from Done button or from close button"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:36
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:36
 msgid ""
 "Close button won't delete emergency backup created when this window is "
 "opened, it won't not also refresh Form page, therefore it might not reflect "
 "the correct state on the server"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:37
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:37
 msgid ""
 "Done button (recommended) will delete emergency backup and won't refresh "
 "form page to reflect server state. This is more secure as it deletes the "
 "backup"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:40
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:40
 msgid ""
 "This process will replace wp-config.php file content with content generated "
 "from the values you've entered in the form."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:41
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:41
 msgid ""
 "The process is totally replace the old code with new code generated by "
 "Config File Editor Plugin and all the code you had in wp-config.php will be "
 "replaced."
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:42
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:42
 msgid "This is risky process and might stop the site"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:43
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:43
 msgid ""
 "This process never touch your Database or any file except wp-config.php "
 "file, in case the site is stopped you just need to revert wp-config.php file "
 "back to old values"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:45
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:45
 msgid "Please don't keep if you care about one of the following"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:47
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:47
 msgid ""
 "wp-config.php contains custom code -- not originally bundled with normal "
 "Wordpress installation"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:48
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:48
 msgid "You're not entirly positive of the values you changed"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:49
+#: /Modules/Editor/View/Editor/Templates/Templates/ConfirmSave.html.php:49
 msgid ""
 "You manually added wp-config.php constants that not supported by Config File "
 "Editor plugin"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:15
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:15
 msgid "Absolute Path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:16
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:16
 msgid "Plugins directory path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:17
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:17
 msgid "Plugins directory URL"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:18
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:18
 msgid "Content directory path"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:19
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:19
 msgid "Content directory Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:20
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:20
 msgid "Admin Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:21
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:21
 msgid "Site Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:22
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:22
 msgid "Network Admin Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:23
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:23
 msgid "Network Site Url"
 msgstr ""
 
-#: Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:41
-#: Modules/Profiles/View/Profile/Templates/Edit.html.php:31
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:38
+#: /Modules/Editor/View/Editor/Templates/Templates/Info-Paths.html.php:41
+#: /Modules/Profiles/View/Profile/Templates/Edit.html.php:31
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:38
 msgid "Name"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Media/SetupNetwork.localization.php:12
+#: /Modules/Editor/View/MultiSiteTools/Media/SetupNetwork.localization.php:12
 msgid ""
 "Would you like to write Config and htaccess Multi Sites configurations code?"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Media/SetupNetwork.localization.php:13
+#: /Modules/Editor/View/MultiSiteTools/Media/SetupNetwork.localization.php:13
 msgid "Internal server error!"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:76
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:76
 msgid "Welcome to CFE Plugin Multi Site Setup tools"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:78
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:78
 msgid ""
 "The main purpose of using this Tools is to write .htaccess file and wp-"
 "config file Multi Site configuration for you.\n"
@@ -1475,407 +1485,407 @@ msgid ""
 "   \t\t\tThis process will take the following actions:"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:87
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:87
 msgid "Deactivate all activate Plugins"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:88
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:88
 msgid "Backup wp-config.php file, you will be provided with restore link"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:89
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:89
 msgid ""
 "Inject PHP Code into wp-config.php file that loads WCFE Plugin after all "
 "plugins are deactivated"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:90
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:90
 msgid "Set WP_ALLOW_MULTISITE to true and write to wp-config.php file"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:91
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:91
 msgid "Redirect to Wordpress Tools->Network Setup Page"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:94
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:94
 msgid "You will be asked to select few options and then to press Setup"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:95
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:95
 msgid ""
 "WCFE Buttons will be displayed on Tools->Network Setup page once Multi Sites "
 "is configureded"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:96
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:96
 msgid "Use WCFE Buttons will reactivate Plugins"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:97
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:97
 msgid "Remove wp-config.php file Code that loads WCFE Plugin"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:98
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:98
 msgid "Writes Wordpress Multi Sites constants to wp-config.php "
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:99
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:99
 msgid "Writes Wordpress Multi Site htaccess derictives to .htaccess file"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:101
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:50
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:101
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:50
 msgid ""
 "Writing Rewrite rules is not supported for Windows IIS, only config file "
 "will be processed"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:113
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:113
 msgid "Wordpress Multi Sites setup is now enabled on Wordpress."
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:115
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:115
 msgid "Now its turn to Configure Wordpress Multi Sites"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:115
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:115
 msgid "Configure Multi Site"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:117
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:117
 msgid ""
 "If you've any problem you can revert Config File to the state before "
 "processing this operation."
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:117
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:117
 msgid "Revert"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:128
+#: /Modules/Editor/View/MultiSiteTools/Templates/Setup.html.php:128
 msgid "Multi Site is enabled on this site! Nothing to do!!!"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:44
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:44
 msgid "WCFE Network Setup Tools"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:46
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:46
 msgid ""
 "Left editor is current htaccess file code. Copy code on the right and put it "
 "at the desired position to left editor."
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:48
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:48
 msgid "Left code is the final code that will be write to .htaccess file"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:53
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:53
 msgid "Detected htaccess code"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:60
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:60
 msgid "Final htaccess File"
 msgstr ""
 
-#: Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:65
+#: /Modules/Editor/View/MultiSiteTools/Templates/SetupNetwork.html.php:65
 msgid "Detected Config File constants"
 msgstr ""
 
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:120
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:120
 msgid "Writable wp-config.php"
 msgstr ""
 
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:128
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:128
 msgid "Writable .htaccess"
 msgstr ""
 
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:135
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:135
 msgid "Application Server"
 msgstr ""
 
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:139
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:139
 msgid "Backup directory"
 msgstr ""
 
-#: Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:144
+#: /Modules/Editor/View/SystemCheckTools/Templates/SystemCheckTools.html.php:144
 msgid "Emergency Backup"
 msgstr ""
 
-#: Modules/Profiles/Controller/Profiles/Controller.class.php:54
+#: /Modules/Profiles/Controller/Profiles/Controller.class.php:54
 msgid "Invalid Caller!!!"
 msgstr ""
 
-#: Modules/Profiles/Controller/Profiles/Controller.class.php:79
+#: /Modules/Profiles/Controller/Profiles/Controller.class.php:79
 msgid "Profile doesnt exists!!"
 msgstr ""
 
-#: Modules/Profiles/Controller/Profiles/Controller.class.php:98
+#: /Modules/Profiles/Controller/Profiles/Controller.class.php:98
 msgid "Invalid Access Token"
 msgstr ""
 
-#: Modules/Profiles/Controller/Profiles/Controller.class.php:154
+#: /Modules/Profiles/Controller/Profiles/Controller.class.php:154
 msgid "Invalid security Token"
 msgstr ""
 
-#: Modules/Profiles/Controller/ProfilesService/Controller.class.php:36
+#: /Modules/Profiles/Controller/ProfilesService/Controller.class.php:36
 msgid "Access Denies"
 msgstr ""
 
-#: Modules/Profiles/Model/Profiles.class.php:69
+#: /Modules/Profiles/Model/Profiles.class.php:69
 #, php-format
 msgid "%d profiles deleted"
 msgstr ""
 
-#: Modules/Profiles/Model/Profiles.class.php:123
+#: /Modules/Profiles/Model/Profiles.class.php:123
 msgid "Profile doesnt exists!!!"
 msgstr ""
 
-#: Modules/Profiles/Model/Profiles.class.php:130
+#: /Modules/Profiles/Model/Profiles.class.php:130
 msgid "Profile Updated successfuly"
 msgstr ""
 
-#: Modules/Profiles/Model/Profiles.class.php:148
+#: /Modules/Profiles/Model/Profiles.class.php:148
 msgid "Profile Added successfuly"
 msgstr ""
 
-#: Modules/Profiles/Model/Profiles.class.php:167
+#: /Modules/Profiles/Model/Profiles.class.php:167
 msgid "Profile doesn't exists"
 msgstr ""
 
-#: Modules/Profiles/View/Profile/Media/Profile.localization.php:12
+#: /Modules/Profiles/View/Profile/Media/Profile.localization.php:12
 msgid "Profile name cannot be empty"
 msgstr ""
 
-#: Modules/Profiles/View/Profile/Templates/Edit.html.php:35
+#: /Modules/Profiles/View/Profile/Templates/Edit.html.php:35
 msgid "Description"
 msgstr ""
 
-#: Modules/Profiles/View/Profiles/Media/Profiles.localization.php:13
+#: /Modules/Profiles/View/Profiles/Media/Profiles.localization.php:13
 msgid "Would you like to delete selected profiles?"
 msgstr ""
 
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:27
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:27
 msgid "Actions"
 msgstr ""
 
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:39
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:39
 msgid "escription"
 msgstr ""
 
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:40
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:40
 msgid "ID"
 msgstr ""
 
-#: Modules/Profiles/View/Profiles/Templates/List.html.php:51
+#: /Modules/Profiles/View/Profiles/Templates/List.html.php:51
 msgid "Load"
 msgstr ""
 
-#: Modules/SysFilters/Controller/SysFiltersDashboard/Controller.class.php:58
+#: /Modules/SysFilters/Controller/SysFiltersDashboard/Controller.class.php:58
 msgid "Invalid Security Token!!!"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:13
+#: /Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:13
 msgid "Add Type"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:14
+#: /Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:14
 msgid "Associate Extension"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:15
+#: /Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:15
 msgid "Add Tag"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:16
+#: /Modules/SysFilters/View/SysFiltersDashboard/Media/SysFiltersDashboard.localization.php:16
 msgid "Add Attribute"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:75
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:75
 msgid "Dont modify system parameter value"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:83
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:83
 msgid "Priority"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:84
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/AdvancedOptionsPanel.class.php:84
 msgid "Filter Priority"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:36
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:36
 msgid "Editor"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:41
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:41
 msgid "Auto Paragraph"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:42
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:42
 msgid "Replaces double line-breaks with paragraph elements"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:50
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:50
 msgid "Editor Height"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:51
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:51
 msgid "Editor Height in pixels"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:59
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:59
 msgid "Media Buttons"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:60
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:60
 msgid "Whether to show the Add Media/other media buttons."
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:69
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:69
 msgid "Drag and Drop Uploads"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:70
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:70
 msgid "Whether to enable drag &amp; drop on the editor uploading"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:79
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:79
 msgid "TextArea Rows"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:80
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:80
 msgid "Number rows in the editor textarea"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:88
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:88
 msgid "Tab Index"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:89
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:89
 msgid "Tabindex value to use"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:97
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:97
 msgid "Editor Style"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:98
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:98
 msgid ""
 "Intended for extra styles for both Visual and Text editors. Should include "
 "`&lt;style&gt;` tags, and can use \"scoped\""
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:106
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:106
 msgid "Editor CSS Class"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:107
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:107
 msgid "Extra classes to add to the editor textarea element"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:115
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:115
 msgid "Teeny"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:116
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:116
 msgid ""
 "Whether to output the minimal editor config. Examples include Press This and "
 "the Comment editor"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:125
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:125
 msgid "TinyMCE"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:126
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:126
 msgid "Whether to load TinyMCE"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:153
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:153
 msgid "Quick Tags"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:154
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:154
 msgid "Specify Whether to load Quicktags and what buttons to load"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:162
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:162
 msgid "Built-In Plugins"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:163
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:163
 msgid "Enable / Disable TinyMCE Built in plugins"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:172
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:172
 msgid "Second Row Buttons list"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:173
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Editor.class.php:173
 msgid "Show / Hide second row buttons"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:36
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:36
 msgid "HTTP Requests"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:41
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:41
 msgid "Request TimeOut"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:42
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:42
 msgid "Filter the timeout value for an HTTP request (seconds)"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:49
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:49
 msgid "Redirect Count"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:50
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:50
 msgid "Filter the number of redirects allowed during an HTTP request"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:57
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:57
 msgid "HTTP Version"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:58
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:58
 msgid "Filter the version of the HTTP protocol used in a request"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:65
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:65
 msgid "User Agent"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:66
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:66
 msgid "Filter the user agent value sent with an HTTP request"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:75
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:75
 msgid "Reject Unsafe Urls"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:76
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:76
 msgid ""
 "Filter whether to pass URLs through wp_http_validate_url() in an HTTP request"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:85
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:85
 msgid "Stream"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:86
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:86
 msgid ""
 "Whether to stream to a file. If set to true and no filename was given, it "
 "will be droped it in the WP temp dir and its name will be set using the "
 "basename of the URL. Default false"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:93
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:93
 msgid "Blocking"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:94
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:94
 msgid ""
 "Whether the calling code requires the result of the request.\n"
 "\t \t\t\tIf set to false, the request will be sent to the remote server,\n"
@@ -1885,19 +1895,19 @@ msgid ""
 "\t \t\t\tany response from the remote server"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:105
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:105
 msgid "Compress"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:106
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:106
 msgid "Whether to compress the $body when sending the request"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:113
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:113
 msgid "De-Compress"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:114
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:114
 msgid ""
 "Whether to decompress a compressed response. If set to false and\n"
 "\t \t\t\t        compressed content is returned in the response anyway, it "
@@ -1905,146 +1915,146 @@ msgid ""
 "\t \t\t\t        need to be separately decompressed"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:123
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:123
 msgid "Response Size limit"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:124
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:124
 msgid "Size in bytes to limit the response to"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:132
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:132
 msgid "Proxy Block Local Requests"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:133
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:133
 msgid "Filter whether to block local requests through the proxy"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:141
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:141
 msgid "Local SSL Verify"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:142
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:142
 msgid "Filter whether SSL should be verified for local requests"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:150
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:150
 msgid "SSL Verify"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:151
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:151
 msgid "Filter whether SSL should be verified for non-local requests"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:159
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:159
 msgid "Use Steam Transport"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:160
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:160
 msgid "Filter whether streams can be used as a transport"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:168
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:168
 msgid "Use Curl Transport"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:169
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:169
 msgid "Filter whether cURL can be used as a transport"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:177
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:177
 msgid "Allow local Host"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:178
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/HTTP.class.php:178
 msgid "If host appears local, reject unless specifically allowed"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:36
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:36
 msgid "Kses"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:42
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:42
 msgid "Allowed Protocols"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:43
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:43
 msgid "Filter HTML attributes allowed protocols"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:51
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:51
 msgid "Post Tags"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:52
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:52
 msgid "Allow what HTML Tags and attributes to be inserted into post content"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:60
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:60
 msgid "Comment Tags"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:61
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:61
 msgid "Allow what HTML Tags and attributes to be inserted into comment content"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:69
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:69
 msgid "HTML Entities"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:70
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Kses.class.php:70
 msgid "Allow what HTML Entities to be inserted"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:43
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:43
 msgid "Misc"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:49
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:49
 msgid "Query Vars"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:50
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:50
 msgid ""
 "Filter which query vars to allow Wordpress to use. For example search can be "
 "stopped by unchecking \"s\" variable"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:58
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:58
 msgid "Upload Allowed Mime Types"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:59
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:59
 msgid ""
 "Allow/Disallow what type of images can be uploaded and what mime type to "
 "associate with the uploaded file."
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:71
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:71
 msgid "Persistly Cache Themes"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:72
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:72
 msgid "Filter whether to get the cache of the registered theme directories"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:87
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:87
 msgid "Quality"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:88
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:88
 msgid "Filter the default image compression quality setting."
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:96
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:96
 msgid "Memory Limit"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:97
+#: /Modules/SysFilters/View/SysFiltersDashboard/Tabs/Tabs/Misc.class.php:97
 msgid "Filter the memory limit allocated for image manipulation"
 msgstr ""
 
-#: Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:21
+#: /Modules/SysFilters/View/SysFiltersDashboard/Templates/Templates/Menu.html.php:21
 msgid "Control options"
 msgstr ""
