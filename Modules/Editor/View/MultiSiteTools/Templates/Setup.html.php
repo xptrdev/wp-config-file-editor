@@ -81,7 +81,7 @@ $result = $this->result();
    			Wordpress requires to Deactivate all Plugins before enable/setup Multi Sites.
    			Therefor there is no chance for WCFE Plugin to get involved while Wordpress is configuring Multi Sites.
    			WCFE gets around this by writing a single line of code to wp-config file so it will still running while configuring Multi Sites installation.
-   			This process will take the following actions:' ?>
+   			This process will take the following actions:' ) ?>
    			</p>
    			<ol class="step-1">
    				<li><?php $this->_e( 'Deactivate all activate Plugins' ) ?></li>
@@ -112,7 +112,7 @@ $result = $this->result();
 			
 				<p><?php $this->_e( 'Wordpress Multi Sites setup is now enabled on Wordpress.' ) ?></p>
 				
-				<p><?php $this->_e( 'Now its turn to Configure Wordpress Multi Sites' ?> <a target="_blank" href="<?php echo admin_url( 'network.php' ); ?>"><?php $this->_e( 'Configure Multi Site' ) ?></a></p>
+				<p><?php $this->_e( 'Now its turn to Configure Wordpress Multi Sites' ) ?> <a target="_blank" href="<?php echo admin_url( 'network.php' ); ?>"><?php $this->_e( 'Configure Multi Site' ) ?></a></p>
 				
 				<p><?php $this->_e( 'If you\'ve any problem you can revert Config File to the state before processing this operation.' ) ?> <a target="_blank" href="<?php echo $result[ 'restoreBackupUrl' ] ?>"><?php $this->_e( 'Revert' ) ?></a></p>
 				

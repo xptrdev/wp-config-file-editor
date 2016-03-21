@@ -29,7 +29,7 @@
 					
 					if ( ! profileId && ! $( '#profile-name' ).val() )
 					{
-						alert( WCFEEditJavaScriptL10N.msg_profileNameEmpty );
+						alert( WCFEEProfileL10N.msg_profileNameEmpty );
 						
 						return false;
 					}

@@ -14,13 +14,13 @@ use WPPFW\Services\Queue\ScriptResource;
 /**
 * 
 */
-class EditJavaScript extends ScriptResource {
+class Profile extends ScriptResource {
 	
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $fileName = 'Edit.js';
+	protected $fileName = 'Profile.js';
 	
 }

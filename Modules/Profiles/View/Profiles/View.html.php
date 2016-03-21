@@ -59,10 +59,13 @@ class ProfilesHTMLView extends TemplateView {
 	protected function initialize() {
 		
 		# ENQUEUE SCRIPT and STYLES
-		$this->resFactory = new \WCFE\Libraries\ResStorage(  WP_PLUGIN_URL . '/wp-config-file-editor' );
+		$this->resFactory = new \WCFE\Libraries\ResStorage( 
+            WP_PLUGIN_URL . '/wp-config-file-editor',
+            WP_PLUGIN_DIR . '/wp-config-file-editor'
+            );
 		
 		# Scripts and Styles queues
-		$this->scriptsQueue = new DashboardScriptsQueue();
+		$this->scriptsQueue = new DashboardScriptsQueue( $this, 'js', 'localization.php' );
 		$this->stylesQueue = new DashboardStylesQueue();
 		
 		# Scripts
@@ -71,7 +74,10 @@ class ProfilesHTMLView extends TemplateView {
 		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
 		
 		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
-			
+		
+        $this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Profiles\View\Profiles\Media\Profiles' ), true );
+        
+        
 		# Styles
 		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
 		

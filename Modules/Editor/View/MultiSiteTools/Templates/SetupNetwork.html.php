@@ -89,11 +89,14 @@ var actionsRoute = <?php echo json_encode( $this->actionsRoute ); ?>;
 ?>
 <?php
 
-    $mediaDir = $this->getPath() . DIRECTORY_SEPARATOR . 'Media' . DIRECTORY_SEPARATOR;
+    $mediaDir = $this->getPath() . DIRECTORY_SEPARATOR . 'Media';
     
     # Inline JS Localization
-    echo json_encode( require $mediaDir . DIRECTORY_SEPARATOR . 'SetupNetwork.localization.js' );
+?>
 
+var WCFESetupNetworkL10N = <?php echo json_encode( require $mediaDir . DIRECTORY_SEPARATOR . 'SetupNetwork.localization.php' ); ?>;
+    
+<?php
     # Inline JS
     require $mediaDir . DIRECTORY_SEPARATOR . 'SetupNetwork.js'; 
     
