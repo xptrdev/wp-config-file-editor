@@ -481,16 +481,140 @@ class EditorModel extends PluginModel {
 	*/
 	public function & loadFromConfigFile() 
 	{
-		
-		$form =& $this->getForm();
-		
-		foreach ( $this->allFields as $fieldName ) 
-		{
-			
-			# Load form values from defined constants
-			$form->get( $fieldName )->read();
-			
-		}
+        
+		$values = array();
+        
+        # Auth keys
+        $values[ 'AUTH_KEY' ] =                             defined( 'AUTH_KEY' ) ? AUTH_KEY : null;
+        $values[ 'AUTH_SALT' ] =                            defined( 'AUTH_SALT' ) ? AUTH_SALT : null;
+        $values[ 'LOGGED_IN_KEY' ] =                        defined( 'LOGGED_IN_KEY' ) ? LOGGED_IN_KEY : null;
+        $values[ 'LOGGED_IN_SALT' ] =                       defined( 'LOGGED_IN_SALT' ) ? LOGGED_IN_SALT : null;
+        $values[ 'NONCE_KEY' ] =                            defined( 'NONCE_KEY' ) ? NONCE_KEY : null;
+        $values[ 'NONCE_SALT' ] =                           defined( 'NONCE_SALT' ) ? NONCE_SALT : null;
+        $values[ 'SECURE_AUTH_KEY' ] =                      defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : null;
+        $values[ 'SECURE_AUTH_SALT' ] =                     defined( 'SECURE_AUTH_SALT' ) ? SECURE_AUTH_SALT : null;
+        
+        # Cookies
+        $values[ 'ADMIN_COOKIE_PATH' ] =                    defined( 'ADMIN_COOKIE_PATH' ) ? ADMIN_COOKIE_PATH : null;
+        $values[ 'AUTH_COOKIE' ] =                          defined( 'AUTH_COOKIE' ) ? AUTH_COOKIE : null;
+        $values[ 'COOKIE_DOMAIN' ] =                        defined( 'COOKIE_DOMAIN' ) ? COOKIE_DOMAIN : null;
+        $values[ 'COOKIEHASH' ] =                           defined( 'COOKIEHASH' ) ? COOKIEHASH : null;
+        $values[ 'LOGGED_IN_COOKIE' ] =                     defined( 'LOGGED_IN_COOKIE' ) ? LOGGED_IN_COOKIE : null;
+        $values[ 'PASS_COOKIE' ] =                          defined( 'PASS_COOKIE' ) ? PASS_COOKIE : null;
+        $values[ 'COOKIEPATH' ] =                           defined( 'COOKIEPATH' ) ? COOKIEPATH : null;
+        $values[ 'PLUGINS_COOKIE_PATH' ] =                  defined( 'PLUGINS_COOKIE_PATH' ) ? PLUGINS_COOKIE_PATH : null;
+        $values[ 'SECURE_AUTH_COOKIE' ] =                   defined( 'SECURE_AUTH_COOKIE' ) ? SECURE_AUTH_COOKIE : null;
+        $values[ 'SITECOOKIEPATH' ] =                       defined( 'SITECOOKIEPATH' ) ? SITECOOKIEPATH : null;
+        $values[ 'TEST_COOKIE' ] =                          defined( 'TEST_COOKIE' ) ? TEST_COOKIE : null;
+        $values[ 'USER_COOKIE' ] =                          defined( 'USER_COOKIE' ) ? USER_COOKIE : null;
+        
+        # Cron
+        $values[ 'DISABLE_WP_CRON' ] =                      defined( 'DISABLE_WP_CRON' ) ? DISABLE_WP_CRON : null;
+        $values[ 'ALTERNATE_WP_CRON' ] =                    defined( 'ALTERNATE_WP_CRON' ) ? ALTERNATE_WP_CRON : null;
+        $values[ 'WP_CRON_LOCK_TIMEOUT' ] =                 defined( 'WP_CRON_LOCK_TIMEOUT' ) ? WP_CRON_LOCK_TIMEOUT : null;
+    
+        # Database
+        $databaseHost = explode( ':', DB_HOST );
+
+        $values[ 'WP_ALLOW_REPAIR' ] =                      defined( 'WP_ALLOW_REPAIR' ) ? WP_ALLOW_REPAIR : null;
+        $values[ 'DB_CHARSET' ] =                           defined( 'DB_CHARSET' ) ? DB_CHARSET : null;
+        $values[ 'DB_COLLATE' ] =                           defined( 'DB_COLLATE' ) ? DB_COLLATE : null;
+        $values[ 'DO_NOT_UPGRADE_GLOBAL_TABLES' ] =         defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ? DO_NOT_UPGRADE_GLOBAL_TABLES : null;
+        $values[ 'DB_HOST-NAME' ] =                         $databaseHost[ 0 ];
+        $values[ 'DB_HOST-PORT' ] =                         isset( $databaseHost[ 1 ] ) ? $databaseHost[ 1 ] : null;
+        $values[ 'DB_NAME' ] =                              defined( 'DB_NAME' ) ? DB_NAME : null;
+        $values[ 'DB_PASSWORD' ] =                          defined( 'DB_PASSWORD' ) ? DB_PASSWORD : null;
+        $values[ 'table_prefix' ] =                         isset( $GLOBALS[ 'table_prefix' ] ) ? $GLOBALS[ 'table_prefix' ] : null;
+        $values[ 'DB_USER' ] =                              defined( 'DB_USER' ) ? DB_USER : null;
+        
+        # Debug
+        $values[ 'CONCATENATE_SCRIPTS' ] =                  defined( 'CONCATENATE_SCRIPTS' ) ? CONCATENATE_SCRIPTS : null;
+        $values[ 'SAVEQUERIES' ] =                          defined( 'SAVEQUERIES' ) ? SAVEQUERIES : null;
+        $values[ 'SCRIPT_DEBUG' ] =                         defined( 'SCRIPT_DEBUG' ) ? SCRIPT_DEBUG : null;
+        $values[ 'WP_DEBUG' ] =                             defined( 'WP_DEBUG' ) ? WP_DEBUG : null;
+        $values[ 'WP_DEBUG_DISPLAY' ] =                     defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY : null;
+        $values[ 'WP_DEBUG_LOG' ] =                         defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG : null;
+        
+        # Loclization
+        $values[ 'WPLANG' ] =                               defined( 'WPLANG' ) ? WPLANG : null;
+        $values[ 'WPLANG_DIR' ] =                           defined( 'WPLANG_DIR' ) ? WPLANG_DIR : null;
+        
+        # Maintenance
+        $values[ 'WP_MAX_MEMORY_LIMIT' ] =                  defined( 'WP_MAX_MEMORY_LIMIT' ) ? WP_MAX_MEMORY_LIMIT : null;
+        $values[ 'WP_MEMORY_LIMIT' ] =                      defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : null;
+        $values[ 'WP_CACHE' ] =                             defined( 'WP_CACHE' ) ? WP_CACHE : 0;
+        
+        # Multisites
+        $values[ 'MULTISITE' ] =                            defined( 'MULTISITE' ) ? MULTISITE : null;
+        $values[ 'WP_ALLOW_MULTISITE' ] =                   defined( 'WP_ALLOW_MULTISITE' ) ? WP_ALLOW_MULTISITE : null;
+        $values[ 'BLOG_ID_CURRENT_SITE' ] =                 defined( 'BLOG_ID_CURRENT_SITE' ) ? BLOG_ID_CURRENT_SITE : null;
+        $values[ 'DOMAIN_CURRENT_SITE' ] =                  defined( 'DOMAIN_CURRENT_SITE' ) ? DOMAIN_CURRENT_SITE : null;
+        $values[ 'PATH_CURRENT_SITE' ] =                    defined( 'PATH_CURRENT_SITE' ) ? PATH_CURRENT_SITE : null;
+        $values[ 'PRIMARY_NETWORK_ID' ] =                   defined( 'PRIMARY_NETWORK_ID' ) ? PRIMARY_NETWORK_ID : null;
+        $values[ 'SITE_ID_CURRENT_SITE' ] =                 defined( 'SITE_ID_CURRENT_SITE' ) ? SITE_ID_CURRENT_SITE : null;
+        $values[ 'SUBDOMAIN_INSTALL' ] =                    defined( 'SUBDOMAIN_INSTALL' ) ? SUBDOMAIN_INSTALL : null;
+        $values[ '#MultiSiteToolPluginLoader' ] =           null; /* "#" points as not included in the config form fields, exceptions */
+        
+        # Post
+        $values[ 'AUTOSAVE_INTERVAL' ] =                    defined( 'AUTOSAVE_INTERVAL' ) ? AUTOSAVE_INTERVAL : null;
+        $values[ 'EMPTY_TRASH_DAYS' ] =                     defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : null;
+        $values[ 'WP_POST_REVISIONS-STATUS' ] =             defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : null;
+        $values[ 'WP_POST_REVISIONS-MAXCOUNT' ] =           defined( 'WP_POST_REVISIONS' ) ? ( is_bool( WP_POST_REVISIONS ) ? 0 : WP_POST_REVISIONS ) : null;
+        
+        # Proxy
+        $values[ 'WP_PROXY_BYPASS_HOSTS' ] =                ( defined( 'WP_PROXY_BYPASS_HOSTS' ) && WP_PROXY_BYPASS_HOSTS )  ? explode( ',',  WP_PROXY_BYPASS_HOSTS ) : array();
+        $values[ 'WP_PROXY_HOST' ] =                        defined( 'WP_PROXY_HOST' ) ? WP_PROXY_HOST : null;
+        $values[ 'WP_PROXY_PASSWORD' ] =                    defined( 'WP_PROXY_PASSWORD' ) ? WP_PROXY_PASSWORD : null;
+        $values[ 'WP_PROXY_PORT' ] =                        defined( 'WP_PROXY_PORT' ) ? WP_PROXY_PORT : null;
+        $values[ 'WP_PROXY_USERNAME' ] =                    defined( 'WP_PROXY_USERNAME' ) ? WP_PROXY_USERNAME : null;
+        
+        # Security
+        $values[ 'WP_ACCESSIBLE_HOSTS' ] =                  ( defined( 'WP_ACCESSIBLE_HOSTS' ) && WP_ACCESSIBLE_HOSTS )  ? explode( ',',  WP_ACCESSIBLE_HOSTS ) : array();
+        $values[ 'ALLOW_UNFILTERED_UPLOADS' ] =             defined( 'ALLOW_UNFILTERED_UPLOADS' ) ? ALLOW_UNFILTERED_UPLOADS : null;
+        $values[ 'WP_HTTP_BLOCK_EXTERNAL' ] =               defined( 'WP_HTTP_BLOCK_EXTERNAL' ) ? WP_HTTP_BLOCK_EXTERNAL : null;
+        $values[ 'DISALLOW_FILE_EDIT' ] =                   defined( 'DISALLOW_FILE_EDIT' ) ? DISALLOW_FILE_EDIT : null;
+        $values[ 'DISALLOW_UNFILTERED_HTML' ] =             defined( 'DISALLOW_UNFILTERED_HTML' ) ? DISALLOW_UNFILTERED_HTML : null;
+        $values[ 'FORCE_SSL_ADMIN' ] =                      defined( 'FORCE_SSL_ADMIN' ) ? FORCE_SSL_ADMIN : null;
+        $values[ 'FORCE_SSL_LOGIN' ] =                      defined( 'FORCE_SSL_LOGIN' ) ? FORCE_SSL_LOGIN : null;
+        
+        # Upgrade
+        # auto core
+        $updateAutoCore = null;
+        
+        if ( defined( 'WP_AUTO_UPDATE_CORE' ) )
+        {
+            
+            # Transform the value to string 
+            # (BOOL) TRUE => 'true'
+            # (BOOL) FALSE => 'false'
+            # (STRING) 'minor' => 'minor' -- no changes
+            if ( is_bool( WP_AUTO_UPDATE_CORE ) )
+            {
+                $updateAutoCore = WP_AUTO_UPDATE_CORE ? 'true' : 'false';
+            }
+            else
+            {
+                $updateAutoCore = WP_AUTO_UPDATE_CORE;
+            }
+            
+        }
+        
+        $values[ 'WP_AUTO_UPDATE_CORE' ] =                      $updateAutoCore;
+        $values[ 'AUTOMATIC_UPDATER_DISABLED' ] =               defined( 'AUTOMATIC_UPDATER_DISABLED' ) ? AUTOMATIC_UPDATER_DISABLED : null;
+        $values[ 'DISALLOW_FILE_MODS' ] =                       defined( 'DISALLOW_FILE_MODS' ) ? DISALLOW_FILE_MODS : null;
+        $values[ 'FS_METHOD' ] =                                defined( 'FS_METHOD' ) ? FS_METHOD : null;
+        $values[ 'FTP_BASE' ] =                                 defined( 'FTP_BASE' ) ? FTP_BASE : null;
+        $values[ 'FTP_CONTENT_DIR' ] =                          defined( 'FTP_CONTENT_DIR' ) ? FTP_CONTENT_DIR : null;
+        $values[ 'FTP_HOST' ] =                                 defined( 'FTP_HOST' ) ? FTP_HOST : null;
+        $values[ 'FTP_PASS' ] =                                 defined( 'FTP_PASS' ) ? FTP_PASS : null;
+        $values[ 'FTP_PLUGIN_DIR' ] =                           defined( 'FTP_PLUGIN_DIR' ) ? FTP_PLUGIN_DIR : null;
+        $values[ 'FTP_PRIKEY' ] =                               defined( 'FTP_PRIKEY' ) ? FTP_PRIKEY : null;
+        $values[ 'FTP_PUBKEY' ] =                               defined( 'FTP_PUBKEY' ) ? FTP_PUBKEY : null;
+        $values[ 'FTP_SSL' ] =                                  defined( 'FTP_SSL' ) ? FTP_SSL : null;
+        $values[ 'FTP_USER' ] =                                 defined( 'FTP_USER' ) ? FTP_USER : null;
+
+        $this->form->setValue( array( $this->form->getName() => $values ) );
+        # Fill form
 		
 		return $this;
 	}

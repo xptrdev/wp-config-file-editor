@@ -12,17 +12,19 @@ use WPPFW\Forms;
 /**
 * 
 */
-class RawConfigFileForm extends Forms\SecureForm {
+class RawConfigFileForm extends Forms\SecureForm 
+{
 	
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function __construct() {
+	public function __construct() 
+    {
 		# Define form parameters
 		parent::__construct('rawConfigFile', 'stoken');
 		# Add fields
-		$this->addChain(new Forms\Fields\FormStringField('configFileContent'));
+		$this->addChain( new Forms\Fields\FormStringField( 'configFileContent' ) );
 	}
 	
 }

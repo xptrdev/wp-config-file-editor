@@ -16,6 +16,20 @@ use WCFE\Modules\Editor\Model\EditorModel;
 */
 abstract class Tab {
 
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $fields = array();
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $fieldsPluggableFilterName;
+    
 	/**
 	* put your comment there...
 	* 
@@ -47,18 +61,25 @@ abstract class Tab {
         return call_user_func_array( array( $this->tabs->getFormAdapter(), '_' ), func_get_args() );
     }
 
-	/**
-	* put your comment there...
-	* 
-	* @param Tabs $tabs
-	* @return {Tab|Tabs}
-	*/
-	public function __construct(TabsBase & $tabs) {
-		# Initiaize
+    /**
+    * put your comment there...
+    * 
+    * @param Tabs $tabs
+    * @param mixed $title
+    * @param mixed $pluggableFilterName
+    * @param mixed $id
+    * @param mixed $fields
+    * @return Tab
+    */
+	public function __construct(Tabs & $tabs, $title = null, $pluggableFilterName = null, $id = null, $fields = null) 
+    {
+		
 		$this->tabs =& $tabs;
-		# Tab Id
-		$thisClass = new ClassName(get_class($this));
-		$this->id = $thisClass->getName();
+		$this->title = $title;
+        $this->fieldsPluggableFilterName = $pluggableFilterName;
+        $this->fields = $fields;
+        $this->id = $id;
+        
 		# Tab initiaization
 		$this->initialize();
 	}
@@ -133,10 +154,6 @@ abstract class Tab {
 	*/
 	public function render(\DOMDocument & $tabsDoc, \DOMElement & $navigator, \DOMElement & $tabs) 
 	{
-		
-		$templatesNamespace = '\WCFE\Modules\Editor\View\Editor\Templates';
-		$groupsNamespace = "{$templatesNamespace}\\Groups";
-		$fieldsNamespace = "{$templatesNamespace}\\Fields";
 		
 		# Create Tab navigator
 		$tabNavLink = $tabsDoc->createElement('a');
@@ -277,4 +294,55 @@ abstract class Tab {
 		$this->getSimpleHelpBox( $tabsDoc, $helpbox );
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $fields
+    */
+    public function setFields( $fields )
+    {
+        $this->fields = $fields;
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $id
+    */
+    public function & setId( $id )
+    {
+        
+        $this->id = $id;
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $name
+    */
+    public function setPluggableFilterName ( $name )
+    {
+        
+        $this->fieldsPluggableFilterName = $name;
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $title
+    */
+    public function setTitle( $title )
+    {
+        
+        $this->title = $title;
+        
+        return $this;
+    }
+    
 }

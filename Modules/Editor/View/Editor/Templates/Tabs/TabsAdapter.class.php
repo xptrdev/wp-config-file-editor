@@ -119,14 +119,10 @@ class EditorFormTabsAdapter implements ITabsFormAdapter
 	*/
 	public function renderRow( $doc, $row, $renderer )
 	{
-		
-		# Constants Variables names
-		$fieldGenClass = 'WCFE\Modules\Editor\Model\ConfigFile\Fields\\' . $renderer->getField()->getName();
-		$fieldGenObj = new $fieldGenClass( );
 			
 		$name = $doc->createElement( 'p' );
 		$name->setAttribute( 'class', 'field-constant-name' );
-		$name->nodeValue = $fieldGenObj->getName();
+		$name->nodeValue = $renderer->getField()->getName();
 		
 		$row->appendChild( $name );
 	}

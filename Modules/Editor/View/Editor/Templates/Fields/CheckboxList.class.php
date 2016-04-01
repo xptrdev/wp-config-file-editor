@@ -87,6 +87,14 @@ class CheckboxListField extends FieldBase {
 	*/
 	public function getItems()
 	{
+        
+        # Allow items to supplied through constructor
+        # or use default items method
+        if ( isset( $this->params[ 'items' ] ) )
+        {
+            return $this->params[ 'items' ];
+        }
+        
 		$items = array();
 		
 		$fields = $this->getField()->getFields();

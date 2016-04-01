@@ -11,7 +11,8 @@ use WCFE\Modules\Editor\Model\EditorModel;
 /**
 * 
 */
-abstract class SimpleSubContainerTab extends Tab {
+class SimpleSubContainerTab extends Tab 
+{
 	
 	/**
 	* put your comment there...
@@ -19,20 +20,6 @@ abstract class SimpleSubContainerTab extends Tab {
 	* @var mixed
 	*/
 	protected $containersData = array();
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $fields = array();
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $fieldsPluggableFilterName;
 	
 	/**
 	* put your comment there...

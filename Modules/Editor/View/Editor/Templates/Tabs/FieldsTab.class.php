@@ -11,21 +11,7 @@ use WCFE\Modules\Editor\Model\EditorModel;
 /**
 * 
 */
-abstract class FieldsTab extends Tab {
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $fields = array();
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	protected $fieldsPluggableFilterName;
+class FieldsTab extends Tab {
 	
 	/**
 	* put your comment there...

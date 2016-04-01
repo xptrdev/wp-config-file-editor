@@ -15,6 +15,13 @@ use WPPFW\Forms\Fields\IField;
 */
 class DropDownField extends FieldBase {
 
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $items = array();
+    
 	/**
 	* put your comment there...
 	* 
@@ -33,8 +40,26 @@ class DropDownField extends FieldBase {
 	* put your comment there...
 	* 
 	*/
-	protected function getOptionsList() {}
+	protected function getOptionsList() 
+    {
+        return $this->items;
+    }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function initialize() 
+    {
+        parent::initialize();
+        
+        if ( isset( $this->params[ 'list' ] ) )
+        {
+            $this->items =& $this->params[ 'list' ];
+        }
+        
+    }
+    
 	/**
 	* put your comment there...
 	* 

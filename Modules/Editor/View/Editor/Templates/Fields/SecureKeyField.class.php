@@ -13,7 +13,7 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class SecureKeyField extends InputField {
+class SecureKeyField extends InputField {
 
 	/**
 	* put your comment there...

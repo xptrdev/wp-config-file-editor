@@ -45,6 +45,22 @@ class InputField extends FieldBase {
 		return $this->type;
 	}
 
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function initialize()
+    {
+        
+        parent::initialize();
+        
+        if ( isset( $this->params[ 'type' ] ) )
+        {
+            $this->type = $this->params[ 'type' ];
+        }
+        
+    }
+    
 	/**
 	* put your comment there...
 	* 

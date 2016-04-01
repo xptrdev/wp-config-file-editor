@@ -84,13 +84,16 @@ abstract class FieldBase {
 	* @param mixed $params
 	* @return FieldBase
 	*/
-	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $params = null) {
+	public function __construct(Form & $form, IField & $field, $text = null, $tipText = null, $params = null) 
+    {
 		# Initialize
 		$this->field =& $field;
 		$this->form =& $form;
 		$this->text = $text;
 		$this->tipText = $tipText;
 		$this->params =& $params;
+        
+        $this->initialize();
 	}
 
     /**
@@ -166,6 +169,16 @@ abstract class FieldBase {
 	{
 		return $this->tipText;
 	}
+   
+   /**
+   * put your comment there...
+   * 
+   */
+    protected function initialize()
+    {
+        // Extract some class parameters, that is not presented in the constructire, from params array
+        $this->class = isset( $this->params[ 'class' ] ) ? $this->params[ 'class' ] : null;
+    }
     
 	/**
 	* put your comment there...
