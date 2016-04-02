@@ -553,12 +553,14 @@ class EditorModel extends PluginModel {
         $values[ 'PRIMARY_NETWORK_ID' ] =                   defined( 'PRIMARY_NETWORK_ID' ) ? PRIMARY_NETWORK_ID : null;
         $values[ 'SITE_ID_CURRENT_SITE' ] =                 defined( 'SITE_ID_CURRENT_SITE' ) ? SITE_ID_CURRENT_SITE : null;
         $values[ 'SUBDOMAIN_INSTALL' ] =                    defined( 'SUBDOMAIN_INSTALL' ) ? SUBDOMAIN_INSTALL : null;
-        $values[ '#MultiSiteToolPluginLoader' ] =           null; /* "#" points as not included in the config form fields, exceptions */
+        //---------$values[ '#MultiSiteToolPluginLoader' ] =           null; /* "#" points as not included in the config form fields, exceptions */
         
         # Post
         $values[ 'AUTOSAVE_INTERVAL' ] =                    defined( 'AUTOSAVE_INTERVAL' ) ? AUTOSAVE_INTERVAL : null;
         $values[ 'EMPTY_TRASH_DAYS' ] =                     defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : null;
-        $values[ 'WP_POST_REVISIONS-STATUS' ] =             defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : null;
+        
+        # This must presented as either 0 or 1 so that it will be checked if its presented as number (e.g 10, 30, etc...)
+        $values[ 'WP_POST_REVISIONS-STATUS' ] =             defined( 'WP_POST_REVISIONS' ) ? ( bool ) WP_POST_REVISIONS : null;
         $values[ 'WP_POST_REVISIONS-MAXCOUNT' ] =           defined( 'WP_POST_REVISIONS' ) ? ( is_bool( WP_POST_REVISIONS ) ? 0 : WP_POST_REVISIONS ) : null;
         
         # Proxy

@@ -50,89 +50,6 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function authKeys()
-    {
-        
-        $this->add( new Forms\Fields\FormStringField( 'AUTH_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'AUTH_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'NONCE_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'NONCE_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-                                                        
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function cookies()
-    {
-        $this->add( new Forms\Fields\FormStringField( 'ADMIN_COOKIE_PATH' ) );
-        $this->add( new Forms\Fields\FormStringField( 'AUTH_COOKIE' ) );
-        $this->add( new Forms\Fields\FormStringField( 'COOKIE_DOMAIN' ) );
-        $this->add( new Forms\Fields\FormStringField( 'COOKIEHASH' ) );
-        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_COOKIE' ) );
-        $this->add( new Forms\Fields\FormStringField( 'PASS_COOKIE' ) );
-        $this->add( new Forms\Fields\FormStringField( 'COOKIEPATH' ) );
-        $this->add( new Forms\Fields\FormStringField( 'PLUGINS_COOKIE_PATH' ) );
-        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_COOKIE' ) );
-        $this->add( new Forms\Fields\FormStringField( 'SITECOOKIEPATH' ) );
-        $this->add( new Forms\Fields\FormStringField( 'TEST_COOKIE' ) );
-        $this->add( new Forms\Fields\FormStringField( 'USER_COOKIE' ) ); 
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function cron()
-    {
-        $this->add( new Forms\Fields\FormIntegerField( 'DISABLE_WP_CRON' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'ALTERNATE_WP_CRON' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_CRON_LOCK_TIMEOUT' ) );
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function database()
-    {
-        
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_ALLOW_REPAIR' ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_CHARSET' ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_COLLATE' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_HOST-NAME', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_NAME', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_PASSWORD', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_HOST-PORT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'table_prefix', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-        $this->add( new Forms\Fields\FormStringField( 'DB_USER', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
-                        
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function debug()
-    {
-        $this->add( new Forms\Fields\FormIntegerField( 'CONCATENATE_SCRIPTS' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'SAVEQUERIES' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'SCRIPT_DEBUG' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG_DISPLAY' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG_LOG' ) );
-    }
-    
-    /**
-    * put your comment there...
-    * 
-    */
     protected function defineExtendedOptions()
     {
         
@@ -155,25 +72,99 @@ class ConfigFileForm extends Forms\SecureForm {
     */
     protected function defineFields()
     {
-        $this->authKeys();
-        $this->cookies();
-        $this->cron();
-        $this->database();
-        $this->debug();
-        $this->localization();
-        $this->maintenance();
-        $this->multiSites();
-        $this->post();
-        $this->proxy();
-        $this->security();
-        $this->upgrade();
+        $grps = array
+        (
+            'SecureKeys',
+            'Cookies',
+            'Cron',
+            'Database',
+            'Debug',
+            'Localization',
+            'Maintenance',
+            'MultiSites',
+            'Post',
+            'Proxy',
+            'Security',
+            'Upgrade',
+        );
+
+        foreach ( $grps as $grp )
+        {
+            
+            $this->{"grp{$grp}"}();
+        }
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpCookies()
+    {
+        $this->add( new Forms\Fields\FormStringField( 'ADMIN_COOKIE_PATH' ) );
+        $this->add( new Forms\Fields\FormStringField( 'AUTH_COOKIE' ) );
+        $this->add( new Forms\Fields\FormStringField( 'COOKIE_DOMAIN' ) );
+        $this->add( new Forms\Fields\FormStringField( 'COOKIEHASH' ) );
+        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_COOKIE' ) );
+        $this->add( new Forms\Fields\FormStringField( 'PASS_COOKIE' ) );
+        $this->add( new Forms\Fields\FormStringField( 'COOKIEPATH' ) );
+        $this->add( new Forms\Fields\FormStringField( 'PLUGINS_COOKIE_PATH' ) );
+        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_COOKIE' ) );
+        $this->add( new Forms\Fields\FormStringField( 'SITECOOKIEPATH' ) );
+        $this->add( new Forms\Fields\FormStringField( 'TEST_COOKIE' ) );
+        $this->add( new Forms\Fields\FormStringField( 'USER_COOKIE' ) ); 
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpCron()
+    {
+        $this->add( new Forms\Fields\FormIntegerField( 'DISABLE_WP_CRON' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'ALTERNATE_WP_CRON' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_CRON_LOCK_TIMEOUT' ) );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpDatabase()
+    {
+        
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_ALLOW_REPAIR' ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_CHARSET' ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_COLLATE' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_HOST-NAME', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_NAME', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_PASSWORD', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_HOST-PORT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'table_prefix', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'DB_USER', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+                        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpDebug()
+    {
+        $this->add( new Forms\Fields\FormIntegerField( 'CONCATENATE_SCRIPTS' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'SAVEQUERIES' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'SCRIPT_DEBUG' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG_DISPLAY' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_DEBUG_LOG' ) );
     }
 
     /**
     * put your comment there...
     * 
     */
-    protected function localization()
+    protected function grpLocalization()
     {
         $this->add( new Forms\Fields\FormStringField( 'WPLANG' ) );
         $this->add( new Forms\Fields\FormStringField( 'WPLANG_DIR' ) );
@@ -183,7 +174,7 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function maintenance()
+    protected function grpMaintenance()
     {
         $this->add( new Forms\Fields\FormStringField( 'WP_MAX_MEMORY_LIMIT' ) );
         $this->add( new Forms\Fields\FormStringField( 'WP_MEMORY_LIMIT' ) );
@@ -194,7 +185,7 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function multiSites()
+    protected function grpMultiSites()
     {
         $this->add( new Forms\Fields\FormIntegerField( 'MULTISITE' ) );
         $this->add( new Forms\Fields\FormIntegerField( 'WP_ALLOW_MULTISITE' ) );
@@ -211,11 +202,11 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function post()
+    protected function grpPost()
     {
         $this->add( new Forms\Fields\FormIntegerField( 'AUTOSAVE_INTERVAL' ) );
         $this->add( new Forms\Fields\FormIntegerField( 'EMPTY_TRASH_DAYS' ) );
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_POST_REVISIONS' ) );
+        $this->add( new Forms\Fields\FormIntegerField( 'WP_POST_REVISIONS-STATUS' ) );
         $this->add( new Forms\Fields\FormIntegerField( 'WP_POST_REVISIONS-MAXCOUNT' ) );
                         
     }
@@ -224,7 +215,7 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function proxy()
+    protected function grpProxy()
     {
         $this->add( new Forms\Fields\FormArrayField( 'WP_PROXY_BYPASS_HOSTS', new Forms\Fields\FormStringField( 'host' ) ) );
         $this->add( new Forms\Fields\FormStringField( 'WP_PROXY_HOST' ) );
@@ -237,7 +228,7 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function security()
+    protected function grpSecurity()
     {
         $this->add( new Forms\Fields\FormArrayField( 'WP_ACCESSIBLE_HOSTS', new Forms\Fields\FormStringField( 'host' ) ) ); 
         $this->add( new Forms\Fields\FormIntegerField( 'ALLOW_UNFILTERED_UPLOADS' ) );
@@ -252,9 +243,27 @@ class ConfigFileForm extends Forms\SecureForm {
     * put your comment there...
     * 
     */
-    protected function upgrade()
+    protected function grpSecureKeys()
     {
-        $this->add( new Forms\Fields\FormIntegerField( 'WP_AUTO_UPDATE_CORE' ) );
+        
+        $this->add( new Forms\Fields\FormStringField( 'AUTH_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'AUTH_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'LOGGED_IN_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'NONCE_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'NONCE_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_KEY', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add( new Forms\Fields\FormStringField( 'SECURE_AUTH_SALT', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+                                                        
+    }
+
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpUpgrade()
+    {
+        $this->add( new Forms\Fields\FormStringField( 'WP_AUTO_UPDATE_CORE' ) );
         $this->add( new Forms\Fields\FormIntegerField( 'AUTOMATIC_UPDATER_DISABLED' ) );
         $this->add( new Forms\Fields\FormIntegerField( 'DISALLOW_FILE_MODS' ) );
         $this->add( new Forms\Fields\FormStringField( 'FS_METHOD' ) );

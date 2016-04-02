@@ -15,6 +15,8 @@ $model =& $result[ 'model' ];
 $form =& $model->getForm();
 $router =& $this->router();
 
+$templatesFolder = 'Index';
+
 ?>
 <div id="wcfe-body">
 
@@ -29,7 +31,7 @@ $router =& $this->router();
 <?php endif; ?>
 
 <? // Dashboard Menu ?>
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
+<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
 
 <?php // COnfig Form ?>
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
@@ -50,7 +52,7 @@ $router =& $this->router();
 
 
 <?php // Editor Services Template (save dialog, etc.) ?>
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
+<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
 
 
 <?php // Client side notificaytion if there is active profile ?>
@@ -95,5 +97,5 @@ $router =& $this->router();
 
 <?php // Info dialogs templates ?>
 <div id="wcfe-info-templates">
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
+<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
 </div>
