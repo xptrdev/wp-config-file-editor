@@ -80,23 +80,30 @@ abstract class Field {
 	*/
 	protected $type;
 
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $model
-	* @param Form $form
-	* @param {Form|IField} $field
-	* @return {Field|Form|IField}
-	*/
-	public function __construct(Master & $model = null, Form & $form = null, IField & $field = null )
+    /**
+    * put your comment there...
+    * 
+    * @param Master $model
+    * @param {IField|Master} $field
+    * @param mixed $type
+    * @param mixed $params
+    * @return Field
+    */
+	public function __construct( Master & $model, IField & $field, $type, $params = null )
 	{
-		# Initialize
+		
 		$this->model =& $model;
-		$this->form =& $form;
+		$this->form =& $model->getForm();
 		$this->field =& $field;
-		# Get type
-		$this->type = $this->getType();
-		# Initialize child
+		$this->type = $type;
+        
+        # Other parameters
+        foreach ( $params as $paramName => $paramVal )
+        {
+            $this->{$paramName} = $paramVal;
+        }
+        
+		# Initialize object
 		$this->initialize();
 	}
 	
@@ -200,7 +207,11 @@ abstract class Field {
 	* put your comment there...
 	* 
 	*/
-	protected abstract function getType();
+	protected function & getType()
+    {
+        return $this->type;
+    }
+    
 	
 	/**
 	* put your comment there...

@@ -46,107 +46,6 @@ class EditorModel extends PluginModel {
 	* 
 	* @var mixed
 	*/
-	private $fieldsMap = array(
-		'DbName',
-		'DbUser',
-		'DbPassword',
-		'DbHost',
-		'DbPort',
-		'DbCharSet',
-		'DbCollate',
-		'DbTablePrefix',
-		'DbAllowRepair',
-		'DbDontUpgradeGlobalTables',
-		
-		'SecurityDisablePluggablesEditor',
-		'SecurityBlockExternalUrl',
-		'SecurityAccessibleHosts',
-		'SecurityForceSSLAdmin',
-		'SecurityForceSSLLogin',
-		'SecurityDisallowUnfilteredHTML',
-		'SecurityAllowUnfilteredUploads',
-		
-		'UpgradeAutoDisable',
-		'UpgradeAutoCore',
-		'UpgradeDisablePluggables',
-		
-		'UpgradeFSMethod',
-		'UpgradeFTPBase',
-		'UpgradeFTPContentDir',
-		'UpgradeFTPPluginDir',
-		'UpgradeFTPPubKey',
-		'UpgradeFTPPriKey',
-		'UpgradeFTPUser',
-		'UpgradeFTPPassword',
-		'UpgradeFTPHost',
-		'UpgradeFTPSSL',
-			
-		'AuthKey',
-		'SecureAuthKey',
-		'LoggedInKey',
-		'NonceKey',
-		'AuthSalt',
-		'SecureAuthSalt',
-		'LoggedInSalt',
-		'NonceSalt',
-		
-		'WPDebug',
-		'WPDebugLog',
-		'WPDebugDisplay',
-		'ScriptDebug',
-		'SaveQueries',
-		'ConcatenateJavaScript',
-		
-		'WPLang',
-		'WPLangDir',
-		
-		'MultiSiteAllow',
-		'MultiSite',
-		'MultiSiteSubDomainInstall',
-		'MultiSiteDomainCurrentSite',
-		'MultiSitePathCurrentSite', 
-		'MultiSiteSiteId',
-		'MultiSiteBlogId',
-		'MultiSitePrimaryNetworkId',
-		
-		'WPCache',
-		'MemoryLimit',
-		'MaxMemoryLimit',
-		
-		'PostAutoSaveInterval',
-		'PostRevisions',
-		'PostRevisionsMax',
-		'PostEmptyTrashDays',
-		
-		'Cron',
-		'CronAlternate',
-		'CronLockTimeOut',
-		
-		'ProxyHost',
-		'ProxyPort',
-		'ProxyUser',
-		'ProxyPassword',
-		'ProxyBypassHosts',
-		
-		'CookieHash',
-		'CookieUser',
-		'CookiePass',
-		'CookieAuth',
-		'CookieSecureAuth',
-		'CookieLoggedIn',
-		'CookieTest',
-		'CookiePath',
-		'CookieSitePath',
-		'CookieAdminPath',
-		'CookiePluginsPath',
-		'CookieDomain',
-	);
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
 	private $form;
 	
 	/**
@@ -155,13 +54,6 @@ class EditorModel extends PluginModel {
 	* @var mixed
 	*/
 	protected $isBackForChange = false;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	private $pluggedFields = array();
 	
 	/**
 	* put your comment there...
@@ -180,20 +72,6 @@ class EditorModel extends PluginModel {
 		$this->savedVars = array();
 		$this->isBackForChange = false;
 		# Chain
-		return $this;
-	}
-
-	/**
-	* put your comment there...
-	* 
-	* @param mixed $name
-	* @return EditorModel
-	*/
-	public function & addField( $name )
-	{
-		
-		$this->fieldsMap[ ] = $name;
-		
 		return $this;
 	}
 	
@@ -333,17 +211,8 @@ class EditorModel extends PluginModel {
 	public function & generateConfigFile( & $generator = null )
 	{
 		
-		# Prepare generator fields list
-		$fieldsList = self::makeClassesList( array( 'WCFE\Modules\Editor\Model\ConfigFile\Fields' => $this->fieldsMap ) );
-		
-		//////////// PLUGGABLE FIELDS LIST ///////////////#$
-		
-		$fieldsList = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_GENERATOR_FIELDS, $fieldsList );
-		
-		//////////////////////////////////////////////////#$
-		
 		# Get generator instance
-		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm(), $fieldsList );
+		$configFile = new ConfigFile\Templates\Master\Master( $this->getForm() );
 		
 		# Return generator reference
 		$generator = $configFile;
@@ -437,25 +306,6 @@ class EditorModel extends PluginModel {
 	*/
 	protected function initialize()
 	{
-		
-		/////////////// Allow pluggable fields //////////////////////#$
-		
-		$this->pluggedFields = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_REGISTER_FIELDS, $this->pluggedFields );
-		
-		/////////////////////////////////////////////////////////////#$
-		
-		# Make all fields list from built in list and plugged list
-		$this->allFields = array_merge( $this->fieldsMap, $this->pluggedFields );
-		
-		# Make form core fields list
-		$fieldsList = self::makeClassesList( array( 'WCFE\Modules\Editor\Model\Forms\Fields' => $this->fieldsMap ) );
-		
-		
-		////////////// PLUGGABLE FIELDS LIST ////////////////#$
-		
-		$fieldsList = apply_filters( \WCFE\Hooks::FILTER_MODEL_EDITOR_FORM_FIELDS, $fieldsList );
-		
-		////////////////////////////////////////////////////#$
 		
 		$this->form = new Forms\ConfigFileForm( $fieldsList );
 		
@@ -553,7 +403,6 @@ class EditorModel extends PluginModel {
         $values[ 'PRIMARY_NETWORK_ID' ] =                   defined( 'PRIMARY_NETWORK_ID' ) ? PRIMARY_NETWORK_ID : null;
         $values[ 'SITE_ID_CURRENT_SITE' ] =                 defined( 'SITE_ID_CURRENT_SITE' ) ? SITE_ID_CURRENT_SITE : null;
         $values[ 'SUBDOMAIN_INSTALL' ] =                    defined( 'SUBDOMAIN_INSTALL' ) ? SUBDOMAIN_INSTALL : null;
-        //---------$values[ '#MultiSiteToolPluginLoader' ] =           null; /* "#" points as not included in the config form fields, exceptions */
         
         # Post
         $values[ 'AUTOSAVE_INTERVAL' ] =                    defined( 'AUTOSAVE_INTERVAL' ) ? AUTOSAVE_INTERVAL : null;
@@ -625,10 +474,12 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function & loadFromSaveState() {
+	public function & loadFromSaveState() 
+    {
+        
 		# Load model form from saved vars
-		$this->getForm()->setValue($this->savedVars);
-		# Chain
+		$this->getForm()->setValue( $this->savedVars );
+		
 		return $this;
 	}
 
@@ -774,10 +625,12 @@ class EditorModel extends PluginModel {
 	* put your comment there...
 	* 
 	*/
-	public function validate() {
-		# Initialize
+	public function validate() 
+    {
+		
 		$form =& $this->getForm();
 		$valid = false;
+        
 		# Validate the form
 		# If its a valid form try to open databse connection using 
 		# form database parameters
@@ -786,16 +639,17 @@ class EditorModel extends PluginModel {
 		{
 			
 			# Get database connection parameters.
-			$user       = $form->get( 'DbUser' )->getValue();
-			$password   = $form->get( 'DbPassword' )->getValue();
-			$name       = $form->get( 'DbName' )->getValue();
-			$host       = $form->get( 'DbHost' )->getValue();
-			$port       = $form->get( 'DbPort' )->getValue();
+			$user       = $form->get( 'DB_USER' )->getValue();
+			$password   = $form->get( 'DB_PASSWORD' )->getValue();
+			$name       = $form->get( 'DB_NAME' )->getValue();
+			$host       = $form->get( 'DB_HOST-NAME' )->getValue();
+			$port       = $form->get( 'DB_HOST-PORT' )->getValue();
 			
 			# Test database parameters
 			# using mysql extension or mysqli is mysql not available
 			if ( function_exists( 'mysqli_init' ) ) 
 			{ # Use Mysqli
+            
 				# Connection successed
 				if ( $clink = @ mysqli_connect( $host, $user, $password, null, $port ) ) 
 				{

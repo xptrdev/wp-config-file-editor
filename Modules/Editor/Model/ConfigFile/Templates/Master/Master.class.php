@@ -50,16 +50,33 @@ class Master {
 	* @param mixed $fields
 	* @return Master
 	*/
-	public function __construct( Form & $form, $fields ) {
-		# initialize
+	public function __construct( Form & $form ) 
+    {
+
 		$this->form =& $form;
-		
-		# Create all fieldsw
-		foreach ( $fields as $fieldClass => $fieldName )
-		{
-			$this->fields[ $fieldName ] = new $fieldClass( $this, $form, $form->get( $fieldName ) );
-		}
-		
+        
+        # Creating WP-CONFIG Fields providers
+        $grps = array
+        (
+            'Cron',
+            'Cookies',
+            'Database',
+            'Debug',
+            'Localization',
+            'Maintenance',
+            'MultiSites',
+            'Post',
+            'Proxy',
+            'Security',
+            'SecureKeys',
+            'Upgrade',
+        );
+        
+        foreach ( $grps as $grp )
+        {
+            $this->{"grp{$grp}"}();
+        }
+        
 		# Allow fields to interact and to Controler each others 
 		# by making second iteration after constructions!!
 		foreach ( $this->fields as $field )
@@ -112,6 +129,113 @@ class Master {
 		return $this->form;
 	}
 
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpCron()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpCookies()
+    {
+        
+    }
+
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpDatabase()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpDebug()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpLocalization()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpMaintenance()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpMultiSites()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpPost()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpProxy()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpSecurity()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpSecureKeys()
+    {
+        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function grpUpgrade()
+    {
+        
+    }
 
 	/**
 	* put your comment there...

@@ -9,7 +9,8 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-abstract class Variable extends Field {
+class Variable extends Field 
+{
 
 	/**
 	* put your comment there...

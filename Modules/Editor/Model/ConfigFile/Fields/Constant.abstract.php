@@ -9,7 +9,7 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-abstract class Constant extends Field {
+class Constant extends Field {
 
 	/**
 	* put your comment there...

@@ -74,9 +74,8 @@ class ConfigFileForm extends Forms\SecureForm {
     {
         $grps = array
         (
-            'SecureKeys',
-            'Cookies',
             'Cron',
+            'Cookies',
             'Database',
             'Debug',
             'Localization',
@@ -85,6 +84,7 @@ class ConfigFileForm extends Forms\SecureForm {
             'Post',
             'Proxy',
             'Security',
+            'SecureKeys',
             'Upgrade',
         );
 
