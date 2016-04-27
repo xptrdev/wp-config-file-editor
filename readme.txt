@@ -3,7 +3,7 @@ Contributors: xpointer
 Donate link: http://wp-cfe.xptrdev.com
 Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
-Tested up to: 4.4.2
+Tested up to: 4.5.1
 Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
