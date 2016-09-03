@@ -3,8 +3,8 @@ Contributors: xpointer
 Donate link: http://wp-cfe.xptrdev.com
 Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
-Tested up to: 4.5.1
-Stable tag: 1.6
+Tested up to: 4.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -275,7 +275,11 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
-= 1.6.0 =
+
+= 1.6.1 =
+* Wordpress 4.6 compatibility check
+
+= 1.6 =
 * Fix: Multisite Wordpress 4.0 - 4.3 incomatibility
 * Fix: Missing Database Collations
 * Fix: Missing Database Character Sets
