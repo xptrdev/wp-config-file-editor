@@ -56,9 +56,9 @@ abstract class Tab {
     * 
     * @param mixed $txt
     */
-    protected function _( $txt )
+    protected function __( $txt )
     {
-        return call_user_func_array( array( $this->tabs->getFormAdapter(), '_' ), func_get_args() );
+        return call_user_func_array( array( $this->tabs->getFormAdapter(), '__' ), func_get_args() );
     }
 
     /**

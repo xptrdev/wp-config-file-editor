@@ -2,6 +2,8 @@
 /**
 * Plugin Name: WP Config File Editor
 * Plugin URI: http://wp-cfe.xptrdev.com
+* Text Domain: wp-config-file-editor 
+* Domain Path: /Languages
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
 * Version: 1.6.1
@@ -85,7 +87,7 @@ extends PluginBase
     * 
     * @param mixed $txt
     */
-    public static function _( $txt )
+    public static function __( $txt )
     {
         return call_user_func_array( array( self::$instance->getExtension( 'l10n' ), '_' ), func_get_args() );
     }

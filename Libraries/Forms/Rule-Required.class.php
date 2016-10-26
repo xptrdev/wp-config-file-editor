@@ -23,7 +23,7 @@ class RequiredField extends \WPPFW\Forms\Rules\RequiredField
         {
             case self::MSG_CANNOT_EMPTY:
             
-                return \WCFE\Plugin::_( 'Field Cannot be empty' );
+                return \WCFE\Plugin::__( 'Field Cannot be empty' );
             
             break;
             

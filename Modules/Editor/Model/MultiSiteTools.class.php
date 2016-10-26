@@ -113,8 +113,7 @@ class MultiSiteToolsModel extends PluginModel
 		if (!$editorModel->saveConfigFile())
 		{
             
-			$this->addError($this->__('Unable to write config file!'));
-			
+			$this->addError( $this->__( 'Unable to write config file!' ) );			
 			return false;
 		}
 		
@@ -168,8 +167,7 @@ class MultiSiteToolsModel extends PluginModel
 		if (!$editorModel->saveConfigFile())
 		{
 			
-			$this->addError($this->__('Could not write config file!'));
-			
+			$this->addError( $this->__( 'Could not write config file!' ) );			
 			return false;
 		}
 		
