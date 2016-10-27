@@ -6,7 +6,7 @@
 * Domain Path: /Languages
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.6.2
+* Version: 1.6.3
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */
