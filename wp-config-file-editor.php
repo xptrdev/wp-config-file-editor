@@ -6,7 +6,7 @@
 * Domain Path: /Languages
 * Author: AHMeD SAiD
 * Author URI: http://xptrdev.com
-* Version: 1.6.1
+* Version: 1.6.2
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */
@@ -142,12 +142,23 @@ extends PluginBase
 		////////////////////////////////////#$	
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    public function _localize()
+    {
+        // Load localization extension
+	$this->loadLocalizationExtension();
+    }
+    
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function bootStrap()
 	{
+        
 		# Wordpress backward compatibility
 		CompatibleWordpress::loadCompatibilityLayers( $GLOBALS[ 'wp_version' ] );
 		
@@ -161,6 +172,9 @@ extends PluginBase
 		# System Plugins
 		\WCFE\SysPlugins\Plugins::load()->runPlugins();
 		
+        # Localization
+        add_action('plugins_loaded', array($this, '_localize'), 9);
+        
 		# MVC components
 		# Only admin side is used in this Plugin
 		if ( is_admin() ) 
@@ -252,16 +266,6 @@ extends PluginBase
 	{
 		return self::$instance;
 	}
-	
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function onCreateServiceFront()
-    {
-        // Load localization extension
-        $this->loadLocalizationExtension();
-    }
     
 	/**
 	* Run ARV Plugin if not alreayd running
