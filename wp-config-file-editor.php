@@ -148,7 +148,6 @@ extends PluginBase
     */
     public function _localize()
     {
-        // Load localization extension
         $this->loadLocalizationExtension();
     }
     
@@ -253,8 +252,14 @@ extends PluginBase
     public function & loadLocalizationExtension()
     {
         
-        $this->setExtension('l10n', Localization::localize(strtolower(__NAMESPACE__), $this));
-        
+        if (!$this->getExtension('l10n'))
+        {
+            // Load localization extension
+            $this->setExtension(
+                'l10n', 
+                Localization::localize(basename(dirname(__FILE__)), $this)
+            );            
+        }
         return $this;
     }
     
@@ -266,6 +271,15 @@ extends PluginBase
 	{
 		return self::$instance;
 	}
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    protected function onCreateServiceFront()
+    {
+        $this->_localize();
+    }
     
 	/**
 	* Run WCFE Plugin if not alreayd running
