@@ -9,8 +9,6 @@ namespace WCFE\Modules\Editor\Controller\EditorService;
 use WPPFW\MVC\Controller\ServiceController;
 use WCFE\Modules\Editor\Model\Forms;
 
-ini_set('display_errors', 'On');
-
 /**
 * 
 */
