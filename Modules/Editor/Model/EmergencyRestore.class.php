@@ -102,6 +102,16 @@ class EmergencyRestore
 		$this->contentDir =& $contentDir;
 	}
 	
+    /**
+    * Just interface but not real action!
+    * 
+    * @param mixed $text
+    */
+    public function __($text)
+    {
+        return $text;
+    }
+    
 	/**
 	* put your comment there...
 	* 

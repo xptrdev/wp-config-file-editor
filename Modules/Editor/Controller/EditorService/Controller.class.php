@@ -9,6 +9,8 @@ namespace WCFE\Modules\Editor\Controller\EditorService;
 use WPPFW\MVC\Controller\ServiceController;
 use WCFE\Modules\Editor\Model\Forms;
 
+ini_set('display_errors', 'On');
+
 /**
 * 
 */
@@ -53,13 +55,8 @@ class EditorServiceController extends ServiceController {
 			return null;			
 		}
 		
-		# Delete backup
-		$model =& $this->getModel( 'Editor' );
-		
-		$model->deleteEmergencyBackup();
-		
-		$model->clearErrors();
-		
+        /* Deprecating Delete Backup, Nothing to do for now!!!*/
+        
 		return true;
 	}
 
@@ -84,16 +81,24 @@ class EditorServiceController extends ServiceController {
 		$model =& $this->getModel( 'Editor' );
 		$isBackupCreated = $model->createBackup( $result[ 'restoreUrl' ] );
 		
-		if ( ! $isBackupCreated ) 
-		{
-			
-			# Return errors
-			$result[ 'errors' ] = $model->getErrors();
-			
-			# avoid displayed error when redirected by making normal requetss
-			$model->clearErrors();
-			
-		}	
+        // Send Backup link to admin mail
+        if ($isBackupCreated) 
+        {
+            
+            $mailer = new \WCFE\Includes\Mail\EmergencyRestoreMail();
+            
+            $mailStatus = $mailer->send($result[ 'restoreUrl' ]);
+        }
+        
+        # Return errors
+        else if (!$isBackupCreated)
+        {
+            
+            $result[ 'errors' ] = $model->getErrors();
+            
+            # avoid displayed error when redirected by making normal requetss
+            $model->clearErrors();            
+        }        	
 		
 		return $result;
 	}

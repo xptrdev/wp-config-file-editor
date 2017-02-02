@@ -12,6 +12,7 @@ return array(
     'WCFE\\Factory' => $baseDir . '/Factory/Factory.class.php',
     'WCFE\\Factory\\WordpressOptions' => $baseDir . '/Factory/WordpressOptions.class.php',
     'WCFE\\Hooks' => $baseDir . '/Pluggable/Hooks.enum.php',
+    'WCFE\\Includes\\Mail\\EmergencyRestoreMail' => $baseDir . '/Includes/Mail/EmergencyRestore.class.php',
     'WCFE\\Installer\\Factory' => $baseDir . '/Installer/Factory.class.php',
     'WCFE\\Installer\\Installer' => $baseDir . '/Installer/Installer.class.php',
     'WCFE\\Installer\\WordpressOptions' => $baseDir . '/Installer/WordpressOptions.class.php',
