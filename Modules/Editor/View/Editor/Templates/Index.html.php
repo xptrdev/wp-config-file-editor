@@ -33,6 +33,11 @@ $templatesFolder = 'Index';
 <? // Dashboard Menu ?>
 <?php require $templatesFolder . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
 
+<div class="support-us-link">
+    <a target="_blank" href="https://wordpress.org/support/plugin/wp-config-file-editor/reviews/"><?= $this->__('Submit Review') ?></a> |
+    <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VU943GHDK534"><?= $this->__('Donate') ?></a>
+</div>
+
 <?php // COnfig Form ?>
 	<form id="wcfe-config-editor-form" method="post" action="<?php echo $router->routeAction() ?>">
 <?php
