@@ -46,7 +46,10 @@ abstract class InstallerService extends \WCFE\Libraries\PersistObject {
 	*/
 	public function __construct( \WPPFW\Obj\IFactory & $factory )
 	{
-		parent::__construct( new \WPPFW\MVC\Model\State\GlobalWPOptionsModelState( $factory, get_class( $this ) ) );
+        
+        $stateAdapter = new \WPPFW\MVC\Model\State\GlobalWPOptionsModelState( $factory, get_class( $this ) );
+        
+		parent::__construct( $stateAdapter );
 		
 		$this->currentVersion = $this->_getCurrentVersion();
 	}

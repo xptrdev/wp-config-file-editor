@@ -114,7 +114,9 @@ class Installer extends \WCFE\Libraries\InstallerService {
 		if ( ! self::$instance )
 		{
 			# Create new installer
-			self::$instance = new Installer( new Factory( __NAMESPACE__ ) );
+            $factory = new Factory( __NAMESPACE__ );
+            
+			self::$instance = new Installer( $factory );
 			
 			# Install or upgrade
 			$state = self::$instance->getState();
