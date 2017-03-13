@@ -75,7 +75,7 @@ class EmergencyRestore
 	* 
 	* @var mixed
 	*/
-	private $expiresInterval = 3600;
+	private $expiresInterval = 259200; /* Backup Alive for 3 Days */
 	
 	/**
 	* put your comment there...

@@ -49,7 +49,7 @@ class EmergencyRestoreMail
         $subject = 'WP Config File Editor - Emergency Restore Link';
         
         // Generic Headers
-        $headers[] = 'Content-Type: plain/txt';
+        $headers[] = 'Content-Type: text/plain';
         
         // Set From as web site address
         $headers[] = "From: {$blogname} <noreply@{$blogdomain}>";
