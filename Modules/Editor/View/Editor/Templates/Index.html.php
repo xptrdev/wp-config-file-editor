@@ -31,7 +31,7 @@ $templatesFolder = 'Index';
 <?php endif; ?>
 
 <? // Dashboard Menu ?>
-<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . $templatesFolder . DIRECTORY_SEPARATOR . 'ConfigFormMenu.html.php' ?>
 
 <div class="support-us-link">
     <a target="_blank" href="https://wordpress.org/support/plugin/wp-config-file-editor/reviews/"><?= $this->__('Submit Review') ?></a> |
@@ -57,7 +57,7 @@ $templatesFolder = 'Index';
 
 
 <?php // Editor Services Template (save dialog, etc.) ?>
-<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . $templatesFolder . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
 
 
 <?php // Client side notificaytion if there is active profile ?>
@@ -102,5 +102,5 @@ $templatesFolder = 'Index';
 
 <?php // Info dialogs templates ?>
 <div id="wcfe-info-templates">
-<?php require $templatesFolder . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . $templatesFolder . DIRECTORY_SEPARATOR . 'Info-Paths.html.php'; ?>
 </div>
