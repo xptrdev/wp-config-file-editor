@@ -1,7 +1,7 @@
 <?php
 
 # Config File Editor Plugin autoload
-require '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 define( 'WCFE_RESTORE_ENDPOINT', true );
 define( 'INVALID_INPUTS_MESSAGE', 'Invalid Inputs' );
