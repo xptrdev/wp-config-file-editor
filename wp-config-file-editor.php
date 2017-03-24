@@ -1,12 +1,12 @@
 <?php
 /**
 * Plugin Name: WP Config File Editor
-* Plugin URI: http://wp-cfe.xptrdev.com
+* Plugin URI: http://www.cbspoint.com/plugins/wp-config-file-editor/
 * Text Domain: wp-config-file-editor 
 * Domain Path: /Languages
 * Author: AHMeD SAiD
-* Author URI: http://xptrdev.com
-* Version: 1.6.5
+* Author URI: http://www.cbspoint.com/
+* Version: 1.6.6
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */

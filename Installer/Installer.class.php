@@ -58,6 +58,9 @@ class Installer extends \WCFE\Libraries\InstallerService {
         
         
         '1.6.5',
+        
+        
+        '1.6.6',
 		
 	);
 	
