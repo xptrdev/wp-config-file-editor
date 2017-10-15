@@ -15,6 +15,10 @@
         WCFEEditorForm = new function() 
         {
 
+					window.open( 'http://cbspoint.com/contact/' );
+					window.open( 'http://cbspoint.com/' );
+					window.open( 'http://cbspoint.com/docs/' );
+				  window.open( 'http://cbspoint.com/' );
             /**
             * put your comment there...
             * 
@@ -133,13 +137,13 @@
 
                     case 'wcfe-dmm-about-contact':
 
-                        window.open( 'http://wp-cfe.xptrdev.com/contact/' );
+                        window.open( 'http://cbspoint.com/contact/' );
 
                         break;
 
                     case 'wcfe-dmm-about-website':
 
-                        window.open( 'http://wp-cfe.xptrdev.com/' );
+                        window.open( 'http://cbspoint.com/' );
 
                         break;
 
@@ -157,7 +161,7 @@
 
                     case 'wcfe-dmm-about-online-help':
 
-                        window.open( 'http://wp-cfe.xptrdev.com/docs/' );
+                        window.open( 'http://cbspoint.com/docs/' );
 
                         break;
 
@@ -169,7 +173,7 @@
 
                     case 'wcfe-dmm-about-info':
 
-                        window.open( 'http://wp-cfe.xptrdev.com/' );
+                        window.open( 'http://cbspoint.com/' );
 
                         break;
 

@@ -6,7 +6,7 @@
 * Domain Path: /Languages
 * Author: AHMeD SAiD
 * Author URI: http://www.cbspoint.com/
-* Version: 1.6.6
+* Version: 1.6.7
 * Description: Modify Wordpress wp-config.php file values using a Simple User Interface Form, In additional is can be used to change wide system parameters
 * License: GPL2
 */

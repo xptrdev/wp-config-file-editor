@@ -1,14 +1,14 @@
 === WP Config File Editor ===
 Contributors: xpointer
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VU943GHDK534
-Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, database, authentication, salts, debugging, development, proxy, cookies, http requests
+Donate link: http://www.cbspoint.com/plugins/wp-config-file-editor/
+Tags: system, admin, administration, ajax, authentication, dashboard, edit, wordpress, plugin, wp-config.php, configuration, config, settings, constants, parameters, defines, memory, database, security, upgrade, update, ftp, post, localization, lanaguage, cron, multi sites, ms, mu, database, authentication, salts, debugging, development, proxy, cookies, http requests
 Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 1.6
+Tested up to: 4.8.2
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Edit wp-config.php file without FTP. Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it now support modifying wide System parameters
+Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it now support modifying wide System parameters
 
 == Description ==
 
@@ -22,14 +22,15 @@ Additionally its possible to modify wide system parameters, Image Quality, Uploa
 
 For features updates, suggest features and detected bugs please [follow on twitter](https://twitter.com/wpcfe)
 
-Translation PO File is under /Languages folder.
+This Plugin is prepared for localization through translate.wordpress.org
 
-Author Email: author@wp-cfe.xptrdev.com
+if you've any issue, please always use Wordpress Support Forum as I always checking it
 
 = wp-config.php Editor Features =
 * Modify wp-config.php file using web form
 * Raw wp-config.php file editor with syntax hightlights and error detections
 * Emergency wp-config.php backup restore.
+* Send Restore Link to User Email
 * Multi Sites Setup Wizard
 * Increase Memory size limits
 * Configure Multi sites
@@ -215,6 +216,9 @@ System Parameters supported fields
 * Manage Comment Allowed HTML tags and attributes
 * Manage Allowed HTML Entities
 
+= Free Plugins =
+* Turns Wordpress Shortcode into clickable element: [Visual Shortcode Plugin](https://wordpress.org/plugins/cb-visual-shortcode/)
+
 == Installation ==
 
 1. Upload `wp-config-file-editor.zip` to the `/wp-content/plugins/` directory
@@ -275,7 +279,35 @@ Done button as it will delete the Emergency Backup when closing the Dialog. I do
 If you cannot fix wp-config.php through FTP so please try to open another window for testing the site while leaving wanring message opened.
 
 == Changelog ==
-= 1.6.0 =
+
+= 1.6.7 =
+* Maintain Wordpress compatibility
+* Set Help Menu website links to cbspoint.com
+* Fix: Could not install Plugin from Wordpress repository
+
+= 1.6.6 =
+* Enhancement: Work in wide range of Server and PHP configurations
+* Enhancement: Allow Emrgency Backup to be alive for 3 days
+
+= 1.6.5 =
+* Fix: PHP Strict Errors (PHP 7 Compatibility)
+
+= 1.6.4 =
+* Enhance: Don't automatically delete emergency backup
+* Add: Send Emergency Backup Restore Link to User Email
+
+= 1.6.3 =
+* Fix: BLOG_ID_CURRENT_SITE break wp-config when its not set
+* Fix: SITE_ID_CURRENT_SITE break wp-config when its not set
+* Fix: PHP warnings in Network Multisite setup page as text domain localization extension is not loaded
+
+= 1.6.2 =
+* Enhance: Prepare Plugin to be localized over translate.wordpress.org
+
+= 1.6.1 =
+* Wordpress 4.6 compatibility check
+
+= 1.6 =
 * Fix: Multisite Wordpress 4.0 - 4.3 incomatibility
 * Fix: Missing Database Collations
 * Fix: Missing Database Character Sets
