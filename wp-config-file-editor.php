@@ -13,7 +13,7 @@
 namespace WCFE;
 
 # Autoloads
-require 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 # Constants
 const NO_DIRECT_ACCESS_MESSAGE = 'Access Denied';

@@ -8,7 +8,7 @@ Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it now support modifying wide System parameters
+Edit wp-config.php file without FTP. Modify Wordpress wp-config.php file values using a Simple Form. Additionally, it now support modifying wide System parameters
 
 == Description ==
 

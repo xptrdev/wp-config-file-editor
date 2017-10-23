@@ -8,5 +8,5 @@
 */
 return array
 (
-    'title' => $this->_( 'Config File Editor Errors' ),
+    'title' => $this->__( 'Config File Editor Errors' ),
 );

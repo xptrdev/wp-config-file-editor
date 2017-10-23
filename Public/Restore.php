@@ -117,4 +117,4 @@ if( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 }
 
 # Normal View / Display Backup button
-require 'Restore.html.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'Restore.html.php';
