@@ -9,7 +9,7 @@
 return array
 (
 
-    'msg_profileNameEmpty' => $this->_( 'Profile name cannot be empty' ),
+    'msg_profileNameEmpty' => $this->__( 'Profile name cannot be empty' ),
     
 
 );

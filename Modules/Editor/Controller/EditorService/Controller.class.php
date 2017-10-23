@@ -34,7 +34,7 @@ class EditorServiceController extends ServiceController {
 			
 			header( 'HTTP/1.0 4.3 Forbidden' );
 			
-			die( $this->_( 'Access Denied' ) );
+			die( $this->__( 'Access Denied' ) );
 		}
 		
 		return true;
@@ -213,6 +213,7 @@ class EditorServiceController extends ServiceController {
 			
 			# Generate config file from submitted fields
 			$model->generateConfigFile( $configGenerator );
+
 			$model->setConfigFileContent( (string) $configGenerator );
 			
 			# If failr return errors back
@@ -300,7 +301,7 @@ class EditorServiceController extends ServiceController {
 		(
 			$form->getName() => filter_input( INPUT_POST, $form->getName(), FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY )
 		);
-		
+        
 		$form->setValue( $formValues );
 				
 		$isValid = $model->validate();

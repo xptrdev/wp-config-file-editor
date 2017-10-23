@@ -16,7 +16,8 @@ class NumericType implements Itype {
 	* 
 	* @param mixed $value
 	*/
-	public function prepareValue($value) {
+	public function prepareValue($value)
+    {
 		return $value;
 	}
 

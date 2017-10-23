@@ -99,7 +99,7 @@ class MultiSiteToolsModel extends PluginModel
 		if ( ! $editorModel->saveConfigFile() )
 		{
             
-			$this->addError( $this->_( 'Unable to write config file!' ) );
+			$this->addError( $this->__( 'Unable to write config file!' ) );
 			
 			return false;
 		}
@@ -156,7 +156,7 @@ class MultiSiteToolsModel extends PluginModel
 		if ( ! $editorModel->saveConfigFile() )
 		{
 			
-			$this->addError( $this->_( 'Could not write config file!' ) );
+			$this->addError( $this->__( 'Could not write config file!' ) );
 			
 			return false;
 		}
@@ -182,14 +182,14 @@ class MultiSiteToolsModel extends PluginModel
 		
 		if ( ! is_readable( $htaccessFilePath ) || ! is_writable( $htaccessFilePath ) )
 		{
-			$this->addError( $this->_( 'HTAccess file is not witrable' ) );
+			$this->addError( $this->__( 'HTAccess file is not witrable' ) );
 			
 			return false;
 		}
 		
 		if ( ! file_put_contents( $htaccessFilePath, $code ) )
 		{
-			$this->addError( $this->_( 'Error writing htaccess file!!' ) );
+			$this->addError( $this->__( 'Error writing htaccess file!!' ) );
 			
 			return false;
 		}

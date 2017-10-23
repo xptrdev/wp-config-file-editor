@@ -7,7 +7,7 @@
 return array
 (
 
-    'couldntReachServerAfterConfigFileUpdated' => $this->_(     
+    'couldntReachServerAfterConfigFileUpdated' => $this->__(     
         "WCFE Plugin couldn't reache the server after updating config file.".
         "\nThis might be because config file causes the site to get down or some changed configuration forced Log out.".
         "\n\n This error is likly done when switching when ON/OFF Multi Site feature" .
@@ -15,7 +15,7 @@ return array
         "\n\n Its recommended to refresh the page after closing this form"
     ),
     
-    'title_updateConfigFileWarning' => $this->_( 'UPDATING CONFIG FILE WARNING!!!' ),
+    'title_updateConfigFileWarning' => $this->__( 'UPDATING CONFIG FILE WARNING!!!' ),
     
 
 );

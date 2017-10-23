@@ -83,9 +83,9 @@ class Tabs {
     * 
     * @param mixed $txt
     */
-    protected function _( $txt )
+    protected function __( $txt )
     {
-        return call_user_func_array( array( $this->formAdapter, '_' ), func_get_args() );
+        return call_user_func_array( array( $this->formAdapter, '__' ), func_get_args() );
     }
     
     /**

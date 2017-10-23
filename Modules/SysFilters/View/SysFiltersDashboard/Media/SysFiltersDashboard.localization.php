@@ -9,10 +9,10 @@
 return array
 (
 
-    'title_helpDialog' => $this->_( 'WCFE Help' ),
-    'btn_addType' => $this->_( 'Add Type' ),
-    'btn_associateExtension' => $this->_( 'Associate Extension' ),
-    'btn_addTag' => $this->_( 'Add Tag' ),
-    'btn_addAttribute' => $this->_( 'Add Attribute' ),
+    'title_helpDialog' => $this->__( 'WCFE Help' ),
+    'btn_addType' => $this->__( 'Add Type' ),
+    'btn_associateExtension' => $this->__( 'Associate Extension' ),
+    'btn_addTag' => $this->__( 'Add Tag' ),
+    'btn_addAttribute' => $this->__( 'Add Attribute' ),
 );
 

@@ -31,9 +31,9 @@ class EditorFormTabsAdapter implements ITabsFormAdapter
     * 
     * @param mixed $txt
     */
-    public function _( $txt )
+    public function __( $txt )
     {
-        return call_user_func_array( array( $this->getView(), '_' ), func_get_args() );
+        return call_user_func_array( array( $this->getView(), '__' ), func_get_args() );
     }
     
     /**

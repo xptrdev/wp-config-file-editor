@@ -15,29 +15,44 @@ use WPPFW\Forms\Fields\IField;
 /**
 * 
 */
-abstract class Field {
+abstract class Field
+{
 	
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $cbInitSuppression;
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $cbValue;
+    
 	/**
 	* put your comment there...
 	* 
 	* @var mixed
 	*/
-	protected $comments = array();
+	protected $comments;
 	
 	/**
 	* put your comment there...
 	* 
-	* @var mixed
-	*/
-	protected $field;
-	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
+	* @var Form
 	*/
 	protected $form;
-
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $generaotor;
+    
 	/**
 	* put your comment there...
 	* 
@@ -45,13 +60,13 @@ abstract class Field {
 	*/
 	protected $name;
 	
-	/**
-	* put your comment there...
-	* 
-	* @var mixed
-	*/
-	private $model;
-	
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $params;
+    
 	/**
 	* put your comment there...
 	* 
@@ -73,6 +88,13 @@ abstract class Field {
 	*/
 	protected $suppressOutputForce = false;
 	
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $suppressionValue = null;
+    
 	/**
 	* put your comment there...
 	* 
@@ -83,19 +105,35 @@ abstract class Field {
     /**
     * put your comment there...
     * 
-    * @param Master $model
-    * @param {IField|Master} $field
+    * @param mixed $form
+    * @param mixed $name
     * @param mixed $type
+    * @param mixed $cbValue
+    * @param mixed $comments
     * @param mixed $params
     * @return Field
     */
-	public function __construct( Master & $model, IField & $field, $type, $params = null )
+	public function __construct(& $generator,
+                                $name, 
+                                $type = null, 
+                                $comments = null, 
+                                $params = null,
+                                $cbValue = null,
+                                $cbInitSuppression = null)
 	{
-		
-		$this->model =& $model;
-		$this->form =& $model->getForm();
-		$this->field =& $field;
+        
+        $this->generator =& $generator;
+		$this->form =& $generator->getForm();
+		$this->name = $name;
 		$this->type = $type;
+        $this->comments = $comments ? $comments : array();
+        $this->cbValue = $cbValue ? $cbValue : array($this, '_cbDefaultGetValue');
+        $this->cbInitSuppression = $cbInitSuppression;
+        
+        if (!$params)
+        {
+            $params = array();
+        }
         
         # Other parameters
         foreach ( $params as $paramName => $paramVal )
@@ -114,13 +152,6 @@ abstract class Field {
 	public function __toString()
 	{
 		
-		# Got out if to suppress output
-		if ( $this->suppressOutputForce )
-		{
-			# Return no contents
-			return '';
-		}
-		
 		# Initialize
 		$string = "\n";
 		
@@ -136,29 +167,43 @@ abstract class Field {
 		return $string;
 	}
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function _cbDefaultGetValue()
+    {
+        return $this->getField()->getValue();
+    }
+    
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function & allReady()
+	public function & initSuppression()
 	{
 		
 		$value = $this->getValue();
 		
 		# Got out if to suppress output
-		if ( $this->suppressOutput && ( ! $value || ( $this->getValue() == $this->getSuppressionValue() ) ) )
+		if ($this->suppressOutput && (!$value || ($this->getValue() == $this->getSuppressionValue())))
 		{
 			
-			$this->setSuppressOutputForce( true );
+			$this->setSuppressOutputForce(true);
 			
 			# Force all deps fields to not output as well
-			foreach ( $this->suppressOutputDeps as $fieldName )
+			foreach ($this->suppressOutputDeps as $fieldName)
 			{
-				$this->getModel()->getField( $fieldName )->setSuppressOutputForce( true );
+				$this->getGenerator()->getField($fieldName)->setSuppressOutputForce(true);
 			}
 			
 		}
 		
+        if ($cbInitSupression = $this->cbInitSuppression)
+        {
+            $cbInitSupression($this);
+        }
+        
 		return $this;
 	}
 	
@@ -174,52 +219,74 @@ abstract class Field {
 	*/
 	public function & getField()
 	{
-		return $this->field;
+		return $this->form->get($this->name);
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & getForm()
+    {
+        return $this->form;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & getGenerator()
+    {
+        return $this->generator;
+    }
+    
 	/**
 	* put your comment there...
 	* 
 	*/
-	public function & getModel() 
-	{
-		return $this->model;	
-	}
-	
-	/**
-	* put your comment there...
-	* 
-	*/
-	public function getName() {
+	public function getName() 
+    {
 		return $this->name;
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $name
+    */
+    public function getParam($name)
+    {
+        return $this->params[$name];
+    }
+    
 	/**
 	* put your comment there...
 	* 
 	*/
 	protected function getSuppressionValue()
 	{
-		return null;
+		return $this->suppressionValue;
 	}
 
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function & getType()
+	public function & getType()
     {
         return $this->type;
     }
-    
 	
 	/**
 	* put your comment there...
 	* 
 	*/
-	protected function getValue()
+	public function getValue()
 	{
-		return $this->field->getValue();
+        
+        $cbValue = $this->cbValue;
+        
+		return $cbValue($this);
 	}
 	
 	/**
@@ -228,6 +295,42 @@ abstract class Field {
 	*/
 	protected function initialize() {}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    public function isSuppressed()
+    {
+        return $this->suppressOutputForce;
+    }
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $cbValue
+    * @return Field
+    */
+    public function & setCBValue($cbValue)
+    {
+        
+        $this->cbValue = $cbValue;
+        
+        return $this;
+    }
+        
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $name
+    * @param mixed $value
+    */
+    public function & setParam($name, $value)
+    {
+        $this->params[$name] = $value;
+        
+        return $this;
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -241,5 +344,32 @@ abstract class Field {
 		return $this;
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $value
+    * @return Field
+    */
+    public function & setSuppressionValue($value)
+    {
+        $this->suppressionValue = $value;
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param Types\Itype $type
+    * @return {Field|Types\Itype}
+    */
+    public function & setType(Types\Itype $type)
+    {
+        
+        $this->type =& $type;
+        
+        return $this;
+    }
+    
 
 }

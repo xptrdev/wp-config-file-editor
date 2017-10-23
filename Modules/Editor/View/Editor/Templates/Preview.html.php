@@ -48,4 +48,4 @@ $options = array_merge( array( 'backButton' => true), ( isset( $result[ 'options
 </div>
 
 <?php // Editor Services Template ?>
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'Index' . DIRECTORY_SEPARATOR . 'EditorServices.html.php'; ?>

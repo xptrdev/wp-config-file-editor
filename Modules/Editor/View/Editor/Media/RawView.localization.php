@@ -9,6 +9,6 @@
 return array
 (
 
-    'msg_configFileEmpty' => $this->_( 'Config File cannot be empty!!!' ),
-    'msg_configFileNotStartByPHPTag' => $this->_( 'Config file should always start with <?php TAG!!!!' ),
+    'msg_configFileEmpty' => $this->__( 'Config File cannot be empty!!!' ),
+    'msg_configFileNotStartByPHPTag' => $this->__( 'Config file should always start with <?php TAG!!!!' ),
 );

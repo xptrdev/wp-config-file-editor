@@ -16,4 +16,4 @@ defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 <div id="wcfe-errors-dialog"><div><ul id="wcfe-errors-dialog-errors-list"> </ul></div></div>
 
 <?php // Confirm save message template to be used by thickbox as inline popup ?>
-<?php require 'ConfirmSave.html.php'; ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'ConfirmSave.html.php'; ?>

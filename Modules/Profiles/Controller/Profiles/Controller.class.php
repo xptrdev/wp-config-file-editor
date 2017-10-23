@@ -51,7 +51,7 @@ class ProfilesController extends Controller {
 		
 		if ( ! isset( $_GET[ 'caller' ] ) )
 		{
-			die( $this->_( 'Invalid Caller!!!' ) );
+			die( $this->__( 'Invalid Caller!!!' ) );
 		}
 		
 		$form = new \WCFE\Modules\Profiles\Model\Forms\ProfileForm();
@@ -76,7 +76,7 @@ class ProfilesController extends Controller {
 				if ( ! $profile = $model->getProfile( $_GET[ 'id' ] ) )
 				{
 					
-					$model->addError( $this->_( 'Profile doesnt exists!!' ) );
+					$model->addError( $this->__( 'Profile doesnt exists!!' ) );
 					
 					return $result;
 				}
@@ -95,7 +95,7 @@ class ProfilesController extends Controller {
 					! wp_verify_nonce( $_POST[ 'securityToken' ] ) )
 			{
 				
-				$model->addError( $this->_( 'Invalid Access Token' ) );
+				$model->addError( $this->__( 'Invalid Access Token' ) );
 				
 				$this->redirect( $router->routeAction() ) ;
 				
@@ -151,7 +151,7 @@ class ProfilesController extends Controller {
 			
 			if ( ! isset( $_POST[ 'securityNonce'] ) || ! wp_verify_nonce( $_POST[ 'securityNonce'] ) )
 			{
-				$model->addError( $this->_( 'Invalid security Token' ) );
+				$model->addError( $this->__( 'Invalid security Token' ) );
 				
 				return $result;
 			}

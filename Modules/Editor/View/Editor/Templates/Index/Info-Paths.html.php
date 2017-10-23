@@ -12,15 +12,15 @@ defined( 'ABSPATH' ) or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 $paths = $result[ 'info' ][ 'paths' ];
 $pathDisplay = array
 (
-	'absPath' => array( 'title' => $this->_( 'Absolute Path' ) ),
-	'pluginsDir' => array( 'title' => $this->_( 'Plugins directory path' ) ),
-	'pluginsDirUrl' => array( 'title' => $this->_( 'Plugins directory URL' ) ),
-	'contentDir' => array( 'title' => $this->_( 'Content directory path' ) ),
-	'contentDirUrl' => array( 'title' => $this->_( 'Content directory Url' ) ),
-	'adminUrl' => array( 'title' => $this->_( 'Admin Url' ) ),
-	'siteUrl' => array( 'title' => $this->_( 'Site Url' ) ),
-	'networkAdminUrl' => array( 'title' => $this->_( 'Network Admin Url' ) ),
-	'networkSiteUrl' => array( 'title' => $this->_( 'Network Site Url' ) ),
+	'absPath' => array( 'title' => $this->__( 'Absolute Path' ) ),
+	'pluginsDir' => array( 'title' => $this->__( 'Plugins directory path' ) ),
+	'pluginsDirUrl' => array( 'title' => $this->__( 'Plugins directory URL' ) ),
+	'contentDir' => array( 'title' => $this->__( 'Content directory path' ) ),
+	'contentDirUrl' => array( 'title' => $this->__( 'Content directory Url' ) ),
+	'adminUrl' => array( 'title' => $this->__( 'Admin Url' ) ),
+	'siteUrl' => array( 'title' => $this->__( 'Site Url' ) ),
+	'networkAdminUrl' => array( 'title' => $this->__( 'Network Admin Url' ) ),
+	'networkSiteUrl' => array( 'title' => $this->__( 'Network Site Url' ) ),
 );
 
 # COnvery to array

@@ -33,7 +33,7 @@ class ProfilesServiceController extends ServiceController {
 			
 			header( 'HTTP/1.0 4.3 Forbidden' );
 			
-			die( $this->_( 'Access Denies' ) );
+			die( $this->__( 'Access Denies' ) );
 		}
 		
 		return true;

@@ -32,7 +32,7 @@ $form =& $data[ 'form' ];
 <?php endif; ?>
 
 <? // Dashboard Menu ?>
-<?php require 'Templates' . DIRECTORY_SEPARATOR . 'Menu.html.php' ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Menu.html.php' ?>
 
 <?php // COnfig Form ?>
 	<form id="wcfe-sysfilters-form" method="post" action="<?php echo $router->routeAction() ?>">

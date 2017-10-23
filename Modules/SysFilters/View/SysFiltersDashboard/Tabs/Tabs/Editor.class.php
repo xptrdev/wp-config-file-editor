@@ -33,13 +33,13 @@ class EditorOptionsTab extends FieldsTab {
 		$form =& $this->getForm();
 		$editorModule = $form->get( 'editor' );
 		
-        $this->title = $this->_( 'Editor' );
+        $this->title = $this->__( 'Editor' );
         
 		$this->fields[] = new Fields\CheckboxField( 
 			$form, 
 			$editorModule->get( 'autoParagraph' )->get( 'value' ), 
-			$this->_( 'Auto Paragraph' ), 
-			$this->_( 'Replaces double line-breaks with paragraph elements' ),
+			$this->__( 'Auto Paragraph' ), 
+			$this->__( 'Replaces double line-breaks with paragraph elements' ),
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -47,8 +47,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\InputField( 
 			$form, 
 			$editorModule->get( 'editorHeight' )->get( 'value' ), 
-			$this->_( 'Editor Height' ), 
-			$this->_( 'Editor Height in pixels' ),
+			$this->__( 'Editor Height' ), 
+			$this->__( 'Editor Height in pixels' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -56,8 +56,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\CheckboxField( 
 			$form, 
 			$editorModule->get( 'mediaButtons' )->get( 'value' ), 
-			$this->_( 'Media Buttons' ), 
-			$this->_( 'Whether to show the Add Media/other media buttons.' ),
+			$this->__( 'Media Buttons' ), 
+			$this->__( 'Whether to show the Add Media/other media buttons.' ),
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -66,8 +66,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\CheckboxField( 
 			$form, 
 			$editorModule->get( 'dragDropUpload' )->get( 'value' ), 
-			$this->_( 'Drag and Drop Uploads' ), 
-			$this->_( 'Whether to enable drag &amp; drop on the editor uploading' ),
+			$this->__( 'Drag and Drop Uploads' ), 
+			$this->__( 'Whether to enable drag &amp; drop on the editor uploading' ),
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -76,8 +76,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\InputField( 
 			$form, 
 			$editorModule->get( 'textAreaRows' )->get( 'value' ), 
-			$this->_( 'TextArea Rows' ), 
-			$this->_( 'Number rows in the editor textarea' ),
+			$this->__( 'TextArea Rows' ), 
+			$this->__( 'Number rows in the editor textarea' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -85,8 +85,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\InputField( 
 			$form, 
 			$editorModule->get( 'tabIndex' )->get( 'value' ), 
-			$this->_( 'Tab Index' ), 
-			$this->_( 'Tabindex value to use' ),
+			$this->__( 'Tab Index' ), 
+			$this->__( 'Tabindex value to use' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -94,8 +94,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\TextareaField( 
 			$form, 
 			$editorModule->get( 'editorCSS' )->get( 'value' ), 
-			$this->_( 'Editor Style' ),
-			$this->_( 'Intended for extra styles for both Visual and Text editors. Should include `&lt;style&gt;` tags, and can use "scoped"' ),
+			$this->__( 'Editor Style' ),
+			$this->__( 'Intended for extra styles for both Visual and Text editors. Should include `&lt;style&gt;` tags, and can use "scoped"' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -103,8 +103,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\InputField( 
 			$form, 
 			$editorModule->get( 'editorClass' )->get( 'value' ), 
-			$this->_( 'Editor CSS Class' ), 
-			$this->_( 'Extra classes to add to the editor textarea element' ),
+			$this->__( 'Editor CSS Class' ), 
+			$this->__( 'Extra classes to add to the editor textarea element' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -112,8 +112,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\CheckboxField( 
 			$form, 
 			$editorModule->get( 'teeny' )->get( 'value' ), 
-			$this->_( 'Teeny' ), 
-			$this->_( 'Whether to output the minimal editor config. Examples include Press This and the Comment editor' ),
+			$this->__( 'Teeny' ), 
+			$this->__( 'Whether to output the minimal editor config. Examples include Press This and the Comment editor' ),
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -122,8 +122,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = new Fields\CheckboxField( 
 			$form, 
 			$editorModule->get( 'tinyMCE' )->get( 'value' ), 
-			$this->_( 'TinyMCE' ), 
-			$this->_( 'Whether to load TinyMCE' ),
+			$this->__( 'TinyMCE' ), 
+			$this->__( 'Whether to load TinyMCE' ),
 			1, 
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
@@ -150,8 +150,8 @@ class EditorOptionsTab extends FieldsTab {
 				)
 		
 			),
-			$this->_( 'Quick Tags' ),
-			$this->_( 'Specify Whether to load Quicktags and what buttons to load' ),
+			$this->__( 'Quick Tags' ),
+			$this->__( 'Specify Whether to load Quicktags and what buttons to load' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		
@@ -159,8 +159,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = $pluginsList = new Fields\PreDefinedCheckboxList( 
 			$form, 
 			$editorModule->get( 'plugins' )->get( 'value' ),
-			$this->_( 'Built-In Plugins' ), 
-			$this->_( 'Enable / Disable TinyMCE Built in plugins' ),
+			$this->__( 'Built-In Plugins' ), 
+			$this->__( 'Enable / Disable TinyMCE Built in plugins' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$pluginsList->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'plugins', 'value' ) );
@@ -169,8 +169,8 @@ class EditorOptionsTab extends FieldsTab {
 		$this->fields[] = $buttons2 = new Fields\PreDefinedCheckboxList( 
 			$form, 
 			$editorModule->get( 'buttons2' )->get( 'value' ),
-			$this->_( 'Second Row Buttons list' ), 
-			$this->_( 'Show / Hide second row buttons' ),
+			$this->__( 'Second Row Buttons list' ), 
+			$this->__( 'Show / Hide second row buttons' ),
 			array( 'optionsPanel' => new AdvancedOptionsPanel() )
 		);
 		$buttons2->setPreDefinedList( SysFiltersDashboardModel::getDefaultsSection( 'editor', 'buttons2', 'value' ) );

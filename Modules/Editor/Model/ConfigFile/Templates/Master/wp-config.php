@@ -24,7 +24,12 @@ echo "<?php\n";
 <?php
 	foreach ( $this->getFields() as $field )
 	{
-		echo $field;
+        
+        # Got out if to suppress output
+        if (!$field->isSuppressed())
+        {
+            echo $field;
+        }
 	}
 ?>
 

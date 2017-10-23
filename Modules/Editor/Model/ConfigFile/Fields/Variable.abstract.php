@@ -9,7 +9,8 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class Variable extends Field 
+class Variable
+extends Field
 {
 
 	/**
@@ -18,9 +19,9 @@ class Variable extends Field
 	*/
 	protected function getDefString()
 	{
-		# Prepare Value
-		$value = $this->type->prepareValue( $this->getValue() );
-		# Final statment
+		
+		$value = $this->type->prepareValue($this->getValue());
+        
 		return "\${$this->getName()} = {$value};";
 	}
 }

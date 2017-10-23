@@ -119,7 +119,7 @@ abstract class Tab {
 	{
 		ob_start();
 		
-		require 'Templates' . DIRECTORY_SEPARATOR . 'Simple-Help-Box.html.php';
+		require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Simple-Help-Box.html.php';
 		
 		$helpMarkup = ob_get_clean();
 		

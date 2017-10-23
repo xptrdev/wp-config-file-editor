@@ -39,7 +39,7 @@ class MultiSiteToolPluginLoader {
 		
 		ob_start();
 		
-		require 'MultiSiteToolPluginLoader.configcode.php';
+		require __DIR__ . DIRECTORY_SEPARATOR . 'MultiSiteToolPluginLoader.configcode.php';
 		
 		return ob_get_clean();
 		

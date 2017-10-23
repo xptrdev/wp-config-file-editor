@@ -4,7 +4,7 @@
 defined( 'ABSPATH' ) or die( 'Access Denied!!!!!' );
 
 # Use default config template
-require 'wp-config.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'wp-config.php';
 ?>
 
 /* WCFE Plugin Multi Sites Tools Plugin Bootstrap */
@@ -13,7 +13,5 @@ require 'wp-config.php';
 # Add special fields
 foreach ( $this->specialFields as $field ) 
 {
-	
-	echo $field;
-	
+    echo $field;
 }

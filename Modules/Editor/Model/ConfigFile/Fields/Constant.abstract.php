@@ -9,7 +9,9 @@ namespace WCFE\Modules\Editor\Model\ConfigFile\Fields;
 /**
 * 
 */
-class Constant extends Field {
+class Constant
+extends Field
+{
 
 	/**
 	* put your comment there...
@@ -17,9 +19,9 @@ class Constant extends Field {
 	*/
 	protected function getDefString()
 	{
-		# Prepare Value
+        
 		$value = $this->type->prepareValue( $this->getValue() );
-		# Final statment
+        
 		return "define('{$this->getName()}', {$value});";
 	}
 

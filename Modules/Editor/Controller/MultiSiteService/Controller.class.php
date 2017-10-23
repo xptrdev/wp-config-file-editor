@@ -33,7 +33,7 @@ class MultiSiteToolsServiceController extends ServiceController {
 			
 			header( 'HTTP/1.0 4.3 Forbidden' );
 			
-			die( $this->_( 'Access Denied' ) );
+			die( $this->__( 'Access Denied' ) );
 		}
 		
 		return true;

@@ -15,7 +15,7 @@ interface ITabsFormAdapter
     /**
     * 
     */
-    public function _( $txt );
+    public function __( $txt );
     
 	/**
 	* 

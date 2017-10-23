@@ -142,7 +142,7 @@ class EmergencyRestore
 			{
 				if ( ! file_exists( $baseDir . DIRECTORY_SEPARATOR . $file ) ) 
 				{
-					throw new \Exception( $this->_( 'Invalid file/path specified %s', $file ) );
+					throw new \Exception( $this->__( 'Invalid file/path specified %s', $file ) );
 				}				
 			}
 			
@@ -157,7 +157,7 @@ class EmergencyRestore
 				 ( strpos( $dataFileContent, 'WCFE\Modules\Editor\Model\EmergencyRestore' ) === false ) )
 		{
 			
-			throw new \Exception( $this->_( 'Access Denied!! Invalid Data file!!!!!!!!!!!!' ) );
+			throw new \Exception( $this->__( 'Access Denied!! Invalid Data file!!!!!!!!!!!!' ) );
 			
 		}
 		
@@ -166,7 +166,7 @@ class EmergencyRestore
 		
 		if ( ! $this->backupDataFile || ! is_array( $this->backupDataFile ) || empty( $this->backupDataFile ) ) 
 		{
-			throw new \Exception( $this->_( 'Backup data cannot be read!!' ) );
+			throw new \Exception( $this->__( 'Backup data cannot be read!!' ) );
 		}
 		
 		# Confirm passed parameters
@@ -175,7 +175,7 @@ class EmergencyRestore
 			 	( $this->backupDataFile[ 'contentDir' ] != $this->contentDir ) )
 		{
 			
-			throw new \Exception( $this->_( 'Access Denied!! Invalid parameters specified!!!!!!!!' ) );
+			throw new \Exception( $this->__( 'Access Denied!! Invalid parameters specified!!!!!!!!' ) );
 		}
 		
 		# Validate backup file secure
@@ -184,7 +184,7 @@ class EmergencyRestore
 		if ( 	! file_exists( $this->backupFilePath ) || 
 		        ( md5( file_get_contents( $this->backupFilePath ) ) != $this->backupDataFile[ 'backupFileHash' ] ) ) 
 		{
-			throw new \Exception( $this->_( 'Access Denied!!! Invalid Backup specified!!!!!' ) );
+			throw new \Exception( $this->__( 'Access Denied!!! Invalid Backup specified!!!!!' ) );
 		}
 		
 		$this->confirmed = true;
@@ -227,7 +227,7 @@ class EmergencyRestore
 		
 		if ( ! file_put_contents( $configFilePath, base64_decode( $backupFile[ 'content' ] ) ) ) 
 		{
-			throw new \Exception( $this->_( 'Could not write to config file!!!' ) );
+			throw new \Exception( $this->__( 'Could not write to config file!!!' ) );
 		}
 		
 		return $this;
@@ -246,7 +246,7 @@ class EmergencyRestore
 			
 			# MAY BE: Delete backup here!!
 			
-			throw new \Exception( $this->_( 'Backup Expired!!!!!' ) );
+			throw new \Exception( $this->__( 'Backup Expired!!!!!' ) );
 		}
 		
 		return $this;

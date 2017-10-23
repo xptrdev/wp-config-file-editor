@@ -150,7 +150,7 @@ class SystemCheckToolsModel extends PluginModel
 		if ( ! file_exists( $htaccessFile ) )
 		{
 			
-		  $this->addError( $this->_( 'HTAccess file doesnt exists' ) );
+		  $this->addError( $this->__( 'HTAccess file doesnt exists' ) );
 			
 			return false;
 		}
