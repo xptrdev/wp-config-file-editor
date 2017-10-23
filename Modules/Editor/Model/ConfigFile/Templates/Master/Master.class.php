@@ -1360,27 +1360,14 @@ class Master {
     * 
     * @param mixed $specialFiels
     */
-    public function & processSpecialFields( $specialFields )
+    public function & processSpecialFields($specialFields)
     {
 
         $this->specialFields = array();
         $this->templateName = 'wp-config-special-fields.php';
 
-        # Remove special fields
-
-        foreach ( $specialFields as $specialFieldName )
-        {
-
-            if ( isset( $this->fields[ $specialFieldName ] ) )
-            {
-
-                $this->specialFields[ $specialFieldName ] =& $this->fields[ $specialFieldName ];
-
-                unset( $this->fields[ $specialFieldName ] );
-
-            }
-
-        }
+        // Add special fields
+        $this->specialFields = $specialFields;
 
         return $this;
     }

@@ -14,6 +14,11 @@ use WPPFW\MVC\Model\PluginModel;
 class MultiSiteToolsModel extends PluginModel 
 {
 	
+    /**
+    * 
+    */
+    const SEPCIAL_FIELD_MULTISITE_TOOLS_PLUGIN_LOADER = '__sf-multisite-tools-plugin-loader__';
+    
 	/**
 	* put your comment there...
 	* 
@@ -74,32 +79,40 @@ class MultiSiteToolsModel extends PluginModel
 	* 
 	* @param Editor $model
 	*/
-	public function writeConfigFileMSInitCode( \WCFE\Modules\Editor\Model\EditorModel & $editorModel )
+	public function writeConfigFileMSInitCode(
+        \WCFE\Modules\Editor\Model\EditorModel & $editorModel
+        )
 	{
 		
-		# Add Line Generator field
-		$editorModel->addField( 'MultiSiteToolPluginLoader' )
-		
-		# Load config file
-		->loadFromConfigFile();
-		
-		$form =& $editorModel->getForm();
-		$allowMultiSiteField =& $form->get( 'MultiSiteAllow' );
-		$allowMultiSiteField->setValue( true );
+		$form =& $editorModel->loadFromConfigFile()->getForm();
+        
+        // Set allow multi site constant to true so that Wordpress
+        // enable Network setup
+		$allowMultiSiteField =& $form->get(ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE);
+		$allowMultiSiteField->setValue(true);
 		
 		# Create Generator 
-		$editorModel->generateConfigFile( $configGenerator );
+		$editorModel->generateConfigFile($configGenerator);
 		
 		# This is to add Multi Site code line at the end of the config file
-		$configGenerator->processSpecialFields( array( 'MultiSiteToolPluginLoader' ) );
+		$configGenerator->processSpecialFields(
+            array
+            (
+                self::SEPCIAL_FIELD_MULTISITE_TOOLS_PLUGIN_LOADER => ConfigFile\Fields\CustomContentField::create(
+                    __DIR__ . DIRECTORY_SEPARATOR . 'ConfigFile' . 
+                    DIRECTORY_SEPARATOR . 'Fields' . DIRECTORY_SEPARATOR .
+                    'MultiSiteToolPluginLoader.customcontent.php'
+                )
+            )
+        );
 		
 		# Regenerate after we configured
-		$editorModel->setConfigFileContent( (string) $configGenerator );
+		$editorModel->setConfigFileContent((string) $configGenerator);
 		
-		if ( ! $editorModel->saveConfigFile() )
+		if (!$editorModel->saveConfigFile())
 		{
             
-			$this->addError( $this->__( 'Unable to write config file!' ) );
+			$this->addError($this->__('Unable to write config file!'));
 			
 			return false;
 		}
@@ -114,15 +127,24 @@ class MultiSiteToolsModel extends PluginModel
 	* @param mixed $editorModel
 	* @param mixed $constants
 	*/
-	public function writeMSConfigFileConstants( \WCFE\Modules\Editor\Model\EditorModel & $editorModel, $msConfigConsts )
+	public function writeMSConfigFileConstants(
+        \WCFE\Modules\Editor\Model\EditorModel & $editorModel,
+        $msConfigConsts
+        )
 	{
 		
 		# Cast  string 'true' and 'false' to boolean
-		foreach ( array( 'SUBDOMAIN_INSTALL', 'MULTISITE' ) as $constName )
+        $configFields = array
+        (
+            ConfigFileNamesMap::SUBDOMAIN_INSTALL,
+            ConfigFileNamesMap::MULTISITE,
+        );
+        
+		foreach ($configFields as $constName)
 		{
-			if ( isset( $msConfigConsts[ $constName ] ) )
+			if (isset($msConfigConsts[$constName]))
 			{
-				$msConfigConsts[ $constName ] = ( $msConfigConsts[ $constName ] == 'true' ) ? true : false;
+				$msConfigConsts[$constName] = ($msConfigConsts[$constName] == 'true') ? true : false;
 			}
 		}
 		
@@ -131,32 +153,21 @@ class MultiSiteToolsModel extends PluginModel
 		$editorModel ->loadFromConfigFile();
 		$form =& $editorModel->getForm();
 
-		$expectedConstsMap = array(
-			'MULTISITE' => 'MultiSite',
-			'SUBDOMAIN_INSTALL' => 'MultiSiteSubDomainInstall',
-			'DOMAIN_CURRENT_SITE' => 'MultiSiteDomainCurrentSite',
-			'PATH_CURRENT_SITE' => 'MultiSitePathCurrentSite',
-			'SITE_ID_CURRENT_SITE' => 'MultiSiteSiteId',
-			'BLOG_ID_CURRENT_SITE' => 'MultiSiteBlogId',
-		);
-				
-		foreach ( $expectedConstsMap as $constName => $fieldName )
+		foreach ($msConfigConsts as $constName => $constValue)
 		{
-			
-			$form->get( $fieldName )->setValue( $msConfigConsts[ $constName ] );
-			
+			$form->get($constName)->setValue($msConfigConsts[$constName]);
 		}
 		
 		# Turn WP_ALLOW_MULTISITE off
-		$form->get( 'MultiSiteAllow' )->setValue( false );
+		$form->get(ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE)->setValue(false);
 		
-		$editorModel->generateConfigFile( $configGenerator );
-		$editorModel->setConfigFileContent( ( string ) $configGenerator );
+		$editorModel->generateConfigFile($configGenerator);
+		$editorModel->setConfigFileContent(( string ) $configGenerator);
 		
-		if ( ! $editorModel->saveConfigFile() )
+		if (!$editorModel->saveConfigFile())
 		{
 			
-			$this->addError( $this->__( 'Could not write config file!' ) );
+			$this->addError($this->__('Could not write config file!'));
 			
 			return false;
 		}

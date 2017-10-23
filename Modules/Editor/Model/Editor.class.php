@@ -25,13 +25,6 @@ class EditorModel extends PluginModel {
     * 
     * @var mixed
     */
-    private $allFields = array();
-
-    /**
-    * put your comment there...
-    * 
-    * @var mixed
-    */
     protected $configFileContent;
 
     /**

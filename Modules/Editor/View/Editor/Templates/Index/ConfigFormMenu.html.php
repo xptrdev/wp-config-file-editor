@@ -12,18 +12,6 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 ?>
 
 <ul id="wcfe-config-form-main-menu">
-	
-    <li>
-        <?php $this->_e( 'File' ) ?>
-        <ul>
-        
-            <li><?php $this->_e( 'Save' ) ?></li>
-            <li><?php $this->_e( 'Masking' ) ?></li>
-            <li>-</li>
-            <li><?php $this->_e( 'Options' ) ?></li>
-        
-        </ul>
-    </li>
 	<li>
 		<?php $this->_e( 'Tools' ) ?>
 		<ul>

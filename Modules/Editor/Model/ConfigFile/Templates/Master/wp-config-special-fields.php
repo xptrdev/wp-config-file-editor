@@ -11,7 +11,7 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'wp-config.php';
 
 <?php
 # Add special fields
-foreach ( $this->specialFields as $field ) 
+foreach ($this->specialFields as $field)
 {
     echo $field;
 }
