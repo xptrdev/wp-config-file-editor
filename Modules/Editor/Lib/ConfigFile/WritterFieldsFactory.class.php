@@ -4,140 +4,327 @@
 */
 
 # Define namespace
-namespace WCFE\Modules\Editor\Model\ConfigFile\Templates\Master;
+namespace WCFE\Modules\Editor\Lib\ConfigFile;
 
-# Forms Framework
 use WPPFW\Forms\Form;
-use WCFE\Modules\Editor\Model\EditorModel;
 use WCFE\Modules\Editor\Model\ConfigFile\Fields;
-use WCFE\Modules\Editor\Model\ConfigFileNamesMap;
-use WCFE\Modules\Editor\Model\ConfigFileFieldsNameMap;
 use WCFE\Modules\Editor\Model\ConfigFile\Fields\Types;
+
+use WCFE\Modules\Editor\ConfigFileNamesMap;
+use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
+
+use WCFE\Modules\Editor\Lib\FieldsFactoryBase;
+
 
 /**
 * 
 */
-class Master {
-
+class WriterFieldsFactory
+extends FieldsFactoryBase 
+{
+    
     /**
     * put your comment there...
     * 
     * @var mixed
     */
     protected $fields = array();
-
+    
     /**
     * put your comment there...
     * 
     * @var mixed
     */
     protected $form;
-
+    
     /**
     * put your comment there...
     * 
     * @var mixed
     */
-    protected $specialFields;
-
+    protected $initialized = false;
+    
     /**
     * put your comment there...
     * 
-    * @var mixed
+    * @param Forms\Form $form
+    * @return {WriterFieldsFactory|Forms\Form}
     */
-    private $templateName = 'wp-config.php';
-
-    /**
-    * put your comment there...
-    * 
-    * @param Form $form
-    * @param mixed $fields
-    * @return Master
-    */
-    public function __construct( Form & $form ) 
+    public function __construct(Form & $form)
     {
-
         $this->form =& $form;
-
-        # Creating WP-CONFIG Fields providers
-        $grps = array
-        (
-            'Cron',
-            'Cookies',
-            'Database',
-            'Debug',
-            'Localization',
-            'Maintenance',
-            'MultiSites',
-            'Post',
-            'Proxy',
-            'Security',
-            'SecureKeys',
-            'Upgrade',
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookieAdminPath()
+    {
+        
+        $this->fields[ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::ADMIN_COOKIE_PATH,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Admin cookies path'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => (SITECOOKIEPATH . 'wp-admin')
+            )
         );
-
-        foreach ( $grps as $grp )
-        {
-            $this->{"grp{$grp}"}();
-        }
-
-        # Allow fields to interact and to Controler each others 
-        # by making second iteration after constructions!!
-        foreach ( $this->fields as $field )
-        {
-            $field->initSuppression();
-        }
-
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    public function __toString() 
+    public function createCookieAuth()
     {
-
-        ob_start();
-
-        require $this->templateName;
-
-        return ob_get_clean();
+        $this->fields[ConfigFileFieldsNameMap::AUTH_COOKIE] = new Fields\Constant(  
+            $this,
+            ConfigFileNamesMap::AUTH_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Admin cookies path'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_')
+            )
+        );
     }
-
+    
     /**
     * put your comment there...
     * 
-    * @param mixed $name
     */
-    public function & getField( $name ) 
+    public function createCookieDomain()
     {
-        return $this->fields[ $name ];
+        $this->fields[ConfigFileFieldsNameMap::COOKIE_DOMAIN] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::COOKIE_DOMAIN,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Cookies Hash'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+            )
+        );
     }
 
     /**
     * put your comment there...
     * 
     */
-    public function getFields()
+    public function createCookieHash()
     {
-        return $this->fields;
+        $this->fields[ConfigFileFieldsNameMap::COOKIEHASH] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::COOKIEHASH,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Cookies Hash'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue()
+            )
+        );
     }
 
     /**
     * put your comment there...
     * 
     */
-    public function & getForm() {
-        return $this->form;
-    }
-
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function grpCron()
+    public function createCookieLoggedIn()
     {
+        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::LOGGED_IN_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Logged In Cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_logged_in_')
+            )
+        );
+    }
+            
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookiePass()
+    {
+        $this->fields[ConfigFileFieldsNameMap::PASS_COOKIE] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::PASS_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Pass Cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpresspass_')
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookiePath()
+    {
+        $this->fields[ConfigFileFieldsNameMap::COOKIEPATH] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::COOKIEPATH,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Path cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', get_option('home') . '/')
+            )
+        );
+    }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookiePluginsPath()
+    {
+        $this->fields[ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::PLUGINS_COOKIE_PATH,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Plugins path cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', WP_PLUGIN_URL)
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookieSecureAuth()
+    {
+        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::SECURE_AUTH_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Where to load language\'s file'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_sec_')
+            )
+        );
+    }
+
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookieSitePath()
+    {
+        $this->fields[ConfigFileFieldsNameMap::SITECOOKIEPATH] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::SITECOOKIEPATH,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Site path cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', get_option('siteurl') . '/')
+            )
+        );
+    }
+        
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookieTest()
+    {
+        $this->fields[ConfigFileFieldsNameMap::TEST_COOKIE] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::TEST_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Test Cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => 'wordpress_test_cookie'
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCookieUser()
+    {
+        $this->fields[ConfigFileFieldsNameMap::USER_COOKIE] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::USER_COOKIE,
+            new Fields\Types\StringType(),
+            array
+            (
+                'User cookie'
+            ),
+            array
+            (
+                'suppressOutput' => true,
+                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpressuser_')
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCronDisable()
+    {
         $this->fields[ConfigFileFieldsNameMap::DISABLE_WP_CRON] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DISABLE_WP_CRON,
@@ -151,7 +338,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCronAlternate()
+    {
         $this->fields[ConfigFileFieldsNameMap::ALTERNATE_WP_CRON] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::ALTERNATE_WP_CRON,
@@ -170,7 +364,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createCronLockTimeOut()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_CRON_LOCK_TIMEOUT,
@@ -186,199 +387,12 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpCookies()
-    {
-
-        $this->fields[ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::ADMIN_COOKIE_PATH,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Admin cookies path'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => (SITECOOKIEPATH . 'wp-admin')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::AUTH_COOKIE] = new Fields\Constant(  
-            $this,
-            ConfigFileNamesMap::AUTH_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Admin cookies path'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::COOKIE_DOMAIN] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::COOKIE_DOMAIN,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Cookies Hash'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::COOKIEHASH] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::COOKIEHASH,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Cookies Hash'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue()
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::LOGGED_IN_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Logged In Cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_logged_in_')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::PASS_COOKIE] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::PASS_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Pass Cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpresspass_')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::COOKIEPATH] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::COOKIEPATH,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Path cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', get_option('home') . '/')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::PLUGINS_COOKIE_PATH,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Plugins path cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', WP_PLUGIN_URL)
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::SECURE_AUTH_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Where to load language\'s file'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpress_sec_')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::SITECOOKIEPATH] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::SITECOOKIEPATH,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Site path cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => preg_replace('|https?://[^/]+|i', '', get_option('siteurl') . '/')
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::TEST_COOKIE] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::TEST_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Test Cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => 'wordpress_test_cookie'
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::USER_COOKIE] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::USER_COOKIE,
-            new Fields\Types\StringType(),
-            array
-            (
-                'User cookie'
-            ),
-            array
-            (
-                'suppressOutput' => true,
-                'suppressionValue' => Fields\CookieNamedBase::getSuppressionValue('wordpressuser_')
-            )
-        );
-    }
-
-    /**
-    * put your comment there...
-    * 
-    */
-    protected function grpDatabase()
+    public function createDatabaseAllowRepair()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_REPAIR] = new Fields\Constant(
             $this,
@@ -393,7 +407,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
+    }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseCharset()
+    {
         $this->fields[ConfigFileFieldsNameMap::DB_CHARSET] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DB_CHARSET,
@@ -403,7 +424,14 @@ class Master {
                 'Database Charset to use in creating database tables.'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseCollate()
+    {
         $this->fields[ConfigFileFieldsNameMap::DB_COLLATE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DB_COLLATE,
@@ -413,7 +441,14 @@ class Master {
                 'The Database Collate type. Don\'t change this if in doubt.'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseUpgradeGlobalTables()
+    {
         $this->fields[ConfigFileFieldsNameMap::DO_NOT_UPGRADE_GLOBAL_TABLES] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DO_NOT_UPGRADE_GLOBAL_TABLES,
@@ -427,7 +462,65 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseName()
+    {
+        $this->fields[ConfigFileFieldsNameMap::DB_NAME] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::DB_NAME,
+            new Fields\Types\StringType(),
+            array
+            (
+                'The name of the database for WordPress'
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseUser()
+    {
+        $this->fields[ConfigFileFieldsNameMap::DB_USER] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::DB_USER,
+            new Fields\Types\StringType(),
+            array
+            (
+                'MySQL database username'
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabasePassword()
+    {
+        $this->fields[ConfigFileFieldsNameMap::DB_PASSWORD] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::DB_PASSWORD,
+            new Fields\Types\StringType(),
+            array
+            (
+                'MySQL database password'
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseHost()
+    {
         $this->fields[ConfigFileFieldsNameMap::DB_HOST] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DB_HOST,
@@ -450,37 +543,14 @@ class Master {
                 return $value;
             }
         );
-
-        $this->fields[ConfigFileFieldsNameMap::DB_NAME] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::DB_NAME,
-            new Fields\Types\StringType(),
-            array
-            (
-                'The name of the database for WordPress'
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::DB_USER] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::DB_USER,
-            new Fields\Types\StringType(),
-            array
-            (
-                'MySQL database username'
-            )
-        );
-        
-        $this->fields[ConfigFileFieldsNameMap::DB_PASSWORD] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::DB_PASSWORD,
-            new Fields\Types\StringType(),
-            array
-            (
-                'MySQL database password'
-            )
-        );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDatabaseTablePrefix()
+    {
         $this->fields[ConfigFileFieldsNameMap::DB_TABLE_PREFIX] = new Fields\Variable(
             $this,
             ConfigFileNamesMap::DB_TABLE_PREFIX,
@@ -494,12 +564,78 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpDebug()
+    public function createDebugConcatenateScripts()
+    {
+        $this->fields[ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::CONCATENATE_SCRIPTS,
+            new Fields\Types\BooleanType(),
+            array
+            (
+                'For developers: WordPress Script Debugging
+
+                Force Wordpress to use unminified JavaScript files'
+            ),
+            array
+            (
+                'suppressOutput' => true
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDebugSaveQueries()
+    {
+        $this->fields[ConfigFileFieldsNameMap::SAVEQUERIES] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::SAVEQUERIES,
+            new Fields\Types\BooleanType(),
+            array
+            (
+                'The SAVEQUERIES definition saves the database queries to an array and that array can 
+                be displayed to help analyze those queries. 
+                The constant defined as true causes each query to be saved, 
+                how long that query took to execute, and what function called it.'
+            ),
+            array
+            (
+                'suppressOutput' => true
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDebugScriptDebug()
+    {
+        $this->fields[ConfigFileFieldsNameMap::SCRIPT_DEBUG] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::SCRIPT_DEBUG,
+            new Fields\Types\BooleanType(),
+            array
+            (
+                'For developers: WordPress Script Debugging
+
+                Force Wordpress to use unminified JavaScript files'
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDebugWPDebug()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_DEBUG] = new Fields\Constant(
             $this,
@@ -518,7 +654,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDebugDisplay()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_DISPLAY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_DEBUG_DISPLAY,
@@ -530,7 +673,14 @@ class Master {
                 'supressionValue' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createDebugLog()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_LOG] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_DEBUG_LOG,
@@ -541,60 +691,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
-        $this->fields[ConfigFileFieldsNameMap::SCRIPT_DEBUG] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::SCRIPT_DEBUG,
-            new Fields\Types\BooleanType(),
-            array
-            (
-                'For developers: WordPress Script Debugging
-
-                Force Wordpress to use unminified JavaScript files'
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::CONCATENATE_SCRIPTS,
-            new Fields\Types\BooleanType(),
-            array
-            (
-                'For developers: WordPress Script Debugging
-
-                Force Wordpress to use unminified JavaScript files'
-            ),
-            array
-            (
-                'suppressOutput' => true
-            )
-        );
-
-        $this->fields[ConfigFileFieldsNameMap::SAVEQUERIES] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::SAVEQUERIES,
-            new Fields\Types\BooleanType(),
-            array
-            (
-                'The SAVEQUERIES definition saves the database queries to an array and that array can 
-                be displayed to help analyze those queries. 
-                The constant defined as true causes each query to be saved, 
-                how long that query took to execute, and what function called it.'
-            ),
-            array
-            (
-                'suppressOutput' => true
-            )
-        );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpLocalization()
+    public function createLocalizeLang()
     {
-
         $this->fields[ConfigFileFieldsNameMap::WPLANG] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WPLANG,
@@ -609,7 +713,14 @@ class Master {
                 language support.'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createLocalizeLangDir()
+    {
         $this->fields[ConfigFileFieldsNameMap::WPLANG_DIR] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WPLANG_DIR,
@@ -624,12 +735,12 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpMaintenance()
+    public function createMaintenanceMaxMemoryLimit()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT] = new Fields\Constant(
             $this,
@@ -644,7 +755,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
+    }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMaintenanceMemoryLimit()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_MEMORY_LIMIT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_MEMORY_LIMIT,
@@ -658,7 +776,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMaintenanceCache()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_CACHE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_CACHE,
@@ -673,12 +798,12 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpMultiSites()
+    public function createMultisite()
     {
         $this->fields[ConfigFileFieldsNameMap::MULTISITE] = new Fields\Constant(
             $this,
@@ -712,7 +837,14 @@ class Master {
                     )->setSuppressOutputForce($field->getValue());
             }
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisiteAllow()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_ALLOW_MULTISITE,
@@ -726,7 +858,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisiteBlogIdCurrentSite()
+    {
         $this->fields[ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::BLOG_ID_CURRENT_SITE,
@@ -740,7 +879,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
+    }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisiteDomainCurrentSite()
+    {
         $this->fields[ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DOMAIN_CURRENT_SITE,
@@ -750,7 +896,14 @@ class Master {
                 'Multi Site Domain'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisitePathCurrentSite()
+    {
         $this->fields[ConfigFileFieldsNameMap::PATH_CURRENT_SITE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::PATH_CURRENT_SITE,
@@ -760,7 +913,14 @@ class Master {
                 'Multi Site Current Root path'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisitePrimaryNetworkId()
+    {
         $this->fields[ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::PRIMARY_NETWORK_ID,
@@ -774,7 +934,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisiteSiteIdCurrentSite()
+    {
         $this->fields[ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::SITE_ID_CURRENT_SITE,
@@ -788,7 +955,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createMultisiteSubDomainInstall()
+    {
         $this->fields[ConfigFileFieldsNameMap::SUBDOMAIN_INSTALL] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::SUBDOMAIN_INSTALL,
@@ -798,14 +972,13 @@ class Master {
                 'Use sub domains for network sites'
             )
         );
-
     }
 
     /**
     * put your comment there...
     * 
     */
-    protected function grpPost()
+    public function createPostAutoSaveInterval()
     {
         $this->fields[ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL] = new Fields\Constant(
             $this,
@@ -821,7 +994,14 @@ class Master {
                 'suppressionValue' => 60,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createPostEmptyTrashDays()
+    {
         $this->fields[ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::EMPTY_TRASH_DAYS,
@@ -837,7 +1017,14 @@ class Master {
                 'suppressionValue' => 30,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createPostRevisions()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_POST_REVISIONS] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_POST_REVISIONS,
@@ -874,12 +1061,12 @@ class Master {
             }
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpProxy()
+    public function createProxyBypassHosts()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] = new Fields\Constant(
             $this,
@@ -898,7 +1085,14 @@ class Master {
                 return implode(',', $gField->getField()->getValue());
             }
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createProxyHost()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_PROXY_HOST] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_PROXY_HOST,
@@ -912,7 +1106,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createProxyPassword()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PASSWORD] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_PROXY_PASSWORD,
@@ -926,7 +1127,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createProxyPort()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PORT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_PROXY_PORT,
@@ -940,7 +1148,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createProxyUserName()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_PROXY_USERNAME] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_PROXY_USERNAME,
@@ -955,12 +1170,12 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpSecurity()
+    public function createSecurityAccessibleHosts()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS] = new Fields\Constant(
             $this,
@@ -979,7 +1194,14 @@ class Master {
                 return implode(',', $gField->getField()->getValue());
             }
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityAllowUnfilteredUploads()
+    {
         $this->fields[ConfigFileFieldsNameMap::ALLOW_UNFILTERED_UPLOADS] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::ALLOW_UNFILTERED_UPLOADS,
@@ -993,7 +1215,14 @@ class Master {
                 'suppressOutput' => true,
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityHTTPBlockExternal()
+    {
         $this->fields[ConfigFileFieldsNameMap::WP_HTTP_BLOCK_EXTERNAL] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::WP_HTTP_BLOCK_EXTERNAL,
@@ -1014,7 +1243,14 @@ class Master {
                 $accessibleHosts->setSuppressOutputForce(!$gField->getValue());
             }
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityDisallowFileEdit()
+    {
         $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_EDIT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DISALLOW_FILE_EDIT,
@@ -1028,7 +1264,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityDisallowUnfilteredHTML()
+    {
         $this->fields[ConfigFileFieldsNameMap::DISALLOW_UNFILTERED_HTML] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DISALLOW_UNFILTERED_HTML,
@@ -1042,7 +1285,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityForceSSLAdmin()
+    {
         $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_ADMIN] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FORCE_SSL_ADMIN,
@@ -1056,7 +1306,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecurityForceSSLLogin()
+    {
         $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_LOGIN] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FORCE_SSL_LOGIN,
@@ -1071,12 +1328,12 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpSecureKeys()
+    public function createSecureKeysAuth()
     {
         $this->fields[ConfigFileFieldsNameMap::AUTH_KEY] = new Fields\Constant(
             $this,
@@ -1093,55 +1350,104 @@ class Master {
                 @since 2.6.0'
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysAuthSalt()
+    {
         $this->fields[ConfigFileFieldsNameMap::AUTH_SALT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::AUTH_SALT,
             new Fields\Types\StringType()
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysLoggedIn()
+    {
         $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_KEY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::LOGGED_IN_KEY,
             new Fields\Types\StringType()
         );
-
-        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_SALT] = new Fields\Constant(
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysLoggedInSalt()
+    {
+       $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_SALT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::LOGGED_IN_SALT,
             new Fields\Types\StringType()
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysNonce()
+    {
         $this->fields[ConfigFileFieldsNameMap::NONCE_KEY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::NONCE_KEY,
             new Fields\Types\StringType()
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysNonceSalt()
+    {
         $this->fields[ConfigFileFieldsNameMap::NONCE_SALT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::NONCE_SALT,
             new Fields\Types\StringType()
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysSecureAuth()
+    {
         $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_KEY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::SECURE_AUTH_KEY,
             new Fields\Types\StringType()
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createSecureKeysSecureAuthSalt()
+    {
         $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_SALT] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::SECURE_AUTH_SALT,
             new Fields\Types\StringType()
         );
     }
-
+    
     /**
     * put your comment there...
     * 
     */
-    protected function grpUpgrade()
+    public function createUpgradeAutoUpdateCore()
     {
         $this->fields[ConfigFileFieldsNameMap::WP_AUTO_UPDATE_CORE] = new Fields\Constant(
             $this,
@@ -1184,7 +1490,14 @@ class Master {
                 }
             }
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeAutmaticUpdater()
+    {
         $this->fields[ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::AUTOMATIC_UPDATER_DISABLED,
@@ -1198,7 +1511,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeDisallowFileMods()
+    {
         $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_MODS] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::DISALLOW_FILE_MODS,
@@ -1212,7 +1532,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemMethod()
+    {
         $this->fields[ConfigFileFieldsNameMap::FS_METHOD] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FS_METHOD,
@@ -1226,7 +1553,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPBasePath()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_BASE] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_BASE,
@@ -1240,7 +1574,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPContentDirPath()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_CONTENT_DIR] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_CONTENT_DIR,
@@ -1254,21 +1595,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
-        $this->fields[ConfigFileFieldsNameMap::FTP_PLUGIN_DIR] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::FTP_PLUGIN_DIR,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Full path to the plugins folder of the WordPress installation'
-            ),
-            array
-            (
-                'suppressOutput' => true
-            )
-        );
-        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPHost()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_HOST] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_HOST,
@@ -1282,21 +1616,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
-        $this->fields[ConfigFileFieldsNameMap::FTP_USER] = new Fields\Constant(
-            $this,
-            ConfigFileNamesMap::FTP_USER,
-            new Fields\Types\StringType(),
-            array
-            (
-                'Either user FTP or SSH username. Most likely these are the same, but use the appropriate one for the type of update you wish to do.'
-            ),
-            array
-            (
-                'suppressOutput' => true
-            )
-        );
-        
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPPassword()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_PASS] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_PASS,
@@ -1310,8 +1637,35 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPPluginDirPath()
+    {
+        $this->fields[ConfigFileFieldsNameMap::FTP_PLUGIN_DIR] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::FTP_PLUGIN_DIR,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Full path to the plugins folder of the WordPress installation'
+            ),
+            array
+            (
+                'suppressOutput' => true
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPPrivateKeyPath()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_PRIKEY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_PRIKEY,
@@ -1325,7 +1679,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPPublicKeyPath()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_PUBKEY] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_PUBKEY,
@@ -1339,7 +1700,14 @@ class Master {
                 'suppressOutput' => true
             )
         );
-
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function createUpgradeFileSystemFTPSSL()
+    {
         $this->fields[ConfigFileFieldsNameMap::FTP_SSL] = new Fields\Constant(
             $this,
             ConfigFileNamesMap::FTP_SSL,
@@ -1354,22 +1722,100 @@ class Master {
             )
         );
     }
-
+    
     /**
     * put your comment there...
     * 
-    * @param mixed $specialFiels
     */
-    public function & processSpecialFields($specialFields)
+    public function createUpgradeFileSystemFTPUser()
     {
-
-        $this->specialFields = array();
-        $this->templateName = 'wp-config-special-fields.php';
-
-        // Add special fields
-        $this->specialFields = $specialFields;
-
+        $this->fields[ConfigFileFieldsNameMap::FTP_USER] = new Fields\Constant(
+            $this,
+            ConfigFileNamesMap::FTP_USER,
+            new Fields\Types\StringType(),
+            array
+            (
+                'Either user FTP or SSH username. Most likely these are the same, but use the appropriate one for the type of update you wish to do.'
+            ),
+            array
+            (
+                'suppressOutput' => true
+            )
+        );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & fullLoad()
+    {
+        
+        $factories = $this->getAllFactories();
+        
+        foreach ($factories as $factory)
+        {
+            $factory->invoke($this);
+        }
+        
+        $this->initializeFields();
+        
         return $this;
     }
-
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $name
+    */
+    public function & getField($name)
+    {
+        
+        if (!isset($this->fields[$name]))
+        {
+            throw new \Exception("Field {$name} does not exists!");
+        }
+        
+        return $this->fields[$name];
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & getForm()
+    {
+        return $this->form;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function initializeFields()
+    {
+        
+        if ($this->initialized)
+        {
+            throw new \Exception('Fields already initialized!');
+        }
+        
+        $this->initialized = true;
+        
+        # Allow fields to interact and to Controler each others 
+        # by making second iteration after constructions!!
+        foreach ($this->fields as $field)
+        {
+            $field->initSuppression();
+        }
+    }
 }

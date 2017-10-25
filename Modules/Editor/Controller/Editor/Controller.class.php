@@ -235,8 +235,8 @@ class EditorController extends Controller {
                     {
 
                         # generate config file from the given values
-                        $model->generateConfigFile( $configGenerator )
-                        ->setConfigFileContent( ( string ) $configGenerator )
+                        $model->generateConfigFile($configWriter)
+                        ->setConfigFileContent((string) $configWriter)
 
                         # Save submitted vars to be used if 
                         # get back from preview to the form again.

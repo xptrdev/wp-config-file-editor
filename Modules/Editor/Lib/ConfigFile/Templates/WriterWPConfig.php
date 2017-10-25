@@ -22,7 +22,7 @@ echo "<?php\n";
 
 // ** MySQL settings - You can get this info from your web host ** //
 <?php
-	foreach ( $this->getFields() as $field )
+	foreach ($this->getFactory()->getFields() as $field)
 	{
         
         # Got out if to suppress output

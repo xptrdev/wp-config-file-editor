@@ -7,11 +7,17 @@ namespace WCFE\Modules\Editor\Model;
 
 # Models Framework
 use WPPFW\MVC\Model\PluginModel;
+use WCFE\Modules\Editor\Lib\ConfigFile\Reader;
+use WCFE\Modules\Editor\Lib\ConfigFile\Writer;
+use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
+
 
 /**
 * 
 */
-class EditorModel extends PluginModel {
+class EditorModel
+extends PluginModel
+{
 
     /**
     * put your comment there...
@@ -204,11 +210,16 @@ class EditorModel extends PluginModel {
     public function & generateConfigFile( & $generator = null )
     {
 
-        # Get generator instance
-        $configFile = new ConfigFile\Templates\Master\Master( $this->getForm() );
+        $configWriter = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT, null);
+        
+        if (!$configWriter)
+        {
+            # Get generator instance
+            $configWriter = new Writer($this->getForm());
+        }        
 
         # Return generator reference
-        $generator = $configFile;
+        $generator = $configWriter;
 
         return $this;
     }
@@ -323,150 +334,17 @@ class EditorModel extends PluginModel {
     public function & loadFromConfigFile() 
     {
 
-        $values = array();
-
-        # Auth keys
-        $values[ConfigFileFieldsNameMap::AUTH_KEY] =                                defined(ConfigFileNamesMap::AUTH_KEY) ? constant(ConfigFileNamesMap::AUTH_KEY) : null;
-        $values[ConfigFileFieldsNameMap::AUTH_SALT] =                               defined(ConfigFileNamesMap::AUTH_SALT) ? constant(ConfigFileNamesMap::AUTH_SALT) : null;
-        $values[ConfigFileFieldsNameMap::LOGGED_IN_KEY] =                           defined(ConfigFileNamesMap::LOGGED_IN_KEY) ? constant(ConfigFileNamesMap::LOGGED_IN_KEY) : null;
-        $values[ConfigFileFieldsNameMap::LOGGED_IN_SALT] =                          defined(ConfigFileNamesMap::LOGGED_IN_SALT) ? constant(ConfigFileNamesMap::LOGGED_IN_SALT) : null;
-        $values[ConfigFileFieldsNameMap::NONCE_KEY] =                               defined(ConfigFileNamesMap::NONCE_KEY) ? constant(ConfigFileNamesMap::NONCE_KEY) : null;
-        $values[ConfigFileFieldsNameMap::NONCE_SALT] =                              defined(ConfigFileNamesMap::NONCE_SALT) ? constant(ConfigFileNamesMap::NONCE_SALT) : null;
-        $values[ConfigFileFieldsNameMap::SECURE_AUTH_KEY] =                         defined(ConfigFileNamesMap::SECURE_AUTH_KEY) ? constant(ConfigFileNamesMap::SECURE_AUTH_KEY) : null;
-        $values[ConfigFileFieldsNameMap::SECURE_AUTH_SALT] =                        defined(ConfigFileNamesMap::SECURE_AUTH_SALT) ? constant(ConfigFileNamesMap::SECURE_AUTH_SALT) : null;
-
-        # Cookies
-        $values[ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] =                       defined(ConfigFileNamesMap::ADMIN_COOKIE_PATH) ? constant(ConfigFileNamesMap::ADMIN_COOKIE_PATH) : null;
-        $values[ConfigFileFieldsNameMap::AUTH_COOKIE] =                             defined(ConfigFileNamesMap::AUTH_COOKIE) ? constant(ConfigFileNamesMap::AUTH_COOKIE) : null;
-        $values[ConfigFileFieldsNameMap::COOKIE_DOMAIN] =                           defined(ConfigFileNamesMap::COOKIE_DOMAIN) ? constant(ConfigFileNamesMap::COOKIE_DOMAIN) : null;
-        $values[ConfigFileFieldsNameMap::COOKIEHASH] =                              defined(ConfigFileNamesMap::COOKIEHASH) ? constant(ConfigFileNamesMap::COOKIEHASH) : null;
-        $values[ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] =                        defined(ConfigFileNamesMap::LOGGED_IN_COOKIE) ? constant(ConfigFileNamesMap::LOGGED_IN_COOKIE) : null;
-        $values[ConfigFileFieldsNameMap::PASS_COOKIE] =                             defined(ConfigFileNamesMap::PASS_COOKIE) ? constant(ConfigFileNamesMap::PASS_COOKIE) : null;
-        $values[ConfigFileFieldsNameMap::COOKIEPATH] =                              defined(ConfigFileNamesMap::COOKIEPATH) ? constant(ConfigFileNamesMap::COOKIEPATH) : null;
-        $values[ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] =                     defined(ConfigFileNamesMap::PLUGINS_COOKIE_PATH) ? constant(ConfigFileNamesMap::PLUGINS_COOKIE_PATH) : null;
-        $values[ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] =                      defined(ConfigFileNamesMap::SECURE_AUTH_COOKIE) ? constant(ConfigFileNamesMap::SECURE_AUTH_COOKIE) : null;
-        $values[ConfigFileFieldsNameMap::SITECOOKIEPATH] =                          defined(ConfigFileNamesMap::SITECOOKIEPATH) ? constant(ConfigFileNamesMap::SITECOOKIEPATH) : null;
-        $values[ConfigFileFieldsNameMap::TEST_COOKIE] =                             defined(ConfigFileNamesMap::TEST_COOKIE) ? constant(ConfigFileNamesMap::TEST_COOKIE) : null;
-        $values[ConfigFileFieldsNameMap::USER_COOKIE] =                             defined(ConfigFileNamesMap::USER_COOKIE) ? constant(ConfigFileNamesMap::USER_COOKIE) : null;
-
-        # Cron
-        $values[ConfigFileFieldsNameMap::DISABLE_WP_CRON] =                         defined(ConfigFileNamesMap::DISABLE_WP_CRON) ? constant(ConfigFileNamesMap::DISABLE_WP_CRON) : null;
-        $values[ConfigFileFieldsNameMap::ALTERNATE_WP_CRON] =                       defined(ConfigFileNamesMap::ALTERNATE_WP_CRON) ? constant(ConfigFileNamesMap::ALTERNATE_WP_CRON) : null;
-        $values[ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT] =                    defined(ConfigFileNamesMap::WP_CRON_LOCK_TIMEOUT) ? constant(ConfigFileNamesMap::WP_CRON_LOCK_TIMEOUT) : null;
-
-        # Database
-        $databaseHost = explode(':', constant(ConfigFileNamesMap::DB_HOST));
-
-        $values[ConfigFileFieldsNameMap::WP_ALLOW_REPAIR] =                         defined(ConfigFileNamesMap::WP_ALLOW_REPAIR) ? constant(ConfigFileNamesMap::WP_ALLOW_REPAIR) : null;
-        $values[ConfigFileFieldsNameMap::DB_CHARSET] =                              defined(ConfigFileNamesMap::DB_CHARSET) ? constant(ConfigFileNamesMap::DB_CHARSET) : null;
-        $values[ConfigFileFieldsNameMap::DB_COLLATE] =                              defined(ConfigFileNamesMap::DB_COLLATE) ? constant(ConfigFileNamesMap::DB_COLLATE) : null;
-        $values[ConfigFileFieldsNameMap::DO_NOT_UPGRADE_GLOBAL_TABLES] =            defined(ConfigFileNamesMap::DO_NOT_UPGRADE_GLOBAL_TABLES) ? constant(ConfigFileNamesMap::DO_NOT_UPGRADE_GLOBAL_TABLES) : null;
-        $values[ConfigFileFieldsNameMap::DB_HOST] =                                 $databaseHost[0];
-        $values[ConfigFileFieldsNameMap::DB_PORT] =                                 isset($databaseHost[1]) ? $databaseHost[1] : null;
-        $values[ConfigFileFieldsNameMap::DB_NAME] =                                 defined(ConfigFileNamesMap::DB_NAME) ? constant(ConfigFileNamesMap::DB_NAME) : null;
-        $values[ConfigFileFieldsNameMap::DB_PASSWORD] =                             defined(ConfigFileNamesMap::DB_PASSWORD) ? constant(ConfigFileNamesMap::DB_PASSWORD) : null;
-        $values[ConfigFileFieldsNameMap::DB_TABLE_PREFIX] =                         isset($GLOBALS[ConfigFileNamesMap::DB_TABLE_PREFIX]) ? $GLOBALS[ConfigFileNamesMap::DB_TABLE_PREFIX] : null;
-        $values[ConfigFileFieldsNameMap::DB_USER] =                                 defined(ConfigFileNamesMap::DB_USER) ? constant(ConfigFileNamesMap::DB_USER) : null;
-
-        # Debug
-        $values[ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS] =                     defined(ConfigFileNamesMap::CONCATENATE_SCRIPTS) ? constant(ConfigFileNamesMap::CONCATENATE_SCRIPTS) : null;
-        $values[ConfigFileFieldsNameMap::SAVEQUERIES] =                             defined(ConfigFileNamesMap::SAVEQUERIES) ? constant(ConfigFileNamesMap::SAVEQUERIES) : null;
-        $values[ConfigFileFieldsNameMap::SCRIPT_DEBUG] =                            defined(ConfigFileNamesMap::SCRIPT_DEBUG) ? constant(ConfigFileNamesMap::SCRIPT_DEBUG) : null;
-        $values[ConfigFileFieldsNameMap::WP_DEBUG] =                                defined(ConfigFileNamesMap::WP_DEBUG) ? constant(ConfigFileNamesMap::WP_DEBUG) : null;
-        $values[ConfigFileFieldsNameMap::WP_DEBUG_DISPLAY] =                        defined(ConfigFileNamesMap::WP_DEBUG_DISPLAY) ? constant(ConfigFileNamesMap::WP_DEBUG_DISPLAY) : null;
-        $values[ConfigFileFieldsNameMap::WP_DEBUG_LOG] =                            defined(ConfigFileNamesMap::WP_DEBUG_LOG) ? constant(ConfigFileNamesMap::WP_DEBUG_LOG) : null;
-
-        # Loclization
-        $values[ConfigFileFieldsNameMap::WPLANG] =                                  defined(ConfigFileNamesMap::WPLANG) ? constant(ConfigFileNamesMap::WPLANG) : null;
-        $values[ConfigFileFieldsNameMap::WPLANG_DIR] =                              defined(ConfigFileNamesMap::WPLANG_DIR) ? constant(ConfigFileNamesMap::WPLANG_DIR) : null;
-
-        # Maintenance
-        $values[ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT] =                     defined(ConfigFileNamesMap::WP_MAX_MEMORY_LIMIT) ? constant(ConfigFileNamesMap::WP_MAX_MEMORY_LIMIT) : null;
-        $values[ConfigFileFieldsNameMap::WP_MEMORY_LIMIT] =                         defined(ConfigFileNamesMap::WP_MEMORY_LIMIT) ? constant(ConfigFileNamesMap::WP_MEMORY_LIMIT) : null;
-        $values[ConfigFileFieldsNameMap::WP_CACHE] =                                defined(ConfigFileNamesMap::WP_CACHE) ? constant(ConfigFileNamesMap::WP_CACHE) : 0;
-
-        # Multisites
-        $values[ConfigFileFieldsNameMap::MULTISITE] =                               defined(ConfigFileNamesMap::MULTISITE) ? constant(ConfigFileNamesMap::MULTISITE) : null;
-        $values[ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE] =                      defined(ConfigFileNamesMap::WP_ALLOW_MULTISITE) ? constant(ConfigFileNamesMap::WP_ALLOW_MULTISITE) : null;
-        $values[ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE] =                    defined(ConfigFileNamesMap::BLOG_ID_CURRENT_SITE) ? constant(ConfigFileNamesMap::BLOG_ID_CURRENT_SITE) : null;
-        $values[ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE] =                     defined(ConfigFileNamesMap::DOMAIN_CURRENT_SITE) ? constant(ConfigFileNamesMap::DOMAIN_CURRENT_SITE) : null;
-        $values[ConfigFileFieldsNameMap::PATH_CURRENT_SITE] =                       defined(ConfigFileNamesMap::PATH_CURRENT_SITE) ? constant(ConfigFileNamesMap::PATH_CURRENT_SITE) : null;
-        $values[ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID] =                      defined(ConfigFileNamesMap::PRIMARY_NETWORK_ID) ? constant(ConfigFileNamesMap::PRIMARY_NETWORK_ID) : null;
-        $values[ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE] =                    defined(ConfigFileNamesMap::SITE_ID_CURRENT_SITE) ? constant(ConfigFileNamesMap::SITE_ID_CURRENT_SITE) : null;
-        $values[ConfigFileFieldsNameMap::SUBDOMAIN_INSTALL] =                       defined(ConfigFileNamesMap::SUBDOMAIN_INSTALL) ? constant(ConfigFileNamesMap::SUBDOMAIN_INSTALL) : null;
-
-        # Post
-        $values[ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL] =                       defined(ConfigFileNamesMap::AUTOSAVE_INTERVAL) ? constant(ConfigFileNamesMap::AUTOSAVE_INTERVAL) : null;
-        $values[ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS] =                        defined(ConfigFileNamesMap::EMPTY_TRASH_DAYS) ? constant(ConfigFileNamesMap::EMPTY_TRASH_DAYS) : null;
-
-        # This must presented as either 0 or 1 so that it will be checked if its presented as number (e.g 10, 30, etc...)
-        $values[ConfigFileFieldsNameMap::WP_POST_REVISIONS] =                       defined(ConfigFileNamesMap::WP_POST_REVISIONS) ? 
-                                                                                    (
-                                                                                        is_bool(constant(ConfigFileNamesMap::WP_POST_REVISIONS)) ?
-                                                                                        0 : constant(ConfigFileNamesMap::WP_POST_REVISIONS)
-                                                                                    )
-                                                                                    : null;
-                                                                                    
-        $values[ConfigFileFieldsNameMap::WP_POST_REVISIONS_STATUS] =                defined(ConfigFileNamesMap::WP_POST_REVISIONS) ? (bool) constant(ConfigFileNamesMap::WP_POST_REVISIONS) : null;
-
-        # Proxy
-        $values[ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] =                   (defined(ConfigFileNamesMap::WP_PROXY_BYPASS_HOSTS) && constant(ConfigFileNamesMap::WP_PROXY_BYPASS_HOSTS)) ?
-                                                                                    explode(',', constant(ConfigFileNamesMap::WP_PROXY_BYPASS_HOSTS)) :
-                                                                                    array();
-                                                                                    
-        $values[ConfigFileFieldsNameMap::WP_PROXY_HOST] =                           defined(ConfigFileNamesMap::WP_PROXY_HOST) ? constant(ConfigFileNamesMap::WP_PROXY_HOST) : null;
-        $values[ConfigFileFieldsNameMap::WP_PROXY_PASSWORD] =                       defined(ConfigFileNamesMap::WP_PROXY_PASSWORD) ? constant(ConfigFileNamesMap::WP_PROXY_PASSWORD) : null;
-        $values[ConfigFileFieldsNameMap::WP_PROXY_PORT] =                           defined(ConfigFileNamesMap::WP_PROXY_PORT) ? constant(ConfigFileNamesMap::WP_PROXY_PORT) : null;
-        $values[ConfigFileFieldsNameMap::WP_PROXY_USERNAME] =                       defined(ConfigFileNamesMap::WP_PROXY_USERNAME) ? constant(ConfigFileNamesMap::WP_PROXY_USERNAME) : null;
-
-        # Security
-        $values[ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS] =                     (defined(ConfigFileNamesMap::WP_ACCESSIBLE_HOSTS) && constant(ConfigFileNamesMap::WP_ACCESSIBLE_HOSTS)) ?
-                                                                                    explode( ',', constant(WP_ACCESSIBLE_HOSTS)) :
-                                                                                    array();
-                                                                                    
-        $values[ConfigFileFieldsNameMap::ALLOW_UNFILTERED_UPLOADS] =                defined(ConfigFileNamesMap::ALLOW_UNFILTERED_UPLOADS) ? constant(ConfigFileNamesMap::ALLOW_UNFILTERED_UPLOADS) : null;
-        $values[ConfigFileFieldsNameMap::WP_HTTP_BLOCK_EXTERNAL] =                  defined(ConfigFileNamesMap::WP_HTTP_BLOCK_EXTERNAL) ? constant(ConfigFileNamesMap::WP_HTTP_BLOCK_EXTERNAL) : null;
-        $values[ConfigFileFieldsNameMap::DISALLOW_FILE_EDIT] =                      defined(ConfigFileNamesMap::DISALLOW_FILE_EDIT) ? constant(ConfigFileNamesMap::DISALLOW_FILE_EDIT) : null;
-        $values[ConfigFileFieldsNameMap::DISALLOW_UNFILTERED_HTML] =                defined(ConfigFileNamesMap::DISALLOW_UNFILTERED_HTML) ? constant(ConfigFileNamesMap::DISALLOW_UNFILTERED_HTML) : null;
-        $values[ConfigFileFieldsNameMap::FORCE_SSL_ADMIN] =                         defined(ConfigFileNamesMap::FORCE_SSL_ADMIN) ? constant(ConfigFileNamesMap::FORCE_SSL_ADMIN) : null;
-        $values[ConfigFileFieldsNameMap::FORCE_SSL_LOGIN] =                         defined(ConfigFileNamesMap::FORCE_SSL_LOGIN) ? constant(ConfigFileNamesMap::FORCE_SSL_LOGIN) : null;
-
-        # Upgrade
-        # auto core
-        $updateAutoCore = null;
-
-        if (defined(ConfigFileNamesMap::WP_AUTO_UPDATE_CORE))
+        // Create Config Reader object
+        $configReader = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_READER_OBJECT, null);
+        
+        if (!$configReader)
         {
-
-            # Transform the value to string 
-            # (BOOL) TRUE => 'true'
-            # (BOOL) FALSE => 'false'
-            # (STRING) 'minor' => 'minor' -- no changes
-            if (is_bool(constant(ConfigFileNamesMap::WP_AUTO_UPDATE_CORE)))
-            {
-                $updateAutoCore = constant(ConfigFileNamesMap::WP_AUTO_UPDATE_CORE) ? 'true' : 'false';
-            }
-            else
-            {
-                $updateAutoCore = constant(ConfigFileNamesMap::WP_AUTO_UPDATE_CORE);
-            }
-
+            $configReader = new Reader();
         }
-
-        $values[ConfigFileFieldsNameMap::WP_AUTO_UPDATE_CORE] =                      $updateAutoCore;
-        $values[ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED] =               defined(ConfigFileNamesMap::AUTOMATIC_UPDATER_DISABLED) ? constant(AUTOMATIC_UPDATER_DISABLED) : null;
-        $values[ConfigFileFieldsNameMap::DISALLOW_FILE_MODS] =                       defined(ConfigFileNamesMap::DISALLOW_FILE_MODS) ? constant(ConfigFileNamesMap::DISALLOW_FILE_MODS) : null;
-        $values[ConfigFileFieldsNameMap::FS_METHOD] =                                defined(ConfigFileNamesMap::FS_METHOD) ? constant(ConfigFileNamesMap::FS_METHOD) : null;
-        $values[ConfigFileFieldsNameMap::FTP_BASE] =                                 defined(ConfigFileNamesMap::FTP_BASE) ? constant(ConfigFileNamesMap::FTP_BASE) : null;
-        $values[ConfigFileFieldsNameMap::FTP_CONTENT_DIR] =                          defined(ConfigFileNamesMap::FTP_CONTENT_DIR) ? constant(ConfigFileNamesMap::FTP_CONTENT_DIR) : null;
-        $values[ConfigFileFieldsNameMap::FTP_HOST] =                                 defined(ConfigFileNamesMap::FTP_HOST) ? constant(ConfigFileNamesMap::FTP_HOST) : null;
-        $values[ConfigFileFieldsNameMap::FTP_PASS] =                                 defined(ConfigFileNamesMap::FTP_PASS) ? constant(ConfigFileNamesMap::FTP_PASS) : null;
-        $values[ConfigFileFieldsNameMap::FTP_PLUGIN_DIR] =                           defined(ConfigFileNamesMap::FTP_PLUGIN_DIR) ? constant(ConfigFileNamesMap::FTP_PLUGIN_DIR) : null;
-        $values[ConfigFileFieldsNameMap::FTP_PRIKEY] =                               defined(ConfigFileNamesMap::FTP_PRIKEY) ? constant(ConfigFileNamesMap::FTP_PRIKEY) : null;
-        $values[ConfigFileFieldsNameMap::FTP_PUBKEY] =                               defined(ConfigFileNamesMap::FTP_PUBKEY) ? constant(ConfigFileNamesMap::FTP_PUBKEY) : null;
-        $values[ConfigFileFieldsNameMap::FTP_SSL] =                                  defined(ConfigFileNamesMap::FTP_SSL) ? constant(ConfigFileNamesMap::FTP_SSL) : null;
-        $values[ConfigFileFieldsNameMap::FTP_USER] =                                 defined(ConfigFileNamesMap::FTP_USER) ? constant(ConfigFileNamesMap::FTP_USER) : null;
-
+        
+        // Get values
+        $values = $configReader->getValues();
+        
         # Fill form
         $this->form->setValue(array($this->form->getName() => $values));
 

@@ -3,10 +3,13 @@
 * 
 */
 
-namespace WCFE\Modules\Editor\Model;
+namespace WCFE\Modules\Editor;
 
 
-abstract class ConfigFileFieldsNameMap
+/**
+* 
+*/
+abstract class ConfigFileNamesMap
 {
     
     const AUTH_KEY = 'AUTH_KEY';
@@ -40,7 +43,6 @@ abstract class ConfigFileFieldsNameMap
     const DB_COLLATE = 'DB_COLLATE';
     const DO_NOT_UPGRADE_GLOBAL_TABLES = 'DO_NOT_UPGRADE_GLOBAL_TABLES';
     const DB_HOST = 'DB_HOST';
-    const DB_PORT = 'DB_HOST:PORT';
     const DB_NAME = 'DB_NAME';
     const DB_PASSWORD = 'DB_PASSWORD';
     const DB_TABLE_PREFIX = 'table_prefix';
@@ -72,7 +74,6 @@ abstract class ConfigFileFieldsNameMap
     const AUTOSAVE_INTERVAL = 'AUTOSAVE_INTERVAL';
     const EMPTY_TRASH_DAYS = 'EMPTY_TRASH_DAYS';
     const WP_POST_REVISIONS = 'WP_POST_REVISIONS';
-    const WP_POST_REVISIONS_STATUS = 'WP_POST_REVISIONS:STATUS';
     
     const WP_PROXY_BYPASS_HOSTS = 'WP_PROXY_BYPASS_HOSTS';
     const WP_PROXY_HOST = 'WP_PROXY_HOST';
@@ -102,24 +103,4 @@ abstract class ConfigFileFieldsNameMap
     const FTP_SSL = 'FTP_SSL';
     const FTP_USER = 'FTP_USER';
     
-    /**
-    * put your comment there...
-    * 
-    */
-    public static function getAllNames()
-    {
-        
-        static $names = array();
-        
-        if (!$names)
-        {
-        
-            $class = new \ReflectionClass(__CLASS__);            
-            $constants = $class->getConstants();
-            
-            $names = array_values($constants);
-        }
-        
-        return $names;
-    }
 }

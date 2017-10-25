@@ -17,7 +17,9 @@ abstract class Hooks
 	const FILTER_MODEL_EDITOR_FORM_FIELDS = 'wcfe_model-editor-form-fields';
 	const FILTER_MODEL_EDITOR_GENERATOR_FIELDS = 'wcfe_model-editor-generator-fields';
 	const FILTER_MODEL_EDITOR_REGISTER_FIELDS = 'wcfe_model-editor-register-fields';
-	
+	const FILTER_MODEL_EDITOR_CREATE_CONFIG_READER_OBJECT = 'wcfe/model/editor/create-config-reader-object';
+    const FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT = 'wcfe/model/editor/create-config-writer-object';
+    
 	const FILTER_VIEW_TABS_REGISTER_TABS = 'wcfe_view-tabs-register-tabs';
 	
 	const FILTER_VIEW_TABS_TAB_DATABASE_FIELDS = 'wcfe_view-tabs-tab-database-fields';
@@ -40,4 +42,5 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_EDITOR_FIELDS = 'wcfe_view-tabs-tab-sysfilters-editor-fields';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_MISC_FIELDS = 'wcfe_view-tabs-tab-sysfilters-misc-fields';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_KSES_FIELDS = 'wcfe_view-tabs-tab-sysfilters-kses-fields';
+    
 }

@@ -7,7 +7,7 @@
 namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
 use WCFE\Modules\Editor\View\Editor\Fields;
-use WCFE\Modules\Editor\Model\ConfigFileFieldsNameMap;
+use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
 
 /**
 * 
