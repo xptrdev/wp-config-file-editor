@@ -11,6 +11,7 @@ namespace WCFE;
 abstract class Hooks
 {
 
+    const ACTION_PLUGIN_EXTENSIONS_FEATURES = 'wcfe/plugin/extesions-features';
 	const ACTION_PLUGIN_BINDING_HOOKS = 'wcfe_plugin-binding-hooks';
 	const ACTION_PLUGIN_LOADED = 'wcfe_plugin-loaded';
 	
@@ -43,4 +44,5 @@ abstract class Hooks
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_MISC_FIELDS = 'wcfe_view-tabs-tab-sysfilters-misc-fields';
 	const FILTER_VIEW_TABS_TAB_SYSFILTERS_KSES_FIELDS = 'wcfe_view-tabs-tab-sysfilters-kses-fields';
     
+    const ACTION_VIEW_EDITOR_EXTENSIONS_STATE_MENU = 'wcfe\view\editor\extensions-state-menu';
 }

@@ -178,6 +178,15 @@
 			this.postUpdate().done();
 		};
 		
+        /**
+        * 
+        */
+        this.getSecurityToken = function()
+        {
+            return securityToken;
+        };
+        
+        
 		/**
 		* 
 		*/

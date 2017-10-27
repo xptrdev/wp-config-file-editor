@@ -68,7 +68,11 @@ defined('ABSPATH') or die(WCFE\NO_DIRECT_ACCESS_MESSAGE);
 					<li id="wcfe-dmm-secure-keys-generate-all"><?php $this->_e( 'Generate all' ) ?></li>
 				</ul>
 			</li>
-						
+            <?php if (\WCFE\Plugin::me()->getExtensionsFeatures()->enableEditorStateToolsMenu) : ?>
+            <li>-</li>
+            <?php do_action(\WCFE\Hooks::ACTION_VIEW_EDITOR_EXTENSIONS_STATE_MENU) ?>
+            <li>-</li>
+            <?php endif; ?>
 		</ul>
 	
 	</li>

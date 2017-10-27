@@ -138,14 +138,14 @@ abstract class ConfigFileWriterFactoriesFieldsNameMap
     /**
     * put your comment there...
     * 
-    * @param mixed $name
+    * @param mixed $key
     */
-    public static function getFieldFactoryName($name)
+    public static function getFieldFactoryName($key)
     {
         
         $constants =& self::getConstantsArray();
         
-        $factoryName = $constants[$name];
+        $factoryName = $constants[$key];
         
         return $factoryName;
     }
@@ -153,9 +153,9 @@ abstract class ConfigFileWriterFactoriesFieldsNameMap
     /**
     * put your comment there...
     * 
-    * @param mixed $name
+    * @param mixed $key
     */
-    public static function isNameExists($name)
+    public static function isKeyExists($key)
     {
         
         $callerClass = get_called_class();
@@ -163,7 +163,7 @@ abstract class ConfigFileWriterFactoriesFieldsNameMap
         $class = new \ReflectionClass($callerClass);            
         $constants = $class->getConstants();
         
-        return isset($constants[$name]);
+        return isset($constants[$key]);
     }
     
 }

@@ -142,6 +142,21 @@ abstract class ConfigFileFieldsNameMap
     /**
     * put your comment there...
     * 
+    * @param mixed $name
+    */
+    public static function getFieldKey($name)
+    {
+        
+        $constants =& self::getConstantsArray();
+        
+        $key = array_search($name, $constants);
+        
+        return $key;
+    }
+    
+    /**
+    * put your comment there...
+    * 
     * @param mixed $key
     */
     public static function getFieldName($key)

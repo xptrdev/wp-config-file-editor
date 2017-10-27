@@ -17,7 +17,7 @@ extends Field
 	* put your comment there...
 	* 
 	*/
-	protected function getDefString()
+	public function getDefString()
 	{
 		
 		$value = $this->type->prepareValue($this->getValue());

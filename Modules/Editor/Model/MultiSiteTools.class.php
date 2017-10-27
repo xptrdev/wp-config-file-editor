@@ -101,6 +101,7 @@ class MultiSiteToolsModel extends PluginModel
                 self::SEPCIAL_FIELD_MULTISITE_TOOLS_PLUGIN_LOADER => ConfigFile\Fields\CustomContentField::create(
                     __DIR__ . DIRECTORY_SEPARATOR . 'ConfigFile' . 
                     DIRECTORY_SEPARATOR . 'Fields' . DIRECTORY_SEPARATOR .
+                    'Templates' . DIRECTORY_SEPARATOR .
                     'MultiSiteToolPluginLoader.customcontent.php'
                 )
             )

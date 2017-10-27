@@ -8,6 +8,7 @@ class ComposerStaticInitfe2ad7bc57369cc31174fe5525a436ac
 {
     public static $classMap = array (
         'WCFE\\CompatibleWordpress' => __DIR__ . '/../..' . '/Compatibility/Compatibility.php',
+        'WCFE\\Config\\ExtensionsFeatures' => __DIR__ . '/../..' . '/Config/ExtensionsFeatures.Config.php',
         'WCFE\\Config\\Plugin' => __DIR__ . '/../..' . '/Config/Plugin.class.php',
         'WCFE\\Factory' => __DIR__ . '/../..' . '/Factory/Factory.class.php',
         'WCFE\\Factory\\WordpressOptions' => __DIR__ . '/../..' . '/Factory/WordpressOptions.class.php',

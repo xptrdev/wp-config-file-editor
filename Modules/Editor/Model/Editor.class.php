@@ -210,12 +210,14 @@ extends PluginModel
     public function & generateConfigFile( & $generator = null )
     {
 
-        $configWriter = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT, null);
+        $form = $this->getForm();
+        
+        $configWriter = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT, null, $form);
         
         if (!$configWriter)
         {
             # Get generator instance
-            $configWriter = new Writer($this->getForm());
+            $configWriter = new Writer($form);
         }        
 
         # Return generator reference

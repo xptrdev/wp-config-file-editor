@@ -26,12 +26,14 @@ abstract class RWFactoryBase
     /**
     * put your comment there...
     * 
-    * @param mixed $name
+    * @param mixed $key
     */
-    public function create($name)
+    public function create($key)
     {
         
-        $factoryMethodName = ConfigFileFactoriesFieldsNameMap::getFieldFactoryName($name);
+        $factoryMethodName = ConfigFileFactoriesFieldsNameMap::getFieldFactoryName($key);
+        
+        $factoryMethodName = "{$this->factorySuffix}{$factoryMethodName}";
         
         $field = $this->$factoryMethodName();
         

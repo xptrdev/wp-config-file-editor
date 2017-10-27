@@ -4,7 +4,7 @@
 defined( 'ABSPATH' ) or die( 'Access Denied!!!!!' );
 
 # Use default config template
-require __DIR__ . DIRECTORY_SEPARATOR . 'wp-config.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'WriterWPConfig.php';
 ?>
 
 /* WCFE Plugin Multi Sites Tools Plugin Bootstrap */

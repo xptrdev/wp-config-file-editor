@@ -211,7 +211,7 @@ abstract class Field
 	* put your comment there...
 	* 
 	*/
-	protected abstract function getDefString();
+	public abstract function getDefString();
 	
 	/**
 	* put your comment there...

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'WCFE\\CompatibleWordpress' => $baseDir . '/Compatibility/Compatibility.php',
+    'WCFE\\Config\\ExtensionsFeatures' => $baseDir . '/Config/ExtensionsFeatures.Config.php',
     'WCFE\\Config\\Plugin' => $baseDir . '/Config/Plugin.class.php',
     'WCFE\\Factory' => $baseDir . '/Factory/Factory.class.php',
     'WCFE\\Factory\\WordpressOptions' => $baseDir . '/Factory/WordpressOptions.class.php',

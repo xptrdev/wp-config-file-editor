@@ -19,6 +19,11 @@ class ConfigFileForm
 extends Forms\SecureForm
 {
 	
+    /**
+    * 
+    */
+    const FIELD_PARAM_NO_CONFIG_FIELD = 'non-config-field';
+    
 	/**
 	* 
 	*/
@@ -43,7 +48,15 @@ extends Forms\SecureForm
         $this->defineFields();
         
         # Request fields
-        $this->add( new Forms\Fields\FormStringField( 'Task', array( new \WPPFW\Forms\Rules\RequiredField() ) ) );
+        $this->add(
+            new Forms\Fields\FormStringField(
+                'Task',
+                array(new \WPPFW\Forms\Rules\RequiredField())
+                )
+            )->setParam(self::FIELD_PARAM_NO_CONFIG_FIELD, true);
+        
+        // Set meta data for non config fields    
+        $this->get('stoken')->setParam(self::FIELD_PARAM_NO_CONFIG_FIELD, true);
 	}
     
     /**

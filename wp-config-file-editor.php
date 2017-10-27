@@ -29,7 +29,8 @@ use WCFE\Services;
 * 
 * @author AHMeD SAiD 
 */
-class Plugin extends PluginBase 
+final class Plugin
+extends PluginBase 
 {
 	
 	/**
@@ -51,6 +52,13 @@ class Plugin extends PluginBase
     */
     private $editorModule;
 
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    private $extensionsFeatures;
+    
 	/**
 	* Holds ARV Plugin instance
 	* 
@@ -89,10 +97,25 @@ class Plugin extends PluginBase
 	*/
 	protected function __construct() 
 	{
+        
+        $this->extensionsFeatures = new Config\ExtensionsFeatures();
+
 		# Plugin base
 		parent::__construct( __FILE__, new Config\Plugin() );	
 	}
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function _ExtensionsFeatures()
+    {
+        do_action(
+            Hooks::ACTION_PLUGIN_EXTENSIONS_FEATURES,
+            $this->extensionsFeatures
+        );
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -165,7 +188,8 @@ class Plugin extends PluginBase
 		}
 
 		# Start using hooks at this point so that WCFE Extensions can get involved
-		add_action( 'plugins_loaded', array( $this, '_initializePluggableHooks' ) );
+        add_action('plugins_loaded', array($this, '_ExtensionsFeatures'));
+		add_action('plugins_loaded', array($this, '_initializePluggableHooks'), 11);
 			
 	}
 
@@ -178,6 +202,16 @@ class Plugin extends PluginBase
 		return $this->editorModule;
 	}
 
+    /**
+    * put your comment there...
+    * 
+    * @return Config\ExtensionsFeatures
+    */
+    public function & getExtensionsFeatures()
+    {
+        return $this->extensionsFeatures;
+    }
+    
 	/**
 	* put your comment there...
 	* 

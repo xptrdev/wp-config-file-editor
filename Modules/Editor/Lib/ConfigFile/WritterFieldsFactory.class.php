@@ -8,7 +8,6 @@ namespace WCFE\Modules\Editor\Lib\ConfigFile;
 
 use WPPFW\Forms\Form;
 use WCFE\Modules\Editor\Model\ConfigFile\Fields;
-use WCFE\Modules\Editor\Model\ConfigFile\Fields\Types;
 
 use WCFE\Modules\Editor\ConfigFileNamesMap;
 use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
@@ -22,6 +21,20 @@ use WCFE\Modules\Editor\Lib\FieldsFactoryBase;
 class WriterFieldsFactory
 extends FieldsFactoryBase 
 {
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $constantFieldClassName = 'WCFE\Modules\Editor\Model\ConfigFile\Fields\Constant';
+    
+    /**
+    * put your comment there...
+    * 
+    * @var mixed
+    */
+    protected $variableFieldClassName = 'WCFE\Modules\Editor\Model\ConfigFile\Fields\Variable';
     
     /**
     * put your comment there...
@@ -62,7 +75,7 @@ extends FieldsFactoryBase
     public function createCookieAdminPath()
     {
         
-        $this->fields[ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::ADMIN_COOKIE_PATH,
             new Fields\Types\StringType(),
@@ -84,7 +97,7 @@ extends FieldsFactoryBase
     */
     public function createCookieAuth()
     {
-        $this->fields[ConfigFileFieldsNameMap::AUTH_COOKIE] = new Fields\Constant(  
+        $this->fields[ConfigFileFieldsNameMap::AUTH_COOKIE] = new $this->constantFieldClassName(  
             $this,
             ConfigFileNamesMap::AUTH_COOKIE,
             new Fields\Types\StringType(),
@@ -106,7 +119,7 @@ extends FieldsFactoryBase
     */
     public function createCookieDomain()
     {
-        $this->fields[ConfigFileFieldsNameMap::COOKIE_DOMAIN] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::COOKIE_DOMAIN] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::COOKIE_DOMAIN,
             new Fields\Types\StringType(),
@@ -127,7 +140,7 @@ extends FieldsFactoryBase
     */
     public function createCookieHash()
     {
-        $this->fields[ConfigFileFieldsNameMap::COOKIEHASH] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::COOKIEHASH] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::COOKIEHASH,
             new Fields\Types\StringType(),
@@ -149,7 +162,7 @@ extends FieldsFactoryBase
     */
     public function createCookieLoggedIn()
     {
-        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::LOGGED_IN_COOKIE,
             new Fields\Types\StringType(),
@@ -171,7 +184,7 @@ extends FieldsFactoryBase
     */
     public function createCookiePass()
     {
-        $this->fields[ConfigFileFieldsNameMap::PASS_COOKIE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::PASS_COOKIE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::PASS_COOKIE,
             new Fields\Types\StringType(),
@@ -193,7 +206,7 @@ extends FieldsFactoryBase
     */
     public function createCookiePath()
     {
-        $this->fields[ConfigFileFieldsNameMap::COOKIEPATH] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::COOKIEPATH] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::COOKIEPATH,
             new Fields\Types\StringType(),
@@ -215,7 +228,7 @@ extends FieldsFactoryBase
     */
     public function createCookiePluginsPath()
     {
-        $this->fields[ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::PLUGINS_COOKIE_PATH,
             new Fields\Types\StringType(),
@@ -237,7 +250,7 @@ extends FieldsFactoryBase
     */
     public function createCookieSecureAuth()
     {
-        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SECURE_AUTH_COOKIE,
             new Fields\Types\StringType(),
@@ -259,7 +272,7 @@ extends FieldsFactoryBase
     */
     public function createCookieSitePath()
     {
-        $this->fields[ConfigFileFieldsNameMap::SITECOOKIEPATH] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SITECOOKIEPATH] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SITECOOKIEPATH,
             new Fields\Types\StringType(),
@@ -281,7 +294,7 @@ extends FieldsFactoryBase
     */
     public function createCookieTest()
     {
-        $this->fields[ConfigFileFieldsNameMap::TEST_COOKIE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::TEST_COOKIE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::TEST_COOKIE,
             new Fields\Types\StringType(),
@@ -303,7 +316,7 @@ extends FieldsFactoryBase
     */
     public function createCookieUser()
     {
-        $this->fields[ConfigFileFieldsNameMap::USER_COOKIE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::USER_COOKIE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::USER_COOKIE,
             new Fields\Types\StringType(),
@@ -325,7 +338,7 @@ extends FieldsFactoryBase
     */
     public function createCronDisable()
     {
-        $this->fields[ConfigFileFieldsNameMap::DISABLE_WP_CRON] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DISABLE_WP_CRON] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DISABLE_WP_CRON,
             new Fields\Types\BooleanType(),
@@ -346,7 +359,7 @@ extends FieldsFactoryBase
     */
     public function createCronAlternate()
     {
-        $this->fields[ConfigFileFieldsNameMap::ALTERNATE_WP_CRON] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::ALTERNATE_WP_CRON] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::ALTERNATE_WP_CRON,
             new Fields\Types\BooleanType(),
@@ -372,7 +385,7 @@ extends FieldsFactoryBase
     */
     public function createCronLockTimeOut()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_CRON_LOCK_TIMEOUT,
             new Fields\Types\NumericType(),
@@ -394,7 +407,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseAllowRepair()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_REPAIR] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_REPAIR] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_ALLOW_REPAIR,
             new Fields\Types\BooleanType(),
@@ -415,7 +428,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseCharset()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_CHARSET] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_CHARSET] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_CHARSET,
             new Fields\Types\StringType(),
@@ -432,7 +445,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseCollate()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_COLLATE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_COLLATE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_COLLATE,
             new Fields\Types\StringType(),
@@ -449,7 +462,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseUpgradeGlobalTables()
     {
-        $this->fields[ConfigFileFieldsNameMap::DO_NOT_UPGRADE_GLOBAL_TABLES] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DO_NOT_UPGRADE_GLOBAL_TABLES] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DO_NOT_UPGRADE_GLOBAL_TABLES,
             new Fields\Types\BooleanType(),
@@ -470,7 +483,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseName()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_NAME] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_NAME] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_NAME,
             new Fields\Types\StringType(),
@@ -487,7 +500,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseUser()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_USER] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_USER] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_USER,
             new Fields\Types\StringType(),
@@ -504,7 +517,7 @@ extends FieldsFactoryBase
     */
     public function createDatabasePassword()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_PASSWORD] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_PASSWORD] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_PASSWORD,
             new Fields\Types\StringType(),
@@ -521,7 +534,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseHost()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_HOST] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DB_HOST] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DB_HOST,
             new Fields\Types\StringType(),
@@ -551,7 +564,7 @@ extends FieldsFactoryBase
     */
     public function createDatabaseTablePrefix()
     {
-        $this->fields[ConfigFileFieldsNameMap::DB_TABLE_PREFIX] = new Fields\Variable(
+        $this->fields[ConfigFileFieldsNameMap::DB_TABLE_PREFIX] = new $this->variableFieldClassName(
             $this,
             ConfigFileNamesMap::DB_TABLE_PREFIX,
             new Fields\Types\StringType(),
@@ -571,7 +584,7 @@ extends FieldsFactoryBase
     */
     public function createDebugConcatenateScripts()
     {
-        $this->fields[ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::CONCATENATE_SCRIPTS,
             new Fields\Types\BooleanType(),
@@ -594,7 +607,7 @@ extends FieldsFactoryBase
     */
     public function createDebugSaveQueries()
     {
-        $this->fields[ConfigFileFieldsNameMap::SAVEQUERIES] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SAVEQUERIES] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SAVEQUERIES,
             new Fields\Types\BooleanType(),
@@ -618,7 +631,7 @@ extends FieldsFactoryBase
     */
     public function createDebugScriptDebug()
     {
-        $this->fields[ConfigFileFieldsNameMap::SCRIPT_DEBUG] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SCRIPT_DEBUG] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SCRIPT_DEBUG,
             new Fields\Types\BooleanType(),
@@ -637,7 +650,7 @@ extends FieldsFactoryBase
     */
     public function createDebugWPDebug()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_DEBUG,
             new Fields\Types\BooleanType(),
@@ -662,7 +675,7 @@ extends FieldsFactoryBase
     */
     public function createDebugDisplay()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_DISPLAY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_DISPLAY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_DEBUG_DISPLAY,
             new Fields\Types\BooleanType(),
@@ -681,7 +694,7 @@ extends FieldsFactoryBase
     */
     public function createDebugLog()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_LOG] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_DEBUG_LOG] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_DEBUG_LOG,
             new Fields\Types\BooleanType(),
@@ -699,7 +712,7 @@ extends FieldsFactoryBase
     */
     public function createLocalizeLang()
     {
-        $this->fields[ConfigFileFieldsNameMap::WPLANG] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WPLANG] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WPLANG,
             new Fields\Types\StringType(),
@@ -721,7 +734,7 @@ extends FieldsFactoryBase
     */
     public function createLocalizeLangDir()
     {
-        $this->fields[ConfigFileFieldsNameMap::WPLANG_DIR] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WPLANG_DIR] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WPLANG_DIR,
             new Fields\Types\StringType(),
@@ -742,7 +755,7 @@ extends FieldsFactoryBase
     */
     public function createMaintenanceMaxMemoryLimit()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_MAX_MEMORY_LIMIT,
             new Fields\Types\StringType(),
@@ -763,7 +776,7 @@ extends FieldsFactoryBase
     */
     public function createMaintenanceMemoryLimit()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_MEMORY_LIMIT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_MEMORY_LIMIT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_MEMORY_LIMIT,
             new Fields\Types\StringType(),
@@ -784,7 +797,7 @@ extends FieldsFactoryBase
     */
     public function createMaintenanceCache()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_CACHE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_CACHE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_CACHE,
             new Fields\Types\BooleanType(),
@@ -805,7 +818,7 @@ extends FieldsFactoryBase
     */
     public function createMultisite()
     {
-        $this->fields[ConfigFileFieldsNameMap::MULTISITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::MULTISITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::MULTISITE,
             new Fields\Types\BooleanType(),
@@ -845,7 +858,7 @@ extends FieldsFactoryBase
     */
     public function createMultisiteAllow()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_ALLOW_MULTISITE,
             new Fields\Types\BooleanType(),
@@ -866,7 +879,7 @@ extends FieldsFactoryBase
     */
     public function createMultisiteBlogIdCurrentSite()
     {
-        $this->fields[ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::BLOG_ID_CURRENT_SITE,
             new Fields\Types\NumericType(),
@@ -887,7 +900,7 @@ extends FieldsFactoryBase
     */
     public function createMultisiteDomainCurrentSite()
     {
-        $this->fields[ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DOMAIN_CURRENT_SITE,
             new Fields\Types\StringType(),
@@ -904,7 +917,7 @@ extends FieldsFactoryBase
     */
     public function createMultisitePathCurrentSite()
     {
-        $this->fields[ConfigFileFieldsNameMap::PATH_CURRENT_SITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::PATH_CURRENT_SITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::PATH_CURRENT_SITE,
             new Fields\Types\StringType(),
@@ -921,7 +934,7 @@ extends FieldsFactoryBase
     */
     public function createMultisitePrimaryNetworkId()
     {
-        $this->fields[ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::PRIMARY_NETWORK_ID,
             new Fields\Types\NumericType(),
@@ -942,7 +955,7 @@ extends FieldsFactoryBase
     */
     public function createMultisiteSiteIdCurrentSite()
     {
-        $this->fields[ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SITE_ID_CURRENT_SITE,
             new Fields\Types\NumericType(),
@@ -963,7 +976,7 @@ extends FieldsFactoryBase
     */
     public function createMultisiteSubDomainInstall()
     {
-        $this->fields[ConfigFileFieldsNameMap::SUBDOMAIN_INSTALL] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SUBDOMAIN_INSTALL] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SUBDOMAIN_INSTALL,
             new Fields\Types\BooleanType(),
@@ -980,7 +993,7 @@ extends FieldsFactoryBase
     */
     public function createPostAutoSaveInterval()
     {
-        $this->fields[ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::AUTOSAVE_INTERVAL,
             new Fields\Types\NumericType(),
@@ -1002,7 +1015,7 @@ extends FieldsFactoryBase
     */
     public function createPostEmptyTrashDays()
     {
-        $this->fields[ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::EMPTY_TRASH_DAYS,
             new Fields\Types\NumericType(),
@@ -1025,7 +1038,7 @@ extends FieldsFactoryBase
     */
     public function createPostRevisions()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_POST_REVISIONS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_POST_REVISIONS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_POST_REVISIONS,
             null,
@@ -1068,7 +1081,7 @@ extends FieldsFactoryBase
     */
     public function createProxyBypassHosts()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_PROXY_BYPASS_HOSTS,
             new Fields\Types\StringType(),
@@ -1093,7 +1106,7 @@ extends FieldsFactoryBase
     */
     public function createProxyHost()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_HOST] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_HOST] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_PROXY_HOST,
             new Fields\Types\StringType(),
@@ -1114,7 +1127,7 @@ extends FieldsFactoryBase
     */
     public function createProxyPassword()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PASSWORD] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PASSWORD] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_PROXY_PASSWORD,
             new Fields\Types\StringType(),
@@ -1135,7 +1148,7 @@ extends FieldsFactoryBase
     */
     public function createProxyPort()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PORT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_PORT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_PROXY_PORT,
             new Fields\Types\StringType(),
@@ -1156,7 +1169,7 @@ extends FieldsFactoryBase
     */
     public function createProxyUserName()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_USERNAME] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_PROXY_USERNAME] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_PROXY_USERNAME,
             new Fields\Types\StringType(),
@@ -1177,7 +1190,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityAccessibleHosts()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_ACCESSIBLE_HOSTS,
             new Fields\Types\StringType(),
@@ -1202,7 +1215,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityAllowUnfilteredUploads()
     {
-        $this->fields[ConfigFileFieldsNameMap::ALLOW_UNFILTERED_UPLOADS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::ALLOW_UNFILTERED_UPLOADS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::ALLOW_UNFILTERED_UPLOADS,
             new Fields\Types\BooleanType(),
@@ -1223,7 +1236,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityHTTPBlockExternal()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_HTTP_BLOCK_EXTERNAL] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_HTTP_BLOCK_EXTERNAL] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_HTTP_BLOCK_EXTERNAL,
             new Fields\Types\BooleanType(),
@@ -1251,7 +1264,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityDisallowFileEdit()
     {
-        $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_EDIT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_EDIT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DISALLOW_FILE_EDIT,
             new Fields\Types\BooleanType(),
@@ -1272,7 +1285,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityDisallowUnfilteredHTML()
     {
-        $this->fields[ConfigFileFieldsNameMap::DISALLOW_UNFILTERED_HTML] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DISALLOW_UNFILTERED_HTML] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DISALLOW_UNFILTERED_HTML,
             new Fields\Types\BooleanType(),
@@ -1293,7 +1306,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityForceSSLAdmin()
     {
-        $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_ADMIN] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_ADMIN] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FORCE_SSL_ADMIN,
             new Fields\Types\BooleanType(),
@@ -1314,7 +1327,7 @@ extends FieldsFactoryBase
     */
     public function createSecurityForceSSLLogin()
     {
-        $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_LOGIN] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FORCE_SSL_LOGIN] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FORCE_SSL_LOGIN,
             new Fields\Types\BooleanType(),
@@ -1335,7 +1348,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysAuth()
     {
-        $this->fields[ConfigFileFieldsNameMap::AUTH_KEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::AUTH_KEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::AUTH_KEY,
             new Fields\Types\StringType(),
@@ -1358,7 +1371,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysAuthSalt()
     {
-        $this->fields[ConfigFileFieldsNameMap::AUTH_SALT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::AUTH_SALT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::AUTH_SALT,
             new Fields\Types\StringType()
@@ -1371,7 +1384,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysLoggedIn()
     {
-        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_KEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_KEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::LOGGED_IN_KEY,
             new Fields\Types\StringType()
@@ -1384,7 +1397,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysLoggedInSalt()
     {
-       $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_SALT] = new Fields\Constant(
+       $this->fields[ConfigFileFieldsNameMap::LOGGED_IN_SALT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::LOGGED_IN_SALT,
             new Fields\Types\StringType()
@@ -1397,7 +1410,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysNonce()
     {
-        $this->fields[ConfigFileFieldsNameMap::NONCE_KEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::NONCE_KEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::NONCE_KEY,
             new Fields\Types\StringType()
@@ -1410,7 +1423,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysNonceSalt()
     {
-        $this->fields[ConfigFileFieldsNameMap::NONCE_SALT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::NONCE_SALT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::NONCE_SALT,
             new Fields\Types\StringType()
@@ -1423,7 +1436,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysSecureAuth()
     {
-        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_KEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_KEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SECURE_AUTH_KEY,
             new Fields\Types\StringType()
@@ -1436,7 +1449,7 @@ extends FieldsFactoryBase
     */
     public function createSecureKeysSecureAuthSalt()
     {
-        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_SALT] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::SECURE_AUTH_SALT] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::SECURE_AUTH_SALT,
             new Fields\Types\StringType()
@@ -1449,7 +1462,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeAutoUpdateCore()
     {
-        $this->fields[ConfigFileFieldsNameMap::WP_AUTO_UPDATE_CORE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::WP_AUTO_UPDATE_CORE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::WP_AUTO_UPDATE_CORE,
             null,
@@ -1480,12 +1493,12 @@ extends FieldsFactoryBase
 
                 if ($stringValue != 'minor')  // It means either true/false
                 {
-                    $gField->setType(new Types\BooleanType());
+                    $gField->setType(new Fields\Types\BooleanType());
                     $gField->setParam('value', $stringValue == 'true' ? true : false);
                 }
                 else 
                 {
-                    $gField->setType(new Types\StringType());
+                    $gField->setType(new Fields\Types\StringType());
                     $gField->setParam('value', $stringValue);
                 }
             }
@@ -1498,7 +1511,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeAutmaticUpdater()
     {
-        $this->fields[ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::AUTOMATIC_UPDATER_DISABLED,
             new Fields\Types\BooleanType(),
@@ -1519,7 +1532,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeDisallowFileMods()
     {
-        $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_MODS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::DISALLOW_FILE_MODS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::DISALLOW_FILE_MODS,
             new Fields\Types\BooleanType(),
@@ -1540,7 +1553,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemMethod()
     {
-        $this->fields[ConfigFileFieldsNameMap::FS_METHOD] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FS_METHOD] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FS_METHOD,
             new Fields\Types\StringType(),
@@ -1561,7 +1574,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPBasePath()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_BASE] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_BASE] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_BASE,
             new Fields\Types\StringType(),
@@ -1582,7 +1595,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPContentDirPath()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_CONTENT_DIR] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_CONTENT_DIR] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_CONTENT_DIR,
             new Fields\Types\StringType(),
@@ -1603,7 +1616,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPHost()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_HOST] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_HOST] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_HOST,
             new Fields\Types\StringType(),
@@ -1624,7 +1637,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPPassword()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_PASS] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_PASS] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_PASS,
             new Fields\Types\StringType(),
@@ -1645,7 +1658,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPPluginDirPath()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_PLUGIN_DIR] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_PLUGIN_DIR] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_PLUGIN_DIR,
             new Fields\Types\StringType(),
@@ -1666,7 +1679,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPPrivateKeyPath()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_PRIKEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_PRIKEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_PRIKEY,
             new Fields\Types\StringType(),
@@ -1687,7 +1700,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPPublicKeyPath()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_PUBKEY] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_PUBKEY] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_PUBKEY,
             new Fields\Types\StringType(),
@@ -1708,7 +1721,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPSSL()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_SSL] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_SSL] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_SSL,
             new Fields\Types\BooleanType(),
@@ -1729,7 +1742,7 @@ extends FieldsFactoryBase
     */
     public function createUpgradeFileSystemFTPUser()
     {
-        $this->fields[ConfigFileFieldsNameMap::FTP_USER] = new Fields\Constant(
+        $this->fields[ConfigFileFieldsNameMap::FTP_USER] = new $this->constantFieldClassName(
             $this,
             ConfigFileNamesMap::FTP_USER,
             new Fields\Types\StringType(),
@@ -1817,5 +1830,31 @@ extends FieldsFactoryBase
         {
             $field->initSuppression();
         }
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $class
+    */
+    public function & setConstantFieldClassName($class)
+    {
+        
+        $this->constantFieldClassName = $class;
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $class
+    */
+    public function & setVariableFieldClassName($class)
+    {
+        
+        $this->variableFieldClassName = $class;
+        
+        return $this;
     }
 }

@@ -18,7 +18,7 @@ class NumericType implements Itype {
 	*/
 	public function prepareValue($value)
     {
-		return $value;
+		return (string) $value;
 	}
 
 }
