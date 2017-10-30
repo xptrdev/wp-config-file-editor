@@ -77,6 +77,7 @@ class ComposerStaticInitfe2ad7bc57369cc31174fe5525a436ac
         'WCFE\\Modules\\Editor\\View\\Editor\\Media\\EditorServices' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Media/EditorServices.class.php',
         'WCFE\\Modules\\Editor\\View\\Editor\\Media\\RawView' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Media/RawView.class.php',
         'WCFE\\Modules\\Editor\\View\\Editor\\Media\\Style' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Media/Style.php',
+        'WCFE\\Modules\\Editor\\View\\Editor\\RendererFieldsFactory' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/RendererFieldsFactory.class.php',
         'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\ConfigTabs' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Templates/Index/ConfigTabs.class.php',
         'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\EditorFormTabsAdapter' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Templates/__TFW_Tabs/TabsAdapter.class.php',
         'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\FieldsTab' => __DIR__ . '/../..' . '/Modules/Editor/View/Editor/Templates/__TFW_Tabs/FieldsTab.class.php',

@@ -76,6 +76,7 @@ return array(
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\EditorServices' => $baseDir . '/Modules/Editor/View/Editor/Media/EditorServices.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\RawView' => $baseDir . '/Modules/Editor/View/Editor/Media/RawView.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Media\\Style' => $baseDir . '/Modules/Editor/View/Editor/Media/Style.php',
+    'WCFE\\Modules\\Editor\\View\\Editor\\RendererFieldsFactory' => $baseDir . '/Modules/Editor/View/Editor/RendererFieldsFactory.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\ConfigTabs' => $baseDir . '/Modules/Editor/View/Editor/Templates/Index/ConfigTabs.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\EditorFormTabsAdapter' => $baseDir . '/Modules/Editor/View/Editor/Templates/__TFW_Tabs/TabsAdapter.class.php',
     'WCFE\\Modules\\Editor\\View\\Editor\\Templates\\Tabs\\FieldsTab' => $baseDir . '/Modules/Editor/View/Editor/Templates/__TFW_Tabs/FieldsTab.class.php',
