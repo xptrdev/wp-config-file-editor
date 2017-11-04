@@ -230,6 +230,18 @@ extends PluginBase
 		return $this->sysFiltersModule;
 	}
 	
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & loadLocalizationExtension()
+    {
+        
+        $this->setExtension('l10n', Localization::localize(strtolower(__NAMESPACE__), $this));
+        
+        return $this;
+    }
+    
 	/**
 	* put your comment there...
 	* 
@@ -246,7 +258,7 @@ extends PluginBase
     protected function onCreateServiceFront()
     {
         // Load localization extension
-        $this->setExtension( 'l10n',  Localization::localize( strtolower( __NAMESPACE__ ), $this ) );
+        $this->loadLocalizationExtension();
     }
     
 	/**

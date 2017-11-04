@@ -8,6 +8,8 @@ namespace WCFE\Modules\Editor\View\Editor\Templates\Tabs;
 
 use WCFE\Modules\Editor\View\Editor\RendererFieldsFactory;
 use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
+use WCFE\Modules\Editor\Lib\FormFieldsDataAccess;
+
 
 /**
 * 
@@ -206,6 +208,7 @@ class ConfigTabs extends Tabs {
         $tabsData['Proxy']['fields'][ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] = array();
         
         $fieldsFactory = new RendererFieldsFactory($this->form);
+        $formFieldsDataAccess =& FormFieldsDataAccess::instance();
         
         foreach ($tabsData as $tabName => $tabData)
         {
@@ -245,7 +248,8 @@ class ConfigTabs extends Tabs {
                 }
                 
                 $fieldsArr[] = $fieldsFactory->create(
-                    ConfigFileFieldsNameMap::getFieldKey($fieldName)
+                    ConfigFileFieldsNameMap::getFieldKey($fieldName),
+                    $formFieldsDataAccess->getFieldData($fieldName)
                 );
             }
             

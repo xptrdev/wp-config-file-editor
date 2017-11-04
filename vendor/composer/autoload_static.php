@@ -45,6 +45,7 @@ class ComposerStaticInitfe2ad7bc57369cc31174fe5525a436ac
         'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Writer' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Writer.class.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\WriterFieldsFactory' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/WritterFieldsFactory.class.php',
         'WCFE\\Modules\\Editor\\Lib\\FieldsFactoryBase' => __DIR__ . '/../..' . '/Modules/Editor/Lib/FieldsFactoryBase.abstract.php',
+        'WCFE\\Modules\\Editor\\Lib\\FormFieldsDataAccess' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFileFormFieldsDataAccess.class.php',
         'WCFE\\Modules\\Editor\\Lib\\RWFactoryBase' => __DIR__ . '/../..' . '/Modules/Editor/Lib/FieldsRWFactoryBase.abstract.php',
         'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\Constant' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Fields/Constant.class.php',
         'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieNamedBase' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Fields/CookieNamedBase.abstract.php',

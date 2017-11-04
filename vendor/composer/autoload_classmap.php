@@ -44,6 +44,7 @@ return array(
     'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Writer' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Writer.class.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\WriterFieldsFactory' => $baseDir . '/Modules/Editor/Lib/ConfigFile/WritterFieldsFactory.class.php',
     'WCFE\\Modules\\Editor\\Lib\\FieldsFactoryBase' => $baseDir . '/Modules/Editor/Lib/FieldsFactoryBase.abstract.php',
+    'WCFE\\Modules\\Editor\\Lib\\FormFieldsDataAccess' => $baseDir . '/Modules/Editor/Lib/ConfigFileFormFieldsDataAccess.class.php',
     'WCFE\\Modules\\Editor\\Lib\\RWFactoryBase' => $baseDir . '/Modules/Editor/Lib/FieldsRWFactoryBase.abstract.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\Constant' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Fields/Constant.class.php',
     'WCFE\\Modules\\Editor\\Model\\ConfigFile\\Fields\\CookieNamedBase' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Fields/CookieNamedBase.abstract.php',
