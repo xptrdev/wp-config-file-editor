@@ -43,7 +43,7 @@ class EditorFormTabsAdapter implements ITabsFormAdapter
     * @param mixed $view
     * @return EditorFormTabsAdapter
     */
-	public function __construct( \WPPFW\Forms\Form & $form, & $view )
+	public function __construct( \WPPFW\Forms\Form & $form, & $view = null)
 	{
 		$this->form =& $form;
         $this->view =& $view;

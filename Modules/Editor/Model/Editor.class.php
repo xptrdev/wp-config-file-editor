@@ -100,8 +100,8 @@ extends PluginModel
             }
 
             # Create HTAccess file
-            if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'Editor' . DIRECTORY_SEPARATOR . 'htaccess.Template', 
-            $contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
+            if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'htaccess.Template', 
+                        $contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
             {
 
                 $this->addError( $this->__( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' ) );
@@ -126,7 +126,7 @@ extends PluginModel
 
         # Create backup file
         ob_start();
-        require __DIR__ . DIRECTORY_SEPARATOR . 'Editor' . DIRECTORY_SEPARATOR . 'BackupFile.Template.php';
+        require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'BackupFile.Template.php';
 
         if ( ! file_put_contents( $backupFilePath, ob_get_clean() ) )
         {
@@ -139,7 +139,7 @@ extends PluginModel
 
         # Create backup data file
         ob_start();
-        require __DIR__ . DIRECTORY_SEPARATOR . 'Editor' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
+        require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
 
         if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
         {
@@ -520,77 +520,106 @@ extends PluginModel
         # If its a valid form try to open databse connection using 
         # form database parameters
 
-        if ( $form->validate() ) 
+        if ($form->validate()) 
         {
-
+            
             # Get database connection parameters.
+            $host       = $form->get(ConfigFileFieldsNameMap::DB_HOST)->getValue();
+            $port       = $form->get(ConfigFileFieldsNameMap::DB_PORT)->getValue();
             $user       = $form->get(ConfigFileFieldsNameMap::DB_USER)->getValue();
             $password   = $form->get(ConfigFileFieldsNameMap::DB_PASSWORD)->getValue();
             $name       = $form->get(ConfigFileFieldsNameMap::DB_NAME)->getValue();
-            $host       = $form->get(ConfigFileFieldsNameMap::DB_HOST)->getValue();
-            $port       = $form->get(ConfigFileFieldsNameMap::DB_PORT)->getValue();
 
-            # Test database parameters
-            # using mysql extension or mysqli is mysql not available
-            if ( function_exists( 'mysqli_init' ) ) 
-            { # Use Mysqli
-
-                # Connection successed
-                if ( $clink = @ mysqli_connect( $host, $user, $password, null, $port ) ) 
-                {
-                    # Db Selection successed
-                    if ( @ mysqli_select_db( $clink, $name ) ) 
-                    {
-                        # Return valid
-                        $valid = true;
-                    }
-                    else 
-                    {
-                        # Could not select database
-                        $this->addError( $this->__( 'Database doesn\' exists!' ) );
-                    }
-                    # Close connection
-                    mysqli_close( $clink );
-                }
-                else 
-                {
-                    # Could not connect
-                    $this->addError( $this->__( 'Couldn\'t connect to database server!' ) );
-                }
-            }
-            else if ( function_exists( 'mysql_connect' ) ) 
+            try
             {
-                # Connection successed
-                if ( $clink = @ mysql_connect( $host, $user, $password ) )
-                {
-                    # Db Selection successed
-                    if ( @ mysql_select_db( $name, $clink ) )
-                    {
-                        # Return valid
-                        $valid = true;
-                    }
-                    else 
-                    {
-                        # Could not select database
-                        $this->addError( $this->__( 'Database doesn\' exists!' ) );
-                    }
-                    # Close connection
-                    mysql_close( $clink );
-                }
-                else 
-                {
-                    # Could not connect
-                    $this->addError( $this->__( 'Couldn\'t connect to database server!' ) );
-                }
+                
+                self::validateDbParams($host, $port, $name, $user, $password);    
+                
+                $valid = true;
             }
-            else 
+            catch (\Exception $exception)
             {
-                # Doesn't supported
-                $this->addError( $this->__( 'Could not use mysql or mysqli extension for testing database connection! DB provider doesn\' supported!!' ) );
+                $this->addError($exception->getMessage());
             }
         }
+        
         # Return status
         return $valid;
+    }
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $host
+    * @param mixed $port
+    * @param mixed $name
+    * @param mixed $user
+    * @param mixed $password
+    */
+    public static function validateDbParams($host, $port, $name, $user, $password)
+    {
+        
+        $l10n = \WCFE\Plugin::me()->loadLocalizationExtension()->getExtension('l10n');
+        
+        # Test database parameters
+        # using mysql extension or mysqli is mysql not available
+        # Use Mysqli
+        if (function_exists('mysqli_init')) 
+        { 
+            
+            # Connection successed
+            if (!$clink = @mysqli_connect($host, $user, $password, null, $port)) 
+            {
+                throw new \Exception($l10n->_('Couldn\'t connect to database server!'));
+            }
+            
+            # Db Selection successed
+            if (! @mysqli_select_db($clink, $name)) 
+            {
+                
+                // Close Connecton
+                mysqli_close($clink);
+                
+                throw new \Exception($l10n->_('Database doesn\' exists!'));
+            }
+            
+            // Close Connecton
+            mysqli_close($clink);
+                
+        }
+        else if (function_exists('mysql_connect')) 
+        {
+            
+            if ($port)
+            {
+                $host = "{$host}:{$port}";
+            }
+            
+            # Connection successed
+            if (!$clink = @mysql_connect($host, $user, $password))
+            {
+                throw new \Exception($l10n->_('Couldn\'t connect to database server!'));
+            }
+            
+            # Db Selection successed
+            if (! @mysql_select_db($name, $clink))
+            {
+                
+                # Close connection
+                mysql_close($clink);
+                
+                throw new \Exception($l10n->_('Database doesn\' exists!'));
+            }
+            
+            # Close connection
+            mysql_close($clink);
+            
+        }
+        else 
+        {
+            throw new \Exception($l10n->_('Could not use mysql or mysqli extension for testing database connection! DB provider doesn\' supported!!'));
+        }
+            
     }
 
 }

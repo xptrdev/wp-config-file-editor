@@ -175,6 +175,7 @@ class ConfigTabs extends Tabs {
         $tabsData['SecureKeys']['class'] = 'FieldsTab';
 
         $tabsData['SecureKeys']['fields'][ConfigFileFieldsNameMap::AUTH_KEY] = array();
+        $tabsData['SecureKeys']['fields'][ConfigFileFieldsNameMap::AUTH_SALT] = array();
         $tabsData['SecureKeys']['fields'][ConfigFileFieldsNameMap::SECURE_AUTH_KEY] = array();
         $tabsData['SecureKeys']['fields'][ConfigFileFieldsNameMap::LOGGED_IN_KEY] = array();
         $tabsData['SecureKeys']['fields'][ConfigFileFieldsNameMap::NONCE_SALT] = array();

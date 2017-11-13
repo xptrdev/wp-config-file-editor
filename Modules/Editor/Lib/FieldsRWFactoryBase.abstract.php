@@ -44,6 +44,22 @@ abstract class RWFactoryBase
     /**
     * put your comment there...
     * 
+    * @param mixed $fieldKey
+    */
+    public function exists($fieldKey)
+    {
+        
+        $factoryMethodName = ConfigFileFactoriesFieldsNameMap::getFieldFactoryName($fieldKey);
+        $factoryMethodName = "{$this->factorySuffix}{$factoryMethodName}";
+        
+        $factoryMethodExists = method_exists($this, $factoryMethodName);
+        
+        return $factoryMethodExists;
+    }
+    
+    /**
+    * put your comment there...
+    * 
     */
     public function getAllFactories()
     {
