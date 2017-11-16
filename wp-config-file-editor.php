@@ -188,7 +188,7 @@ extends PluginBase
 		}
 
 		# Start using hooks at this point so that WCFE Extensions can get involved
-        add_action('plugins_loaded', array($this, '_ExtensionsFeatures'));
+        add_action('plugins_loaded', array($this, '_ExtensionsFeatures'), 11);
 		add_action('plugins_loaded', array($this, '_initializePluggableHooks'), 11);
 			
 	}

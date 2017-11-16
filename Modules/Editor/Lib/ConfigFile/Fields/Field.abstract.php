@@ -192,9 +192,17 @@ abstract class Field
 			$this->setSuppressOutputForce(true);
 			
 			# Force all deps fields to not output as well
+            $generator =& $this->getGenerator();
+            
 			foreach ($this->suppressOutputDeps as $fieldName)
 			{
-				$this->getGenerator()->getField($fieldName)->setSuppressOutputForce(true);
+                // Suppress dependency field only if loaded/exists
+                // into current generaotor
+                if ($generator->exists($fieldName))
+                {
+                    $generator->getField($fieldName)->setSuppressOutputForce(true);    
+                }
+                				
 			}
 			
 		}

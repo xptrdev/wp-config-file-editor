@@ -843,11 +843,15 @@ extends FieldsFactoryBase
             function(Fields\Field $field)
             {        
                 # Stop WP_ALLOW_MULTISITE if I'm true
-                $this->getField(
-                
-                    ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE
+                if ($this->exists(ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE))
+                {
+                    $this->getField(
                     
-                    )->setSuppressOutputForce($field->getValue());
+                        ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE
+                        
+                        )->setSuppressOutputForce($field->getValue());
+                }
+
             }
         );
     }
@@ -1251,9 +1255,13 @@ extends FieldsFactoryBase
             null,
             function(Fields\Field & $gField)
             {
-                # Suppress Accessible hosts if FALSE
-                $accessibleHosts = $this->getField(ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS);
-                $accessibleHosts->setSuppressOutputForce(!$gField->getValue());
+                # Suppress Accessible hosts if FALSEd
+                if ($this->exists(ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS))
+                {
+                    $accessibleHosts = $this->getField(ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS);
+                    $accessibleHosts->setSuppressOutputForce(!$gField->getValue());                    
+                }
+
             }
         );
     }
@@ -1755,6 +1763,16 @@ extends FieldsFactoryBase
                 'suppressOutput' => true
             )
         );
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $name
+    */
+    public function exists($name)
+    {
+        return  isset($this->fields[$name]);
     }
     
     /**

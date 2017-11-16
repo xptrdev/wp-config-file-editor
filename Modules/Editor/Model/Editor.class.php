@@ -79,12 +79,38 @@ extends PluginModel
     * 
     * @param mixed $restoreUrl
     */
-    public function createBackup( & $restoreUrl )
+    public function createBackup(& $restoreUrl)
+    {
+        
+        $result = true;
+        
+        try
+        {
+            $restoreUrl = $this->createBackupWTEE();
+        }
+        catch (\Exception $exception)
+        {
+            
+            $result = false;
+            
+            $this->addError($exception->getMessage());
+        }
+        
+        return $result;
+    }
+
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $restoreUrl
+    */
+    public function createBackupWTEE()
     {
 
         # Create content dir if not already created or it was previously created
         # by deleted for some reason!!
-        if ( ! $this->contentDirName || ! file_exists( WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName ) )
+        if (!$this->contentDirName || 
+            !file_exists(WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName))
         {
 
             # Generate unique dir name, thiss is more secure to never accessed from outside
@@ -92,26 +118,21 @@ extends PluginModel
 
             $contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $contentDirName;
 
-            if ( ! is_writable( WP_CONTENT_DIR ) || ! mkdir( $contentDir, 0755 ) )
+            if (!is_writable(WP_CONTENT_DIR) ||
+                !mkdir( $contentDir, 0755))
             {
-                $this->addError( $this->__( 'Couldn\'t create Content dir:: %s. Content directory is not writable!!', $contentDir ) );
-
-                return false;
+                throw new \Exception($this->__( 'Couldn\'t create Content dir:: %s. Content directory is not writable!!', $contentDir ));
             }
 
             # Create HTAccess file
-            if ( ! copy( __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'htaccess.Template', 
-                        $contentDir . DIRECTORY_SEPARATOR . '.htaccess' ) ) 
+            if (!copy(  __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'htaccess.Template', 
+                        $contentDir . DIRECTORY_SEPARATOR . '.htaccess')) 
             {
-
-                $this->addError( $this->__( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' ) );
-
-                return false;
+                throw new \Exception($this->__( 'Could\'t create htaccess file to protect wcfe content dir from being access by public' ));
             }
 
             # Store content dir name
             $this->contentDirName = $contentDirName;
-
         }
 
 
@@ -119,33 +140,31 @@ extends PluginModel
         $contentDir = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $this->contentDirName;
         $dataFileName = EmergencyRestore::BACKUP_DATA_FILE_NAME;
         $dataFilePath = $contentDir . DIRECTORY_SEPARATOR . $dataFileName;
-        $configFileContent = base64_encode( file_get_contents( ABSPATH . DIRECTORY_SEPARATOR . 'wp-config.php' ) );
-        $secureKey = md5( uniqid( ) );
+        $configFileContent = base64_encode( file_get_contents(ABSPATH . DIRECTORY_SEPARATOR . 'wp-config.php'));
+        $secureKey = md5(uniqid());
         $backupFilePath = $contentDir . DIRECTORY_SEPARATOR . EmergencyRestore::BACKUP_FILE_NAME;
-        $cleanAbsPath = substr( ABSPATH, 0, strlen( ABSPATH ) - 1 );
+        $cleanAbsPath = substr(ABSPATH, 0, strlen(ABSPATH) - 1);
 
         # Create backup file
         ob_start();
+        
         require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'BackupFile.Template.php';
 
-        if ( ! file_put_contents( $backupFilePath, ob_get_clean() ) )
+        if (!file_put_contents($backupFilePath, ob_get_clean()))
         {
-            $this->addError( $this->__( 'Could not create backup file: %s', $backupFilePath ) );
-
-            return false;
+            throw new \Exception($this->__('Could not create backup file: %s', $backupFilePath));
         }		
 
-        $backupFileHash = md5( file_get_contents( $backupFilePath ) );
+        $backupFileHash = md5(file_get_contents($backupFilePath));
 
         # Create backup data file
         ob_start();
+        
         require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'BackupDBFile.Template.php';
 
-        if ( ! file_put_contents( $dataFilePath, ob_get_clean() ) )
+        if (!file_put_contents( $dataFilePath, ob_get_clean()))
         {
-            $this->addError( $this->__( 'Could not create backup Data file: %s', $dataFilePath ) );
-
-            return false;
+            throw new \Exception($this->__('Could not create backup Data file: %s', $dataFilePath));
         }
 
         # Returns Restore Url
@@ -154,12 +173,12 @@ extends PluginModel
             'absPath' => $cleanAbsPath, /* Remove extra slash at the end! */
             'contentDir' => $contentDir,
             'secureKey' => $secureKey,
-            'dataFileSecure' => md5( file_get_contents( $dataFilePath ) )
+            'dataFileSecure' => md5(file_get_contents($dataFilePath))
         );
-        $restoreUrl = WP_PLUGIN_URL . '/wp-config-file-editor/Public/Restore.php?' . http_build_query( $restoreUrlParams );
+        
+        $restoreUrl = WP_PLUGIN_URL . '/wp-config-file-editor/Public/Restore.php?' . http_build_query($restoreUrlParams);
 
-        # Successed!
-        return true;
+        return $restoreUrl;
     }
 
     /**
@@ -399,21 +418,40 @@ extends PluginModel
     public function readWPConfigFileContent()
     {
 
-        $configFilePath = ABSPATH . 'wp-config.php';
-
-        if ( ! is_readable( $configFilePath ) )
+        try
         {
-
-            $this->addError( $this->__( 'Couldn\'t read wp-config.php file' ) );
-
-            return false;
+            $configContent = $this->readWPConfigFileContentWTEE();
         }
-
-        $configContent = file_get_contents( $configFilePath );
+        catch (\Exception $exception)
+        {
+            
+            $this->addError($exception->getMessage());
+            
+            $configContent = false;
+        }
 
         return $configContent;
     }
 
+    /**
+    * put your comment there...
+    * 
+    */
+    public function readWPConfigFileContentWTEE()
+    {
+        
+        $configFilePath = ABSPATH . 'wp-config.php';
+
+        if (!is_readable($configFilePath))
+        {
+            throw new \Exception($this->__('Couldn\'t read wp-config.php file'));
+        }
+
+        $configContent = file_get_contents($configFilePath);
+
+        return $configContent;
+    }
+    
     /**
     * put your comment there...
     * 
@@ -443,30 +481,47 @@ extends PluginModel
     /**
     * put your comment there...
     * 
+    * @param mixed $configContent
     */
-    public function saveConfigFile() 
+    public function & saveConfigFileWTEE($configContent)
     {
 
         # Config File path
         $configFilePath = ABSPATH . 'wp-config.php';
 
         # Check config file permissions
-        if ( ! is_readable( $configFilePath ) || ! is_writable( $configFilePath ) )
+        if (!is_readable($configFilePath) || 
+            !is_writable($configFilePath))
         {
-            $this->addError( $this->__( 'Config file is not writable: %s', $configFilePath ) );
-
-            return false;
+            throw new \Exception($this->__('Config file is not writable: %s', $configFilePath));
         }
 
         # Save config file
-        if ( ! file_put_contents( $configFilePath, $this->getConfigFileContent() ) )
+        if (!file_put_contents($configFilePath, $configContent))
         {
-
-            $this->addError( $this->__( 'Could not write config file: %s', $configFilePath ) );
-
-            return false;
+            throw new \Exception($this->__('Could not write config file: %s', $configFilePath));
         }
+        
+        return $this;
+    }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function saveConfigFile() 
+    {
 
+        // Save Config file 
+        try
+        {
+            $this->saveConfigFileWTEE($this->getConfigFileContent());    
+        }
+        catch (\Exception $exception)
+        {
+            $this->addError($exception->getMessage());
+        }
+        
         return true;
     }
 
