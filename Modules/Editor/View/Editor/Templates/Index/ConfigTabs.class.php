@@ -42,23 +42,6 @@ class ConfigTabs extends Tabs {
         
         $tabsData = array();
         
-        // Cookies
-        $tabsData['Cookies'] = array();
-        $tabsData['Cookies']['title'] = $this->__( 'Cookies' );
-        $tabsData['Cookies']['hook'] = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_COOKIES_FIELDS;
-        $tabsData['Cookies']['class'] = 'FieldsTab';
-        
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIEHASH] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::PASS_COOKIE] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::AUTH_COOKIE] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIEPATH] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::SITECOOKIEPATH] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = array();
-        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIE_DOMAIN] = array();
-        
         // Maintenance
         $tabsData['Maintenance'] = array();
         $tabsData['Maintenance']['title'] = $this->__('Maintance');
@@ -207,6 +190,23 @@ class ConfigTabs extends Tabs {
         $tabsData['Proxy']['fields'][ConfigFileFieldsNameMap::WP_PROXY_USERNAME] = array();
         $tabsData['Proxy']['fields'][ConfigFileFieldsNameMap::WP_PROXY_PASSWORD] = array();
         $tabsData['Proxy']['fields'][ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS] = array();
+        
+        // Cookies
+        $tabsData['Cookies'] = array();
+        $tabsData['Cookies']['title'] = $this->__( 'Cookies' );
+        $tabsData['Cookies']['hook'] = \WCFE\Hooks::FILTER_VIEW_TABS_TAB_COOKIES_FIELDS;
+        $tabsData['Cookies']['class'] = 'FieldsTab';
+        
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIEHASH] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::PASS_COOKIE] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::AUTH_COOKIE] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::SECURE_AUTH_COOKIE] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::LOGGED_IN_COOKIE] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIEPATH] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::SITECOOKIEPATH] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::ADMIN_COOKIE_PATH] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::PLUGINS_COOKIE_PATH] = array();
+        $tabsData['Cookies']['fields'][ConfigFileFieldsNameMap::COOKIE_DOMAIN] = array();
         
         $fieldsFactory = new RendererFieldsFactory($this->form);
         $formFieldsDataAccess =& FormFieldsDataAccess::instance();

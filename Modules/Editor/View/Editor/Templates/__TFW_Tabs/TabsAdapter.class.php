@@ -120,11 +120,15 @@ class EditorFormTabsAdapter implements ITabsFormAdapter
 	public function renderRow( $doc, $row, $renderer )
 	{
 			
-		$name = $doc->createElement( 'p' );
-		$name->setAttribute( 'class', 'field-constant-name' );
-		$name->nodeValue = $renderer->getField()->getName();
+		$name = $doc->createElement('p');
+		$name->setAttribute('class', 'field-constant-name');
+        
+        // The Var/Field name is suffix before :
+        $fieldName = explode(':', $renderer->getField()->getName());
+        
+		$name->nodeValue = $fieldName[0];
 		
-		$row->appendChild( $name );
+		$row->appendChild($name);
 	}
 	
 }

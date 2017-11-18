@@ -679,7 +679,10 @@ extends FieldsFactoryBase
             $this,
             ConfigFileNamesMap::WP_DEBUG_DISPLAY,
             new Fields\Types\BooleanType(),
-            null,
+            array
+            (
+                'Another companion to Debug Mode field that controls whether debug messages are shown inside the HTML of pages or not. The default is ON which shows errors and warnings as they are generated. Setting this to false will hide all errors. This should be used in conjunction with Debug Log so that errors can be reviewed later.'
+            ),
             array
             (
                 'suppressOutput' => true,
@@ -698,7 +701,10 @@ extends FieldsFactoryBase
             $this,
             ConfigFileNamesMap::WP_DEBUG_LOG,
             new Fields\Types\BooleanType(),
-            null,
+            array
+            (
+                'Companion to Debug Mode field that causes all errors to also be saved to a debug.log log file inside the /wp-content/ directory. This is useful if you want to review all notices later or need to view notices generated off-screen (e.g. during an AJAX request or wp-cron run). Note that this allows you to write to /wp-content/debug.log using PHP\'s built in error_log() function, which can be useful for instance when debugging AJAX events.'
+            ),
             array
             (
                 'suppressOutput' => true,
@@ -1225,7 +1231,7 @@ extends FieldsFactoryBase
             new Fields\Types\BooleanType(),
             array
             (
-                ''
+                'Allow unfilered Uploads'
             ),
             array
             (
