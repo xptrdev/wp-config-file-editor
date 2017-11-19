@@ -33,9 +33,11 @@ class PreDefinedCheckboxList extends CheckboxListField {
 	* 
 	* @param mixed $list
 	*/
-	public function setPreDefinedList( $list )
+	public function & setPreDefinedList( $list )
 	{
 		$this->predefinedList = $list;		
+        
+        return $this;
 	}
 	
 	/**

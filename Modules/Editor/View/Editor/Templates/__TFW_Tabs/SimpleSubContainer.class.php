@@ -98,6 +98,19 @@ class SimpleSubContainerTab extends Tab
 		}
 		
 	}
+    
+    /**
+    * put your comment there...
+    * 
+    * @param mixed $data
+    */
+    public function & setContainersData($data)
+    {
+        
+        $this->containersData =& $data;
+        
+        return $this;
+    }
 
 	
 }

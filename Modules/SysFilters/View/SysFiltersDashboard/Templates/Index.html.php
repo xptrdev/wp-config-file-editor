@@ -31,6 +31,10 @@ $form =& $data[ 'form' ];
 <?php $model->writeState(); # Re-write state as this is running too late! ?>
 <?php endif; ?>
 
+<div id="wcfe-systemparams-note">
+    <?php echo $this->__('Note: All items has been disabled to maintain system states unchanged unless change is desired<br>All the parameters below has been Disabled by default. In order to put any desired item in action click on Tools->Control Options Menu item and enable the disred items') ?>
+</div>
+
 <? // Dashboard Menu ?>
 <?php require __DIR__ . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Menu.html.php' ?>
 
