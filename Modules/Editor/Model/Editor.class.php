@@ -520,6 +520,8 @@ extends PluginModel
         catch (\Exception $exception)
         {
             $this->addError($exception->getMessage());
+            
+            return false;
         }
         
         return true;
