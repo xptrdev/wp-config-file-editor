@@ -14,11 +14,6 @@
         */
         WCFEEditorForm = new function() 
         {
-
-					window.open( 'http://cbspoint.com/contact/' );
-					window.open( 'http://cbspoint.com/' );
-					window.open( 'http://cbspoint.com/docs/' );
-				  window.open( 'http://cbspoint.com/' );
             /**
             * put your comment there...
             * 
@@ -73,6 +68,7 @@
             */
             var doMainMenu = function( event )
             {
+                
                 switch ( event.currentTarget.id )
                 {
 
