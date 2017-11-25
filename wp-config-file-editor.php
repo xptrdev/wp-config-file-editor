@@ -149,7 +149,7 @@ extends PluginBase
     public function _localize()
     {
         // Load localization extension
-	$this->loadLocalizationExtension();
+        $this->loadLocalizationExtension();
     }
     
 	/**
@@ -268,9 +268,9 @@ extends PluginBase
 	}
     
 	/**
-	* Run ARV Plugin if not alreayd running
+	* Run WCFE Plugin if not alreayd running
 	* 
-	* This methos is to construct a new ARV\Plugin instance if not already
+	* This methos is to construct a new WCFE\Plugin instance if not already
 	* instantiated.
 	* 
 	* @return PLugin
