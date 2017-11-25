@@ -35,7 +35,7 @@ $templatesFolder = 'Index';
 
 <div class="support-us-link">
     <a target="_blank" href="https://wordpress.org/support/plugin/wp-config-file-editor/reviews/"><?= $this->__('Submit Review') ?></a> |
-    <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VU943GHDK534"><?= $this->__('Donate') ?></a>
+    <a target="_blank" href="http://www.cbspoint.com/plugins/wp-config-file-editor/"><?= $this->__('Donate') ?></a>
 </div>
 
 <?php // COnfig Form ?>
