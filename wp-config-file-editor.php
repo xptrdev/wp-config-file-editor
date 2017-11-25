@@ -257,7 +257,7 @@ extends PluginBase
             // Load localization extension
             $this->setExtension(
                 'l10n', 
-                Localization::localize(basename(dirname(__FILE__)), $this)
+                Localization::localize(basename(__DIR__), $this)
             );            
         }
         return $this;
@@ -278,7 +278,7 @@ extends PluginBase
     */
     protected function onCreateServiceFront()
     {
-        $this->_localize();
+        $this->loadLocalizationExtension();
     }
     
 	/**
