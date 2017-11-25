@@ -14,10 +14,9 @@ use WCFE\Modules\Editor\Model\Forms;
 /**
 * 
 */
-class EditorController extends Controller {
-			die( $this->__( 'Access denied' ) );
-
-				die( $this->__( 'Access Denied' ) );
+class EditorController
+extends Controller {
+    
     /**
     * put your comment there...
     * 
@@ -25,15 +24,8 @@ class EditorController extends Controller {
     public function systemCheckToolsAction()
     {
 
-			die( $this->__( 'Access denied' ) );
-					$model->AddError( $this->__( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Config Form reseted back to wp-config file values!!' ) );
-				$model->addError( $this->__( 'Not authorized to take such action!! Please refrehs the page if you think this is wrong.' ) );
         if ( ! is_super_admin() )
         {
-
-			die( $this->__( 'Access denied' ) );
-            die( $this->__( 'Access denied' ) );
-
 			die( $this->__( 'Access denied' ) );
         }
 
@@ -177,7 +169,7 @@ class EditorController extends Controller {
                     // Clea profile and refresh to display normal config file
                     $model->unsetActiveProfile();
 
-                    $model->AddError( $this->__( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Config Form reseted back to wp-config file values!!' ) );
+                    $model->addError( $this->__( 'Unhandled Catchable Error!!! Active Profile doesnt exists!!! Config Form reseted back to wp-config file values!!' ) );
 
                     $this->redirect( $router->routeAction() );
 
