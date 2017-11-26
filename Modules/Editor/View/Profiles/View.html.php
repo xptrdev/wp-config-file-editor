@@ -3,7 +3,7 @@
 * 
 */
 
-namespace WCFE\Modules\Editor\View\SystemCheckTools;
+namespace WCFE\Modules\Editor\View\Profiles;
 
 # Imports
 use WPPFW\MVC\View\TemplateView;
@@ -15,7 +15,7 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 /**
 * 
 */
-final class SystemCheckToolsHTMLView
+final class ProfilesHTMLView
 extends TemplateView
 {
 
@@ -64,23 +64,46 @@ extends TemplateView
 		$this->resFactory = new \WCFE\Libraries\ResStorage( 
             WP_PLUGIN_URL . '/wp-config-file-editor',
             WP_PLUGIN_DIR . '/wp-config-file-editor'
-        );
+            );
 		
 		# Scripts and Styles queues
 		$this->scriptsQueue = new DashboardScriptsQueue( $this, 'js', 'localization.php' );
 		$this->stylesQueue = new DashboardStylesQueue();
-
+		
+		# Scripts
+		$this->scriptsQueue->enqueueNamedResource( \WPPFW\Services\Queue\DashboardScriptsQueue::JQUERY );
+		
+		$this->scriptsQueue->enqueueNamedResource( DashboardScriptsQueue::THICK_BOX );
+		
+		$this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\JavaScript\jQueryMenu' ) );
+		
+        $this->scriptsQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Profiles\Media\Profiles' ), true );
+        
+        
+		# Styles
+		$this->stylesQueue->enqueueNamedResource( DashboardStylesQueue::THICK_BOX );
+		
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Libraries\CSS\jQuery\Theme\Theme' ) );
+		
+		$this->stylesQueue->add( $this->resFactory->getRes( 'WCFE\Modules\Editor\View\Profiles\Media\Style' ) );
+		
 		# Actions route
 		$this->setActionsRoute( 
-			'Editor', 'editorViews', array
+			'Editor',
+            'editorViews',
+            array
 			(
-				'systemCheckTools' => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
+				'editProfile' => array
+                (
+                    'controller' => 'Profiles',
+                    'action' => 'Edit',
+                    'view' => 'Profile'
+                )
 			)
 		);
 		
-		$this->actionsRoute[ 'systemCheckTools' ] .= "&securityNonce={$this->result[ 'securityNonce' ]}";
 	}
-	
+
 	/**
 	* put your comment there...
 	* 
@@ -122,5 +145,5 @@ extends TemplateView
 		
 		return $this;
 	}
-
+	
 }

@@ -15,7 +15,9 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 /**
 * 
 */
-class EditorHTMLView extends TemplateView {
+final class EditorHTMLView
+extends TemplateView
+{
 
 	/**
 	* put your comment there...
@@ -125,32 +127,83 @@ class EditorHTMLView extends TemplateView {
 		
 		# Actions route
 		$this->setActionsRoute( 
-			'Editor', 'editorService', array
-				(
-					'createSecureKey' 	        => 		array( 'action' => 'CreateSecureKey' ),
-					'preUpdate' 				=> 		array( 'action' => 'PreUpdate' ),
-					'validateForm'		 	    => 		array( 'action' => 'ValidateForm' ),
-					'postUpdate' 				=> 		array( 'action' => 'PostUpdate' ),
-					'updateConfigFile' 	        => 		array( 'action' => 'UpdateConfigFile' ),
-					'setActiveProfile' 	        => 		array( 'action' => 'SetActiveProfile' ),
-					'getSystemPath'		 	    => 		array( 'action' => 'GetSystemPath' ),
-					'generateCookieHash'        => 	    array( 'action' => 'GenerateCookieHash' ),
-				),
-			'Editor', 'editorViews', array
+            // Editor Services routes
+			'Editor',
+            'editorService',
+            array
+			(
+				'createSecureKey' => array
+                (
+                    'action' => 'CreateSecureKey'
+                ),
+				'preUpdate' => array
+                (
+                    'action' => 'PreUpdate'
+                ),
+				'validateForm' => array
+                (
+                    'action' => 'ValidateForm'
+                ),
+				'postUpdate' => array
+                (
+                    'action' => 'PostUpdate'
+                ),
+				'updateConfigFile' => array
+                (
+                    'action' => 'UpdateConfigFile'
+                ),
+				'setActiveProfile' => array
+                (
+                    'action' => 'SetActiveProfile'
+                ),
+				'getSystemPath' => array
+                (
+                    'action' => 'GetSystemPath'
+                ),
+				'generateCookieHash' => array
+                (
+                    'action' => 'GenerateCookieHash'
+                ),
+                'createVarsTStorage' => array
+                (
+                    'controller' => 'ProfilesService',
+                    'action' => 'CreateProfileVarsTStorage'
+                ),
+                'setProfileVars' => array
+                (
+                    'controller' => 'ProfilesService',
+                    'action' => 'SetProfileVars'
+                ),
+                'deleteProfile' => array
+                (
+                    'controller' => 'ProfilesService',
+                    'action' => 'DeleteProfile'
+                ),
+			),
+            
+            // Editor AJAX Views routes
+			'Editor',
+            'editorViews', array
 			(
 				'MultiSiteSetupTools'   => array(),
-				'systemCheckTools'      => array( 'action' => 'SystemCheckTools', 'controller' => 'Editor', 'view' => 'SystemCheckTools' ),
-			),
-			'Profiles', 'profilesView', array
-			(
-				'profilesList'          => array(),
-				'editProfile'           => array( 'action' => 'Edit', 'view' => 'Profile' ),
-			),
-			'Profiles', 'profilesService', array
-			(
-				'createVarsTStorage'    => array( 'controller' => 'ProfilesService' , 'action' => 'CreateProfileVarsTStorage' ),
-				'setProfileVars'        => array( 'controller' => 'ProfilesService' , 'action' => 'SetProfileVars' ),
-				'deleteProfile'         => array( 'controller' => 'ProfilesService', 'action' => 'DeleteProfile' ),
+				'systemCheckTools'      => array
+                (
+                    'controller' => 'Editor',
+                    'action' => 'SystemCheckTools',
+                    'view' => 'SystemCheckTools'
+                ),
+                'profilesList' => array
+                (
+                    'controller' => 'Profiles',
+                    'action' => 'List',
+                    'view' => 'Profiles'
+                ),
+                'editProfile' => array
+                (
+                    'controller' => 'Profiles',
+                    'action' => 'Edit',
+                    'view' => 'Profile'
+                ),
 			)
 		);
 	}
@@ -176,11 +229,13 @@ class EditorHTMLView extends TemplateView {
 		
 		# Actions route
 		$this->setActionsRoute( 
-			'Editor', 'editorService', array
+			'Editor',
+            'editorService',
+            array
 			(
-				'preUpdate' => array( 'action' => 'PreUpdate' ),
-				'postUpdate' => array( 'action' => 'PostUpdate' ),
-				'updateRawConfigFile' => array( 'action' => 'UpdateRawConfigFile' ),
+				'preUpdate' => array('action' => 'PreUpdate'),
+				'postUpdate' => array('action' => 'PostUpdate'),
+				'updateRawConfigFile' => array('action' => 'UpdateRawConfigFile'),
 			) 
 		);
 		
@@ -189,12 +244,12 @@ class EditorHTMLView extends TemplateView {
 	/**
 	* put your comment there...
 	* 
-	* @param mixed $moduleName
-	* @param mixed $serviceObjectName
-	* @param mixed $actionsList
+	* @param mixed $moduleName ...
+	* @param mixed $serviceObjectName ...
+	* @param mixed $actionsList ...
 	* @return EditorHTMLView
 	*/
-	private function & setActionsRoute( $moduleName, $serviceObjectName, $actionsList )
+	private function & setActionsRoute()
 	{
 		
 		$args = func_get_args();

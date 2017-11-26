@@ -15,7 +15,9 @@ use WPPFW\Plugin\PluginConfig;
 * 
 * @author AHMeD SAiD
 */
-class Plugin extends PluginConfig {
+final class Plugin
+extends PluginConfig
+{
 	
 	/**
 	* Load Plugin configuration from configuration XML file

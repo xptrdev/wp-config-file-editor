@@ -12,7 +12,7 @@ defined('ABSPATH') or die(-1);
 /**
 * 
 */
-class ExtensionsFeatures
+final class ExtensionsFeatures
 {
     
     /**

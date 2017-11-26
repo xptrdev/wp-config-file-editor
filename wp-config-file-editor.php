@@ -11,6 +11,8 @@
 * License: GPL2
 */
 
+ini_set('display_errors', 'On');
+
 /**
 * 
 */
@@ -79,7 +81,8 @@ final class WCFEPluginLoaded
                 self::$instance->checkPHPVerion();
                 
                 // Plug if all check passed
-                require __DIR__ . DIRECTORY_SEPARATOR . 'Plugin.php';
+                require __DIR__ . DIRECTORY_SEPARATOR . 'Plugin' . 
+                        DIRECTORY_SEPARATOR . 'Plugin.php';
                 
                 \WCFE\Plugin::plug(__FILE__);
                 

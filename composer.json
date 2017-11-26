@@ -1,7 +1,7 @@
 {
 	"name" : "xptrdev/wp-config-file-editor",
 	"autoload" : {
-		"classmap" : ["Compatibility/", "Config/", "Includes/", "Modules/", "Services/", "Factory/", "Libraries/", "Pluggable/", "SysPlugins/", "Installer/" ]
+		"classmap" : [""]
 	},
   "repositories": [{
     "type": "vcs",

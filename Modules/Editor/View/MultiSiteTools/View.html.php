@@ -15,7 +15,9 @@ use WPPFW\Services\Queue\DashboardStylesQueue;
 /**
 * 
 */
-class MultiSiteToolsHTMLView extends TemplateView {
+final class MultiSiteToolsHTMLView
+extends TemplateView
+{
 
 	/**
 	* put your comment there...
