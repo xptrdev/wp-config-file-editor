@@ -788,7 +788,7 @@
 
                 enabled = true;
 
-                $( '#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li' ).css( 'color', 'black' );
+                $( '#wcfe-dmm-profiles-save, #wcfe-dmm-profiles-edit, #wcfe-dmm-profiles-delete, #wcfe-dmm-profiles-unload, #wcfe-dmm-profiles-reload' ).css( 'color', 'black' );
 
                 this.reflectState();
 

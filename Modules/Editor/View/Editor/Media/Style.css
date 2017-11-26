@@ -380,7 +380,12 @@ td.help-label-text {
     border-left: 2px solid #DCDCDC;
     position: relative;
 }
-#wcfe-dmm-profiles-active-profile, #wcfe-dmm-profiles-active-profile li
+
+#wcfe-dmm-profiles-save,
+#wcfe-dmm-profiles-edit,
+#wcfe-dmm-profiles-delete,
+#wcfe-dmm-profiles-unload,
+#wcfe-dmm-profiles-reload
 {
 	color: #C4BEBE;
 }
