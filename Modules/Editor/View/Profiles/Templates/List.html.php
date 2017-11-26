@@ -6,6 +6,8 @@
 # Define namespace
 namespace WCFE\Modules\Editor\View\Editor\Templates;
 
+use WPPFW\MVC\MVCViewParams;
+
 # No direct access
 defined('ABSPATH') or die( WCFE\NO_DIRECT_ACCESS_MESSAGE );
 
@@ -31,7 +33,7 @@ $securityNonce = $result[ 'securityNonce' ];
 					</ul>
 				</li>
 			</ul>
-			<form id="wcfe-grid-table-form" action="<?php echo $router->route(new \WPPFW\MVC\MVCViewParams( 'Editor', 'Profiles', 'List', '', 'Profiles' )) ?>" method="post">
+			<form id="wcfe-grid-table-form" action="<?php echo $router->route(new MVCViewParams( 'Editor', 'Profiles', 'List', '', 'Profiles' )) ?>" method="post">
 				<table class="wcfe-grid-table" style="display: none;" cellpadding="4" cellspacing="2">
 					<thead>
 						<tr>
@@ -47,7 +49,7 @@ $securityNonce = $result[ 'securityNonce' ];
 							<td>
 								<span class="profile-field profile-name"><?php echo $profile->name ?></span>
 								<div class="wcfe-table-grid-column-actions">
-									<a class="wcfe-edit-profile" href="<?php echo $router->route( new \WPPFW\MVC\MVCViewParams('Editor', 'Profiles', 'Edit', '', 'Profile')) ?>&id=<?php echo $profile->id ?>"><?php $this->_e( 'Edit' ) ?></a> | 
+									<a class="wcfe-edit-profile" href="<?php echo $router->route( new MVCViewParams('Editor', 'Profiles', 'Edit', '', 'Profile')) ?>&id=<?php echo $profile->id ?>"><?php $this->_e( 'Edit' ) ?></a> | 
 									<a class="wcfe-select-profile" href="#<?php echo $profile->id ?>"><?php $this->_e( 'Load' ) ?></a>
 								</div>
 							</td>

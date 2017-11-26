@@ -7,6 +7,7 @@ namespace WCFE\Modules\Editor\Controller\Profiles;
 
 # Imoprts
 use WPPFW\MVC\Controller\Controller;
+use WPPFW\MVC\MVCViewParams;
 
 # Config Form
 use WCFE\Modules\Editor\Model\Forms;
@@ -102,7 +103,7 @@ extends Controller
 				
 				$model->addError( $this->__( 'Invalid Access Token' ) );
 				
-				$this->redirect( $router->routeAction() ) ;
+				$this->redirect($router->route(new MVCViewParams(null, 'Profiles', 'List', null, 'Profiles')));
 				
 				return;
 			}
@@ -164,7 +165,7 @@ extends Controller
 			
 			if ( $model->delete( $_POST[ 'id' ] ) )
 			{
-				$this->redirect( $router->route() );	
+				$this->redirect($router->route(new MVCViewParams(null, 'Profiles', 'List', null, 'Profiles')));
 			}
 			
 		}

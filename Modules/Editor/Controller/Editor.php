@@ -158,7 +158,7 @@ extends Controller {
             if ( $model->hasActiveProfile() )
             {
 
-                $profilesModel =& $this->getModel( 'Profiles', 'Profiles' );
+                $profilesModel =& $this->getModel('Profiles');
                 $activeProfile = $profilesModel->getProfile( $model->getActiveProfileId() );
 
                 # Its important to don't crash the Config Form base

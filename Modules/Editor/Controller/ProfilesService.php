@@ -7,7 +7,7 @@ namespace WCFE\Modules\Editor\Controller\ProfilesService;
 
 # Imoprts
 use WPPFW\MVC\Controller\ServiceController;
-use WCFE\Modules\Profiles\Model\Profile;
+use WCFE\Modules\Editor\Model\Profile;
 
 /**
 * 
