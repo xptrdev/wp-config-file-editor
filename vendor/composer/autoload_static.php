@@ -48,6 +48,7 @@ class ComposerStaticInitfe2ad7bc57369cc31174fe5525a436ac
         'WCFE\\Modules\\Editor\\Lib\\ConfigFileFactoriesFieldsNameMap' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFileFactoriesNamesMap.abstract.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFileFormFieldsFactory' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFormFieldsFactoy.class.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFileWriterFactoriesFieldsNameMap' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFileWriterFactoriesNamesMap.abstract.php',
+        'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\IWriter' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Writer.interface.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Reader' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Reader.class.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Writer' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/Writer.class.php',
         'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\WriterFieldsFactory' => __DIR__ . '/../..' . '/Modules/Editor/Lib/ConfigFile/WritterFieldsFactory.class.php',

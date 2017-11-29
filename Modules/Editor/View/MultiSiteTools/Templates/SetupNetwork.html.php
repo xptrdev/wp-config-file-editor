@@ -77,7 +77,7 @@ var actionsRoute = <?php echo json_encode( $this->actionsRoute ); ?>;
 
 <?php require implode( DIRECTORY_SEPARATOR, array
 	(  
-  	\WCFE\Plugin::DIR,
+  	\WCFEPluginLoaded::DIR,
   	'Modules',
   	'Editor',
   	'View',

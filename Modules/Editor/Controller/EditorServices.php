@@ -217,7 +217,7 @@ extends ServiceController
 		{
 			
 			# Generate config file from submitted fields
-			$model->generateConfigFile($configWriter);
+			$configWriter = $model->getGenerator()->generate();
 
 			$model->setConfigFileContent((string) $configWriter);
 			

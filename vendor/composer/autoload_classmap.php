@@ -47,6 +47,7 @@ return array(
     'WCFE\\Modules\\Editor\\Lib\\ConfigFileFactoriesFieldsNameMap' => $baseDir . '/Modules/Editor/Lib/ConfigFileFactoriesNamesMap.abstract.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFileFormFieldsFactory' => $baseDir . '/Modules/Editor/Lib/ConfigFormFieldsFactoy.class.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFileWriterFactoriesFieldsNameMap' => $baseDir . '/Modules/Editor/Lib/ConfigFileWriterFactoriesNamesMap.abstract.php',
+    'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\IWriter' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Writer.interface.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Reader' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Reader.class.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\Writer' => $baseDir . '/Modules/Editor/Lib/ConfigFile/Writer.class.php',
     'WCFE\\Modules\\Editor\\Lib\\ConfigFile\\WriterFieldsFactory' => $baseDir . '/Modules/Editor/Lib/ConfigFile/WritterFieldsFactory.class.php',

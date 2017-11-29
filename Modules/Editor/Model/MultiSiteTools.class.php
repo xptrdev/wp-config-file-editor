@@ -7,6 +7,8 @@ namespace WCFE\Modules\Editor\Model;
 
 # Models Framework
 use WPPFW\MVC\Model\PluginModel;
+use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
+use WCFE\Modules\Editor\ConfigFileNamesMap;
 
 /**
 * 
@@ -92,23 +94,13 @@ class MultiSiteToolsModel extends PluginModel
 		$allowMultiSiteField->setValue(true);
 		
 		# Create Generator 
-		$editorModel->generateConfigFile($configGenerator);
+		$configWriter =& $editorModel->getGenerator();
 		
 		# This is to add Multi Site code line at the end of the config file
-		$configGenerator->processSpecialFields(
-            array
-            (
-                self::SEPCIAL_FIELD_MULTISITE_TOOLS_PLUGIN_LOADER => ConfigFile\Fields\CustomContentField::create(
-                    __DIR__ . DIRECTORY_SEPARATOR . 'ConfigFile' . 
-                    DIRECTORY_SEPARATOR . 'Fields' . DIRECTORY_SEPARATOR .
-                    'Templates' . DIRECTORY_SEPARATOR .
-                    'MultiSiteToolPluginLoader.customcontent.php'
-                )
-            )
-        );
+		$configWriter->generateWithMSInitCode();
 		
 		# Regenerate after we configured
-		$editorModel->setConfigFileContent((string) $configGenerator);
+		$editorModel->setConfigFileContent((string) $configWriter);
 		
 		if (!$editorModel->saveConfigFile())
 		{
@@ -161,8 +153,12 @@ class MultiSiteToolsModel extends PluginModel
 		# Turn WP_ALLOW_MULTISITE off
 		$form->get(ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE)->setValue(false);
 		
-		$editorModel->generateConfigFile($configGenerator);
-		$editorModel->setConfigFileContent(( string ) $configGenerator);
+		$configWriter =& $editorModel->getGenerator();
+        
+        // Generate and remove MS Init Code
+        $configWriter->generateWithMSInitCodeRemoved();
+        
+		$editorModel->setConfigFileContent(( string ) $configWriter);
 		
 		if (!$editorModel->saveConfigFile())
 		{

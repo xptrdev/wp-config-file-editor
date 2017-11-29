@@ -19,6 +19,8 @@ ini_set('display_errors', 'On');
 final class WCFEPluginLoaded
 {
     
+    const DIR = __DIR__;
+    
     const REQ_PHP_VERSION = '5.3.0';
     
     const TEXT_DOMAIN = 'wp-config-file-editor';

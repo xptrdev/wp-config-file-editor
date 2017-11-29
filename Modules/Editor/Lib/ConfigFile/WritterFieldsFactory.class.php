@@ -1881,4 +1881,20 @@ extends FieldsFactoryBase
         
         return $this;
     }
+    
+    /**
+    * put your comment there...
+    * 
+    */
+    public function & specialFieldCreateMSInitCodeField()
+    {
+        
+        $msInitCodeField = Fields\CustomContentField::create(
+            __DIR__ . DIRECTORY_SEPARATOR . 'Fields' . DIRECTORY_SEPARATOR .
+            'Templates' . DIRECTORY_SEPARATOR .
+            'MultiSiteToolPluginLoader.customcontent.php'
+        );
+        
+        return $msInitCodeField;
+    }
 }

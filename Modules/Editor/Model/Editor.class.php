@@ -223,31 +223,6 @@ extends PluginModel
     /**
     * put your comment there...
     * 
-    * @param mixed $generator
-    * @return EditorModel
-    */
-    public function & generateConfigFile( & $generator = null )
-    {
-
-        $form = $this->getForm();
-        
-        $configWriter = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT, null, $form);
-        
-        if (!$configWriter)
-        {
-            # Get generator instance
-            $configWriter = new Writer($form);
-        }        
-
-        # Return generator reference
-        $generator = $configWriter;
-
-        return $this;
-    }
-
-    /**
-    * put your comment there...
-    * 
     */
     public function getActiveProfileId()
     {
@@ -271,6 +246,27 @@ extends PluginModel
         return $this->configFileContent;
     }
 
+    /**
+    * put your comment there...
+    * 
+    * @return WCFE\Modules\Editor\Lib\ConfigFile\IWriter
+    */
+    public function & getGenerator()
+    {
+
+        $form = $this->getForm();
+        
+        $configWriter = apply_filters(\WCFE\Hooks::FILTER_MODEL_EDITOR_CREATE_CONFIG_WRITER_OBJECT, null, $form);
+        
+        if (!$configWriter)
+        {
+            # Get generator instance
+            $configWriter = new Writer($form);
+        }        
+
+        return $configWriter;
+    }
+    
     /**
     * put your comment there...
     * 
