@@ -917,6 +917,10 @@ extends FieldsFactoryBase
             array
             (
                 'Multi Site Domain'
+            ),
+            array
+            (
+                'suppressOutput' => true,
             )
         );
     }
@@ -934,6 +938,10 @@ extends FieldsFactoryBase
             array
             (
                 'Multi Site Current Root path'
+            ),
+            array
+            (
+                'suppressOutput' => true,
             )
         );
     }
