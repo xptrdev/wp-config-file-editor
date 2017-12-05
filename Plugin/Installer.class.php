@@ -307,7 +307,102 @@ extends \WCFE\Libraries\InstallerService
     {
         // Transfer Profile vars as var names changed
         // in version 2.0.0
-        
+        array
+        (
+            'DbName',
+            'DbUser',
+            'DbPassword',
+            'DbHost',
+            'DbPort',
+            'DbCharSet',
+            'DbCollate',
+            'DbTablePrefix',
+            'DbAllowRepair',
+            'DbDontUpgradeGlobalTables',
+            
+            'SecurityDisablePluggablesEditor',
+            'SecurityBlockExternalUrl',
+            'SecurityAccessibleHosts',
+            'SecurityForceSSLAdmin',
+            'SecurityForceSSLLogin',
+            'SecurityDisallowUnfilteredHTML',
+            'SecurityAllowUnfilteredUploads',
+            
+            'UpgradeAutoDisable',
+            'UpgradeAutoCore',
+            'UpgradeDisablePluggables',
+            
+            'UpgradeFSMethod',
+            'UpgradeFTPBase',
+            'UpgradeFTPContentDir',
+            'UpgradeFTPPluginDir',
+            'UpgradeFTPPubKey',
+            'UpgradeFTPPriKey',
+            'UpgradeFTPUser',
+            'UpgradeFTPPassword',
+            'UpgradeFTPHost',
+            'UpgradeFTPSSL',
+                
+            'AuthKey',
+            'SecureAuthKey',
+            'LoggedInKey',
+            'NonceKey',
+            'AuthSalt',
+            'SecureAuthSalt',
+            'LoggedInSalt',
+            'NonceSalt',
+            
+            'WPDebug',
+            'WPDebugLog',
+            'WPDebugDisplay',
+            'ScriptDebug',
+            'SaveQueries',
+            'ConcatenateJavaScript',
+            
+            'WPLang',
+            'WPLangDir',
+            
+            'MultiSiteAllow',
+            'MultiSite',
+            'MultiSiteSubDomainInstall',
+            'MultiSiteDomainCurrentSite',
+            'MultiSitePathCurrentSite', 
+            'MultiSiteSiteId',
+            'MultiSiteBlogId',
+            'MultiSitePrimaryNetworkId',
+            
+            'WPCache',
+            'MemoryLimit',
+            'MaxMemoryLimit',
+            
+            'PostAutoSaveInterval',
+            'PostRevisions',
+            'PostRevisionsMax',
+            'PostEmptyTrashDays',
+            
+            'Cron',
+            'CronAlternate',
+            'CronLockTimeOut',
+            
+            'ProxyHost',
+            'ProxyPort',
+            'ProxyUser',
+            'ProxyPassword',
+            'ProxyBypassHosts',
+            
+            'CookieHash',
+            'CookieUser',
+            'CookiePass',
+            'CookieAuth',
+            'CookieSecureAuth',
+            'CookieLoggedIn',
+            'CookieTest',
+            'CookiePath',
+            'CookieSitePath',
+            'CookieAdminPath',
+            'CookiePluginsPath',
+            'CookieDomain',
+        );
     }
 
 
