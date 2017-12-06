@@ -5,7 +5,8 @@
 
 namespace WCFE\Installer;
 
-use \WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel;
+use WCFE\Modules\SysFilters\Model\SysFiltersDashboardModel;
+use WCFE\Modules\Editor\ConfigFileFieldsNameMap;
 
 /**
 * 
@@ -121,7 +122,7 @@ extends \WCFE\Libraries\InstallerService
     * put your comment there...
     * 
     */
-    public static function run( )
+    public static function run()
     {
 
         $result = null;
@@ -305,91 +306,60 @@ extends \WCFE\Libraries\InstallerService
     */
     public function upgrade_200()
     {
+
         // Transfer Profile vars as var names changed
         // in version 2.0.0
-        array
+        $profilesVarsMap = array
         (
-            'DbName',
+            
+            'MemoryLimit' => ConfigFileFieldsNameMap::WP_MEMORY_LIMIT,
+            'MaxMemoryLimit'  => ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT,
+            'UpgradeAutoCore' => ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED,
+            'UpgradeFSMethod' => ConfigFileFieldsNameMap::FS_METHOD,
+            'UpgradeFTPBase' => ConfigFileFieldsNameMap::FTP_BASE,
+            'UpgradeFTPContentDir' => ConfigFileFieldsNameMap::FTP_CONTENT_DIR,
+            'UpgradeFTPPluginDir' => ConfigFileFieldsNameMap::FTP_PLUGIN_DIR,
+            'UpgradeFTPPubKey' => ConfigFileFieldsNameMap::FTP_PUBKEY,
+            'UpgradeFTPPriKey' => ConfigFileFieldsNameMap::FTP_PRIKEY,
+            'UpgradeFTPUser' => ConfigFileFieldsNameMap::FTP_USER,
+            'UpgradeFTPPassword' => ConfigFileFieldsNameMap::FTP_PASS,
+            'UpgradeFTPHost' => ConfigFileFieldsNameMap::FTP_HOST,
+            'PostAutoSaveInterval' => ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL,
+            'PostEmptyTrashDays' => ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS,
+            'PostRevisionsMax' => ConfigFileFieldsNameMap::WP_POST_REVISIONS,
+            'WPLang' => ConfigFileFieldsNameMap::WPLANG,
+            'WPLangDir' => ConfigFileFieldsNameMap::WPLANG_DIR,
+            'CronLockTimeOut' => ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT,
+            'MultiSite' => ConfigFileFieldsNameMap::MULTISITE,
+            'MultiSiteDomainCurrentSite' => ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE,
+            'MultiSitePathCurrentSite' => ConfigFileFieldsNameMap::PATH_CURRENT_SITE,
+            'MultiSiteSiteId' => ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE,
+            'MultiSiteBlogId' => ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE,
+            'MultiSitePrimaryNetworkId' => ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID,
+            'DbHost' => ConfigFileFieldsNameMap::DB_HOST,
+            'DbPort' => ConfigFileFieldsNameMap::DB_PORT,
             'DbUser',
             'DbPassword',
-            'DbHost',
-            'DbPort',
+            'DbName',
             'DbCharSet',
             'DbCollate',
             'DbTablePrefix',
-            'DbAllowRepair',
-            'DbDontUpgradeGlobalTables',
-            
-            'SecurityDisablePluggablesEditor',
-            'SecurityBlockExternalUrl',
-            'SecurityAccessibleHosts',
-            'SecurityForceSSLAdmin',
-            'SecurityForceSSLLogin',
-            'SecurityDisallowUnfilteredHTML',
-            'SecurityAllowUnfilteredUploads',
-            
-            'UpgradeAutoDisable',
-            'UpgradeAutoCore',
-            'UpgradeDisablePluggables',
-            
-            'UpgradeFSMethod',
-            'UpgradeFTPBase',
-            'UpgradeFTPContentDir',
-            'UpgradeFTPPluginDir',
-            'UpgradeFTPPubKey',
-            'UpgradeFTPPriKey',
-            'UpgradeFTPUser',
-            'UpgradeFTPPassword',
-            'UpgradeFTPHost',
-            'UpgradeFTPSSL',
-                
             'AuthKey',
             'SecureAuthKey',
             'LoggedInKey',
             'NonceKey',
             'AuthSalt',
             'SecureAuthSalt',
-            'LoggedInSalt',
-            'NonceSalt',
-            
-            'WPDebug',
-            'WPDebugLog',
-            'WPDebugDisplay',
-            'ScriptDebug',
-            'SaveQueries',
-            'ConcatenateJavaScript',
-            
-            'WPLang',
-            'WPLangDir',
-            
-            'MultiSiteAllow',
-            'MultiSite',
-            'MultiSiteSubDomainInstall',
-            'MultiSiteDomainCurrentSite',
-            'MultiSitePathCurrentSite', 
-            'MultiSiteSiteId',
-            'MultiSiteBlogId',
-            'MultiSitePrimaryNetworkId',
-            
-            'WPCache',
-            'MemoryLimit',
-            'MaxMemoryLimit',
-            
-            'PostAutoSaveInterval',
-            'PostRevisions',
-            'PostRevisionsMax',
-            'PostEmptyTrashDays',
-            
-            'Cron',
-            'CronAlternate',
-            'CronLockTimeOut',
-            
-            'ProxyHost',
+            'LoggedInSalt'
+            'NonceSalt'
+            'WPDebug'
+            'WPDebugDisplay'
+            'WPDebugLog'
+            'ScriptDebug'
+            'ProxyHost'
             'ProxyPort',
             'ProxyUser',
             'ProxyPassword',
-            'ProxyBypassHosts',
-            
             'CookieHash',
             'CookieUser',
             'CookiePass',
@@ -401,8 +371,10 @@ extends \WCFE\Libraries\InstallerService
             'CookieSitePath',
             'CookieAdminPath',
             'CookiePluginsPath',
-            'CookieDomain',
+            'CookieDomain'
         );
+        
+        return true;
     }
 
 
