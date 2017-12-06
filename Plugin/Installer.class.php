@@ -311,10 +311,21 @@ extends \WCFE\Libraries\InstallerService
         // in version 2.0.0
         $profilesVarsMap = array
         (
-            
+            'WPCache' => ConfigFileFieldsNameMap::WP_CACHE,
             'MemoryLimit' => ConfigFileFieldsNameMap::WP_MEMORY_LIMIT,
             'MaxMemoryLimit'  => ConfigFileFieldsNameMap::WP_MAX_MEMORY_LIMIT,
-            'UpgradeAutoCore' => ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED,
+            
+            'SecurityDisablePluggablesEditor' => ConfigFileFieldsNameMap::DISALLOW_FILE_EDIT,
+            'SecurityForceSSLAdmin' => ConfigFileFieldsNameMap::FORCE_SSL_ADMIN,
+            'SecurityForceSSLLogin' => ConfigFileFieldsNameMap::FORCE_SSL_LOGIN,
+            'SecurityDisallowUnfilteredHTML' => ConfigFileFieldsNameMap::DISALLOW_UNFILTERED_HTML,
+            'SecurityAllowUnfilteredUploads' => ConfigFileFieldsNameMap::ALLOW_UNFILTERED_UPLOADS,
+            'SecurityBlockExternalUrl' => ConfigFileFieldsNameMap::WP_HTTP_BLOCK_EXTERNAL,
+            'SecurityAccessibleHosts' => ConfigFileFieldsNameMap::WP_ACCESSIBLE_HOSTS,
+            
+            'UpgradeAutoDisable' => ConfigFileFieldsNameMap::AUTOMATIC_UPDATER_DISABLED,
+            'UpgradeAutoCore' => ConfigFileFieldsNameMap::WP_AUTO_UPDATE_CORE,
+            'UpgradeDisablePluggables' => ConfigFileFieldsNameMap::DISALLOW_FILE_MODS,
             'UpgradeFSMethod' => ConfigFileFieldsNameMap::FS_METHOD,
             'UpgradeFTPBase' => ConfigFileFieldsNameMap::FTP_BASE,
             'UpgradeFTPContentDir' => ConfigFileFieldsNameMap::FTP_CONTENT_DIR,
@@ -324,54 +335,74 @@ extends \WCFE\Libraries\InstallerService
             'UpgradeFTPUser' => ConfigFileFieldsNameMap::FTP_USER,
             'UpgradeFTPPassword' => ConfigFileFieldsNameMap::FTP_PASS,
             'UpgradeFTPHost' => ConfigFileFieldsNameMap::FTP_HOST,
+            'UpgradeFTPSSL' => ConfigFileFieldsNameMap::FTP_SSL,  
+            
             'PostAutoSaveInterval' => ConfigFileFieldsNameMap::AUTOSAVE_INTERVAL,
             'PostEmptyTrashDays' => ConfigFileFieldsNameMap::EMPTY_TRASH_DAYS,
+            'PostRevisions' => ConfigFileFieldsNameMap::WP_POST_REVISIONS_STATUS,
             'PostRevisionsMax' => ConfigFileFieldsNameMap::WP_POST_REVISIONS,
+            
             'WPLang' => ConfigFileFieldsNameMap::WPLANG,
             'WPLangDir' => ConfigFileFieldsNameMap::WPLANG_DIR,
+            
+            'Cron' => ConfigFileFieldsNameMap::DISABLE_WP_CRON,
+            'CronAlternate' => ConfigFileFieldsNameMap::ALTERNATE_WP_CRON,
             'CronLockTimeOut' => ConfigFileFieldsNameMap::WP_CRON_LOCK_TIMEOUT,
+            
+            'MultiSiteAllow' => ConfigFileFieldsNameMap::WP_ALLOW_MULTISITE,
             'MultiSite' => ConfigFileFieldsNameMap::MULTISITE,
+            'MultiSiteSubDomainInstall' => ConfigFileFieldsNameMap::SUBDOMAIN_INSTALL,
             'MultiSiteDomainCurrentSite' => ConfigFileFieldsNameMap::DOMAIN_CURRENT_SITE,
             'MultiSitePathCurrentSite' => ConfigFileFieldsNameMap::PATH_CURRENT_SITE,
             'MultiSiteSiteId' => ConfigFileFieldsNameMap::SITE_ID_CURRENT_SITE,
             'MultiSiteBlogId' => ConfigFileFieldsNameMap::BLOG_ID_CURRENT_SITE,
             'MultiSitePrimaryNetworkId' => ConfigFileFieldsNameMap::PRIMARY_NETWORK_ID,
+            
             'DbHost' => ConfigFileFieldsNameMap::DB_HOST,
             'DbPort' => ConfigFileFieldsNameMap::DB_PORT,
-            'DbUser',
-            'DbPassword',
-            'DbName',
-            'DbCharSet',
-            'DbCollate',
-            'DbTablePrefix',
-            'AuthKey',
-            'SecureAuthKey',
-            'LoggedInKey',
-            'NonceKey',
-            'AuthSalt',
-            'SecureAuthSalt',
-            'LoggedInSalt'
-            'NonceSalt'
-            'WPDebug'
-            'WPDebugDisplay'
-            'WPDebugLog'
-            'ScriptDebug'
-            'ProxyHost'
-            'ProxyPort',
-            'ProxyUser',
-            'ProxyPassword',
-            'CookieHash',
-            'CookieUser',
-            'CookiePass',
-            'CookieAuth',
-            'CookieSecureAuth',
-            'CookieLoggedIn',
-            'CookieTest',
-            'CookiePath',
-            'CookieSitePath',
-            'CookieAdminPath',
-            'CookiePluginsPath',
-            'CookieDomain'
+            'DbUser' => ConfigFileFieldsNameMap::DB_USER,
+            'DbPassword' => ConfigFileFieldsNameMap::DB_PASSWORD,
+            'DbName' => ConfigFileFieldsNameMap::DB_NAME,
+            'DbCharSet' => ConfigFileFieldsNameMap::DB_CHARSET,
+            'DbCollate' => ConfigFileFieldsNameMap::DB_COLLATE,
+            'DbTablePrefix' => ConfigFileFieldsNameMap::DB_TABLE_PREFIX,
+            'DbAllowRepair' => ConfigFileFieldsNameMap::WP_ALLOW_REPAIR,
+            'DbDontUpgradeGlobalTables' => ConfigFileFieldsNameMap::DO_NOT_UPGRADE_GLOBAL_TABLES,
+            
+            'AuthKey' => ConfigFileFieldsNameMap::AUTH_KEY,
+            'SecureAuthKey' => ConfigFileFieldsNameMap::SECURE_AUTH_KEY,
+            'LoggedInKey' => ConfigFileFieldsNameMap::LOGGED_IN_KEY,
+            'NonceKey' => ConfigFileFieldsNameMap::NONCE_KEY,
+            'AuthSalt' => ConfigFileFieldsNameMap::AUTH_SALT,
+            'SecureAuthSalt' => ConfigFileFieldsNameMap::SECURE_AUTH_SALT,
+            'LoggedInSalt' => ConfigFileFieldsNameMap::LOGGED_IN_SALT,
+            'NonceSalt' => ConfigFileFieldsNameMap::NONCE_SALT,
+            
+            'WPDebug' => ConfigFileFieldsNameMap::WP_DEBUG,
+            'WPDebugDisplay' => ConfigFileFieldsNameMap::WP_DEBUG_DISPLAY,
+            'WPDebugLog' => ConfigFileFieldsNameMap::WP_DEBUG_LOG,
+            'ScriptDebug' => ConfigFileFieldsNameMap::SCRIPT_DEBUG,
+            'ConcatenateJavaScript' => ConfigFileFieldsNameMap::CONCATENATE_SCRIPTS,
+            'SaveQueries' => ConfigFileFieldsNameMap::SAVEQUERIES,
+            
+            'ProxyHost' => ConfigFileFieldsNameMap::WP_PROXY_HOST,
+            'ProxyPort' => ConfigFileFieldsNameMap::WP_PROXY_PORT,
+            'ProxyUser' => ConfigFileFieldsNameMap::WP_PROXY_USERNAME,
+            'ProxyPassword' => ConfigFileFieldsNameMap::WP_PROXY_PASSWORD,
+            'ProxyBypassHosts' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            
+            'CookieHash' => ConfigFileFieldsNameMap::COOKIEHASH,
+            'CookieUser' => ConfigFileFieldsNameMap::PASS_COOKIE,
+            'CookiePass' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieAuth' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieSecureAuth' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieLoggedIn' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieTest' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookiePath' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieSitePath' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieAdminPath' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookiePluginsPath' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
+            'CookieDomain' => ConfigFileFieldsNameMap::WP_PROXY_BYPASS_HOSTS,
         );
         
         return true;
